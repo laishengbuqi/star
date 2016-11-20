@@ -1,0 +1,485 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>轻描淡写</title>
+  <subtitle>hhh</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://www.mcling.xyz/"/>
+  <updated>2016-11-20T12:43:40.624Z</updated>
+  <id>http://www.mcling.xyz/</id>
+  
+  <author>
+    <name>strunch</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>js原生框架part3</title>
+    <link href="http://www.mcling.xyz/2016/11/20/js-1.html"/>
+    <id>http://www.mcling.xyz/2016/11/20/js-1.html</id>
+    <published>2016-11-20T06:49:16.000Z</published>
+    <updated>2016-11-20T12:43:40.624Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="css方法"><a href="#css方法" class="headerlink" title="css方法"></a>css方法</h3><ol>
+<li>实现思路<ul>
+<li>如果只传入一个参数<ul>
+<li>如果参数类型为对象,表示同时设置多个样式</li>
+<li>如果参数类型为字符串,表示获取指定的样式值</li>
+</ul>
+</li>
+<li>如果传入的两个参数,表示设置单个样式值</li>
+</ul>
+</li>
+</ol>
+<h3 id="itcast-each方法-遍历数组或伪数组"><a href="#itcast-each方法-遍历数组或伪数组" class="headerlink" title="itcast.each方法: 遍历数组或伪数组"></a>itcast.each方法: 遍历数组或伪数组</h3><ol>
+<li>功能<ul>
+<li>第一个参数,指定遍历的对象</li>
+<li>第二个参数,指定的回调函数,对遍历到的每一个元素,进行相关处理</li>
+</ul>
+</li>
+</ol>
+<h2 id="attr方法-setAttribute-和-getAttribute"><a href="#attr方法-setAttribute-和-getAttribute" class="headerlink" title="attr方法(setAttribute 和 getAttribute)"></a>attr方法(<code>setAttribute</code> 和 <code>getAttribute</code>)</h2><ol>
+<li>功能: 获取(设置)属性节点值</li>
+<li>实现思路<ul>
+<li>给原型添加<code>attr</code>方法,定义两个参数:属性节点名字<code>name</code>以及属性节点值</li>
+<li>如果只传入一个参数<ul>
+<li>如果参数类型为对象,表示设置多个节点值</li>
+<li>否则获取指定的属性节点值(默认获取第一个<code>dom</code>元素的属性节点值)</li>
+</ul>
+</li>
+<li>如果传入两个参数,表示设置单个属性节点值.</li>
+</ul>
+</li>
+</ol>
+<h2 id="html方法"><a href="#html方法" class="headerlink" title="html方法"></a>html方法</h2><ol>
+<li><p>功能:</p>
+<ul>
+<li>如果不传入参数,此时表示获取指定dom元素的innerHTML属性值</li>
+<li>否则,表示设置指定dom元素的innerHTML属性</li>
+</ul>
+</li>
+<li><p>实现思路</p>
+<ul>
+<li>判断 是否传入参数</li>
+<li>如果没传,获取itcast对象上第一个dom元素的innerHTML属性值</li>
+<li>否则,给itcast对象上每一个dom元素设置innerHTML属性</li>
+</ul>
+</li>
+</ol>
+<h2 id="text方法"><a href="#text方法" class="headerlink" title="text方法"></a>text方法</h2><ol>
+<li>功能:<ul>
+<li>不传值,表示获取文本节点(返回的是后代中所有文本节点值)</li>
+<li>否则,设置指定dom元素文本节点值</li>
+</ul>
+</li>
+<li>实现思路<ul>
+<li>如果不传值,优先考虑浏览器是否支持textContent属性</li>
+<li>如果支持,就使用textContent返回结果集中每一个dom元素的文本节点值</li>
+<li>否则,就使用innerText返回结果集中每一个dom元素的文本节点值.</li>
+<li>如果传值,给itcast对象上的每一个dom元素设置文本节点值</li>
+<li>如果支持textContent实行,就使用该属性设置文本</li>
+<li>否则,就使用innerText来设置文本</li>
+</ul>
+</li>
+</ol>
+<h2 id="val方法"><a href="#val方法" class="headerlink" title="val方法"></a>val方法</h2><ol>
+<li>功能: value属性<ul>
+<li>如果不传值,表示获取输入框的文本值</li>
+<li>如果传值,表示给输入框 设置文本</li>
+</ul>
+</li>
+<li>实现思路<ul>
+<li>如果不传值，表示获取输入框的文本值（获取第一个文本框值）</li>
+<li>如果传值，表示给输入框 设置文本<ul>
+<li>遍历每一个输入框，同时给其设置文本</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="prop方法"><a href="#prop方法" class="headerlink" title="prop方法"></a>prop方法</h2><ol>
+<li>功能: 和<code>attr</code>相似<ul>
+<li>注意:有些属性名称,比如for,class是保留字或关键字不能作为对象属性名称.所以要创建一个对象,转换这类的属性</li>
+<li>定义protoFix对象,存储上述属性到新属性名称的映射关系</li>
+</ul>
+</li>
+</ol>
+<h2 id="appendTo方法"><a href="#appendTo方法" class="headerlink" title="appendTo方法"></a>appendTo方法</h2><ol>
+<li>功能: 将结果集中的元素 追加到指定的dom元素上</li>
+<li>实现思路<ul>
+<li>定义appendTo方法,声明一个形参target,形参表示追加的目标dom元素<ul>
+<li>选择器</li>
+<li>dom元素</li>
+<li>dom数组</li>
+</ul>
+</li>
+<li>为了操作方便,将target类型统一为itcast对象</li>
+<li>遍历this上的每一个dom元素,在遍历target上的每一个dom元素</li>
+<li>将this上的dom元素追加到target上</li>
+<li>注意:<br>在追加节点时,如果遍历的是第一个目标dom元素,不需要拷贝节点;否则要深拷贝节点,并将上述得到的节点存储到ret内</li>
+<li>将ret数组转换成itcast对象,作为appendTo方法的返回值<br>  *如果不这样做的话,就会在添加样式时</li>
+</ul>
+</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;css方法&quot;&gt;&lt;a href=&quot;#css方法&quot; class=&quot;headerlink&quot; title=&quot;css方法&quot;&gt;&lt;/a&gt;css方法&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;实现思路&lt;ul&gt;
+&lt;li&gt;如果只传入一个参数&lt;ul&gt;
+&lt;li&gt;如果参数类型为对象,表示同时设置多个样式&lt;
+    
+    </summary>
+    
+      <category term="js原生框架" scheme="http://www.mcling.xyz/categories/js%E5%8E%9F%E7%94%9F%E6%A1%86%E6%9E%B6/"/>
+    
+    
+      <category term="js" scheme="http://www.mcling.xyz/tags/js/"/>
+    
+      <category term="jquery" scheme="http://www.mcling.xyz/tags/jquery/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>js原生框架part2</title>
+    <link href="http://www.mcling.xyz/2016/11/18/js1.html"/>
+    <id>http://www.mcling.xyz/2016/11/18/js1.html</id>
+    <published>2016-11-18T10:34:53.000Z</published>
+    <updated>2016-11-20T12:46:05.536Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="hasClass方法"><a href="#hasClass方法" class="headerlink" title="hasClass方法"></a>hasClass方法</h2><ol>
+<li>功能: 如果结果集里只要有一个dom元素 具有指定的样式类，就返回true</li>
+<li><p>实现思路:</p>
+<ul>
+<li>定义结果变量<code>ret</code>，默认值为<code>false</code></li>
+<li>遍历结果集的每一个<code>dom</code>元素如果当前dom元素具有指定的样式类，将<code>ret=true</code>,结束循环</li>
+<li><p>返回ret。</p>
+</li>
+<li><p>如何判断dom元素具有指定的样式类？<br>在dom元素所有样式类的收尾 + 空格；在用户指定的样式类 收尾 + 空格<br>调用indexOf方法，如果返回值 = -1，表示没有；否则就具有指定样式类。</p>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="each方法"><a href="#each方法" class="headerlink" title="$.each方法"></a>$.each方法</h2><ol>
+<li>功能: 实现遍历数组或者伪数组,通过第二个参数(回调函数)来处理遍历到的每一个元素<br>在回调函数中,this指向的是当前边开遍历到的元素</li>
+<li>语法: $.each([数组/伪数组],callback);</li>
+<li>实现思路<ul>
+<li>声明each函数,定义两个形参: 第一个遍历的(伪数组);第二个:回调函数</li>
+<li>使用for循环,遍历(伪)数组.再循环体背部执行回调函数,在执行时,给回调函数传实参</li>
+<li>实现回调函数内部this指向当前遍历到的元素</li>
+<li>通过回调函数的返回值,判定是否结束循环.规定:当返回值为false,结束循环</li>
+</ul>
+</li>
+</ol>
+<h2 id="itcast中链式编程的实现"><a href="#itcast中链式编程的实现" class="headerlink" title="itcast中链式编程的实现"></a>itcast中链式编程的实现</h2><p> 1.返回当前方法的调用者: return this;</p>
+<h2 id="get方法"><a href="#get方法" class="headerlink" title="get方法"></a>get方法</h2><ol>
+<li>功能:根据参数index,获取相应dom元素</li>
+<li>实现思路<br><em>将字符串类型转换成数字
+</em><code>index &lt; 0 ==&gt; index + length</code><br>*<code>return this</code></li>
+</ol>
+<h2 id="eq方法"><a href="#eq方法" class="headerlink" title="eq方法"></a>eq方法</h2><ol>
+<li>功能: 根据参数index,获取相应dom元素,转换成itcast对象,再返回</li>
+</ol>
+<h2 id="first方法"><a href="#first方法" class="headerlink" title="first方法"></a>first方法</h2><h2 id="last方法"><a href="#last方法" class="headerlink" title="last方法"></a>last方法</h2><h2 id="css方法"><a href="#css方法" class="headerlink" title="css方法"></a>css方法</h2><ol>
+<li>功能:<ul>
+<li>获取:如果只传一个参数并且类型不为对象,获取相应的样式属性值</li>
+<li>设置: a:如果只传一个参数并且类型为对象,设置多个样式值; b:传入两个参数,设置单个样式.<br>2.实现思路</li>
+<li>给itcast原型添加css方法,定义两个参数</li>
+<li>如果只传入一个参数<ul>
+<li>类型为对象的话,同时设置多个样式属性</li>
+<li>类型不为对象,获取指定的样式值</li>
+</ul>
+</li>
+<li>如果只传入两个参数,设置单个样式值</li>
+</ul>
+</li>
+</ol>
+<h2 id="addClass方法"><a href="#addClass方法" class="headerlink" title="addClass方法"></a>addClass方法</h2><ol>
+<li>功能:给结果集中的每一个<code>dom</code>元素添加指定样式类<br>2.实现思路<ul>
+<li>遍历this上的每一个dom元素<br>*首先判断当前遍历到的dom元素是否含有样式类.如果不具有,就给其添加指定的样式类.</li>
+</ul>
+</li>
+</ol>
+<h2 id="removeClass方法"><a href="#removeClass方法" class="headerlink" title="removeClass方法"></a>removeClass方法</h2><p>1.功能:删除结果集中的每一个dom元素的指定样式类<br>2.实现思路</p>
+<ul>
+<li>遍历this上的每一个dom元素</li>
+<li>(‘ ‘+ v.className +’ ‘).replace(‘ ‘ + className +’’,’’)</li>
+</ul>
+<h2 id="toggleClass方法"><a href="#toggleClass方法" class="headerlink" title="toggleClass方法"></a>toggleClass方法</h2><ol>
+<li>功能: 切换指定的样式类: 如果有,就删除,没有就添加</li>
+<li>实现思路:<br> <em>遍历this上的每一个dom元素
+ </em>判断当前遍历到的dom元素是否含有指定的样式类<br> <em>如果有,就删除
+ </em>如果没有就添加</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;hasClass方法&quot;&gt;&lt;a href=&quot;#hasClass方法&quot; class=&quot;headerlink&quot; title=&quot;hasClass方法&quot;&gt;&lt;/a&gt;hasClass方法&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;功能: 如果结果集里只要有一个dom元素 具有指定的样式类，就返
+    
+    </summary>
+    
+      <category term="js原生框架" scheme="http://www.mcling.xyz/categories/js%E5%8E%9F%E7%94%9F%E6%A1%86%E6%9E%B6/"/>
+    
+    
+      <category term="js" scheme="http://www.mcling.xyz/tags/js/"/>
+    
+      <category term="jquery" scheme="http://www.mcling.xyz/tags/jquery/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>js原生框架part1</title>
+    <link href="http://www.mcling.xyz/2016/11/17/js.html"/>
+    <id>http://www.mcling.xyz/2016/11/17/js.html</id>
+    <published>2016-11-17T11:28:10.000Z</published>
+    <updated>2016-11-20T12:45:15.781Z</updated>
+    
+    <content type="html"><![CDATA[<a id="more"></a>
+<h2 id="案例-获取指定DOM下所有子元素"><a href="#案例-获取指定DOM下所有子元素" class="headerlink" title="案例:获取指定DOM下所有子元素"></a>案例:获取指定DOM下所有子元素</h2><ol>
+<li>在框架内部，遍历子节点，应该使用firstChild和nextSibling方式。</li>
+</ol>
+<h2 id="框架结构"><a href="#框架结构" class="headerlink" title="框架结构"></a>框架结构</h2><ol>
+<li><p>在编写框架的时候，为了防止变量污染，尽量使用沙箱模式 封装框架</p>
+<ul>
+<li>在沙箱内部，如果经常使用全局变量或全局对象的话，最好的做法就是将他们当做实参传入沙箱中</li>
+</ul>
+</li>
+<li><p>核心函数为itcast，相当于jQuery。最终要暴露给用户使用</p>
+</li>
+<li><p>实现itcast函数，使用的是工厂模式来创建对象。好处:用户new或不new都可以得到正确的对象</p>
+</li>
+<li><p>init构造函数的位置</p>
+<ul>
+<li><p>如果放在沙箱内部，用户是无法修改或重写的。所以要容纳更多用户，尽量将构造函数暴露给用户</p>
+</li>
+<li><p>可以把构造函数放在itcast函数上，也可以放在itcast函数原型上。</p>
+</li>
+<li><p>处于jQuery之父，在写简单继承模式时，将构造函数放在其原型上，那么在编写框架时，即延续下来了</p>
+</li>
+</ul>
+</li>
+<li><p>init创建出来的对象，最终继承自itcast.prototype 所以可以将init对象称为 itcast对象</p>
+</li>
+<li><p>由于暴露给用户的是 itcast 和 其原型。所以在扩展成员时，只能在这两个对象上扩展。而在函数对象上扩展的成员为静态成员 。可以直接通过函数名字来访问。但是，在原型上的成员必须创建实例来访问。因此为了实现init对象可以访问itcast原型上的成员，就基于原型来实现。</p>
+</li>
+<li><p>完善init构造函数</p>
+<ul>
+<li>selector类型:<ul>
+<li>无效值: null undefined ‘’</li>
+<li>字符串<ul>
+<li>选择器 : “div” 根据选择器筛选dom元素，并以伪数组形式存储在this上</li>
+<li>html字符串 <code>&#39;&lt;p&gt;123&lt;/p&gt;&#39;</code>将html字符串转换成html元素</li>
+</ul>
+</li>
+<li>DOM节点</li>
+<li>DOM数组</li>
+<li>function: 入口函数 DOMContentLoaded<ul>
+<li>使用静态属性isReady 存储dom树是否加载完毕</li>
+<li>判断isReady值，如果为true，就直接执行传入的函数</li>
+<li>否则，就给document的DOMContentLoaded事件绑定处理程序，在处理程序中，先将isReady赋值为true，在执行</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>如何判断字符串为html字符串</p>
+<ul>
+<li>以’&lt;’开头</li>
+<li>以’&gt;’结尾</li>
+<li>最小长度为3</li>
+</ul>
+</li>
+<li><p>如何判断像数组（数组和伪数组）</p>
+<ul>
+<li>用length属性判断啊，若具有length属性 表示为 像数组类型</li>
+<li>除了window对象以及函数对象</li>
+<li><p>{length :1}{4:”123”,length:5}稀疏数组</p>
+</li>
+<li><p>如果为真数组，返回true</p>
+</li>
+<li>如果length属性值为0，除了window对象以及函数对象，返回true</li>
+<li>如果length属性值&gt;0,如果对象具有 length - 1 索引，返回true</li>
+</ul>
+</li>
+<li><p>全局对象 window特性:有一个window属性 引用 自身</p>
+</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h2 id=&quot;案例-获取指定DOM下所有子元素&quot;&gt;&lt;a href=&quot;#案例-获取指定DOM下所有子元素&quot; class=&quot;headerlink&quot; title=&quot;案例:获取指定DOM下所有子元素&quot;&gt;&lt;/a&gt;案例:获取指定DOM下所有子元素&lt;/h2
+    
+    </summary>
+    
+      <category term="js原生框架" scheme="http://www.mcling.xyz/categories/js%E5%8E%9F%E7%94%9F%E6%A1%86%E6%9E%B6/"/>
+    
+    
+      <category term="js" scheme="http://www.mcling.xyz/tags/js/"/>
+    
+      <category term="jquery" scheme="http://www.mcling.xyz/tags/jquery/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>写给故作坚强的我们</title>
+    <link href="http://www.mcling.xyz/2016/11/16/own.html"/>
+    <id>http://www.mcling.xyz/2016/11/16/own.html</id>
+    <published>2016-11-16T10:48:48.000Z</published>
+    <updated>2016-11-20T12:47:41.029Z</updated>
+    
+    <content type="html"><![CDATA[<p> 　　我们害怕受伤，却常常失望，我们讨厌伪装，却必须这样，笑脸下的心酸不得不自己扛，忍下所有的疲惫，藏起所有的悲伤，只因为，谁也不想露出最脆弱的模样。想哭的时候，找不到可以依靠的肩膀，想逃的时候，没办法狠心彻底的淡忘，伤痕累累，才能抵挡下一次的风霜，安静沉默，才能遮掩心底处的哀伤。<br> 　　有些事，不是不想做，而是没有力量，有些人，不是不想忘，而是习惯埋葬，说的多了，无心惹出事端，做的久了，只会让心空荡，坚强，就像燃烧中的蜡烛，发着温暖的光，留下冰冷的凉。<br> 　　我们其实没那么能扛，只不过撑不住的时候，咬紧了牙齿，我们其实没那么开朗，只不过受过了伤以后，闭紧了心房，我们总会有脆弱的瞬间，在没有人的地方皱眉垂泪，在黑暗的房间中自己疗伤。<br> 　　孤单没人陪，学会了适应，寂寞没人懂，做到了安静，多想有人能看穿假装的坚强，多想有人能抚慰心底的创伤，多想有个人不离不弃在身旁，多想有一次真实面对不伪装。可是，我们终究被经历磨平了热情，被伤害催走了善良。<br> 　　藏起悲伤，才能爱上阳光，收起脆弱，才能迎来坚强，活一天，过一天，熬一天，算一天，一直故作坚强的我们，不容易，一直假装快乐的我们，最要强！</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt; 　　我们害怕受伤，却常常失望，我们讨厌伪装，却必须这样，笑脸下的心酸不得不自己扛，忍下所有的疲惫，藏起所有的悲伤，只因为，谁也不想露出最脆弱的模样。想哭的时候，找不到可以依靠的肩膀，想逃的时候，没办法狠心彻底的淡忘，伤痕累累，才能抵挡下一次的风霜，安静沉默，才能遮掩心底处
+    
+    </summary>
+    
+      <category term="个人日志" scheme="http://www.mcling.xyz/categories/%E4%B8%AA%E4%BA%BA%E6%97%A5%E5%BF%97/"/>
+    
+    
+      <category term="坚强" scheme="http://www.mcling.xyz/tags/%E5%9D%9A%E5%BC%BA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>canvas基础</title>
+    <link href="http://www.mcling.xyz/2016/11/15/throb.html"/>
+    <id>http://www.mcling.xyz/2016/11/15/throb.html</id>
+    <published>2016-11-15T10:57:25.000Z</published>
+    <updated>2016-11-20T12:49:02.734Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Canvas基础"><a href="#Canvas基础" class="headerlink" title="Canvas基础"></a>Canvas基础</h1><h2 id="Canvas是什么？"><a href="#Canvas是什么？" class="headerlink" title="Canvas是什么？"></a>Canvas是什么？</h2><p>Canvas是HTML5中提供的标签，是一个画布。</p>
+<p>默认的宽高为：300 * 150</p>
+<h2 id="Canvas的用法"><a href="#Canvas的用法" class="headerlink" title="Canvas的用法"></a>Canvas的用法</h2><ol>
+<li>创建一个Canvas标签</li>
+<li>获取到该DOM对象</li>
+<li>Canvas只是一个画布，不能自己画画，需要画图工具</li>
+<li>每个Canvas对应一个画图工具，通过 canvas对象.getContext(“2d”) 获取到一个  CanvasRenderingContext2D 类型的对象</li>
+</ol>
+<h2 id="如何画直线"><a href="#如何画直线" class="headerlink" title="如何画直线"></a>如何画直线</h2><ol>
+<li>先确定在何处下笔，画图工具.moveTo(x, y)</li>
+<li>确定从开始的点画到哪里去，  画图工具.lineTo(x, y)</li>
+<li>上面两步之后，线并没有画出来，而是描点，需要最后一步进行画线  画图工具.stroke();</li>
+</ol>
+<h2 id="lineTo的特性"><a href="#lineTo的特性" class="headerlink" title="lineTo的特性"></a>lineTo的特性</h2><p>每次lineTo之后都会记录最后的lineTo的点，下次lineTo的时候就接着这个点继续画</p>
+<h2 id="closePath"><a href="#closePath" class="headerlink" title="closePath"></a>closePath</h2><p>将最后一次lineTo的点 和最后一次moveTo的点连起来的</p>
+<p>两条线的交界处，如果使用的是closePath 会补全缺口</p>
+<h2 id="fill"><a href="#fill" class="headerlink" title="fill"></a>fill</h2><p>可以将闭合的图形进行填充</p>
+<h2 id="非零填充原则"><a href="#非零填充原则" class="headerlink" title="非零填充原则"></a>非零填充原则</h2><p>从一个闭合空间引出一条直线，如果该直线两边的箭头数量不相等，则要填充，如果相等则不填充</p>
+<p>一边有一个箭头就+1<br>另一边有一个箭头就-1</p>
+<h2 id="如何绘制曲线？"><a href="#如何绘制曲线？" class="headerlink" title="如何绘制曲线？"></a>如何绘制曲线？</h2><p>使用for循环给每一个x对应一个y值，x和y的关系需要是个多次幂的方程</p>
+<h2 id="路径概念"><a href="#路径概念" class="headerlink" title="路径概念"></a>路径概念</h2><p>路径就是一次绘图，包含该次绘图中的所有的状态，线宽  颜色  是否虚线</p>
+<p>如果想要改变状态，就需要开启新的路径</p>
+<h2 id="beginPath"><a href="#beginPath" class="headerlink" title="beginPath"></a>beginPath</h2><p>可以用来开启新的路径</p>
+<h2 id="线型相关属性"><a href="#线型相关属性" class="headerlink" title="线型相关属性"></a>线型相关属性</h2><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>lineWidth</td>
+<td>画线的时候的线的宽度</td>
+</tr>
+<tr>
+<td>setLineDash()</td>
+<td>设置虚线各个线段的长度,参数是一个数组，会将数组中的数字循环使用</td>
+</tr>
+<tr>
+<td>getLineDash()</td>
+<td>获取虚线各个线段的长度，如果是实线，获取到的是空数组</td>
+</tr>
+<tr>
+<td>lineDashOffset</td>
+<td>设置虚线的偏移量，正值往左，负值往右</td>
+</tr>
+<tr>
+<td>strokeStyle</td>
+<td>设置描边的，画线的颜色，颜色值可以为css中任意一种</td>
+</tr>
+<tr>
+<td>fillStyle</td>
+<td>设置填充颜色，颜色值可以为css中任意一种</td>
+</tr>
+</tbody>
+</table>
+<h2 id="渐变色"><a href="#渐变色" class="headerlink" title="渐变色"></a>渐变色</h2><p>将线划分为256份，每一份为一个颜色，新画一条线，依次递增，就形成了一个颜色渐变的线段</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Canvas基础&quot;&gt;&lt;a href=&quot;#Canvas基础&quot; class=&quot;headerlink&quot; title=&quot;Canvas基础&quot;&gt;&lt;/a&gt;Canvas基础&lt;/h1&gt;&lt;h2 id=&quot;Canvas是什么？&quot;&gt;&lt;a href=&quot;#Canvas是什么？&quot; class=&quot;
+    
+    </summary>
+    
+      <category term="canvas" scheme="http://www.mcling.xyz/categories/canvas/"/>
+    
+    
+      <category term="canvas" scheme="http://www.mcling.xyz/tags/canvas/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>遗忘</title>
+    <link href="http://www.mcling.xyz/2016/11/14/first1.html"/>
+    <id>http://www.mcling.xyz/2016/11/14/first1.html</id>
+    <published>2016-11-14T13:38:21.000Z</published>
+    <updated>2016-11-17T11:06:14.210Z</updated>
+    
+    <content type="html"><![CDATA[<p>遗忘，是我们不可更改的宿命，所有的一切都像是没有对齐的图纸，从前的一切回不到过去，就这样慢慢延伸，一点一点的错开，也许，错开了的东西，我们真的应该遗忘了。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;遗忘，是我们不可更改的宿命，所有的一切都像是没有对齐的图纸，从前的一切回不到过去，就这样慢慢延伸，一点一点的错开，也许，错开了的东西，我们真的应该遗忘了。&lt;/p&gt;
+
+    
+    </summary>
+    
+      <category term="yyy" scheme="http://www.mcling.xyz/categories/yyy/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://www.mcling.xyz/2016/11/12/hello-world.html"/>
+    <id>http://www.mcling.xyz/2016/11/12/hello-world.html</id>
+    <published>2016-11-12T01:57:36.219Z</published>
+    <updated>2016-11-17T11:06:08.294Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
+    
+    </summary>
+    
+      <category term="xxx" scheme="http://www.mcling.xyz/categories/xxx/"/>
+    
+    
+  </entry>
+  
+</feed>
