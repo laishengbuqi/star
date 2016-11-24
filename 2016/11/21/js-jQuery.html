@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+  <title>js原生框架part4 | 轻描淡写 | 马美玲的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="theme-color" content="#3F51B5">
+  
+  
+  <meta name="keywords" content="js,jquery,dom模块">
+  <meta name="description" content="appendTo方法
+功能: 将结果集中的元素 追加到指定的dom元素上
+实现思路
+定义appendTo方法,声明一个形参target,形参表示追加的目标dom元素* 选择器
+* `dom`元素
+* `dom`数组
+
+为了操作方便,将target类型统一为itcast对象
+遍历this上的每一个dom元素,在遍历target上的每一个dom元素
+将this上的dom元素追加到target上
+注意:">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js原生框架part4">
+<meta property="og:url" content="http://www.mcling.xyz/2016/11/21/js-jQuery.html">
+<meta property="og:site_name" content="轻描淡写">
+<meta property="og:description" content="appendTo方法
+功能: 将结果集中的元素 追加到指定的dom元素上
+实现思路
+定义appendTo方法,声明一个形参target,形参表示追加的目标dom元素* 选择器
+* `dom`元素
+* `dom`数组
+
+为了操作方便,将target类型统一为itcast对象
+遍历this上的每一个dom元素,在遍历target上的每一个dom元素
+将this上的dom元素追加到target上
+注意:">
+<meta property="og:updated_time" content="2016-11-23T11:25:15.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="js原生框架part4">
+<meta name="twitter:description" content="appendTo方法
+功能: 将结果集中的元素 追加到指定的dom元素上
+实现思路
+定义appendTo方法,声明一个形参target,形参表示追加的目标dom元素* 选择器
+* `dom`元素
+* `dom`数组
+
+为了操作方便,将target类型统一为itcast对象
+遍历this上的每一个dom元素,在遍历target上的每一个dom元素
+将this上的dom元素追加到target上
+注意:">
+  
+    <link rel="alternative" href="/atom.xml" title="轻描淡写" type="application/atom+xml">
+  
+  <meta name="summary" content="傻与不傻，要看你会不会装傻">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/style.css?v=1.1.12">
+</head>
+
+<body>
+  <div id="loading" class="active"></div>
+
+  <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="//placekitten.com/200/200">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">马美玲</h5>
+          <a href="mailto:15800726280@163.com" title="15800726280@163.com" class="mail">15800726280@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/laishengbuqi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.weibo.com/mameiling1570" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/guestbook"  >
+                <i class="icon icon-lg icon-comment"></i>
+                留言
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user"></i>
+                关于
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/links"  >
+                <i class="icon icon-lg icon-link"></i>
+                链接
+              </a>
+            </li>
+        
+      </ul>
+
+      <footer class="footer">
+  <p><a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0;vertical-align:middle;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAAPCAMAAABEF7i9AAAAllBMVEUAAAD///+rsapERER3d3eIiIjMzMzu7u4iIiKUmZO6v7rKzsoODg4RERFVVVUNDQ0NDg0PEA8zMzNLTEtbXltmZmZydnF9gn2AgICPkI+ZmZmqqqq7u7vFxsXIzMgNDQwZGRkgICAhISEkJSMnKCcuMC4xMzE5Ozk7PTtBQkFCQkJDQ0Nna2eGhoaHh4ezuLLGysbd3d1wVGpAAAAA4UlEQVR42q2T1xqCMAyFk7QsBQeKA9x7j/d/OSm22CpX0nzcpA1/T05aAOuBVkMAScQFHLnEwoCo2f1TnQIGoVMewjZEjVFN4GH1Ue1Cn2jWqwfsOOj6wDwGvotsl/c8lv7KIq1eLOsT0HMFHMIE/RZyHnlphryT9zyV+8WH5e8yQw3wnQvgAFxPTKUVi555SHR/lOfLMgVTeDlSfN+TaoUsiTyeIm+bCkHvCA2FUKG48LDtYBZBknsYP/G8NTw0gaaHyuQf4H5pecrB/FYCT2sL9zAfy1Xyjou6L8X2W7YcLyBZCRtnq/zfAAAAAElFTkSuQmCC" /></a></p>
+  <p>轻描淡写 &copy; 2016</p>
+  <p>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme
+  <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></p>
+  <a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-2x icon-rss-square"></i></a>
+</footer>
+
+    </div>
+  </div>
+</aside>
+
+  <main id="main">
+    <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">js原生框架part4</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-share">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container">
+        <h1 class="title">js原生框架part4</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2016-11-21T01:09:24.000Z" itemprop="datePublished" class="page-time">
+  2016-11-21
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/js原生框架/">js原生框架</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#appendTo方法"><span class="post-toc-number">1.</span> <span class="post-toc-text">appendTo方法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#append方法"><span class="post-toc-number">2.</span> <span class="post-toc-text">append方法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#prependTo方法"><span class="post-toc-number">3.</span> <span class="post-toc-text">prependTo方法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#prepend方法"><span class="post-toc-number">4.</span> <span class="post-toc-text">prepend方法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#next方法"><span class="post-toc-number">5.</span> <span class="post-toc-text">next方法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#nextAll方法"><span class="post-toc-number">6.</span> <span class="post-toc-text">nextAll方法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#before方法"><span class="post-toc-number">7.</span> <span class="post-toc-text">before方法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#after方法"><span class="post-toc-number">8.</span> <span class="post-toc-text">after方法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#unique方法"><span class="post-toc-number">9.</span> <span class="post-toc-text">unique方法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#prev方法-previousSibling"><span class="post-toc-number">10.</span> <span class="post-toc-text">prev方法  previousSibling</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#prevAll方法"><span class="post-toc-number">11.</span> <span class="post-toc-text">prevAll方法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#remove方法"><span class="post-toc-number">12.</span> <span class="post-toc-text">remove方法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#empty方法"><span class="post-toc-number">13.</span> <span class="post-toc-text">empty方法</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-js-jQuery" 
+  class="post-article article-type-post" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">js原生框架part4</h1>
+        <div class="post-meta">
+            <time datetime="2016-11-21T01:09:24.000Z" itemprop="datePublished" class="post-time">
+  2016-11-21
+</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/js原生框架/">js原生框架</a></li></ul>
+
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="appendTo方法"><a href="#appendTo方法" class="headerlink" title="appendTo方法"></a><code>appendTo</code>方法</h2><ol>
+<li>功能: 将结果集中的元素 追加到指定的<code>dom</code>元素上</li>
+<li>实现思路<ul>
+<li>定义<code>appendTo</code>方法,声明一个形参<code>target</code>,形参表示追加的目标<code>dom</code>元素<pre><code>* 选择器
+* `dom`元素
+* `dom`数组
+</code></pre></li>
+<li>为了操作方便,将<code>target</code>类型统一为<code>itcast</code>对象</li>
+<li>遍历<code>this</code>上的每一个<code>dom</code>元素,在遍历<code>target</code>上的每一个<code>dom</code>元素</li>
+<li>将<code>this</code>上的<code>dom</code>元素追加到<code>target</code>上</li>
+<li>注意:<br>在追加节点时,如果遍历的是第一个目标<code>dom</code>元素,不需要拷贝节点;否则要深拷贝节点,并将上述得到的节点存储到ret内</li>
+<li>将<code>ret</code>数组转换成<code>itcast</code>对象,作为<code>appendTo</code>方法的返回值<br>  *如果不这样做的话,就会在添加样式时</li>
+</ul>
+</li>
+</ol>
+<h2 id="append方法"><a href="#append方法" class="headerlink" title="append方法"></a><code>append</code>方法</h2><ol>
+<li>语法:<code>&lt;itcast对象&gt;.append(source);</code></li>
+<li>功能: 将<code>source</code>上的所有<code>dom</code>元素追加到<code>itcast</code>对象上</li>
+<li>实现思路<ul>
+<li>统一<code>source</code>类型,为<code>itcast</code>对象.</li>
+<li><code>source.appendTo(this)</code></li>
+<li><code>return this;</code></li>
+</ul>
+</li>
+</ol>
+<h2 id="prependTo方法"><a href="#prependTo方法" class="headerlink" title="prependTo方法"></a><code>prependTo</code>方法</h2><ol>
+<li>语法:<code>&lt;itcast对象&gt;.prependTo(target);</code></li>
+<li>功能:将<code>itcast</code>对象上的每一个<code>dom</code>元素追加到<code>target</code>最前边<code>insertBefore</code></li>
+<li>实现思路<ul>
+<li>统一<code>target</code>类型为<code>itcast</code>对象</li>
+<li>定义<code>node</code>变量,临时存储被追加的节点,定义<code>ret</code>数组,存储所有被追加的节点</li>
+<li>遍历<code>target</code>上的每一个<code>dom</code>元素,在遍历<code>this</code>上的每一个<code>dom</code>元素</li>
+<li>定义变量<code>firstChild</code>,临时存储当前<code>dom</code>元素的第一个子节点,在遍历<code>this</code>上的每一个<code>dom</code>元素</li>
+<li>判断当前遍历的<code>dom</code>是否为<code>target</code>上的每一个<code>dom</code>元素</li>
+<li>如果为真,此时不需要克隆节点</li>
+<li>否则,要深克隆节点</li>
+<li>将上述得到的节点,<code>push</code>到<code>ret</code>内</li>
+<li>调用<code>insertBefore</code>方法 追加节点,此时第一个参数为追加新的节点,第二个参数为<code>firstChild</code>,在<code>firstChild</code>之前追加新节点</li>
+<li>两层循环结束,操作完成</li>
+<li>将<code>ret</code>转换成<code>itcast</code>对象,作为<code>prependTo</code>方法的返回值,实现链式编程</li>
+</ul>
+</li>
+</ol>
+<h2 id="prepend方法"><a href="#prepend方法" class="headerlink" title="prepend方法"></a><code>prepend</code>方法</h2><ol>
+<li>语法:<code>&lt;itcast对象&gt;.prepend(source);</code></li>
+<li>功能: 把<code>source</code>上所有的<code>dom</code>元素,添加到<code>this</code>上的最前边</li>
+<li>实现思路:<ul>
+<li>统一<code>source</code>类型,为<code>itcast</code>对象</li>
+<li>通过<code>source</code>调用<code>prependTo</code>方法,将<code>source</code>上所有<code>dom</code>添加到<code>this</code>上的最前边</li>
+<li><code>return this</code>实现链式编程</li>
+</ul>
+</li>
+</ol>
+<h2 id="next方法"><a href="#next方法" class="headerlink" title="next方法"></a><code>next</code>方法</h2><ol>
+<li>功能: 获取<code>itcast</code>对象上所有<code>dom</code>元素的下一个兄弟元素<code>(nextSibling)</code></li>
+<li>语法:<code>&lt;itcast对象&gt;.next();</code>返回值类型:<code>itcast对象</code></li>
+<li>实现思路<ul>
+<li>定义<code>ret</code>数组,存储所有<code>dom</code>的下一个兄弟元素</li>
+<li>遍历<code>this</code>上的所有<code>dom</code>元素</li>
+<li>遍历当前<code>dom</code>元素下面的所有兄弟,如果类型为元素,将此元素存储<code>ret</code>内,结束循环</li>
+<li>两层循环结束,将<code>ret</code>转换成<code>itcast</code>对象,作为<code>next</code>方法的返回值</li>
+</ul>
+</li>
+</ol>
+<h2 id="nextAll方法"><a href="#nextAll方法" class="headerlink" title="nextAll方法"></a><code>nextAll</code>方法</h2><ol>
+<li>功能: 获取<code>itcast</code>对象上所有<code>dom</code>元素的后面的所有兄弟元素<code>(nextSibling)</code></li>
+<li>语法: <code>&lt;itcast对象&gt;.nextAll();</code>返回值类型:<code>itcast对象</code></li>
+<li>实现思路<ul>
+<li>定义<code>ret数组</code>,存储所有<code>dom</code>下面的所有兄弟元素</li>
+<li>遍历<code>this</code>上的所有<code>dom元素</code></li>
+<li>遍历当前<code>dom</code>元素下面的所有兄弟,如果类型为元素,将此元素存储<code>ret</code>内,结束循环</li>
+<li>两层循环结束,将<code>ret</code>转换成<code>itcast对象</code>,作为<code>nextAll</code>方法的返回值</li>
+</ul>
+</li>
+</ol>
+<h2 id="before方法"><a href="#before方法" class="headerlink" title="before方法"></a><code>before</code>方法</h2><ol>
+<li>功能:</li>
+<li>语法: <code>&lt;itcast对象&gt;.before(source)</code></li>
+<li>实现思路<ul>
+<li>统一<code>source</code>类型,为<code>itcast</code>对象</li>
+<li>遍历<code>this</code>上的每一个<code>dom</code>元素</li>
+<li>遍历<code>source</code>上的每一个<code>dom</code>元素</li>
+<li>判断当前遍历<code>this</code>的<code>dom</code>元素的索引是否为0</li>
+<li>如果为0,不需要拷贝节点</li>
+<li>否则要深拷贝节点</li>
+<li>先拿到当前遍历<code>this</code>的<code>dom</code>元素的父节点,调用<code>insertBefore</code>方法在其前面添加上面得到的新节点</li>
+<li>两层循环结束,操作完成</li>
+<li><code>return this</code>实现链式编程</li>
+</ul>
+</li>
+</ol>
+<h2 id="after方法"><a href="#after方法" class="headerlink" title="after方法"></a><code>after</code>方法</h2><ol>
+<li>功能:</li>
+<li>语法:<code>&lt;itcast对象&gt;.after(source)</code></li>
+<li>实现思路<ul>
+<li>定义<code>nextSibling</code>变量,存储<code>dom</code>元素的下一个兄弟节点</li>
+<li>统一<code>source</code>类型为<code>itcast</code>对象</li>
+<li>遍历<code>this</code>上的每一个<code>dom</code>元素</li>
+<li>在遍历<code>source</code>上的每一个<code>dom</code>元素</li>
+<li>判断当前遍历<code>this</code>的<code>dom</code>元素的索引是否为0</li>
+<li>如果为0,不需要拷节点</li>
+<li>否则要深拷贝节点</li>
+<li>先拿到当前遍历<code>this</code>的<code>dom</code>元素的父节点,调用<code>insertBefore</code>方法在<code>nextSibling</code>前面添加上面得到的新节点</li>
+<li>两层循环完毕,操作完成</li>
+<li><code>return this</code>实现链式编程</li>
+</ul>
+</li>
+</ol>
+<h2 id="unique方法"><a href="#unique方法" class="headerlink" title="unique方法"></a><code>unique</code>方法</h2><ol>
+<li>功能: 实现数组去重</li>
+<li>语法: <code>var newRet=itcast.unique(arr);</code></li>
+<li>实现思路: <ul>
+<li>定义空数组对象<code>ret</code>存储去重后的元素</li>
+<li>遍历原数组,如果当前遍历到的元素在<code>ret</code>中不存在,就添加到<code>ret</code>内</li>
+<li>循环结束,<code>ret</code>存储的就是去重后的元素</li>
+<li>返回<code>ret</code></li>
+</ul>
+</li>
+<li>兼容 <code>IE8 indexOf</code>方法<ul>
+<li>首先判断当前浏览器是否支持<code>indexOf</code>方法</li>
+<li>如果不支持,就给数组对象的原型添加<code>indexOf</code>方法</li>
+<li>遍历<code>this</code>上的所有元素</li>
+<li>如果遍历到的当前元素和指定参数值相同,就直接返回其索引值.结束循环</li>
+<li>如果在整个上述循环都没有返回值,那么表示不存在指定参数值,就返回-1</li>
+</ul>
+</li>
+</ol>
+<h2 id="prev方法-previousSibling"><a href="#prev方法-previousSibling" class="headerlink" title="prev方法  previousSibling"></a><code>prev</code>方法  <code>previousSibling</code></h2><ol>
+<li>功能: 获取<code>itcast</code>对象上所有<code>dom</code>元素的前一个兄弟元素<code>(previousSibling)</code></li>
+<li>语法:<code>&lt;itcast对象&gt;.prev();</code>返回值类型:<code>itcast对象</code></li>
+<li>实现思路<ul>
+<li>定义<code>ret</code>数组,存储所有<code>dom</code>的前一个兄弟元素</li>
+<li>遍历<code>this</code>上的所有<code>dom</code>元素</li>
+<li>遍历当前<code>dom</code>元素之前的所有兄弟,如果类型为元素,将此元素存储<code>ret</code>内,结束循环</li>
+<li>两层循环结束,将<code>ret</code>转换成<code>itcast</code>对象,作为<code>next</code>方法的返回值</li>
+</ul>
+</li>
+</ol>
+<h2 id="prevAll方法"><a href="#prevAll方法" class="headerlink" title="prevAll方法"></a><code>prevAll</code>方法</h2><ol>
+<li>功能: 获取<code>itcast</code>对象上所有<code>dom</code>元素的之前的所有兄弟元素<code>(nextSibling)</code></li>
+<li>语法: <code>&lt;itcast对象&gt;.nextAll();</code>返回值类型:<code>itcast对象</code></li>
+<li>实现思路<ul>
+<li>定义<code>ret数组</code>,存储所有<code>dom</code>之前的所有兄弟元素</li>
+<li>遍历<code>this</code>上的所有<code>dom元素</code></li>
+<li>遍历当前<code>dom</code>元素之前的所有兄弟,如果类型为元素,将此元素存储<code>ret</code>内,结束循环</li>
+<li>两层循环结束,将<code>ret</code>转换成<code>itcast对象</code>,作为<code>nextAll</code>方法的返回值</li>
+</ul>
+</li>
+</ol>
+<h2 id="remove方法"><a href="#remove方法" class="headerlink" title="remove方法"></a><code>remove</code>方法</h2><ol>
+<li>功能:将筛选出来的所有的<code>dom</code>元素 删除掉</li>
+<li>实现思路:<ul>
+<li>遍历<code>this</code>上的所有<code>dom</code>元素</li>
+<li>获取当前<code>dom</code>元素的父节点,调用<code>removeChild</code>方法删除自己</li>
+<li>循环结束,返回<code>this</code></li>
+</ul>
+</li>
+</ol>
+<h2 id="empty方法"><a href="#empty方法" class="headerlink" title="empty方法"></a><code>empty</code>方法</h2><ol>
+<li>功能:将筛选出来的所有`dom元素,清空后代节点</li>
+<li>实现思路<ul>
+<li>遍历<code>this</code>上的所有<code>dom</code>元素</li>
+<li>直接给当前<code>dom</code>元素的<code>innerHTML</code>属性赋值为空字符串</li>
+<li>循环结束,返回<code>this</code>,实现链式编程</li>
+</ul>
+</li>
+</ol>
+
+        </div>
+        
+        <blockquote class="post-copyright">
+    <div class="content">
+        链接：<a href="/2016/11/21/js-jQuery.html" target="_blank" rel="external">http://www.mcling.xyz/2016/11/21/js-jQuery.html</a>
+    </div>
+    <footer>
+        <a href="http://www.mcling.xyz">
+            <img src="//placekitten.com/200/200" alt="马美玲">
+            马美玲
+        </a>
+    </footer>
+</blockquote>
+        
+<div class="post-reward">
+    <a id="rewardBtn" href="javascript:;" class="post-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dom模块/">dom模块</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jquery/">jquery</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
+
+
+            
+<div class="post-share-wrap">
+    <div class="post-share" id="post-share">
+    <div class="tit">分享到：</div>
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" href="javascript:;" data-title="微博" data-service="tsina">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns" href="javascript:;" data-title="微信" data-service="weixin">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" href="javascript:;" data-title=" QQ" data-service="cqq">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" href="javascript:;" data-title=" Facebook" data-service="fb">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" href="javascript:;" data-title=" Twitter" data-service="twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="douban share-sns" href="javascript:;" data-title="豆瓣" data-service="douban">
+          豆
+        </a>
+      </li>
+    </ul>
+ </div>
+
+    <a href="javascript:;" id="share-fab" class="post-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>   
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2016/11/22/css1.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">CSS基础part1</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2016/11/20/js-1.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">js原生框架part3</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+            
+    
+<div class="duoshuo" id="comments">
+	<div class="ds-thread" data-thread-key="js-jQuery" data-title="js原生框架part4" data-url="http://www.mcling.xyz/2016/11/21/js-jQuery.html"></div>
+</div>
+<script src="/js/embed.min.js?v=1.1.12"></script>
+<script src="//cdn.bootcss.com/marked/0.3.6/marked.min.js" async="async"></script>
+<script>
+var duoshuoQuery = {short_name:'mcling', theme: 'none'}
+</script>
+
+
+
+
+
+</article>
+
+<div id="reward" class="reward-lay">
+    <a class="reward-off" id="rewardOff" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        给口水喝,谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.png" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.png" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+</div>
+
+  </main>
+  <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+<script>var BLOG = { ROOT: '/' };
+BLOG.SHARE = {
+title: "js原生框架part4",
+summary: document.getElementsByName('summary')[0].content,
+url: "http://www.mcling.xyz/2016/11/21/js-jQuery.html" }
+</script>
+<div class="global-share" id="global-share">
+    <div class="tit">分享到：</div>
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" href="javascript:;" data-title="微博" data-service="tsina">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns" href="javascript:;" data-title="微信" data-service="weixin">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" href="javascript:;" data-title=" QQ" data-service="cqq">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" href="javascript:;" data-title=" Facebook" data-service="fb">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" href="javascript:;" data-title=" Twitter" data-service="twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="douban share-sns" href="javascript:;" data-title="豆瓣" data-service="douban">
+          豆
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+  <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script src="/js/main.min.js?v=1.1.12"></script>
+
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.1.12"></script>
+
+
+
+
+
+
+
+
+
+</body>
+</html>

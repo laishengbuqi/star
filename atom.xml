@@ -1,28 +1,620 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>轻描淡写</title>
-  <subtitle>hhh</subtitle>
+  <subtitle>马美玲的博客</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.mcling.xyz/"/>
-  <updated>2016-11-20T12:43:40.624Z</updated>
+  <updated>2016-11-24T13:32:06.506Z</updated>
   <id>http://www.mcling.xyz/</id>
   
   <author>
-    <name>strunch</name>
+    <name>马美玲</name>
     
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>js原生框架part6</title>
+    <link href="http://www.mcling.xyz/2016/11/24/js3.html"/>
+    <id>http://www.mcling.xyz/2016/11/24/js3.html</id>
+    <published>2016-11-24T01:15:14.000Z</published>
+    <updated>2016-11-24T13:32:06.506Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="动画原理-根据人眼睛具有0-1秒的视觉残留-只有在一秒钟切换至少24个画面就会产生动画"><a href="#动画原理-根据人眼睛具有0-1秒的视觉残留-只有在一秒钟切换至少24个画面就会产生动画" class="headerlink" title="动画原理: 根据人眼睛具有0.1秒的视觉残留,只有在一秒钟切换至少24个画面就会产生动画"></a>动画原理: 根据人眼睛具有0.1秒的视觉残留,只有在一秒钟切换至少24个画面就会产生动画</h2><h2 id="动画的基本结构"><a href="#动画的基本结构" class="headerlink" title="动画的基本结构"></a>动画的基本结构</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">animate</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">render</span>(<span class="params"></span>)</span>&#123;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">    <span class="built_in">window</span>.setInterval(render,time);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="匀速直线动画"><a href="#匀速直线动画" class="headerlink" title="匀速直线动画"></a>匀速直线动画</h2><ol>
+<li>固定时间</li>
+<li>固定距离</li>
+<li>如何判定动画结束的时机?<ul>
+<li>使用时间来判断是否结束动画</li>
+<li>如果动画时间到达了指定的时间,那么就结束动画,并且让动画元素到达终点</li>
+</ul>
+</li>
+<li>实现思路<ul>
+<li>定义动画函数,animate函数,当调用animate函数时,即动画开始的时间</li>
+<li>定义render函数,用来给动画元素设置属性值<ul>
+<li>计算当前动画元素所在的位置,然后累加到其对应属性值上</li>
+<li>首先计算动画的时间间隔</li>
+<li>如果时间间隔大于或等于指定的总时间,那么就停止动画并设置动画元素到达终点</li>
+<li>否则,根据速度,动画时间间隔计算出位移,在将其与起始位置累加后赋值给elem</li>
+</ul>
+</li>
+<li>定义定时器,开始动画</li>
+</ul>
+</li>
+</ol>
+<h2 id="匀减速直线动画"><a href="#匀减速直线动画" class="headerlink" title="匀减速直线动画"></a>匀减速直线动画</h2><ol>
+<li>物理公式<ul>
+<li>a: 加速度</li>
+<li>t: 时间间隔</li>
+<li>v0: 初始速度</li>
+<li>vt: 末速度</li>
+<li>S: 位移</li>
+<li>正方向: S = v0 <em> t + a </em> t * t / 2;</li>
+</ul>
+</li>
+<li>S ==&gt; target-location<br>t ==&gt; duration<br>v0 = 0</li>
+<li><p>正方向 a = 2 <em> ( S - v0 </em> t ) / ( t <em> t )<br> ==&gt; = 2 </em> S / ( t <em> t )<br> ==&gt; = 2 </em> ( target - location ) / ( duration <em> duration)<br>vt = 2 </em>( target -location) / duration</p>
+</li>
+<li><p>time时间间隔内的匀减速位移 tween = v0 <em> time -a </em> time <em> time / 2<br>==&gt; tween = 2 </em> distance <em> time / duration - distance </em> time <em> time / ( duration </em> duration )</p>
+</li>
+</ol>
+<h2 id="封装动画库"><a href="#封装动画库" class="headerlink" title="封装动画库"></a>封装动画库</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line">                   x: null</div><div class="line">                   t: 时间间隔</div><div class="line">                   b: 起始位置</div><div class="line">                   c: 终止位置</div><div class="line">                   d: 总时间</div><div class="line"></div><div class="line">                  */</div><div class="line">                 <span class="keyword">var</span> easing = &#123;		</div><div class="line">		<span class="attr">linear</span>: <span class="function"><span class="keyword">function</span>(<span class="params">x, t, b, c, d</span>) </span>&#123;</div><div class="line">			<span class="keyword">return</span> (c - b) * t / d;</div><div class="line">		&#125;,</div><div class="line">		<span class="attr">minusspeed</span>: <span class="function"><span class="keyword">function</span>(<span class="params">x, t, b, c, d</span>) </span>&#123;</div><div class="line">			<span class="keyword">return</span> <span class="number">2</span> * (c - b) * t / d - (c - b) * t * t / (d * d);</div><div class="line">		&#125;,</div><div class="line">		<span class="attr">easeInQuad</span>: <span class="function"><span class="keyword">function</span>(<span class="params">x, t, b, c, d</span>) </span>&#123;</div><div class="line">			<span class="keyword">return</span> c * (t /= d) * t + b;</div><div class="line">		&#125;,</div><div class="line">		<span class="attr">easeOutQuad</span>: <span class="function"><span class="keyword">function</span>(<span class="params">x, t, b, c, d</span>) </span>&#123;</div><div class="line">			<span class="keyword">return</span> -c * (t /= d) * (t - <span class="number">2</span>) + b;</div><div class="line">		&#125;,</div><div class="line">		<span class="attr">easeInOutQuad</span>: <span class="function"><span class="keyword">function</span>(<span class="params">x, t, b, c, d</span>) </span>&#123;</div><div class="line">			<span class="keyword">if</span> ((t /= d / <span class="number">2</span>) &lt; <span class="number">1</span>) <span class="keyword">return</span> c / <span class="number">2</span> * t * t + b;</div><div class="line">			<span class="keyword">return</span> -c / <span class="number">2</span> * ((--t) * (t - <span class="number">2</span>) - <span class="number">1</span>) + b;</div><div class="line">		&#125;,</div><div class="line">		<span class="attr">easeInCubic</span>: <span class="function"><span class="keyword">function</span>(<span class="params">x, t, b, c, d</span>) </span>&#123;</div><div class="line">			<span class="keyword">return</span> c * (t /= d) * t * t + b;</div><div class="line">		&#125;,</div><div class="line">		<span class="attr">easeOutCubic</span>: <span class="function"><span class="keyword">function</span>(<span class="params">x, t, b, c, d</span>) </span>&#123;</div><div class="line">			<span class="keyword">return</span> c * ((t = t / d - <span class="number">1</span>) * t * t + <span class="number">1</span>) + b;</div><div class="line">		&#125;,</div><div class="line">		<span class="attr">easeInOutCubic</span>: <span class="function"><span class="keyword">function</span>(<span class="params">x, t, b, c, d</span>) </span>&#123;</div><div class="line">			<span class="keyword">if</span> ((t /= d / <span class="number">2</span>) &lt; <span class="number">1</span>) <span class="keyword">return</span> c / <span class="number">2</span> * t * t * t + b;</div><div class="line">			<span class="keyword">return</span> c / <span class="number">2</span> * ((t -= <span class="number">2</span>) * t * t + <span class="number">2</span>) + b;</div><div class="line">		&#125;,</div><div class="line">		<span class="attr">easeInQuart</span>: <span class="function"><span class="keyword">function</span>(<span class="params">x, t, b, c, d</span>) </span>&#123;</div><div class="line">			<span class="keyword">return</span> c * (t /= d) * t * t * t + b;</div><div class="line">		&#125;,</div><div class="line">		<span class="attr">easeOutQuart</span>: <span class="function"><span class="keyword">function</span>(<span class="params">x, t, b, c, d</span>) </span>&#123;</div><div class="line">			<span class="keyword">return</span> -c * ((t = t / d - <span class="number">1</span>) * t * t * t - <span class="number">1</span>) + b;</div><div class="line">		&#125;,</div><div class="line">		<span class="attr">easeInOutQuart</span>: <span class="function"><span class="keyword">function</span>(<span class="params">x, t, b, c, d</span>) </span>&#123;</div><div class="line">			<span class="keyword">if</span> ((t /= d / <span class="number">2</span>) &lt; <span class="number">1</span>) <span class="keyword">return</span> c / <span class="number">2</span> * t * t * t * t + b;</div><div class="line">			<span class="keyword">return</span> -c / <span class="number">2</span> * ((t -= <span class="number">2</span>) * t * t * t - <span class="number">2</span>) + b;</div><div class="line">		&#125;,</div><div class="line">		<span class="attr">easeInQuint</span>: <span class="function"><span class="keyword">function</span>(<span class="params">x, t, b, c, d</span>) </span>&#123;</div><div class="line">			<span class="keyword">return</span> c * (t /= d) * t * t * t * t + b;</div><div class="line">		&#125;,</div><div class="line">		<span class="attr">easeOutQuint</span>: <span class="function"><span class="keyword">function</span>(<span class="params">x, t, b, c, d</span>) </span>&#123;</div><div class="line">			<span class="keyword">return</span> c * ((t = t / d - <span class="number">1</span>) * t * t * t * t + <span class="number">1</span>) + b;</div><div class="line">		&#125;,</div><div class="line">		<span class="attr">easeInOutQuint</span>: <span class="function"><span class="keyword">function</span>(<span class="params">x, t, b, c, d</span>) </span>&#123;</div><div class="line">			<span class="keyword">if</span> ((t /= d / <span class="number">2</span>) &lt; <span class="number">1</span>) <span class="keyword">return</span> c / <span class="number">2</span> * t * t * t * t * t + b;</div><div class="line">			<span class="keyword">return</span> c / <span class="number">2</span> * ((t -= <span class="number">2</span>) * t * t * t * t + <span class="number">2</span>) + b;</div><div class="line">		&#125;,</div><div class="line">		<span class="attr">easeInSine</span>: <span class="function"><span class="keyword">function</span>(<span class="params">x, t, b, c, d</span>) </span>&#123;</div><div class="line">			<span class="keyword">return</span> -c * <span class="built_in">Math</span>.cos(t / d * (<span class="built_in">Math</span>.PI / <span class="number">2</span>)) + c + b;</div><div class="line">		&#125;,</div><div class="line">		<span class="attr">easeOutSine</span>: <span class="function"><span class="keyword">function</span>(<span class="params">x, t, b, c, d</span>) </span>&#123;</div><div class="line">			<span class="keyword">return</span> c * <span class="built_in">Math</span>.sin(t / d * (<span class="built_in">Math</span>.PI / <span class="number">2</span>)) + b;</div><div class="line">		&#125;,</div><div class="line">		<span class="attr">easeInOutSine</span>: <span class="function"><span class="keyword">function</span>(<span class="params">x, t, b, c, d</span>) </span>&#123;</div><div class="line">			<span class="keyword">return</span> -c / <span class="number">2</span> * (<span class="built_in">Math</span>.cos(<span class="built_in">Math</span>.PI * t / d) - <span class="number">1</span>) + b;</div><div class="line">		&#125;,</div><div class="line">		<span class="attr">easeInExpo</span>: <span class="function"><span class="keyword">function</span>(<span class="params">x, t, b, c, d</span>) </span>&#123;</div><div class="line">			<span class="keyword">return</span> (t == <span class="number">0</span>) ? b : c * <span class="built_in">Math</span>.pow(<span class="number">2</span>, <span class="number">10</span> * (t / d - <span class="number">1</span>)) + b;</div><div class="line">		&#125;,</div><div class="line">		<span class="attr">easeOutExpo</span>: <span class="function"><span class="keyword">function</span>(<span class="params">x, t, b, c, d</span>) </span>&#123;</div><div class="line">			<span class="keyword">return</span> (t == d) ? b + c : c * (-<span class="built_in">Math</span>.pow(<span class="number">2</span>, <span class="number">-10</span> * t / d) + <span class="number">1</span>) + b;</div><div class="line">		&#125;,</div><div class="line">		<span class="attr">easeInOutExpo</span>: <span class="function"><span class="keyword">function</span>(<span class="params">x, t, b, c, d</span>) </span>&#123;</div><div class="line">			<span class="keyword">if</span> (t == <span class="number">0</span>) <span class="keyword">return</span> b;</div><div class="line">			<span class="keyword">if</span> (t == d) <span class="keyword">return</span> b + c;</div><div class="line">			<span class="keyword">if</span> ((t /= d / <span class="number">2</span>) &lt; <span class="number">1</span>) <span class="keyword">return</span> c / <span class="number">2</span> * <span class="built_in">Math</span>.pow(<span class="number">2</span>, <span class="number">10</span> * (t - <span class="number">1</span>)) + b;</div><div class="line">			<span class="keyword">return</span> c / <span class="number">2</span> * (-<span class="built_in">Math</span>.pow(<span class="number">2</span>, <span class="number">-10</span> * --t) + <span class="number">2</span>) + b;</div><div class="line">		&#125;,</div><div class="line">		<span class="attr">easeInCirc</span>: <span class="function"><span class="keyword">function</span>(<span class="params">x, t, b, c, d</span>) </span>&#123;</div><div class="line">			<span class="keyword">return</span> -c * (<span class="built_in">Math</span>.sqrt(<span class="number">1</span> - (t /= d) * t) - <span class="number">1</span>) + b;</div><div class="line">		&#125;,</div><div class="line">		<span class="attr">easeOutCirc</span>: <span class="function"><span class="keyword">function</span>(<span class="params">x, t, b, c, d</span>) </span>&#123;</div><div class="line">			<span class="keyword">return</span> c * <span class="built_in">Math</span>.sqrt(<span class="number">1</span> - (t = t / d - <span class="number">1</span>) * t) + b;</div><div class="line">		&#125;,</div><div class="line">		<span class="attr">easeInOutCirc</span>: <span class="function"><span class="keyword">function</span>(<span class="params">x, t, b, c, d</span>) </span>&#123;</div><div class="line">			<span class="keyword">if</span> ((t /= d / <span class="number">2</span>) &lt; <span class="number">1</span>) <span class="keyword">return</span> -c / <span class="number">2</span> * (<span class="built_in">Math</span>.sqrt(<span class="number">1</span> - t * t) - <span class="number">1</span>) + b;</div><div class="line">			<span class="keyword">return</span> c / <span class="number">2</span> * (<span class="built_in">Math</span>.sqrt(<span class="number">1</span> - (t -= <span class="number">2</span>) * t) + <span class="number">1</span>) + b;</div><div class="line">		&#125;,</div><div class="line">		<span class="attr">easeInElastic</span>: <span class="function"><span class="keyword">function</span>(<span class="params">x, t, b, c, d</span>) </span>&#123;</div><div class="line">			<span class="keyword">var</span> s = <span class="number">1.70158</span>;</div><div class="line">			<span class="keyword">var</span> p = <span class="number">0</span>;</div><div class="line">			<span class="keyword">var</span> a = c;</div><div class="line">			<span class="keyword">if</span> (t == <span class="number">0</span>) <span class="keyword">return</span> b;</div><div class="line">			<span class="keyword">if</span> ((t /= d) == <span class="number">1</span>) <span class="keyword">return</span> b + c;</div><div class="line">			<span class="keyword">if</span> (!p) p = d * <span class="number">.3</span>;</div><div class="line">			<span class="keyword">if</span> (a &lt; <span class="built_in">Math</span>.abs(c)) &#123;</div><div class="line">				a = c;</div><div class="line">				<span class="keyword">var</span> s = p / <span class="number">4</span>;</div><div class="line">			&#125; <span class="keyword">else</span> <span class="keyword">var</span> s = p / (<span class="number">2</span> * <span class="built_in">Math</span>.PI) * <span class="built_in">Math</span>.asin(c / a);</div><div class="line">			<span class="keyword">return</span> -(a * <span class="built_in">Math</span>.pow(<span class="number">2</span>, <span class="number">10</span> * (t -= <span class="number">1</span>)) * <span class="built_in">Math</span>.sin((t * d - s) * (<span class="number">2</span> * <span class="built_in">Math</span>.PI) / p)) + b;</div><div class="line">		&#125;,</div><div class="line">		<span class="attr">easeOutElastic</span>: <span class="function"><span class="keyword">function</span>(<span class="params">x, t, b, c, d</span>) </span>&#123;</div><div class="line">			<span class="keyword">var</span> s = <span class="number">1.70158</span>;</div><div class="line">			<span class="keyword">var</span> p = <span class="number">0</span>;</div><div class="line">			<span class="keyword">var</span> a = c;</div><div class="line">			<span class="keyword">if</span> (t == <span class="number">0</span>) <span class="keyword">return</span> b;</div><div class="line">			<span class="keyword">if</span> ((t /= d) == <span class="number">1</span>) <span class="keyword">return</span> b + c;</div><div class="line">			<span class="keyword">if</span> (!p) p = d * <span class="number">.3</span>;</div><div class="line">			<span class="keyword">if</span> (a &lt; <span class="built_in">Math</span>.abs(c)) &#123;</div><div class="line">				a = c;</div><div class="line">				<span class="keyword">var</span> s = p / <span class="number">4</span>;</div><div class="line">			&#125; <span class="keyword">else</span> <span class="keyword">var</span> s = p / (<span class="number">2</span> * <span class="built_in">Math</span>.PI) * <span class="built_in">Math</span>.asin(c / a);</div><div class="line">			<span class="keyword">return</span> a * <span class="built_in">Math</span>.pow(<span class="number">2</span>, <span class="number">-10</span> * t) * <span class="built_in">Math</span>.sin((t * d - s) * (<span class="number">2</span> * <span class="built_in">Math</span>.PI) / p) + c + b;</div><div class="line">		&#125;,</div><div class="line">		<span class="attr">easeInOutElastic</span>: <span class="function"><span class="keyword">function</span>(<span class="params">x, t, b, c, d</span>) </span>&#123;</div><div class="line">			<span class="keyword">var</span> s = <span class="number">1.70158</span>;</div><div class="line">			<span class="keyword">var</span> p = <span class="number">0</span>;</div><div class="line">			<span class="keyword">var</span> a = c;</div><div class="line">			<span class="keyword">if</span> (t == <span class="number">0</span>) <span class="keyword">return</span> b;</div><div class="line">			<span class="keyword">if</span> ((t /= d / <span class="number">2</span>) == <span class="number">2</span>) <span class="keyword">return</span> b + c;</div><div class="line">			<span class="keyword">if</span> (!p) p = d * (<span class="number">.3</span> * <span class="number">1.5</span>);</div><div class="line">			<span class="keyword">if</span> (a &lt; <span class="built_in">Math</span>.abs(c)) &#123;</div><div class="line">				a = c;</div><div class="line">				<span class="keyword">var</span> s = p / <span class="number">4</span>;</div><div class="line">			&#125; <span class="keyword">else</span> <span class="keyword">var</span> s = p / (<span class="number">2</span> * <span class="built_in">Math</span>.PI) * <span class="built_in">Math</span>.asin(c / a);</div><div class="line">			<span class="keyword">if</span> (t &lt; <span class="number">1</span>) <span class="keyword">return</span> <span class="number">-.5</span> * (a * <span class="built_in">Math</span>.pow(<span class="number">2</span>, <span class="number">10</span> * (t -= <span class="number">1</span>)) * <span class="built_in">Math</span>.sin((t * d - s) * (<span class="number">2</span> * <span class="built_in">Math</span>.PI) / p)) + b;</div><div class="line">			<span class="keyword">return</span> a * <span class="built_in">Math</span>.pow(<span class="number">2</span>, <span class="number">-10</span> * (t -= <span class="number">1</span>)) * <span class="built_in">Math</span>.sin((t * d - s) * (<span class="number">2</span> * <span class="built_in">Math</span>.PI) / p) * <span class="number">.5</span> + c + b;</div><div class="line">		&#125;,</div><div class="line">		<span class="attr">easeInBack</span>: <span class="function"><span class="keyword">function</span>(<span class="params">x, t, b, c, d, s</span>) </span>&#123;</div><div class="line">			<span class="keyword">if</span> (s == <span class="literal">undefined</span>) s = <span class="number">1.70158</span>;</div><div class="line">			<span class="keyword">return</span> c * (t /= d) * t * ((s + <span class="number">1</span>) * t - s) + b;</div><div class="line">		&#125;,</div><div class="line">		<span class="attr">easeOutBack</span>: <span class="function"><span class="keyword">function</span>(<span class="params">x, t, b, c, d, s</span>) </span>&#123;</div><div class="line">			<span class="keyword">if</span> (s == <span class="literal">undefined</span>) s = <span class="number">1.70158</span>;</div><div class="line">			<span class="keyword">return</span> c * ((t = t / d - <span class="number">1</span>) * t * ((s + <span class="number">1</span>) * t + s) + <span class="number">1</span>) + b;</div><div class="line">		&#125;,</div><div class="line">		<span class="attr">easeInOutBack</span>: <span class="function"><span class="keyword">function</span>(<span class="params">x, t, b, c, d, s</span>) </span>&#123;</div><div class="line">			<span class="keyword">if</span> (s == <span class="literal">undefined</span>) s = <span class="number">1.70158</span>;</div><div class="line">			<span class="keyword">if</span> ((t /= d / <span class="number">2</span>) &lt; <span class="number">1</span>) <span class="keyword">return</span> c / <span class="number">2</span> * (t * t * (((s *= (<span class="number">1.525</span>)) + <span class="number">1</span>) * t - s)) + b;</div><div class="line">			<span class="keyword">return</span> c / <span class="number">2</span> * ((t -= <span class="number">2</span>) * t * (((s *= (<span class="number">1.525</span>)) + <span class="number">1</span>) * t + s) + <span class="number">2</span>) + b;</div><div class="line">		&#125;,</div><div class="line">		<span class="attr">easeOutBounce</span>: <span class="function"><span class="keyword">function</span>(<span class="params">x, t, b, c, d</span>) </span>&#123;</div><div class="line">			<span class="keyword">if</span> ((t /= d) &lt; (<span class="number">1</span> / <span class="number">2.75</span>)) &#123;</div><div class="line">				<span class="keyword">return</span> c * (<span class="number">7.5625</span> * t * t) + b;</div><div class="line">			&#125; <span class="keyword">else</span> <span class="keyword">if</span> (t &lt; (<span class="number">2</span> / <span class="number">2.75</span>)) &#123;</div><div class="line">				<span class="keyword">return</span> c * (<span class="number">7.5625</span> * (t -= (<span class="number">1.5</span> / <span class="number">2.75</span>)) * t + <span class="number">.75</span>) + b;</div><div class="line">			&#125; <span class="keyword">else</span> <span class="keyword">if</span> (t &lt; (<span class="number">2.5</span> / <span class="number">2.75</span>)) &#123;</div><div class="line">				<span class="keyword">return</span> c * (<span class="number">7.5625</span> * (t -= (<span class="number">2.25</span> / <span class="number">2.75</span>)) * t + <span class="number">.9375</span>) + b;</div><div class="line">			&#125; <span class="keyword">else</span> &#123;</div><div class="line">				<span class="keyword">return</span> c * (<span class="number">7.5625</span> * (t -= (<span class="number">2.625</span> / <span class="number">2.75</span>)) * t + <span class="number">.984375</span>) + b;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;;</div></pre></td></tr></table></figure>
+<h2 id="多属性动画的实现"><a href="#多属性动画的实现" class="headerlink" title="多属性动画的实现"></a>多属性动画的实现</h2><ol>
+<li><p>获取所有动画属性的起始值</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">      <span class="keyword">var</span> kv=&#123;</div><div class="line">	<span class="string">'left'</span>:<span class="string">'offsetLeft'</span>,</div><div class="line">	<span class="string">'top'</span>:<span class="string">'offsetTop'</span>,</div><div class="line">	<span class="string">'width'</span>:<span class="string">'offsetWidth'</span>,</div><div class="line">	<span class="string">'height'</span>:<span class="string">'offsetHeight'</span></div><div class="line">&#125;;</div><div class="line"><span class="comment">//获取起始位置</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getLocation</span>(<span class="params">elem,target</span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> obj=&#123;&#125;;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">var</span> k <span class="keyword">in</span> target)&#123;</div><div class="line">		obj[k]=elem[kv[k]];</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> obj;</div><div class="line">&#125;</div><div class="line"><span class="comment">//获取动画总距离</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getDistance</span>(<span class="params">location,target</span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> obj=&#123;&#125;;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">var</span> k <span class="keyword">in</span> target)&#123;</div><div class="line">		obj[k]=<span class="built_in">parseFloat</span>(target[k])-location[k];</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> obj;</div><div class="line">&#125;</div><div class="line"><span class="comment">//获取单位时间间隔的位移</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getTween</span>(<span class="params">time,location,target,duration,easingName</span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> obj=&#123;&#125;;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">var</span> k <span class="keyword">in</span> target)&#123;</div><div class="line">		obj[k]=easing[easingName](<span class="literal">null</span>,time,location[k],target[k],duration);</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> obj;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">setStyles</span>(<span class="params">elem,location,tween</span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> k;</div><div class="line">	<span class="keyword">for</span>(k <span class="keyword">in</span> location)&#123;</div><div class="line">            elem.style[k]=location[k]+tween[k]+<span class="string">'px'</span>;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>animate动画</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> animate=<span class="function"><span class="keyword">function</span>(<span class="params">elem,target,duration,easingName</span>)</span>&#123;</div><div class="line">		<span class="keyword">var</span> timer,<span class="comment">//定时器id</span></div><div class="line">		tween,<span class="comment">//单位时间间隔的位移</span></div><div class="line">		location,<span class="comment">//起始位置</span></div><div class="line">		distance,<span class="comment">//动画总距离</span></div><div class="line">		startTime,<span class="comment">//动画开始时间</span></div><div class="line">		currentTime,<span class="comment">//动画当前时间</span></div><div class="line">		time;</div><div class="line"></div><div class="line">		location=getLocation(elem,target);</div><div class="line">		distance=getDistance(location,target);</div><div class="line">		startTime=+<span class="keyword">new</span> <span class="built_in">Date</span>;<span class="comment">//转换毫秒值</span></div><div class="line"></div><div class="line">		<span class="comment">//计算动画当前位移,并确定动画元素的位置</span></div><div class="line">		<span class="keyword">var</span> render=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">			currentTime=+<span class="keyword">new</span> <span class="built_in">Date</span>;</div><div class="line">			time=currentTime-startTime;</div><div class="line">			<span class="comment">//如果当前动画时间间隔大于或等于指定的总时间</span></div><div class="line">			<span class="comment">//停止动画,并设置动画元素到达终点</span></div><div class="line">			<span class="keyword">if</span>(time&gt;=duration)&#123;</div><div class="line">				<span class="comment">//1.设置动画元素到达终点</span></div><div class="line">				tween=distance;</div><div class="line">				<span class="comment">//2. 清除定时器</span></div><div class="line">				<span class="built_in">window</span>.clearInterval(timer);</div><div class="line">			&#125;<span class="keyword">else</span>&#123;</div><div class="line">				<span class="comment">//根据匀减速运动公式求time时间间隔内的位移</span></div><div class="line">				<span class="comment">//指定动画元素的位置</span></div><div class="line">				<span class="comment">//注意:加上起始位置</span></div><div class="line">				tween=getTween(time,location,target,duration,easingName);</div><div class="line">			&#125;</div><div class="line">			<span class="comment">//设置动画属性值</span></div><div class="line">			setStyles(elem,location,tween);</div><div class="line">		&#125;;</div><div class="line">		<span class="comment">//启动定时器 开始动画</span></div><div class="line">		timer=<span class="built_in">window</span>.setInterval(render,<span class="number">1000</span>/<span class="number">60</span>);</div><div class="line">	&#125;;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;动画原理-根据人眼睛具有0-1秒的视觉残留-只有在一秒钟切换至少24个画面就会产生动画&quot;&gt;&lt;a href=&quot;#动画原理-根据人眼睛具有0-1秒的视觉残留-只有在一秒钟切换至少24个画面就会产生动画&quot; class=&quot;headerlink&quot; title=&quot;动画原理: 
+    
+    </summary>
+    
+      <category term="js原生框架" scheme="http://www.mcling.xyz/categories/js%E5%8E%9F%E7%94%9F%E6%A1%86%E6%9E%B6/"/>
+    
+    
+      <category term="js" scheme="http://www.mcling.xyz/tags/js/"/>
+    
+      <category term="动画" scheme="http://www.mcling.xyz/tags/%E5%8A%A8%E7%94%BB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>js原生框架part5</title>
+    <link href="http://www.mcling.xyz/2016/11/23/js2.html"/>
+    <id>http://www.mcling.xyz/2016/11/23/js2.html</id>
+    <published>2016-11-23T02:56:49.000Z</published>
+    <updated>2016-11-23T11:21:05.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="事件绑定"><a href="#事件绑定" class="headerlink" title="事件绑定"></a>事件绑定</h2><ol>
+<li><p><code>DOMO</code>方式</p>
+<ul>
+<li>通过<code>dom</code>元素的<code>(on + 事件名称)</code>属性来绑定事件,并且赋值为一个字符串</li>
+<li>上述字符串为执行该事件的代码块(逻辑)</li>
+<li>缺点:可读性以及可维护性不好.</li>
+</ul>
+</li>
+<li><p><code>DOMO</code>方式的加强版</p>
+<ul>
+<li>通过<code>dom</code>元素的<code>(on + 事件名称)</code>属性来绑定事件,并且赋值为事件处理函数</li>
+<li>缺点:定义很多的全局函数,容易造成内存过大的损耗,依然没有解决<code>js</code>代码和<code>html</code>的耦合度关系</li>
+</ul>
+</li>
+<li><p><code>IE</code>标准</p>
+<ul>
+<li>通过<code>attachEvent</code>来绑定事件</li>
+<li>语法:<code>dom.attachEvent(type,callback)</code></li>
+<li>移除事件:<code>detachEvent(type,callback)</code><ul>
+<li>注意: 如果想要删除某个事件的处理函数,不能将该处理函数定义为匿名的</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code>W3C</code>标准</p>
+<ul>
+<li>通过<code>addEventListener</code>方法来给<code>dom</code>元素绑定事件</li>
+<li>语法:<code>dom.addEventListener(type,callback,useCapture)</code> <code>useCapture 默认值为false</code></li>
+<li>移除事件:<code>removeEventListener(type,callback)</code><ul>
+<li>注意: 如果想要删除某个事件的处理函数,不能将该处理函数定义为匿名的</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>事件流</p>
+<ul>
+<li>概念:用户在触发某一动作时,页面所做相关的反映的过程</li>
+<li>三个阶段:<ul>
+<li>事件捕获阶段</li>
+<li>处于事件源阶段</li>
+<li>冒泡阶段</li>
+</ul>
+</li>
+<li>事件流种类:<ul>
+<li>捕获型事件流:事件处理函数是在事件的捕获阶段执行</li>
+<li>冒泡型事件流:事件处理函数是在事件的冒泡阶段执行</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code>attachEvent和 addEventListener</code>区别</p>
+<ul>
+<li>参数个数不同</li>
+<li>事件类型 传值也不同<ul>
+<li>IE标准需要加<code>on</code>前缀</li>
+<li>W3C不需要加<code>on</code>前缀</li>
+</ul>
+</li>
+<li>在绑定多个事件处理函数时,IE在执行处理函数时,顺序不定(得看版本);而W3C,按照队列结构来依次执行事件的处理函数</li>
+<li>在事件处理函数内<code>this</code>指向不同<ul>
+<li>IE:window</li>
+<li>W3C:返回正在执行事件处理函数的<code>dom</code>元素</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code>addEvent</code>方法</p>
+<ul>
+<li>根据浏览器能力,提前返回事件绑定方法</li>
+<li>如果浏览器符合W3C标准,使用<code>addEventListener</code>绑定事件</li>
+<li>否则就使用<code>attachEvent</code>来绑定事件</li>
+</ul>
+</li>
+<li><p><code>removeEvent</code>方法</p>
+<ul>
+<li>根据浏览器能力,提前返回事件移除方法</li>
+<li>如果浏览器符合W3C标准,使用<code>removeEventListener</code>移除事件处理函数</li>
+<li>否则就使用<code>detachEvent</code>来移除事件处理函数</li>
+</ul>
+</li>
+<li><p>on方法</p>
+<ul>
+<li>功能:给<code>itcast</code>对象上所有<code>dom</code>元素绑定事件</li>
+<li>实现思路<ul>
+<li>遍历<code>this</code>上所有<code>dom</code>元素</li>
+<li>调用<code>addEvent</code>给当前遍历到的<code>dom</code>元素绑定事件</li>
+<li>返回<code>this</code>,实现链式编程</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code>off</code>方法</p>
+<ul>
+<li>功能:移除<code>itcast</code>对象上所有<code>dom</code>元素的事件处理函数</li>
+<li>实现思路<ul>
+<li>遍历<code>this</code>上所有<code>dom</code>元素</li>
+<li>调用<code>removeEvent</code>给当前遍历到的<code>dom</code>元素移除相应事件的处理函数</li>
+<li>返回<code>this</code>,实现链式编程</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="click方法"><a href="#click方法" class="headerlink" title="click方法"></a><code>click</code>方法</h2><ol>
+<li>功能: 给itcast对象上的所有dom元素绑定单击 事件处理函数的</li>
+<li>语法:<code>itcast对象.click(callback)</code></li>
+<li>实现思路<ul>
+<li>遍历<code>this</code>上的所有<code>dom</code>元素</li>
+<li>调用<code>addEvent</code>分别传值即可</li>
+<li><code>return this</code>实现链式编程</li>
+</ul>
+</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;事件绑定&quot;&gt;&lt;a href=&quot;#事件绑定&quot; class=&quot;headerlink&quot; title=&quot;事件绑定&quot;&gt;&lt;/a&gt;事件绑定&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;DOMO&lt;/code&gt;方式&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;通过&lt;code&gt;dom&lt;/code&gt;元素
+    
+    </summary>
+    
+      <category term="js原生框架" scheme="http://www.mcling.xyz/categories/js%E5%8E%9F%E7%94%9F%E6%A1%86%E6%9E%B6/"/>
+    
+    
+      <category term="js" scheme="http://www.mcling.xyz/tags/js/"/>
+    
+      <category term="事件绑定" scheme="http://www.mcling.xyz/tags/%E4%BA%8B%E4%BB%B6%E7%BB%91%E5%AE%9A/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CSS基础part1</title>
+    <link href="http://www.mcling.xyz/2016/11/22/css1.html"/>
+    <id>http://www.mcling.xyz/2016/11/22/css1.html</id>
+    <published>2016-11-22T07:29:58.000Z</published>
+    <updated>2016-11-23T01:58:03.997Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="认识CSS"><a href="#认识CSS" class="headerlink" title="认识CSS"></a>认识CSS</h2><ul>
+<li>作用:美化网页(设置网页样式)</li>
+<li>概念:层叠样式表(级联样式表)Cascading  Style  Sheets</li>
+<li>层叠:css的特性</li>
+</ul>
+<h2 id="CSS与html之间的关系"><a href="#CSS与html之间的关系" class="headerlink" title="CSS与html之间的关系"></a>CSS与html之间的关系</h2><ul>
+<li>CSS以html为基础存在</li>
+<li>CSS控制html标签中的样式(文字大小,文字颜色,网页布局)</li>
+</ul>
+<h2 id="CSS书写位置"><a href="#CSS书写位置" class="headerlink" title="CSS书写位置"></a>CSS书写位置</h2><ul>
+<li>内嵌式写法</li>
+<li>外联式写法</li>
+<li>行内样式写法</li>
+</ul>
+<h3 id="内嵌式写法"><a href="#内嵌式写法" class="headerlink" title="内嵌式写法"></a>内嵌式写法</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">'text/css'</span>&gt;</span><span class="undefined"></span></div><div class="line">     CSS代码</div><div class="line">  <span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="CSS语法结构"><a href="#CSS语法结构" class="headerlink" title="CSS语法结构"></a>CSS语法结构</h2><ul>
+<li><code>选择器{属性:值;属性:值;....}</code></li>
+</ul>
+<h3 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h3><ul>
+<li>定义:选择谁的过程(标签)</li>
+<li><p>分类</p>
+<ul>
+<li><p>简单选择器</p>
+<ul>
+<li><p>标签选择器<br>  <code>标签名(选择器){属性:值;}</code></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">p</span>&#123;</div><div class="line">	<span class="attribute">color</span>: red;<span class="comment">/*设置文字颜色*/</span></div><div class="line">	<span class="attribute">font-size</span>: <span class="number">30px</span>;<span class="comment">/*设置文字大小*/</span></div><div class="line">	<span class="attribute">width</span>: <span class="number">200px</span>;<span class="comment">/*设置文字宽度*/</span></div><div class="line">	<span class="attribute">height</span>: <span class="number">200px</span>;</div><div class="line">	<span class="attribute">background-color</span>: <span class="number">#fff</span>;<span class="comment">/*设置背景颜色*/</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>类选择器<br>  <code>.自定义名称{属性:值;...}</code></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.p-color &#123;color: red;&#125;</div><div class="line"> /* 类样式(类选择器)调用: */</div><div class="line"> &lt;p  class=”p-color”&gt;&lt;/p&gt;</div></pre></td></tr></table></figure>
+<ul>
+<li><p>特点:</p>
+<ol>
+<li>一个类样式可以被多个标签同时调用(公用)</li>
+<li>一个标签可以同时调用多个类样式(相当与人的名字)<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;div class='p-color p-size'&gt;文字&lt;/div&gt;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>类命名规范:</p>
+<ol>
+<li>通用的类名<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">头：header   </div><div class="line">内容：content/container</div><div class="line">尾：footer </div><div class="line">导航：nav  </div><div class="line">侧栏：sidebar</div><div class="line">栏目：column</div><div class="line">页面外围控制整体布局宽度：wrapper</div><div class="line">左右中：left right center</div><div class="line">登录条：loginbar</div><div class="line">标志：logo</div><div class="line">广告：banner    </div><div class="line">页面主体：main</div><div class="line">热点：hot</div><div class="line">新闻：news</div><div class="line">下载：download</div><div class="line">子导航：subnav</div><div class="line">菜单：menu</div><div class="line">子菜单：submenu</div><div class="line">搜索：search</div><div class="line">友情链接：friendlink</div><div class="line">页脚：footer</div><div class="line">版权：copyright</div><div class="line">滚动：scroll</div><div class="line">内容：content</div></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ul>
+<ol>
+<li>不能以数字开头或者以纯数字定义类名。</li>
+<li><p>不推荐使用汉字定义类名</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.文字颜色&#123;</div><div class="line">	<span class="attribute">color</span>:green;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>不能以特殊字符开头或者纯特殊字符定义 类名(‘_’);</p>
+</li>
+</ol>
+</li>
+<li><p>ID选择器(配合js使用)<br>  <code>自定义名称{属性:值;}</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">/* ID选择器通过ID属性调用 */</div><div class="line">/* 样式定义 */</div><div class="line">&lt;style&gt;</div><div class="line"> #one&#123;</div><div class="line">	color: red;</div><div class="line"> &#125;</div><div class="line">&lt;/style&gt;</div><div class="line">&lt;body&gt;</div><div class="line">&lt;p id=&quot;one&quot;&gt;文字&lt;/p&gt;</div><div class="line">&lt;/body&gt;</div></pre></td></tr></table></figure>
+<p>  *ID选择器与类选择器的区别:</p>
+<pre><code>1. ID样式只能让一个标签调用
+2. 一个标签只能调用一个ID样式
+</code></pre></li>
+<li>通配符选择器<br>  <code>*{属性: 值;}</code><ul>
+<li>特点:将页面中所有的标签都选中设置样式</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>复合选择器<ul>
+<li>标签指定式选择器<br>  <code>标签名.类名 {属性: 值;}</code><ul>
+<li>关系：  既。。。。又。。。</li>
+</ul>
+</li>
+<li>后代选择器<br>  <code>选择器 选择器{属性:值;}</code><ul>
+<li>注意:<ol>
+<li>后代选择器中，标签之间的关系必须是嵌套关系</li>
+<li>选择器与选择器之间必须用空格隔开！</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>并集选择器<br>  <code>选择器,选择器 {属性: 值;}</code><ul>
+<li>注意:<ol>
+<li>并集选择器之间使用逗号隔开</li>
+<li>并集选择器之间可以是嵌套关系也可以是并列关系</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="常见属性"><a href="#常见属性" class="headerlink" title="常见属性"></a>常见属性</h3><table>
+<thead>
+<tr>
+<th>属性名称</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>width:100px</td>
+<td>设置宽度</td>
+</tr>
+<tr>
+<td>height:100px</td>
+<td>设置高度</td>
+</tr>
+<tr>
+<td>font-size:20px</td>
+<td>设置文字大小</td>
+</tr>
+<tr>
+<td>color:red</td>
+<td>前景色(文字颜色)</td>
+</tr>
+<tr>
+<td>background-color</td>
+<td>背景颜色</td>
+</tr>
+</tbody>
+</table>
+<h2 id="单位介绍"><a href="#单位介绍" class="headerlink" title="单位介绍"></a>单位介绍</h2><ul>
+<li>px:像素 1px</li>
+<li>em:当前文字大小 1em(一个文字的大小)</li>
+</ul>
+<h2 id="颜色表示方式"><a href="#颜色表示方式" class="headerlink" title="颜色表示方式"></a>颜色表示方式</h2><ul>
+<li>直接设置颜色对应的单词 red,blue</li>
+<li>十六进制表示法: #00-FF</li>
+<li>rgb表示法: R:red; 0-255 G:green; 0-255 B:blue; 0-255</li>
+<li>rgba() 半透明的效果 A:alpha 通道 0-1</li>
+<li>通过opacity设置半透明效果 Opacity取值0-1</li>
+</ul>
+<h2 id="Font字体属性"><a href="#Font字体属性" class="headerlink" title="Font字体属性"></a>Font字体属性</h2><ul>
+<li>font-size:设置文字大小.</li>
+<li>font-weight:设置文字是否加粗显示<ul>
+<li>默认值： normal 100-900;   400=noraml     700=bold;</li>
+</ul>
+</li>
+<li>font-style: normal;   文字正常显示<ul>
+<li>Italic     文字斜体显示</li>
+</ul>
+</li>
+<li>font-family:  设置文字字体<ul>
+<li>直接设置字体名称<br>  <code>font-family:楷体;</code></li>
+<li>设置字体对应的单词</li>
+<li>使用unicode编码设置字体</li>
+<li>line-height:   文字行高</li>
+<li>注意:font-family一次可以设置多个字体，字体之间使用逗号</li>
+</ul>
+</li>
+<li>Font属性联写：<br>  <code>font: font-style  font-weight    font-size/line-height  font-family</code><ul>
+<li>注意:<ol>
+<li>font属性联写中，必须有font-size 和font-family两个值</li>
+<li>font属性联写中，font-size 必须在font-family前</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="其他属性补充"><a href="#其他属性补充" class="headerlink" title="其他属性补充"></a>其他属性补充</h2><ul>
+<li>text-align： left | center | right  该属性也可以让图片居中</li>
+<li>首行缩进 text-indent</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;认识CSS&quot;&gt;&lt;a href=&quot;#认识CSS&quot; class=&quot;headerlink&quot; title=&quot;认识CSS&quot;&gt;&lt;/a&gt;认识CSS&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;作用:美化网页(设置网页样式)&lt;/li&gt;
+&lt;li&gt;概念:层叠样式表(级联样式表)Cascading  S
+    
+    </summary>
+    
+      <category term="CSS基础" scheme="http://www.mcling.xyz/categories/CSS%E5%9F%BA%E7%A1%80/"/>
+    
+    
+      <category term="CSS" scheme="http://www.mcling.xyz/tags/CSS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>js原生框架part4</title>
+    <link href="http://www.mcling.xyz/2016/11/21/js-jQuery.html"/>
+    <id>http://www.mcling.xyz/2016/11/21/js-jQuery.html</id>
+    <published>2016-11-21T01:09:24.000Z</published>
+    <updated>2016-11-23T11:25:15.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="appendTo方法"><a href="#appendTo方法" class="headerlink" title="appendTo方法"></a><code>appendTo</code>方法</h2><ol>
+<li>功能: 将结果集中的元素 追加到指定的<code>dom</code>元素上</li>
+<li>实现思路<ul>
+<li>定义<code>appendTo</code>方法,声明一个形参<code>target</code>,形参表示追加的目标<code>dom</code>元素<pre><code>* 选择器
+* `dom`元素
+* `dom`数组
+</code></pre></li>
+<li>为了操作方便,将<code>target</code>类型统一为<code>itcast</code>对象</li>
+<li>遍历<code>this</code>上的每一个<code>dom</code>元素,在遍历<code>target</code>上的每一个<code>dom</code>元素</li>
+<li>将<code>this</code>上的<code>dom</code>元素追加到<code>target</code>上</li>
+<li>注意:<br>在追加节点时,如果遍历的是第一个目标<code>dom</code>元素,不需要拷贝节点;否则要深拷贝节点,并将上述得到的节点存储到ret内</li>
+<li>将<code>ret</code>数组转换成<code>itcast</code>对象,作为<code>appendTo</code>方法的返回值<br>  *如果不这样做的话,就会在添加样式时</li>
+</ul>
+</li>
+</ol>
+<h2 id="append方法"><a href="#append方法" class="headerlink" title="append方法"></a><code>append</code>方法</h2><ol>
+<li>语法:<code>&lt;itcast对象&gt;.append(source);</code></li>
+<li>功能: 将<code>source</code>上的所有<code>dom</code>元素追加到<code>itcast</code>对象上</li>
+<li>实现思路<ul>
+<li>统一<code>source</code>类型,为<code>itcast</code>对象.</li>
+<li><code>source.appendTo(this)</code></li>
+<li><code>return this;</code></li>
+</ul>
+</li>
+</ol>
+<h2 id="prependTo方法"><a href="#prependTo方法" class="headerlink" title="prependTo方法"></a><code>prependTo</code>方法</h2><ol>
+<li>语法:<code>&lt;itcast对象&gt;.prependTo(target);</code></li>
+<li>功能:将<code>itcast</code>对象上的每一个<code>dom</code>元素追加到<code>target</code>最前边<code>insertBefore</code></li>
+<li>实现思路<ul>
+<li>统一<code>target</code>类型为<code>itcast</code>对象</li>
+<li>定义<code>node</code>变量,临时存储被追加的节点,定义<code>ret</code>数组,存储所有被追加的节点</li>
+<li>遍历<code>target</code>上的每一个<code>dom</code>元素,在遍历<code>this</code>上的每一个<code>dom</code>元素</li>
+<li>定义变量<code>firstChild</code>,临时存储当前<code>dom</code>元素的第一个子节点,在遍历<code>this</code>上的每一个<code>dom</code>元素</li>
+<li>判断当前遍历的<code>dom</code>是否为<code>target</code>上的每一个<code>dom</code>元素</li>
+<li>如果为真,此时不需要克隆节点</li>
+<li>否则,要深克隆节点</li>
+<li>将上述得到的节点,<code>push</code>到<code>ret</code>内</li>
+<li>调用<code>insertBefore</code>方法 追加节点,此时第一个参数为追加新的节点,第二个参数为<code>firstChild</code>,在<code>firstChild</code>之前追加新节点</li>
+<li>两层循环结束,操作完成</li>
+<li>将<code>ret</code>转换成<code>itcast</code>对象,作为<code>prependTo</code>方法的返回值,实现链式编程</li>
+</ul>
+</li>
+</ol>
+<h2 id="prepend方法"><a href="#prepend方法" class="headerlink" title="prepend方法"></a><code>prepend</code>方法</h2><ol>
+<li>语法:<code>&lt;itcast对象&gt;.prepend(source);</code></li>
+<li>功能: 把<code>source</code>上所有的<code>dom</code>元素,添加到<code>this</code>上的最前边</li>
+<li>实现思路:<ul>
+<li>统一<code>source</code>类型,为<code>itcast</code>对象</li>
+<li>通过<code>source</code>调用<code>prependTo</code>方法,将<code>source</code>上所有<code>dom</code>添加到<code>this</code>上的最前边</li>
+<li><code>return this</code>实现链式编程</li>
+</ul>
+</li>
+</ol>
+<h2 id="next方法"><a href="#next方法" class="headerlink" title="next方法"></a><code>next</code>方法</h2><ol>
+<li>功能: 获取<code>itcast</code>对象上所有<code>dom</code>元素的下一个兄弟元素<code>(nextSibling)</code></li>
+<li>语法:<code>&lt;itcast对象&gt;.next();</code>返回值类型:<code>itcast对象</code></li>
+<li>实现思路<ul>
+<li>定义<code>ret</code>数组,存储所有<code>dom</code>的下一个兄弟元素</li>
+<li>遍历<code>this</code>上的所有<code>dom</code>元素</li>
+<li>遍历当前<code>dom</code>元素下面的所有兄弟,如果类型为元素,将此元素存储<code>ret</code>内,结束循环</li>
+<li>两层循环结束,将<code>ret</code>转换成<code>itcast</code>对象,作为<code>next</code>方法的返回值</li>
+</ul>
+</li>
+</ol>
+<h2 id="nextAll方法"><a href="#nextAll方法" class="headerlink" title="nextAll方法"></a><code>nextAll</code>方法</h2><ol>
+<li>功能: 获取<code>itcast</code>对象上所有<code>dom</code>元素的后面的所有兄弟元素<code>(nextSibling)</code></li>
+<li>语法: <code>&lt;itcast对象&gt;.nextAll();</code>返回值类型:<code>itcast对象</code></li>
+<li>实现思路<ul>
+<li>定义<code>ret数组</code>,存储所有<code>dom</code>下面的所有兄弟元素</li>
+<li>遍历<code>this</code>上的所有<code>dom元素</code></li>
+<li>遍历当前<code>dom</code>元素下面的所有兄弟,如果类型为元素,将此元素存储<code>ret</code>内,结束循环</li>
+<li>两层循环结束,将<code>ret</code>转换成<code>itcast对象</code>,作为<code>nextAll</code>方法的返回值</li>
+</ul>
+</li>
+</ol>
+<h2 id="before方法"><a href="#before方法" class="headerlink" title="before方法"></a><code>before</code>方法</h2><ol>
+<li>功能:</li>
+<li>语法: <code>&lt;itcast对象&gt;.before(source)</code></li>
+<li>实现思路<ul>
+<li>统一<code>source</code>类型,为<code>itcast</code>对象</li>
+<li>遍历<code>this</code>上的每一个<code>dom</code>元素</li>
+<li>遍历<code>source</code>上的每一个<code>dom</code>元素</li>
+<li>判断当前遍历<code>this</code>的<code>dom</code>元素的索引是否为0</li>
+<li>如果为0,不需要拷贝节点</li>
+<li>否则要深拷贝节点</li>
+<li>先拿到当前遍历<code>this</code>的<code>dom</code>元素的父节点,调用<code>insertBefore</code>方法在其前面添加上面得到的新节点</li>
+<li>两层循环结束,操作完成</li>
+<li><code>return this</code>实现链式编程</li>
+</ul>
+</li>
+</ol>
+<h2 id="after方法"><a href="#after方法" class="headerlink" title="after方法"></a><code>after</code>方法</h2><ol>
+<li>功能:</li>
+<li>语法:<code>&lt;itcast对象&gt;.after(source)</code></li>
+<li>实现思路<ul>
+<li>定义<code>nextSibling</code>变量,存储<code>dom</code>元素的下一个兄弟节点</li>
+<li>统一<code>source</code>类型为<code>itcast</code>对象</li>
+<li>遍历<code>this</code>上的每一个<code>dom</code>元素</li>
+<li>在遍历<code>source</code>上的每一个<code>dom</code>元素</li>
+<li>判断当前遍历<code>this</code>的<code>dom</code>元素的索引是否为0</li>
+<li>如果为0,不需要拷节点</li>
+<li>否则要深拷贝节点</li>
+<li>先拿到当前遍历<code>this</code>的<code>dom</code>元素的父节点,调用<code>insertBefore</code>方法在<code>nextSibling</code>前面添加上面得到的新节点</li>
+<li>两层循环完毕,操作完成</li>
+<li><code>return this</code>实现链式编程</li>
+</ul>
+</li>
+</ol>
+<h2 id="unique方法"><a href="#unique方法" class="headerlink" title="unique方法"></a><code>unique</code>方法</h2><ol>
+<li>功能: 实现数组去重</li>
+<li>语法: <code>var newRet=itcast.unique(arr);</code></li>
+<li>实现思路: <ul>
+<li>定义空数组对象<code>ret</code>存储去重后的元素</li>
+<li>遍历原数组,如果当前遍历到的元素在<code>ret</code>中不存在,就添加到<code>ret</code>内</li>
+<li>循环结束,<code>ret</code>存储的就是去重后的元素</li>
+<li>返回<code>ret</code></li>
+</ul>
+</li>
+<li>兼容 <code>IE8 indexOf</code>方法<ul>
+<li>首先判断当前浏览器是否支持<code>indexOf</code>方法</li>
+<li>如果不支持,就给数组对象的原型添加<code>indexOf</code>方法</li>
+<li>遍历<code>this</code>上的所有元素</li>
+<li>如果遍历到的当前元素和指定参数值相同,就直接返回其索引值.结束循环</li>
+<li>如果在整个上述循环都没有返回值,那么表示不存在指定参数值,就返回-1</li>
+</ul>
+</li>
+</ol>
+<h2 id="prev方法-previousSibling"><a href="#prev方法-previousSibling" class="headerlink" title="prev方法  previousSibling"></a><code>prev</code>方法  <code>previousSibling</code></h2><ol>
+<li>功能: 获取<code>itcast</code>对象上所有<code>dom</code>元素的前一个兄弟元素<code>(previousSibling)</code></li>
+<li>语法:<code>&lt;itcast对象&gt;.prev();</code>返回值类型:<code>itcast对象</code></li>
+<li>实现思路<ul>
+<li>定义<code>ret</code>数组,存储所有<code>dom</code>的前一个兄弟元素</li>
+<li>遍历<code>this</code>上的所有<code>dom</code>元素</li>
+<li>遍历当前<code>dom</code>元素之前的所有兄弟,如果类型为元素,将此元素存储<code>ret</code>内,结束循环</li>
+<li>两层循环结束,将<code>ret</code>转换成<code>itcast</code>对象,作为<code>next</code>方法的返回值</li>
+</ul>
+</li>
+</ol>
+<h2 id="prevAll方法"><a href="#prevAll方法" class="headerlink" title="prevAll方法"></a><code>prevAll</code>方法</h2><ol>
+<li>功能: 获取<code>itcast</code>对象上所有<code>dom</code>元素的之前的所有兄弟元素<code>(nextSibling)</code></li>
+<li>语法: <code>&lt;itcast对象&gt;.nextAll();</code>返回值类型:<code>itcast对象</code></li>
+<li>实现思路<ul>
+<li>定义<code>ret数组</code>,存储所有<code>dom</code>之前的所有兄弟元素</li>
+<li>遍历<code>this</code>上的所有<code>dom元素</code></li>
+<li>遍历当前<code>dom</code>元素之前的所有兄弟,如果类型为元素,将此元素存储<code>ret</code>内,结束循环</li>
+<li>两层循环结束,将<code>ret</code>转换成<code>itcast对象</code>,作为<code>nextAll</code>方法的返回值</li>
+</ul>
+</li>
+</ol>
+<h2 id="remove方法"><a href="#remove方法" class="headerlink" title="remove方法"></a><code>remove</code>方法</h2><ol>
+<li>功能:将筛选出来的所有的<code>dom</code>元素 删除掉</li>
+<li>实现思路:<ul>
+<li>遍历<code>this</code>上的所有<code>dom</code>元素</li>
+<li>获取当前<code>dom</code>元素的父节点,调用<code>removeChild</code>方法删除自己</li>
+<li>循环结束,返回<code>this</code></li>
+</ul>
+</li>
+</ol>
+<h2 id="empty方法"><a href="#empty方法" class="headerlink" title="empty方法"></a><code>empty</code>方法</h2><ol>
+<li>功能:将筛选出来的所有`dom元素,清空后代节点</li>
+<li>实现思路<ul>
+<li>遍历<code>this</code>上的所有<code>dom</code>元素</li>
+<li>直接给当前<code>dom</code>元素的<code>innerHTML</code>属性赋值为空字符串</li>
+<li>循环结束,返回<code>this</code>,实现链式编程</li>
+</ul>
+</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;appendTo方法&quot;&gt;&lt;a href=&quot;#appendTo方法&quot; class=&quot;headerlink&quot; title=&quot;appendTo方法&quot;&gt;&lt;/a&gt;&lt;code&gt;appendTo&lt;/code&gt;方法&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;功能: 将结果集中的元素 追加到指定的
+    
+    </summary>
+    
+      <category term="js原生框架" scheme="http://www.mcling.xyz/categories/js%E5%8E%9F%E7%94%9F%E6%A1%86%E6%9E%B6/"/>
+    
+    
+      <category term="js" scheme="http://www.mcling.xyz/tags/js/"/>
+    
+      <category term="jquery" scheme="http://www.mcling.xyz/tags/jquery/"/>
+    
+      <category term="dom模块" scheme="http://www.mcling.xyz/tags/dom%E6%A8%A1%E5%9D%97/"/>
+    
+  </entry>
+  
+  <entry>
     <title>js原生框架part3</title>
     <link href="http://www.mcling.xyz/2016/11/20/js-1.html"/>
     <id>http://www.mcling.xyz/2016/11/20/js-1.html</id>
     <published>2016-11-20T06:49:16.000Z</published>
-    <updated>2016-11-20T12:43:40.624Z</updated>
+    <updated>2016-11-23T11:20:40.000Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="css方法"><a href="#css方法" class="headerlink" title="css方法"></a>css方法</h3><ol>
+    <content type="html"><![CDATA[<h3 id="css方法"><a href="#css方法" class="headerlink" title="css方法"></a><code>css</code>方法</h3><ol>
 <li>实现思路<ul>
 <li>如果只传入一个参数<ul>
 <li>如果参数类型为对象,表示同时设置多个样式</li>
@@ -33,93 +625,72 @@
 </ul>
 </li>
 </ol>
-<h3 id="itcast-each方法-遍历数组或伪数组"><a href="#itcast-each方法-遍历数组或伪数组" class="headerlink" title="itcast.each方法: 遍历数组或伪数组"></a>itcast.each方法: 遍历数组或伪数组</h3><ol>
+<h3 id="itcast-each方法-遍历数组或伪数组"><a href="#itcast-each方法-遍历数组或伪数组" class="headerlink" title="itcast.each方法: 遍历数组或伪数组"></a><code>itcast.each</code>方法: 遍历数组或伪数组</h3><ol>
 <li>功能<ul>
 <li>第一个参数,指定遍历的对象</li>
 <li>第二个参数,指定的回调函数,对遍历到的每一个元素,进行相关处理</li>
 </ul>
 </li>
 </ol>
-<h2 id="attr方法-setAttribute-和-getAttribute"><a href="#attr方法-setAttribute-和-getAttribute" class="headerlink" title="attr方法(setAttribute 和 getAttribute)"></a>attr方法(<code>setAttribute</code> 和 <code>getAttribute</code>)</h2><ol>
+<h2 id="attr方法-setAttribute和getAttribute"><a href="#attr方法-setAttribute和getAttribute" class="headerlink" title="attr方法(setAttribute和getAttribute)"></a><code>attr方法(</code>setAttribute<code>和</code>getAttribute<code>)</code></h2><ol>
 <li>功能: 获取(设置)属性节点值</li>
 <li>实现思路<ul>
 <li>给原型添加<code>attr</code>方法,定义两个参数:属性节点名字<code>name</code>以及属性节点值</li>
-<li>如果只传入一个参数<ul>
+<li>如果只传入一个参数</li>
 <li>如果参数类型为对象,表示设置多个节点值</li>
 <li>否则获取指定的属性节点值(默认获取第一个<code>dom</code>元素的属性节点值)</li>
-</ul>
-</li>
 <li>如果传入两个参数,表示设置单个属性节点值.</li>
 </ul>
 </li>
 </ol>
-<h2 id="html方法"><a href="#html方法" class="headerlink" title="html方法"></a>html方法</h2><ol>
+<h2 id="html方法"><a href="#html方法" class="headerlink" title="html方法"></a><code>html</code>方法</h2><ol>
 <li><p>功能:</p>
 <ul>
-<li>如果不传入参数,此时表示获取指定dom元素的innerHTML属性值</li>
-<li>否则,表示设置指定dom元素的innerHTML属性</li>
+<li>如果不传入参数,此时表示获取指定<code>dom</code>元素的<code>innerHTML</code>属性值</li>
+<li>否则,表示设置指定<code>dom</code>元素的<code>innerHTML</code>属性</li>
 </ul>
 </li>
 <li><p>实现思路</p>
 <ul>
 <li>判断 是否传入参数</li>
-<li>如果没传,获取itcast对象上第一个dom元素的innerHTML属性值</li>
-<li>否则,给itcast对象上每一个dom元素设置innerHTML属性</li>
+<li>如果没传,获取<code>itcast</code>对象上第一个<code>dom</code>元素的<code>innerHTML</code>属性值</li>
+<li>否则,给<code>itcast</code>对象上每一个<code>dom</code>元素设置<code>innerHTML</code>属性</li>
 </ul>
 </li>
 </ol>
-<h2 id="text方法"><a href="#text方法" class="headerlink" title="text方法"></a>text方法</h2><ol>
+<h2 id="text方法"><a href="#text方法" class="headerlink" title="text方法"></a><code>text</code>方法</h2><ol>
 <li>功能:<ul>
 <li>不传值,表示获取文本节点(返回的是后代中所有文本节点值)</li>
 <li>否则,设置指定dom元素文本节点值</li>
 </ul>
 </li>
 <li>实现思路<ul>
-<li>如果不传值,优先考虑浏览器是否支持textContent属性</li>
-<li>如果支持,就使用textContent返回结果集中每一个dom元素的文本节点值</li>
-<li>否则,就使用innerText返回结果集中每一个dom元素的文本节点值.</li>
-<li>如果传值,给itcast对象上的每一个dom元素设置文本节点值</li>
-<li>如果支持textContent实行,就使用该属性设置文本</li>
-<li>否则,就使用innerText来设置文本</li>
+<li>如果不传值,优先考虑浏览器是否支持<code>textContent</code>属性</li>
+<li>如果支持,就使用<code>textContent</code>返回结果集中每一个<code>dom</code>元素的文本节点值</li>
+<li>否则,就使用<code>innerText</code>返回结果集中每一个<code>dom</code>元素的文本节点值.</li>
+<li>如果传值,给<code>itcast</code>对象上的每一个<code>dom</code>元素设置文本节点值</li>
+<li>如果支持<code>textContent</code>实行,就使用该属性设置文本</li>
+<li>否则,就使用<code>innerText</code>来设置文本</li>
 </ul>
 </li>
 </ol>
 <h2 id="val方法"><a href="#val方法" class="headerlink" title="val方法"></a>val方法</h2><ol>
-<li>功能: value属性<ul>
+<li>功能: <code>value</code>属性<ul>
 <li>如果不传值,表示获取输入框的文本值</li>
 <li>如果传值,表示给输入框 设置文本</li>
 </ul>
 </li>
 <li>实现思路<ul>
 <li>如果不传值，表示获取输入框的文本值（获取第一个文本框值）</li>
-<li>如果传值，表示给输入框 设置文本<ul>
+<li>如果传值，表示给输入框 设置文本</li>
 <li>遍历每一个输入框，同时给其设置文本</li>
-</ul>
-</li>
 </ul>
 </li>
 </ol>
 <h2 id="prop方法"><a href="#prop方法" class="headerlink" title="prop方法"></a>prop方法</h2><ol>
 <li>功能: 和<code>attr</code>相似<ul>
-<li>注意:有些属性名称,比如for,class是保留字或关键字不能作为对象属性名称.所以要创建一个对象,转换这类的属性</li>
-<li>定义protoFix对象,存储上述属性到新属性名称的映射关系</li>
-</ul>
-</li>
-</ol>
-<h2 id="appendTo方法"><a href="#appendTo方法" class="headerlink" title="appendTo方法"></a>appendTo方法</h2><ol>
-<li>功能: 将结果集中的元素 追加到指定的dom元素上</li>
-<li>实现思路<ul>
-<li>定义appendTo方法,声明一个形参target,形参表示追加的目标dom元素<ul>
-<li>选择器</li>
-<li>dom元素</li>
-<li>dom数组</li>
-</ul>
-</li>
-<li>为了操作方便,将target类型统一为itcast对象</li>
-<li>遍历this上的每一个dom元素,在遍历target上的每一个dom元素</li>
-<li>将this上的dom元素追加到target上</li>
-<li>注意:<br>在追加节点时,如果遍历的是第一个目标dom元素,不需要拷贝节点;否则要深拷贝节点,并将上述得到的节点存储到ret内</li>
-<li>将ret数组转换成itcast对象,作为appendTo方法的返回值<br>  *如果不这样做的话,就会在添加样式时</li>
+<li>注意:有些属性名称,比如<code>for,class</code>是保留字或关键字不能作为对象属性名称.所以要创建一个对象,转换这类的属性</li>
+<li>定义<code>protoFix</code>对象,存储上述属性到新属性名称的映射关系</li>
 </ul>
 </li>
 </ol>
@@ -127,10 +698,10 @@
     
     <summary type="html">
     
-      &lt;h3 id=&quot;css方法&quot;&gt;&lt;a href=&quot;#css方法&quot; class=&quot;headerlink&quot; title=&quot;css方法&quot;&gt;&lt;/a&gt;css方法&lt;/h3&gt;&lt;ol&gt;
+      &lt;h3 id=&quot;css方法&quot;&gt;&lt;a href=&quot;#css方法&quot; class=&quot;headerlink&quot; title=&quot;css方法&quot;&gt;&lt;/a&gt;&lt;code&gt;css&lt;/code&gt;方法&lt;/h3&gt;&lt;ol&gt;
 &lt;li&gt;实现思路&lt;ul&gt;
 &lt;li&gt;如果只传入一个参数&lt;ul&gt;
-&lt;li&gt;如果参数类型为对象,表示同时设置多个样式&lt;
+&lt;li&gt;如果参数类型为对
     
     </summary>
     
@@ -139,7 +710,7 @@
     
       <category term="js" scheme="http://www.mcling.xyz/tags/js/"/>
     
-      <category term="jquery" scheme="http://www.mcling.xyz/tags/jquery/"/>
+      <category term="css属性模块" scheme="http://www.mcling.xyz/tags/css%E5%B1%9E%E6%80%A7%E6%A8%A1%E5%9D%97/"/>
     
   </entry>
   
@@ -148,46 +719,50 @@
     <link href="http://www.mcling.xyz/2016/11/18/js1.html"/>
     <id>http://www.mcling.xyz/2016/11/18/js1.html</id>
     <published>2016-11-18T10:34:53.000Z</published>
-    <updated>2016-11-20T12:46:05.536Z</updated>
+    <updated>2016-11-23T11:07:50.000Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="hasClass方法"><a href="#hasClass方法" class="headerlink" title="hasClass方法"></a>hasClass方法</h2><ol>
-<li>功能: 如果结果集里只要有一个dom元素 具有指定的样式类，就返回true</li>
+    <content type="html"><![CDATA[<h2 id="hasClass方法"><a href="#hasClass方法" class="headerlink" title="hasClass方法"></a><code>hasClass</code>方法</h2><ol>
+<li>功能: 如果结果集里只要有一个<code>dom</code>元素 具有指定的样式类，就返回<code>true</code></li>
 <li><p>实现思路:</p>
 <ul>
 <li>定义结果变量<code>ret</code>，默认值为<code>false</code></li>
-<li>遍历结果集的每一个<code>dom</code>元素如果当前dom元素具有指定的样式类，将<code>ret=true</code>,结束循环</li>
-<li><p>返回ret。</p>
+<li>遍历结果集的每一个<code>dom</code>元素如果当前<code>dom</code>元素具有指定的样式类，将<code>ret=true</code>,结束循环</li>
+<li><p>返回<code>ret</code>。</p>
 </li>
-<li><p>如何判断dom元素具有指定的样式类？<br>在dom元素所有样式类的收尾 + 空格；在用户指定的样式类 收尾 + 空格<br>调用indexOf方法，如果返回值 = -1，表示没有；否则就具有指定样式类。</p>
+<li><p>如何判断<code>dom</code>元素具有指定的样式类？<br>在<code>dom</code>元素所有样式类的收尾 + 空格；在用户指定的样式类 收尾 + 空格<br>调用<code>indexOf</code>方法，如果返回值 = -1，表示没有；否则就具有指定样式类。</p>
 </li>
 </ul>
 </li>
 </ol>
-<h2 id="each方法"><a href="#each方法" class="headerlink" title="$.each方法"></a>$.each方法</h2><ol>
-<li>功能: 实现遍历数组或者伪数组,通过第二个参数(回调函数)来处理遍历到的每一个元素<br>在回调函数中,this指向的是当前边开遍历到的元素</li>
-<li>语法: $.each([数组/伪数组],callback);</li>
+<h2 id="each方法"><a href="#each方法" class="headerlink" title="$.each方法"></a><code>$.each</code>方法</h2><ol>
+<li>功能: 实现遍历数组或者伪数组,通过第二个参数(回调函数)来处理遍历到的每一个元素<br>在回调函数中,<code>this</code>指向的是当前边开遍历到的元素</li>
+<li>语法:<code>$.each([数组/伪数组],callback);</code></li>
 <li>实现思路<ul>
-<li>声明each函数,定义两个形参: 第一个遍历的(伪数组);第二个:回调函数</li>
-<li>使用for循环,遍历(伪)数组.再循环体背部执行回调函数,在执行时,给回调函数传实参</li>
-<li>实现回调函数内部this指向当前遍历到的元素</li>
-<li>通过回调函数的返回值,判定是否结束循环.规定:当返回值为false,结束循环</li>
+<li>声明<code>each</code>函数,定义两个形参: 第一个遍历的(伪数组);第二个:回调函数</li>
+<li>使用<code>for</code>循环,遍历(伪)数组.再循环体背部执行回调函数,在执行时,给回调函数传实参</li>
+<li>实现回调函数内部<code>this</code>指向当前遍历到的元素</li>
+<li>通过回调函数的返回值,判定是否结束循环.规定:当返回值为<code>false</code>,结束循环</li>
 </ul>
 </li>
 </ol>
-<h2 id="itcast中链式编程的实现"><a href="#itcast中链式编程的实现" class="headerlink" title="itcast中链式编程的实现"></a>itcast中链式编程的实现</h2><p> 1.返回当前方法的调用者: return this;</p>
-<h2 id="get方法"><a href="#get方法" class="headerlink" title="get方法"></a>get方法</h2><ol>
-<li>功能:根据参数index,获取相应dom元素</li>
-<li>实现思路<br><em>将字符串类型转换成数字
-</em><code>index &lt; 0 ==&gt; index + length</code><br>*<code>return this</code></li>
+<h2 id="itcast中链式编程的实现"><a href="#itcast中链式编程的实现" class="headerlink" title="itcast中链式编程的实现"></a><code>itcast</code>中链式编程的实现</h2><p> 1.返回当前方法的调用者: <code>return this;</code></p>
+<h2 id="get方法"><a href="#get方法" class="headerlink" title="get方法"></a><code>get</code>方法</h2><ol>
+<li>功能:根据参数<code>index</code>,获取相应<code>dom</code>元素</li>
+<li>实现思路<ul>
+<li>将字符串类型转换成数字</li>
+<li><code>index &lt; 0 ==&gt; index + length</code></li>
+<li><code>return this</code></li>
+</ul>
+</li>
 </ol>
-<h2 id="eq方法"><a href="#eq方法" class="headerlink" title="eq方法"></a>eq方法</h2><ol>
+<h2 id="eq方法"><a href="#eq方法" class="headerlink" title="eq方法"></a><code>eq</code>方法</h2><ol>
 <li>功能: 根据参数index,获取相应dom元素,转换成itcast对象,再返回</li>
 </ol>
 <h2 id="first方法"><a href="#first方法" class="headerlink" title="first方法"></a>first方法</h2><h2 id="last方法"><a href="#last方法" class="headerlink" title="last方法"></a>last方法</h2><h2 id="css方法"><a href="#css方法" class="headerlink" title="css方法"></a>css方法</h2><ol>
 <li>功能:<ul>
 <li>获取:如果只传一个参数并且类型不为对象,获取相应的样式属性值</li>
 <li>设置: a:如果只传一个参数并且类型为对象,设置多个样式值; b:传入两个参数,设置单个样式.<br>2.实现思路</li>
-<li>给itcast原型添加css方法,定义两个参数</li>
+<li>给<code>itcast</code>原型添加<code>css</code>方法,定义两个参数</li>
 <li>如果只传入一个参数<ul>
 <li>类型为对象的话,同时设置多个样式属性</li>
 <li>类型不为对象,获取指定的样式值</li>
@@ -197,29 +772,38 @@
 </ul>
 </li>
 </ol>
-<h2 id="addClass方法"><a href="#addClass方法" class="headerlink" title="addClass方法"></a>addClass方法</h2><ol>
-<li>功能:给结果集中的每一个<code>dom</code>元素添加指定样式类<br>2.实现思路<ul>
-<li>遍历this上的每一个dom元素<br>*首先判断当前遍历到的dom元素是否含有样式类.如果不具有,就给其添加指定的样式类.</li>
+<h2 id="addClass方法"><a href="#addClass方法" class="headerlink" title="addClass方法"></a><code>addClass</code>方法</h2><ol>
+<li>功能: 给结果集中的每一个<code>dom</code>元素添加指定样式类</li>
+<li>实现思路<ul>
+<li>遍历<code>this上</code>的每一个<code>dom</code>元素</li>
+<li>首先判断当前遍历到的<code>dom</code>元素是否含有样式类.如果不具有,就给其添加指定的样式类.</li>
 </ul>
 </li>
 </ol>
-<h2 id="removeClass方法"><a href="#removeClass方法" class="headerlink" title="removeClass方法"></a>removeClass方法</h2><p>1.功能:删除结果集中的每一个dom元素的指定样式类<br>2.实现思路</p>
-<ul>
+<h2 id="removeClass方法"><a href="#removeClass方法" class="headerlink" title="removeClass方法"></a><code>removeClass</code>方法</h2><ol>
+<li>功能: 删除结果集中的每一个dom元素的指定样式类</li>
+<li>实现思路<ul>
 <li>遍历this上的每一个dom元素</li>
-<li>(‘ ‘+ v.className +’ ‘).replace(‘ ‘ + className +’’,’’)</li>
+<li><code>(&#39; &#39;+ v.className +&#39; &#39;).replace(&#39; &#39; + className +&#39;&#39;,&#39;&#39;)</code></li>
 </ul>
-<h2 id="toggleClass方法"><a href="#toggleClass方法" class="headerlink" title="toggleClass方法"></a>toggleClass方法</h2><ol>
+</li>
+</ol>
+<h2 id="toggleClass方法"><a href="#toggleClass方法" class="headerlink" title="toggleClass方法"></a><code>toggleClass</code>方法</h2><ol>
 <li>功能: 切换指定的样式类: 如果有,就删除,没有就添加</li>
-<li>实现思路:<br> <em>遍历this上的每一个dom元素
- </em>判断当前遍历到的dom元素是否含有指定的样式类<br> <em>如果有,就删除
- </em>如果没有就添加</li>
+<li>实现思路:<ul>
+<li>遍历<code>this</code>上的每一个<code>dom</code>元素</li>
+<li>判断当前遍历到的<code>dom</code>元素是否含有指定的样式类</li>
+<li>如果有,就删除</li>
+<li>如果没有就添加</li>
+</ul>
+</li>
 </ol>
 ]]></content>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;hasClass方法&quot;&gt;&lt;a href=&quot;#hasClass方法&quot; class=&quot;headerlink&quot; title=&quot;hasClass方法&quot;&gt;&lt;/a&gt;hasClass方法&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;功能: 如果结果集里只要有一个dom元素 具有指定的样式类，就返
+      &lt;h2 id=&quot;hasClass方法&quot;&gt;&lt;a href=&quot;#hasClass方法&quot; class=&quot;headerlink&quot; title=&quot;hasClass方法&quot;&gt;&lt;/a&gt;&lt;code&gt;hasClass&lt;/code&gt;方法&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;功能: 如果结果集里只要有一个&lt;cod
     
     </summary>
     
@@ -228,7 +812,7 @@
     
       <category term="js" scheme="http://www.mcling.xyz/tags/js/"/>
     
-      <category term="jquery" scheme="http://www.mcling.xyz/tags/jquery/"/>
+      <category term="css样式模块" scheme="http://www.mcling.xyz/tags/css%E6%A0%B7%E5%BC%8F%E6%A8%A1%E5%9D%97/"/>
     
   </entry>
   
@@ -237,7 +821,7 @@
     <link href="http://www.mcling.xyz/2016/11/17/js.html"/>
     <id>http://www.mcling.xyz/2016/11/17/js.html</id>
     <published>2016-11-17T11:28:10.000Z</published>
-    <updated>2016-11-20T12:45:15.781Z</updated>
+    <updated>2016-11-23T10:50:02.505Z</updated>
     
     <content type="html"><![CDATA[<a id="more"></a>
 <h2 id="案例-获取指定DOM下所有子元素"><a href="#案例-获取指定DOM下所有子元素" class="headerlink" title="案例:获取指定DOM下所有子元素"></a>案例:获取指定DOM下所有子元素</h2><ol>
@@ -324,7 +908,7 @@
     
       <category term="js" scheme="http://www.mcling.xyz/tags/js/"/>
     
-      <category term="jquery" scheme="http://www.mcling.xyz/tags/jquery/"/>
+      <category term="框架结构" scheme="http://www.mcling.xyz/tags/%E6%A1%86%E6%9E%B6%E7%BB%93%E6%9E%84/"/>
     
   </entry>
   
@@ -353,35 +937,35 @@
   
   <entry>
     <title>canvas基础</title>
-    <link href="http://www.mcling.xyz/2016/11/15/throb.html"/>
-    <id>http://www.mcling.xyz/2016/11/15/throb.html</id>
+    <link href="http://www.mcling.xyz/2016/11/15/canvas.html"/>
+    <id>http://www.mcling.xyz/2016/11/15/canvas.html</id>
     <published>2016-11-15T10:57:25.000Z</published>
-    <updated>2016-11-20T12:49:02.734Z</updated>
+    <updated>2016-11-23T11:32:03.442Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="Canvas基础"><a href="#Canvas基础" class="headerlink" title="Canvas基础"></a>Canvas基础</h1><h2 id="Canvas是什么？"><a href="#Canvas是什么？" class="headerlink" title="Canvas是什么？"></a>Canvas是什么？</h2><p>Canvas是HTML5中提供的标签，是一个画布。</p>
+    <content type="html"><![CDATA[<h1 id="Canvas基础"><a href="#Canvas基础" class="headerlink" title="Canvas基础"></a><code>Canvas</code>基础</h1><h2 id="Canvas是什么？"><a href="#Canvas是什么？" class="headerlink" title="Canvas是什么？"></a><code>Canvas</code>是什么？</h2><p><code>Canvas</code>是<code>HTML5</code>中提供的标签，是一个画布。</p>
 <p>默认的宽高为：300 * 150</p>
 <h2 id="Canvas的用法"><a href="#Canvas的用法" class="headerlink" title="Canvas的用法"></a>Canvas的用法</h2><ol>
-<li>创建一个Canvas标签</li>
-<li>获取到该DOM对象</li>
-<li>Canvas只是一个画布，不能自己画画，需要画图工具</li>
-<li>每个Canvas对应一个画图工具，通过 canvas对象.getContext(“2d”) 获取到一个  CanvasRenderingContext2D 类型的对象</li>
+<li>创建一个<code>Canvas</code>标签</li>
+<li>获取到该<code>DOM</code>对象</li>
+<li><code>Canvas</code>只是一个画布，不能自己画画，需要画图工具</li>
+<li>每个<code>Canvas</code>对应一个画图工具，通过 <code>canvas对象.getContext(&quot;2d&quot;)</code>获取到一个  <code>CanvasRenderingContext2D</code>类型的对象</li>
 </ol>
 <h2 id="如何画直线"><a href="#如何画直线" class="headerlink" title="如何画直线"></a>如何画直线</h2><ol>
-<li>先确定在何处下笔，画图工具.moveTo(x, y)</li>
-<li>确定从开始的点画到哪里去，  画图工具.lineTo(x, y)</li>
-<li>上面两步之后，线并没有画出来，而是描点，需要最后一步进行画线  画图工具.stroke();</li>
+<li>先确定在何处下笔，画图工具<code>.moveTo(x, y)</code></li>
+<li>确定从开始的点画到哪里去，  画图工具<code>.lineTo(x, y)</code></li>
+<li>上面两步之后，线并没有画出来，而是描点，需要最后一步进行画线  画图工具<code>.stroke()</code>;</li>
 </ol>
-<h2 id="lineTo的特性"><a href="#lineTo的特性" class="headerlink" title="lineTo的特性"></a>lineTo的特性</h2><p>每次lineTo之后都会记录最后的lineTo的点，下次lineTo的时候就接着这个点继续画</p>
-<h2 id="closePath"><a href="#closePath" class="headerlink" title="closePath"></a>closePath</h2><p>将最后一次lineTo的点 和最后一次moveTo的点连起来的</p>
-<p>两条线的交界处，如果使用的是closePath 会补全缺口</p>
-<h2 id="fill"><a href="#fill" class="headerlink" title="fill"></a>fill</h2><p>可以将闭合的图形进行填充</p>
-<h2 id="非零填充原则"><a href="#非零填充原则" class="headerlink" title="非零填充原则"></a>非零填充原则</h2><p>从一个闭合空间引出一条直线，如果该直线两边的箭头数量不相等，则要填充，如果相等则不填充</p>
+<h2 id="lineTo的特性"><a href="#lineTo的特性" class="headerlink" title="lineTo的特性"></a><code>lineTo</code>的特性</h2><p>每次<code>lineTo</code>之后都会记录最后的<code>lineTo</code>的点，下次<code>lineTo</code>的时候就接着这个点继续画</p>
+<h2 id="closePath"><a href="#closePath" class="headerlink" title="closePath"></a><code>closePath</code></h2><p>将最后一次<code>lineTo</code>的点 和最后一次<code>moveTo</code>的点连起来的</p>
+<p>两条线的交界处，如果使用的是<code>closePath</code> 会补全缺口</p>
+<h2 id="fill"><a href="#fill" class="headerlink" title="fill"></a><code>fill</code></h2><p>可以将闭合的图形进行填充</p>
+<h2 id="非零填充原则"><a href="#非零填充原则" class="headerlink" title="非零填充原则"></a><code>非零填充原则</code></h2><p>从一个闭合空间引出一条直线，如果该直线两边的箭头数量不相等，则要填充，如果相等则不填充</p>
 <p>一边有一个箭头就+1<br>另一边有一个箭头就-1</p>
-<h2 id="如何绘制曲线？"><a href="#如何绘制曲线？" class="headerlink" title="如何绘制曲线？"></a>如何绘制曲线？</h2><p>使用for循环给每一个x对应一个y值，x和y的关系需要是个多次幂的方程</p>
-<h2 id="路径概念"><a href="#路径概念" class="headerlink" title="路径概念"></a>路径概念</h2><p>路径就是一次绘图，包含该次绘图中的所有的状态，线宽  颜色  是否虚线</p>
+<h2 id="如何绘制曲线？"><a href="#如何绘制曲线？" class="headerlink" title="如何绘制曲线？"></a><code>如何绘制曲线？</code></h2><p>使用for循环给每一个x对应一个y值，x和y的关系需要是个多次幂的方程</p>
+<h2 id="路径概念"><a href="#路径概念" class="headerlink" title="路径概念"></a><code>路径概念</code></h2><p>路径就是一次绘图，包含该次绘图中的所有的状态，线宽  颜色  是否虚线</p>
 <p>如果想要改变状态，就需要开启新的路径</p>
-<h2 id="beginPath"><a href="#beginPath" class="headerlink" title="beginPath"></a>beginPath</h2><p>可以用来开启新的路径</p>
-<h2 id="线型相关属性"><a href="#线型相关属性" class="headerlink" title="线型相关属性"></a>线型相关属性</h2><table>
+<h2 id="beginPath"><a href="#beginPath" class="headerlink" title="beginPath"></a><code>beginPath</code></h2><p>可以用来开启新的路径</p>
+<h2 id="线型相关属性"><a href="#线型相关属性" class="headerlink" title="线型相关属性"></a><code>线型相关属性</code></h2><table>
 <thead>
 <tr>
 <th>名称</th>
@@ -415,12 +999,12 @@
 </tr>
 </tbody>
 </table>
-<h2 id="渐变色"><a href="#渐变色" class="headerlink" title="渐变色"></a>渐变色</h2><p>将线划分为256份，每一份为一个颜色，新画一条线，依次递增，就形成了一个颜色渐变的线段</p>
+<h2 id="渐变色"><a href="#渐变色" class="headerlink" title="渐变色"></a><code>渐变色</code></h2><p>将线划分为256份，每一份为一个颜色，新画一条线，依次递增，就形成了一个颜色渐变的线段</p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;h1 id=&quot;Canvas基础&quot;&gt;&lt;a href=&quot;#Canvas基础&quot; class=&quot;headerlink&quot; title=&quot;Canvas基础&quot;&gt;&lt;/a&gt;Canvas基础&lt;/h1&gt;&lt;h2 id=&quot;Canvas是什么？&quot;&gt;&lt;a href=&quot;#Canvas是什么？&quot; class=&quot;
+      &lt;h1 id=&quot;Canvas基础&quot;&gt;&lt;a href=&quot;#Canvas基础&quot; class=&quot;headerlink&quot; title=&quot;Canvas基础&quot;&gt;&lt;/a&gt;&lt;code&gt;Canvas&lt;/code&gt;基础&lt;/h1&gt;&lt;h2 id=&quot;Canvas是什么？&quot;&gt;&lt;a href=&quot;#Canvas
     
     </summary>
     

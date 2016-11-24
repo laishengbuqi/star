@@ -5,7 +5,7 @@
   
   
   
-  <title>canvas基础 | 轻描淡写 | hhh</title>
+  <title>canvas基础 | 轻描淡写 | 马美玲的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   <meta name="theme-color" content="#3F51B5">
@@ -18,10 +18,10 @@ Canvas的用法
 创建一个Canvas标签
 获取到该DOM对象
 Canvas只是一个画布，不能自己画画，需要画图工具
-每个Canvas对应一个画图工具，通过 canvas对象.getContext(“2d”) 获取到一个  CanvasRenderingContext2D 类">
+每个Canvas对应一个画图工具，通过 canvas对象.getContext(&amp;quot;2d&amp;quot;)获取到一个  CanvasRenderingCo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="canvas基础">
-<meta property="og:url" content="http://www.mcling.xyz/2016/11/15/throb.html">
+<meta property="og:url" content="http://www.mcling.xyz/2016/11/15/canvas.html">
 <meta property="og:site_name" content="轻描淡写">
 <meta property="og:description" content="Canvas基础Canvas是什么？Canvas是HTML5中提供的标签，是一个画布。
 默认的宽高为：300 * 150
@@ -29,8 +29,8 @@ Canvas的用法
 创建一个Canvas标签
 获取到该DOM对象
 Canvas只是一个画布，不能自己画画，需要画图工具
-每个Canvas对应一个画图工具，通过 canvas对象.getContext(“2d”) 获取到一个  CanvasRenderingContext2D 类">
-<meta property="og:updated_time" content="2016-11-20T12:49:02.734Z">
+每个Canvas对应一个画图工具，通过 canvas对象.getContext(&amp;quot;2d&amp;quot;)获取到一个  CanvasRenderingCo">
+<meta property="og:updated_time" content="2016-11-23T11:32:03.442Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="canvas基础">
 <meta name="twitter:description" content="Canvas基础Canvas是什么？Canvas是HTML5中提供的标签，是一个画布。
@@ -39,7 +39,7 @@ Canvas的用法
 创建一个Canvas标签
 获取到该DOM对象
 Canvas只是一个画布，不能自己画画，需要画图工具
-每个Canvas对应一个画图工具，通过 canvas对象.getContext(“2d”) 获取到一个  CanvasRenderingContext2D 类">
+每个Canvas对应一个画图工具，通过 canvas对象.getContext(&amp;quot;2d&amp;quot;)获取到一个  CanvasRenderingCo">
   
     <link rel="alternative" href="/atom.xml" title="轻描淡写" type="application/atom+xml">
   
@@ -62,7 +62,7 @@ Canvas只是一个画布，不能自己画画，需要画图工具
           <img src="//placekitten.com/200/200">
         </a>
         <hgroup class="introduce">
-          <h5 class="nickname">strunch</h5>
+          <h5 class="nickname">马美玲</h5>
           <a href="mailto:15800726280@163.com" title="15800726280@163.com" class="mail">15800726280@163.com</a>
         </hgroup>
       </div>
@@ -189,7 +189,7 @@ Canvas只是一个画布，不能自己画画，需要画图工具
         </nav>
     </aside>
     
-<article id="post-throb" 
+<article id="post-canvas" 
   class="post-article article-type-post" itemprop="blogPost">
 
     <div class="post-card">
@@ -206,30 +206,30 @@ Canvas只是一个画布，不能自己画画，需要画图工具
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <h1 id="Canvas基础"><a href="#Canvas基础" class="headerlink" title="Canvas基础"></a>Canvas基础</h1><h2 id="Canvas是什么？"><a href="#Canvas是什么？" class="headerlink" title="Canvas是什么？"></a>Canvas是什么？</h2><p>Canvas是HTML5中提供的标签，是一个画布。</p>
+            <h1 id="Canvas基础"><a href="#Canvas基础" class="headerlink" title="Canvas基础"></a><code>Canvas</code>基础</h1><h2 id="Canvas是什么？"><a href="#Canvas是什么？" class="headerlink" title="Canvas是什么？"></a><code>Canvas</code>是什么？</h2><p><code>Canvas</code>是<code>HTML5</code>中提供的标签，是一个画布。</p>
 <p>默认的宽高为：300 * 150</p>
 <h2 id="Canvas的用法"><a href="#Canvas的用法" class="headerlink" title="Canvas的用法"></a>Canvas的用法</h2><ol>
-<li>创建一个Canvas标签</li>
-<li>获取到该DOM对象</li>
-<li>Canvas只是一个画布，不能自己画画，需要画图工具</li>
-<li>每个Canvas对应一个画图工具，通过 canvas对象.getContext(“2d”) 获取到一个  CanvasRenderingContext2D 类型的对象</li>
+<li>创建一个<code>Canvas</code>标签</li>
+<li>获取到该<code>DOM</code>对象</li>
+<li><code>Canvas</code>只是一个画布，不能自己画画，需要画图工具</li>
+<li>每个<code>Canvas</code>对应一个画图工具，通过 <code>canvas对象.getContext(&quot;2d&quot;)</code>获取到一个  <code>CanvasRenderingContext2D</code>类型的对象</li>
 </ol>
 <h2 id="如何画直线"><a href="#如何画直线" class="headerlink" title="如何画直线"></a>如何画直线</h2><ol>
-<li>先确定在何处下笔，画图工具.moveTo(x, y)</li>
-<li>确定从开始的点画到哪里去，  画图工具.lineTo(x, y)</li>
-<li>上面两步之后，线并没有画出来，而是描点，需要最后一步进行画线  画图工具.stroke();</li>
+<li>先确定在何处下笔，画图工具<code>.moveTo(x, y)</code></li>
+<li>确定从开始的点画到哪里去，  画图工具<code>.lineTo(x, y)</code></li>
+<li>上面两步之后，线并没有画出来，而是描点，需要最后一步进行画线  画图工具<code>.stroke()</code>;</li>
 </ol>
-<h2 id="lineTo的特性"><a href="#lineTo的特性" class="headerlink" title="lineTo的特性"></a>lineTo的特性</h2><p>每次lineTo之后都会记录最后的lineTo的点，下次lineTo的时候就接着这个点继续画</p>
-<h2 id="closePath"><a href="#closePath" class="headerlink" title="closePath"></a>closePath</h2><p>将最后一次lineTo的点 和最后一次moveTo的点连起来的</p>
-<p>两条线的交界处，如果使用的是closePath 会补全缺口</p>
-<h2 id="fill"><a href="#fill" class="headerlink" title="fill"></a>fill</h2><p>可以将闭合的图形进行填充</p>
-<h2 id="非零填充原则"><a href="#非零填充原则" class="headerlink" title="非零填充原则"></a>非零填充原则</h2><p>从一个闭合空间引出一条直线，如果该直线两边的箭头数量不相等，则要填充，如果相等则不填充</p>
+<h2 id="lineTo的特性"><a href="#lineTo的特性" class="headerlink" title="lineTo的特性"></a><code>lineTo</code>的特性</h2><p>每次<code>lineTo</code>之后都会记录最后的<code>lineTo</code>的点，下次<code>lineTo</code>的时候就接着这个点继续画</p>
+<h2 id="closePath"><a href="#closePath" class="headerlink" title="closePath"></a><code>closePath</code></h2><p>将最后一次<code>lineTo</code>的点 和最后一次<code>moveTo</code>的点连起来的</p>
+<p>两条线的交界处，如果使用的是<code>closePath</code> 会补全缺口</p>
+<h2 id="fill"><a href="#fill" class="headerlink" title="fill"></a><code>fill</code></h2><p>可以将闭合的图形进行填充</p>
+<h2 id="非零填充原则"><a href="#非零填充原则" class="headerlink" title="非零填充原则"></a><code>非零填充原则</code></h2><p>从一个闭合空间引出一条直线，如果该直线两边的箭头数量不相等，则要填充，如果相等则不填充</p>
 <p>一边有一个箭头就+1<br>另一边有一个箭头就-1</p>
-<h2 id="如何绘制曲线？"><a href="#如何绘制曲线？" class="headerlink" title="如何绘制曲线？"></a>如何绘制曲线？</h2><p>使用for循环给每一个x对应一个y值，x和y的关系需要是个多次幂的方程</p>
-<h2 id="路径概念"><a href="#路径概念" class="headerlink" title="路径概念"></a>路径概念</h2><p>路径就是一次绘图，包含该次绘图中的所有的状态，线宽  颜色  是否虚线</p>
+<h2 id="如何绘制曲线？"><a href="#如何绘制曲线？" class="headerlink" title="如何绘制曲线？"></a><code>如何绘制曲线？</code></h2><p>使用for循环给每一个x对应一个y值，x和y的关系需要是个多次幂的方程</p>
+<h2 id="路径概念"><a href="#路径概念" class="headerlink" title="路径概念"></a><code>路径概念</code></h2><p>路径就是一次绘图，包含该次绘图中的所有的状态，线宽  颜色  是否虚线</p>
 <p>如果想要改变状态，就需要开启新的路径</p>
-<h2 id="beginPath"><a href="#beginPath" class="headerlink" title="beginPath"></a>beginPath</h2><p>可以用来开启新的路径</p>
-<h2 id="线型相关属性"><a href="#线型相关属性" class="headerlink" title="线型相关属性"></a>线型相关属性</h2><table>
+<h2 id="beginPath"><a href="#beginPath" class="headerlink" title="beginPath"></a><code>beginPath</code></h2><p>可以用来开启新的路径</p>
+<h2 id="线型相关属性"><a href="#线型相关属性" class="headerlink" title="线型相关属性"></a><code>线型相关属性</code></h2><table>
 <thead>
 <tr>
 <th>名称</th>
@@ -263,18 +263,18 @@ Canvas只是一个画布，不能自己画画，需要画图工具
 </tr>
 </tbody>
 </table>
-<h2 id="渐变色"><a href="#渐变色" class="headerlink" title="渐变色"></a>渐变色</h2><p>将线划分为256份，每一份为一个颜色，新画一条线，依次递增，就形成了一个颜色渐变的线段</p>
+<h2 id="渐变色"><a href="#渐变色" class="headerlink" title="渐变色"></a><code>渐变色</code></h2><p>将线划分为256份，每一份为一个颜色，新画一条线，依次递增，就形成了一个颜色渐变的线段</p>
 
         </div>
         
         <blockquote class="post-copyright">
     <div class="content">
-        这里写留言或版权声明：<a href="/2016/11/15/throb.html" target="_blank" rel="external">http://www.mcling.xyz/2016/11/15/throb.html</a>
+        链接：<a href="/2016/11/15/canvas.html" target="_blank" rel="external">http://www.mcling.xyz/2016/11/15/canvas.html</a>
     </div>
     <footer>
         <a href="http://www.mcling.xyz">
-            <img src="//placekitten.com/200/200" alt="strunch">
-            strunch
+            <img src="//placekitten.com/200/200" alt="马美玲">
+            马美玲
         </a>
     </footer>
 </blockquote>
@@ -362,7 +362,7 @@ Canvas只是一个画布，不能自己画画，需要画图工具
             
     
 <div class="duoshuo" id="comments">
-	<div class="ds-thread" data-thread-key="throb" data-title="canvas基础" data-url="http://www.mcling.xyz/2016/11/15/throb.html"></div>
+	<div class="ds-thread" data-thread-key="canvas" data-title="canvas基础" data-url="http://www.mcling.xyz/2016/11/15/canvas.html"></div>
 </div>
 <script src="/js/embed.min.js?v=1.1.12"></script>
 <script src="//cdn.bootcss.com/marked/0.3.6/marked.min.js" async="async"></script>
@@ -411,7 +411,7 @@ var duoshuoQuery = {short_name:'mcling', theme: 'none'}
 BLOG.SHARE = {
 title: "canvas基础",
 summary: document.getElementsByName('summary')[0].content,
-url: "http://www.mcling.xyz/2016/11/15/throb.html" }
+url: "http://www.mcling.xyz/2016/11/15/canvas.html" }
 </script>
 <div class="global-share" id="global-share">
     <div class="tit">分享到：</div>

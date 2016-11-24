@@ -5,13 +5,13 @@
   
   
   
-  <title>js原生框架part2 | 轻描淡写 | hhh</title>
+  <title>js原生框架part2 | 轻描淡写 | 马美玲的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   <meta name="theme-color" content="#3F51B5">
   
   
-  <meta name="keywords" content="js,jquery">
+  <meta name="keywords" content="js,css样式模块">
   <meta name="description" content="hasClass方法
 功能: 如果结果集里只要有一个dom元素 具有指定的样式类，就返回true
 实现思路:
@@ -34,7 +34,7 @@
 返回ret。
 
 如何判断dom元素具有指定的样式类？在dom元素所有样式类的收尾 + 空格；在用户指定的样式类 收尾 + 空格调用indexOf方法，如果">
-<meta property="og:updated_time" content="2016-11-20T12:46:05.536Z">
+<meta property="og:updated_time" content="2016-11-23T11:07:50.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js原生框架part2">
 <meta name="twitter:description" content="hasClass方法
@@ -68,7 +68,7 @@
           <img src="//placekitten.com/200/200">
         </a>
         <hgroup class="introduce">
-          <h5 class="nickname">strunch</h5>
+          <h5 class="nickname">马美玲</h5>
           <a href="mailto:15800726280@163.com" title="15800726280@163.com" class="mail">15800726280@163.com</a>
         </hgroup>
       </div>
@@ -212,44 +212,48 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <h2 id="hasClass方法"><a href="#hasClass方法" class="headerlink" title="hasClass方法"></a>hasClass方法</h2><ol>
-<li>功能: 如果结果集里只要有一个dom元素 具有指定的样式类，就返回true</li>
+            <h2 id="hasClass方法"><a href="#hasClass方法" class="headerlink" title="hasClass方法"></a><code>hasClass</code>方法</h2><ol>
+<li>功能: 如果结果集里只要有一个<code>dom</code>元素 具有指定的样式类，就返回<code>true</code></li>
 <li><p>实现思路:</p>
 <ul>
 <li>定义结果变量<code>ret</code>，默认值为<code>false</code></li>
-<li>遍历结果集的每一个<code>dom</code>元素如果当前dom元素具有指定的样式类，将<code>ret=true</code>,结束循环</li>
-<li><p>返回ret。</p>
+<li>遍历结果集的每一个<code>dom</code>元素如果当前<code>dom</code>元素具有指定的样式类，将<code>ret=true</code>,结束循环</li>
+<li><p>返回<code>ret</code>。</p>
 </li>
-<li><p>如何判断dom元素具有指定的样式类？<br>在dom元素所有样式类的收尾 + 空格；在用户指定的样式类 收尾 + 空格<br>调用indexOf方法，如果返回值 = -1，表示没有；否则就具有指定样式类。</p>
+<li><p>如何判断<code>dom</code>元素具有指定的样式类？<br>在<code>dom</code>元素所有样式类的收尾 + 空格；在用户指定的样式类 收尾 + 空格<br>调用<code>indexOf</code>方法，如果返回值 = -1，表示没有；否则就具有指定样式类。</p>
 </li>
 </ul>
 </li>
 </ol>
-<h2 id="each方法"><a href="#each方法" class="headerlink" title="$.each方法"></a>$.each方法</h2><ol>
-<li>功能: 实现遍历数组或者伪数组,通过第二个参数(回调函数)来处理遍历到的每一个元素<br>在回调函数中,this指向的是当前边开遍历到的元素</li>
-<li>语法: $.each([数组/伪数组],callback);</li>
+<h2 id="each方法"><a href="#each方法" class="headerlink" title="$.each方法"></a><code>$.each</code>方法</h2><ol>
+<li>功能: 实现遍历数组或者伪数组,通过第二个参数(回调函数)来处理遍历到的每一个元素<br>在回调函数中,<code>this</code>指向的是当前边开遍历到的元素</li>
+<li>语法:<code>$.each([数组/伪数组],callback);</code></li>
 <li>实现思路<ul>
-<li>声明each函数,定义两个形参: 第一个遍历的(伪数组);第二个:回调函数</li>
-<li>使用for循环,遍历(伪)数组.再循环体背部执行回调函数,在执行时,给回调函数传实参</li>
-<li>实现回调函数内部this指向当前遍历到的元素</li>
-<li>通过回调函数的返回值,判定是否结束循环.规定:当返回值为false,结束循环</li>
+<li>声明<code>each</code>函数,定义两个形参: 第一个遍历的(伪数组);第二个:回调函数</li>
+<li>使用<code>for</code>循环,遍历(伪)数组.再循环体背部执行回调函数,在执行时,给回调函数传实参</li>
+<li>实现回调函数内部<code>this</code>指向当前遍历到的元素</li>
+<li>通过回调函数的返回值,判定是否结束循环.规定:当返回值为<code>false</code>,结束循环</li>
 </ul>
 </li>
 </ol>
-<h2 id="itcast中链式编程的实现"><a href="#itcast中链式编程的实现" class="headerlink" title="itcast中链式编程的实现"></a>itcast中链式编程的实现</h2><p> 1.返回当前方法的调用者: return this;</p>
-<h2 id="get方法"><a href="#get方法" class="headerlink" title="get方法"></a>get方法</h2><ol>
-<li>功能:根据参数index,获取相应dom元素</li>
-<li>实现思路<br><em>将字符串类型转换成数字
-</em><code>index &lt; 0 ==&gt; index + length</code><br>*<code>return this</code></li>
+<h2 id="itcast中链式编程的实现"><a href="#itcast中链式编程的实现" class="headerlink" title="itcast中链式编程的实现"></a><code>itcast</code>中链式编程的实现</h2><p> 1.返回当前方法的调用者: <code>return this;</code></p>
+<h2 id="get方法"><a href="#get方法" class="headerlink" title="get方法"></a><code>get</code>方法</h2><ol>
+<li>功能:根据参数<code>index</code>,获取相应<code>dom</code>元素</li>
+<li>实现思路<ul>
+<li>将字符串类型转换成数字</li>
+<li><code>index &lt; 0 ==&gt; index + length</code></li>
+<li><code>return this</code></li>
+</ul>
+</li>
 </ol>
-<h2 id="eq方法"><a href="#eq方法" class="headerlink" title="eq方法"></a>eq方法</h2><ol>
+<h2 id="eq方法"><a href="#eq方法" class="headerlink" title="eq方法"></a><code>eq</code>方法</h2><ol>
 <li>功能: 根据参数index,获取相应dom元素,转换成itcast对象,再返回</li>
 </ol>
 <h2 id="first方法"><a href="#first方法" class="headerlink" title="first方法"></a>first方法</h2><h2 id="last方法"><a href="#last方法" class="headerlink" title="last方法"></a>last方法</h2><h2 id="css方法"><a href="#css方法" class="headerlink" title="css方法"></a>css方法</h2><ol>
 <li>功能:<ul>
 <li>获取:如果只传一个参数并且类型不为对象,获取相应的样式属性值</li>
 <li>设置: a:如果只传一个参数并且类型为对象,设置多个样式值; b:传入两个参数,设置单个样式.<br>2.实现思路</li>
-<li>给itcast原型添加css方法,定义两个参数</li>
+<li>给<code>itcast</code>原型添加<code>css</code>方法,定义两个参数</li>
 <li>如果只传入一个参数<ul>
 <li>类型为对象的话,同时设置多个样式属性</li>
 <li>类型不为对象,获取指定的样式值</li>
@@ -259,34 +263,43 @@
 </ul>
 </li>
 </ol>
-<h2 id="addClass方法"><a href="#addClass方法" class="headerlink" title="addClass方法"></a>addClass方法</h2><ol>
-<li>功能:给结果集中的每一个<code>dom</code>元素添加指定样式类<br>2.实现思路<ul>
-<li>遍历this上的每一个dom元素<br>*首先判断当前遍历到的dom元素是否含有样式类.如果不具有,就给其添加指定的样式类.</li>
+<h2 id="addClass方法"><a href="#addClass方法" class="headerlink" title="addClass方法"></a><code>addClass</code>方法</h2><ol>
+<li>功能: 给结果集中的每一个<code>dom</code>元素添加指定样式类</li>
+<li>实现思路<ul>
+<li>遍历<code>this上</code>的每一个<code>dom</code>元素</li>
+<li>首先判断当前遍历到的<code>dom</code>元素是否含有样式类.如果不具有,就给其添加指定的样式类.</li>
 </ul>
 </li>
 </ol>
-<h2 id="removeClass方法"><a href="#removeClass方法" class="headerlink" title="removeClass方法"></a>removeClass方法</h2><p>1.功能:删除结果集中的每一个dom元素的指定样式类<br>2.实现思路</p>
-<ul>
+<h2 id="removeClass方法"><a href="#removeClass方法" class="headerlink" title="removeClass方法"></a><code>removeClass</code>方法</h2><ol>
+<li>功能: 删除结果集中的每一个dom元素的指定样式类</li>
+<li>实现思路<ul>
 <li>遍历this上的每一个dom元素</li>
-<li>(‘ ‘+ v.className +’ ‘).replace(‘ ‘ + className +’’,’’)</li>
+<li><code>(&#39; &#39;+ v.className +&#39; &#39;).replace(&#39; &#39; + className +&#39;&#39;,&#39;&#39;)</code></li>
 </ul>
-<h2 id="toggleClass方法"><a href="#toggleClass方法" class="headerlink" title="toggleClass方法"></a>toggleClass方法</h2><ol>
+</li>
+</ol>
+<h2 id="toggleClass方法"><a href="#toggleClass方法" class="headerlink" title="toggleClass方法"></a><code>toggleClass</code>方法</h2><ol>
 <li>功能: 切换指定的样式类: 如果有,就删除,没有就添加</li>
-<li>实现思路:<br> <em>遍历this上的每一个dom元素
- </em>判断当前遍历到的dom元素是否含有指定的样式类<br> <em>如果有,就删除
- </em>如果没有就添加</li>
+<li>实现思路:<ul>
+<li>遍历<code>this</code>上的每一个<code>dom</code>元素</li>
+<li>判断当前遍历到的<code>dom</code>元素是否含有指定的样式类</li>
+<li>如果有,就删除</li>
+<li>如果没有就添加</li>
+</ul>
+</li>
 </ol>
 
         </div>
         
         <blockquote class="post-copyright">
     <div class="content">
-        这里写留言或版权声明：<a href="/2016/11/18/js1.html" target="_blank" rel="external">http://www.mcling.xyz/2016/11/18/js1.html</a>
+        链接：<a href="/2016/11/18/js1.html" target="_blank" rel="external">http://www.mcling.xyz/2016/11/18/js1.html</a>
     </div>
     <footer>
         <a href="http://www.mcling.xyz">
-            <img src="//placekitten.com/200/200" alt="strunch">
-            strunch
+            <img src="//placekitten.com/200/200" alt="马美玲">
+            马美玲
         </a>
     </footer>
 </blockquote>
@@ -298,7 +311,7 @@
 
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jquery/">jquery</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css样式模块/">css样式模块</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
 
 
             

@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+  <title>js原生框架part6 | 轻描淡写 | 马美玲的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="theme-color" content="#3F51B5">
+  
+  
+  <meta name="keywords" content="js,动画">
+  <meta name="description" content="动画原理: 根据人眼睛具有0.1秒的视觉残留,只有在一秒钟切换至少24个画面就会产生动画动画的基本结构123456function animate()&amp;#123;    function render()&amp;#123;    &amp;#125;    window.setInterval(render,time);&amp;#125;
+匀速直线动画
+固定时间
+固定距离
+如何判定动画结束的时机?
+使用时间来判断是否">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js原生框架part6">
+<meta property="og:url" content="http://www.mcling.xyz/2016/11/24/js3.html">
+<meta property="og:site_name" content="轻描淡写">
+<meta property="og:description" content="动画原理: 根据人眼睛具有0.1秒的视觉残留,只有在一秒钟切换至少24个画面就会产生动画动画的基本结构123456function animate()&amp;#123;    function render()&amp;#123;    &amp;#125;    window.setInterval(render,time);&amp;#125;
+匀速直线动画
+固定时间
+固定距离
+如何判定动画结束的时机?
+使用时间来判断是否">
+<meta property="og:updated_time" content="2016-11-24T13:32:06.506Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="js原生框架part6">
+<meta name="twitter:description" content="动画原理: 根据人眼睛具有0.1秒的视觉残留,只有在一秒钟切换至少24个画面就会产生动画动画的基本结构123456function animate()&amp;#123;    function render()&amp;#123;    &amp;#125;    window.setInterval(render,time);&amp;#125;
+匀速直线动画
+固定时间
+固定距离
+如何判定动画结束的时机?
+使用时间来判断是否">
+  
+    <link rel="alternative" href="/atom.xml" title="轻描淡写" type="application/atom+xml">
+  
+  <meta name="summary" content="傻与不傻，要看你会不会装傻">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/style.css?v=1.1.12">
+</head>
+
+<body>
+  <div id="loading" class="active"></div>
+
+  <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="//placekitten.com/200/200">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">马美玲</h5>
+          <a href="mailto:15800726280@163.com" title="15800726280@163.com" class="mail">15800726280@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/laishengbuqi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.weibo.com/mameiling1570" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/guestbook"  >
+                <i class="icon icon-lg icon-comment"></i>
+                留言
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user"></i>
+                关于
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/links"  >
+                <i class="icon icon-lg icon-link"></i>
+                链接
+              </a>
+            </li>
+        
+      </ul>
+
+      <footer class="footer">
+  <p><a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0;vertical-align:middle;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAAPCAMAAABEF7i9AAAAllBMVEUAAAD///+rsapERER3d3eIiIjMzMzu7u4iIiKUmZO6v7rKzsoODg4RERFVVVUNDQ0NDg0PEA8zMzNLTEtbXltmZmZydnF9gn2AgICPkI+ZmZmqqqq7u7vFxsXIzMgNDQwZGRkgICAhISEkJSMnKCcuMC4xMzE5Ozk7PTtBQkFCQkJDQ0Nna2eGhoaHh4ezuLLGysbd3d1wVGpAAAAA4UlEQVR42q2T1xqCMAyFk7QsBQeKA9x7j/d/OSm22CpX0nzcpA1/T05aAOuBVkMAScQFHLnEwoCo2f1TnQIGoVMewjZEjVFN4GH1Ue1Cn2jWqwfsOOj6wDwGvotsl/c8lv7KIq1eLOsT0HMFHMIE/RZyHnlphryT9zyV+8WH5e8yQw3wnQvgAFxPTKUVi555SHR/lOfLMgVTeDlSfN+TaoUsiTyeIm+bCkHvCA2FUKG48LDtYBZBknsYP/G8NTw0gaaHyuQf4H5pecrB/FYCT2sL9zAfy1Xyjou6L8X2W7YcLyBZCRtnq/zfAAAAAElFTkSuQmCC" /></a></p>
+  <p>轻描淡写 &copy; 2016</p>
+  <p>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme
+  <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></p>
+  <a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-2x icon-rss-square"></i></a>
+</footer>
+
+    </div>
+  </div>
+</aside>
+
+  <main id="main">
+    <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">js原生框架part6</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-share">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container">
+        <h1 class="title">js原生框架part6</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2016-11-24T01:15:14.000Z" itemprop="datePublished" class="page-time">
+  2016-11-24
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/js原生框架/">js原生框架</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#动画原理-根据人眼睛具有0-1秒的视觉残留-只有在一秒钟切换至少24个画面就会产生动画"><span class="post-toc-number">1.</span> <span class="post-toc-text">动画原理: 根据人眼睛具有0.1秒的视觉残留,只有在一秒钟切换至少24个画面就会产生动画</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#动画的基本结构"><span class="post-toc-number">2.</span> <span class="post-toc-text">动画的基本结构</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#匀速直线动画"><span class="post-toc-number">3.</span> <span class="post-toc-text">匀速直线动画</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#匀减速直线动画"><span class="post-toc-number">4.</span> <span class="post-toc-text">匀减速直线动画</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#封装动画库"><span class="post-toc-number">5.</span> <span class="post-toc-text">封装动画库</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#多属性动画的实现"><span class="post-toc-number">6.</span> <span class="post-toc-text">多属性动画的实现</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-js3" 
+  class="post-article article-type-post" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">js原生框架part6</h1>
+        <div class="post-meta">
+            <time datetime="2016-11-24T01:15:14.000Z" itemprop="datePublished" class="post-time">
+  2016-11-24
+</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/js原生框架/">js原生框架</a></li></ul>
+
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="动画原理-根据人眼睛具有0-1秒的视觉残留-只有在一秒钟切换至少24个画面就会产生动画"><a href="#动画原理-根据人眼睛具有0-1秒的视觉残留-只有在一秒钟切换至少24个画面就会产生动画" class="headerlink" title="动画原理: 根据人眼睛具有0.1秒的视觉残留,只有在一秒钟切换至少24个画面就会产生动画"></a>动画原理: 根据人眼睛具有0.1秒的视觉残留,只有在一秒钟切换至少24个画面就会产生动画</h2><h2 id="动画的基本结构"><a href="#动画的基本结构" class="headerlink" title="动画的基本结构"></a>动画的基本结构</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">animate</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">render</span>(<span class="params"></span>)</span>&#123;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">    <span class="built_in">window</span>.setInterval(render,time);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="匀速直线动画"><a href="#匀速直线动画" class="headerlink" title="匀速直线动画"></a>匀速直线动画</h2><ol>
+<li>固定时间</li>
+<li>固定距离</li>
+<li>如何判定动画结束的时机?<ul>
+<li>使用时间来判断是否结束动画</li>
+<li>如果动画时间到达了指定的时间,那么就结束动画,并且让动画元素到达终点</li>
+</ul>
+</li>
+<li>实现思路<ul>
+<li>定义动画函数,animate函数,当调用animate函数时,即动画开始的时间</li>
+<li>定义render函数,用来给动画元素设置属性值<ul>
+<li>计算当前动画元素所在的位置,然后累加到其对应属性值上</li>
+<li>首先计算动画的时间间隔</li>
+<li>如果时间间隔大于或等于指定的总时间,那么就停止动画并设置动画元素到达终点</li>
+<li>否则,根据速度,动画时间间隔计算出位移,在将其与起始位置累加后赋值给elem</li>
+</ul>
+</li>
+<li>定义定时器,开始动画</li>
+</ul>
+</li>
+</ol>
+<h2 id="匀减速直线动画"><a href="#匀减速直线动画" class="headerlink" title="匀减速直线动画"></a>匀减速直线动画</h2><ol>
+<li>物理公式<ul>
+<li>a: 加速度</li>
+<li>t: 时间间隔</li>
+<li>v0: 初始速度</li>
+<li>vt: 末速度</li>
+<li>S: 位移</li>
+<li>正方向: S = v0 <em> t + a </em> t * t / 2;</li>
+</ul>
+</li>
+<li>S ==&gt; target-location<br>t ==&gt; duration<br>v0 = 0</li>
+<li><p>正方向 a = 2 <em> ( S - v0 </em> t ) / ( t <em> t )<br> ==&gt; = 2 </em> S / ( t <em> t )<br> ==&gt; = 2 </em> ( target - location ) / ( duration <em> duration)<br>vt = 2 </em>( target -location) / duration</p>
+</li>
+<li><p>time时间间隔内的匀减速位移 tween = v0 <em> time -a </em> time <em> time / 2<br>==&gt; tween = 2 </em> distance <em> time / duration - distance </em> time <em> time / ( duration </em> duration )</p>
+</li>
+</ol>
+<h2 id="封装动画库"><a href="#封装动画库" class="headerlink" title="封装动画库"></a>封装动画库</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line">                   x: null</div><div class="line">                   t: 时间间隔</div><div class="line">                   b: 起始位置</div><div class="line">                   c: 终止位置</div><div class="line">                   d: 总时间</div><div class="line"></div><div class="line">                  */</div><div class="line">                 <span class="keyword">var</span> easing = &#123;		</div><div class="line">		<span class="attr">linear</span>: <span class="function"><span class="keyword">function</span>(<span class="params">x, t, b, c, d</span>) </span>&#123;</div><div class="line">			<span class="keyword">return</span> (c - b) * t / d;</div><div class="line">		&#125;,</div><div class="line">		<span class="attr">minusspeed</span>: <span class="function"><span class="keyword">function</span>(<span class="params">x, t, b, c, d</span>) </span>&#123;</div><div class="line">			<span class="keyword">return</span> <span class="number">2</span> * (c - b) * t / d - (c - b) * t * t / (d * d);</div><div class="line">		&#125;,</div><div class="line">		<span class="attr">easeInQuad</span>: <span class="function"><span class="keyword">function</span>(<span class="params">x, t, b, c, d</span>) </span>&#123;</div><div class="line">			<span class="keyword">return</span> c * (t /= d) * t + b;</div><div class="line">		&#125;,</div><div class="line">		<span class="attr">easeOutQuad</span>: <span class="function"><span class="keyword">function</span>(<span class="params">x, t, b, c, d</span>) </span>&#123;</div><div class="line">			<span class="keyword">return</span> -c * (t /= d) * (t - <span class="number">2</span>) + b;</div><div class="line">		&#125;,</div><div class="line">		<span class="attr">easeInOutQuad</span>: <span class="function"><span class="keyword">function</span>(<span class="params">x, t, b, c, d</span>) </span>&#123;</div><div class="line">			<span class="keyword">if</span> ((t /= d / <span class="number">2</span>) &lt; <span class="number">1</span>) <span class="keyword">return</span> c / <span class="number">2</span> * t * t + b;</div><div class="line">			<span class="keyword">return</span> -c / <span class="number">2</span> * ((--t) * (t - <span class="number">2</span>) - <span class="number">1</span>) + b;</div><div class="line">		&#125;,</div><div class="line">		<span class="attr">easeInCubic</span>: <span class="function"><span class="keyword">function</span>(<span class="params">x, t, b, c, d</span>) </span>&#123;</div><div class="line">			<span class="keyword">return</span> c * (t /= d) * t * t + b;</div><div class="line">		&#125;,</div><div class="line">		<span class="attr">easeOutCubic</span>: <span class="function"><span class="keyword">function</span>(<span class="params">x, t, b, c, d</span>) </span>&#123;</div><div class="line">			<span class="keyword">return</span> c * ((t = t / d - <span class="number">1</span>) * t * t + <span class="number">1</span>) + b;</div><div class="line">		&#125;,</div><div class="line">		<span class="attr">easeInOutCubic</span>: <span class="function"><span class="keyword">function</span>(<span class="params">x, t, b, c, d</span>) </span>&#123;</div><div class="line">			<span class="keyword">if</span> ((t /= d / <span class="number">2</span>) &lt; <span class="number">1</span>) <span class="keyword">return</span> c / <span class="number">2</span> * t * t * t + b;</div><div class="line">			<span class="keyword">return</span> c / <span class="number">2</span> * ((t -= <span class="number">2</span>) * t * t + <span class="number">2</span>) + b;</div><div class="line">		&#125;,</div><div class="line">		<span class="attr">easeInQuart</span>: <span class="function"><span class="keyword">function</span>(<span class="params">x, t, b, c, d</span>) </span>&#123;</div><div class="line">			<span class="keyword">return</span> c * (t /= d) * t * t * t + b;</div><div class="line">		&#125;,</div><div class="line">		<span class="attr">easeOutQuart</span>: <span class="function"><span class="keyword">function</span>(<span class="params">x, t, b, c, d</span>) </span>&#123;</div><div class="line">			<span class="keyword">return</span> -c * ((t = t / d - <span class="number">1</span>) * t * t * t - <span class="number">1</span>) + b;</div><div class="line">		&#125;,</div><div class="line">		<span class="attr">easeInOutQuart</span>: <span class="function"><span class="keyword">function</span>(<span class="params">x, t, b, c, d</span>) </span>&#123;</div><div class="line">			<span class="keyword">if</span> ((t /= d / <span class="number">2</span>) &lt; <span class="number">1</span>) <span class="keyword">return</span> c / <span class="number">2</span> * t * t * t * t + b;</div><div class="line">			<span class="keyword">return</span> -c / <span class="number">2</span> * ((t -= <span class="number">2</span>) * t * t * t - <span class="number">2</span>) + b;</div><div class="line">		&#125;,</div><div class="line">		<span class="attr">easeInQuint</span>: <span class="function"><span class="keyword">function</span>(<span class="params">x, t, b, c, d</span>) </span>&#123;</div><div class="line">			<span class="keyword">return</span> c * (t /= d) * t * t * t * t + b;</div><div class="line">		&#125;,</div><div class="line">		<span class="attr">easeOutQuint</span>: <span class="function"><span class="keyword">function</span>(<span class="params">x, t, b, c, d</span>) </span>&#123;</div><div class="line">			<span class="keyword">return</span> c * ((t = t / d - <span class="number">1</span>) * t * t * t * t + <span class="number">1</span>) + b;</div><div class="line">		&#125;,</div><div class="line">		<span class="attr">easeInOutQuint</span>: <span class="function"><span class="keyword">function</span>(<span class="params">x, t, b, c, d</span>) </span>&#123;</div><div class="line">			<span class="keyword">if</span> ((t /= d / <span class="number">2</span>) &lt; <span class="number">1</span>) <span class="keyword">return</span> c / <span class="number">2</span> * t * t * t * t * t + b;</div><div class="line">			<span class="keyword">return</span> c / <span class="number">2</span> * ((t -= <span class="number">2</span>) * t * t * t * t + <span class="number">2</span>) + b;</div><div class="line">		&#125;,</div><div class="line">		<span class="attr">easeInSine</span>: <span class="function"><span class="keyword">function</span>(<span class="params">x, t, b, c, d</span>) </span>&#123;</div><div class="line">			<span class="keyword">return</span> -c * <span class="built_in">Math</span>.cos(t / d * (<span class="built_in">Math</span>.PI / <span class="number">2</span>)) + c + b;</div><div class="line">		&#125;,</div><div class="line">		<span class="attr">easeOutSine</span>: <span class="function"><span class="keyword">function</span>(<span class="params">x, t, b, c, d</span>) </span>&#123;</div><div class="line">			<span class="keyword">return</span> c * <span class="built_in">Math</span>.sin(t / d * (<span class="built_in">Math</span>.PI / <span class="number">2</span>)) + b;</div><div class="line">		&#125;,</div><div class="line">		<span class="attr">easeInOutSine</span>: <span class="function"><span class="keyword">function</span>(<span class="params">x, t, b, c, d</span>) </span>&#123;</div><div class="line">			<span class="keyword">return</span> -c / <span class="number">2</span> * (<span class="built_in">Math</span>.cos(<span class="built_in">Math</span>.PI * t / d) - <span class="number">1</span>) + b;</div><div class="line">		&#125;,</div><div class="line">		<span class="attr">easeInExpo</span>: <span class="function"><span class="keyword">function</span>(<span class="params">x, t, b, c, d</span>) </span>&#123;</div><div class="line">			<span class="keyword">return</span> (t == <span class="number">0</span>) ? b : c * <span class="built_in">Math</span>.pow(<span class="number">2</span>, <span class="number">10</span> * (t / d - <span class="number">1</span>)) + b;</div><div class="line">		&#125;,</div><div class="line">		<span class="attr">easeOutExpo</span>: <span class="function"><span class="keyword">function</span>(<span class="params">x, t, b, c, d</span>) </span>&#123;</div><div class="line">			<span class="keyword">return</span> (t == d) ? b + c : c * (-<span class="built_in">Math</span>.pow(<span class="number">2</span>, <span class="number">-10</span> * t / d) + <span class="number">1</span>) + b;</div><div class="line">		&#125;,</div><div class="line">		<span class="attr">easeInOutExpo</span>: <span class="function"><span class="keyword">function</span>(<span class="params">x, t, b, c, d</span>) </span>&#123;</div><div class="line">			<span class="keyword">if</span> (t == <span class="number">0</span>) <span class="keyword">return</span> b;</div><div class="line">			<span class="keyword">if</span> (t == d) <span class="keyword">return</span> b + c;</div><div class="line">			<span class="keyword">if</span> ((t /= d / <span class="number">2</span>) &lt; <span class="number">1</span>) <span class="keyword">return</span> c / <span class="number">2</span> * <span class="built_in">Math</span>.pow(<span class="number">2</span>, <span class="number">10</span> * (t - <span class="number">1</span>)) + b;</div><div class="line">			<span class="keyword">return</span> c / <span class="number">2</span> * (-<span class="built_in">Math</span>.pow(<span class="number">2</span>, <span class="number">-10</span> * --t) + <span class="number">2</span>) + b;</div><div class="line">		&#125;,</div><div class="line">		<span class="attr">easeInCirc</span>: <span class="function"><span class="keyword">function</span>(<span class="params">x, t, b, c, d</span>) </span>&#123;</div><div class="line">			<span class="keyword">return</span> -c * (<span class="built_in">Math</span>.sqrt(<span class="number">1</span> - (t /= d) * t) - <span class="number">1</span>) + b;</div><div class="line">		&#125;,</div><div class="line">		<span class="attr">easeOutCirc</span>: <span class="function"><span class="keyword">function</span>(<span class="params">x, t, b, c, d</span>) </span>&#123;</div><div class="line">			<span class="keyword">return</span> c * <span class="built_in">Math</span>.sqrt(<span class="number">1</span> - (t = t / d - <span class="number">1</span>) * t) + b;</div><div class="line">		&#125;,</div><div class="line">		<span class="attr">easeInOutCirc</span>: <span class="function"><span class="keyword">function</span>(<span class="params">x, t, b, c, d</span>) </span>&#123;</div><div class="line">			<span class="keyword">if</span> ((t /= d / <span class="number">2</span>) &lt; <span class="number">1</span>) <span class="keyword">return</span> -c / <span class="number">2</span> * (<span class="built_in">Math</span>.sqrt(<span class="number">1</span> - t * t) - <span class="number">1</span>) + b;</div><div class="line">			<span class="keyword">return</span> c / <span class="number">2</span> * (<span class="built_in">Math</span>.sqrt(<span class="number">1</span> - (t -= <span class="number">2</span>) * t) + <span class="number">1</span>) + b;</div><div class="line">		&#125;,</div><div class="line">		<span class="attr">easeInElastic</span>: <span class="function"><span class="keyword">function</span>(<span class="params">x, t, b, c, d</span>) </span>&#123;</div><div class="line">			<span class="keyword">var</span> s = <span class="number">1.70158</span>;</div><div class="line">			<span class="keyword">var</span> p = <span class="number">0</span>;</div><div class="line">			<span class="keyword">var</span> a = c;</div><div class="line">			<span class="keyword">if</span> (t == <span class="number">0</span>) <span class="keyword">return</span> b;</div><div class="line">			<span class="keyword">if</span> ((t /= d) == <span class="number">1</span>) <span class="keyword">return</span> b + c;</div><div class="line">			<span class="keyword">if</span> (!p) p = d * <span class="number">.3</span>;</div><div class="line">			<span class="keyword">if</span> (a &lt; <span class="built_in">Math</span>.abs(c)) &#123;</div><div class="line">				a = c;</div><div class="line">				<span class="keyword">var</span> s = p / <span class="number">4</span>;</div><div class="line">			&#125; <span class="keyword">else</span> <span class="keyword">var</span> s = p / (<span class="number">2</span> * <span class="built_in">Math</span>.PI) * <span class="built_in">Math</span>.asin(c / a);</div><div class="line">			<span class="keyword">return</span> -(a * <span class="built_in">Math</span>.pow(<span class="number">2</span>, <span class="number">10</span> * (t -= <span class="number">1</span>)) * <span class="built_in">Math</span>.sin((t * d - s) * (<span class="number">2</span> * <span class="built_in">Math</span>.PI) / p)) + b;</div><div class="line">		&#125;,</div><div class="line">		<span class="attr">easeOutElastic</span>: <span class="function"><span class="keyword">function</span>(<span class="params">x, t, b, c, d</span>) </span>&#123;</div><div class="line">			<span class="keyword">var</span> s = <span class="number">1.70158</span>;</div><div class="line">			<span class="keyword">var</span> p = <span class="number">0</span>;</div><div class="line">			<span class="keyword">var</span> a = c;</div><div class="line">			<span class="keyword">if</span> (t == <span class="number">0</span>) <span class="keyword">return</span> b;</div><div class="line">			<span class="keyword">if</span> ((t /= d) == <span class="number">1</span>) <span class="keyword">return</span> b + c;</div><div class="line">			<span class="keyword">if</span> (!p) p = d * <span class="number">.3</span>;</div><div class="line">			<span class="keyword">if</span> (a &lt; <span class="built_in">Math</span>.abs(c)) &#123;</div><div class="line">				a = c;</div><div class="line">				<span class="keyword">var</span> s = p / <span class="number">4</span>;</div><div class="line">			&#125; <span class="keyword">else</span> <span class="keyword">var</span> s = p / (<span class="number">2</span> * <span class="built_in">Math</span>.PI) * <span class="built_in">Math</span>.asin(c / a);</div><div class="line">			<span class="keyword">return</span> a * <span class="built_in">Math</span>.pow(<span class="number">2</span>, <span class="number">-10</span> * t) * <span class="built_in">Math</span>.sin((t * d - s) * (<span class="number">2</span> * <span class="built_in">Math</span>.PI) / p) + c + b;</div><div class="line">		&#125;,</div><div class="line">		<span class="attr">easeInOutElastic</span>: <span class="function"><span class="keyword">function</span>(<span class="params">x, t, b, c, d</span>) </span>&#123;</div><div class="line">			<span class="keyword">var</span> s = <span class="number">1.70158</span>;</div><div class="line">			<span class="keyword">var</span> p = <span class="number">0</span>;</div><div class="line">			<span class="keyword">var</span> a = c;</div><div class="line">			<span class="keyword">if</span> (t == <span class="number">0</span>) <span class="keyword">return</span> b;</div><div class="line">			<span class="keyword">if</span> ((t /= d / <span class="number">2</span>) == <span class="number">2</span>) <span class="keyword">return</span> b + c;</div><div class="line">			<span class="keyword">if</span> (!p) p = d * (<span class="number">.3</span> * <span class="number">1.5</span>);</div><div class="line">			<span class="keyword">if</span> (a &lt; <span class="built_in">Math</span>.abs(c)) &#123;</div><div class="line">				a = c;</div><div class="line">				<span class="keyword">var</span> s = p / <span class="number">4</span>;</div><div class="line">			&#125; <span class="keyword">else</span> <span class="keyword">var</span> s = p / (<span class="number">2</span> * <span class="built_in">Math</span>.PI) * <span class="built_in">Math</span>.asin(c / a);</div><div class="line">			<span class="keyword">if</span> (t &lt; <span class="number">1</span>) <span class="keyword">return</span> <span class="number">-.5</span> * (a * <span class="built_in">Math</span>.pow(<span class="number">2</span>, <span class="number">10</span> * (t -= <span class="number">1</span>)) * <span class="built_in">Math</span>.sin((t * d - s) * (<span class="number">2</span> * <span class="built_in">Math</span>.PI) / p)) + b;</div><div class="line">			<span class="keyword">return</span> a * <span class="built_in">Math</span>.pow(<span class="number">2</span>, <span class="number">-10</span> * (t -= <span class="number">1</span>)) * <span class="built_in">Math</span>.sin((t * d - s) * (<span class="number">2</span> * <span class="built_in">Math</span>.PI) / p) * <span class="number">.5</span> + c + b;</div><div class="line">		&#125;,</div><div class="line">		<span class="attr">easeInBack</span>: <span class="function"><span class="keyword">function</span>(<span class="params">x, t, b, c, d, s</span>) </span>&#123;</div><div class="line">			<span class="keyword">if</span> (s == <span class="literal">undefined</span>) s = <span class="number">1.70158</span>;</div><div class="line">			<span class="keyword">return</span> c * (t /= d) * t * ((s + <span class="number">1</span>) * t - s) + b;</div><div class="line">		&#125;,</div><div class="line">		<span class="attr">easeOutBack</span>: <span class="function"><span class="keyword">function</span>(<span class="params">x, t, b, c, d, s</span>) </span>&#123;</div><div class="line">			<span class="keyword">if</span> (s == <span class="literal">undefined</span>) s = <span class="number">1.70158</span>;</div><div class="line">			<span class="keyword">return</span> c * ((t = t / d - <span class="number">1</span>) * t * ((s + <span class="number">1</span>) * t + s) + <span class="number">1</span>) + b;</div><div class="line">		&#125;,</div><div class="line">		<span class="attr">easeInOutBack</span>: <span class="function"><span class="keyword">function</span>(<span class="params">x, t, b, c, d, s</span>) </span>&#123;</div><div class="line">			<span class="keyword">if</span> (s == <span class="literal">undefined</span>) s = <span class="number">1.70158</span>;</div><div class="line">			<span class="keyword">if</span> ((t /= d / <span class="number">2</span>) &lt; <span class="number">1</span>) <span class="keyword">return</span> c / <span class="number">2</span> * (t * t * (((s *= (<span class="number">1.525</span>)) + <span class="number">1</span>) * t - s)) + b;</div><div class="line">			<span class="keyword">return</span> c / <span class="number">2</span> * ((t -= <span class="number">2</span>) * t * (((s *= (<span class="number">1.525</span>)) + <span class="number">1</span>) * t + s) + <span class="number">2</span>) + b;</div><div class="line">		&#125;,</div><div class="line">		<span class="attr">easeOutBounce</span>: <span class="function"><span class="keyword">function</span>(<span class="params">x, t, b, c, d</span>) </span>&#123;</div><div class="line">			<span class="keyword">if</span> ((t /= d) &lt; (<span class="number">1</span> / <span class="number">2.75</span>)) &#123;</div><div class="line">				<span class="keyword">return</span> c * (<span class="number">7.5625</span> * t * t) + b;</div><div class="line">			&#125; <span class="keyword">else</span> <span class="keyword">if</span> (t &lt; (<span class="number">2</span> / <span class="number">2.75</span>)) &#123;</div><div class="line">				<span class="keyword">return</span> c * (<span class="number">7.5625</span> * (t -= (<span class="number">1.5</span> / <span class="number">2.75</span>)) * t + <span class="number">.75</span>) + b;</div><div class="line">			&#125; <span class="keyword">else</span> <span class="keyword">if</span> (t &lt; (<span class="number">2.5</span> / <span class="number">2.75</span>)) &#123;</div><div class="line">				<span class="keyword">return</span> c * (<span class="number">7.5625</span> * (t -= (<span class="number">2.25</span> / <span class="number">2.75</span>)) * t + <span class="number">.9375</span>) + b;</div><div class="line">			&#125; <span class="keyword">else</span> &#123;</div><div class="line">				<span class="keyword">return</span> c * (<span class="number">7.5625</span> * (t -= (<span class="number">2.625</span> / <span class="number">2.75</span>)) * t + <span class="number">.984375</span>) + b;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;;</div></pre></td></tr></table></figure>
+<h2 id="多属性动画的实现"><a href="#多属性动画的实现" class="headerlink" title="多属性动画的实现"></a>多属性动画的实现</h2><ol>
+<li><p>获取所有动画属性的起始值</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">      <span class="keyword">var</span> kv=&#123;</div><div class="line">	<span class="string">'left'</span>:<span class="string">'offsetLeft'</span>,</div><div class="line">	<span class="string">'top'</span>:<span class="string">'offsetTop'</span>,</div><div class="line">	<span class="string">'width'</span>:<span class="string">'offsetWidth'</span>,</div><div class="line">	<span class="string">'height'</span>:<span class="string">'offsetHeight'</span></div><div class="line">&#125;;</div><div class="line"><span class="comment">//获取起始位置</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getLocation</span>(<span class="params">elem,target</span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> obj=&#123;&#125;;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">var</span> k <span class="keyword">in</span> target)&#123;</div><div class="line">		obj[k]=elem[kv[k]];</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> obj;</div><div class="line">&#125;</div><div class="line"><span class="comment">//获取动画总距离</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getDistance</span>(<span class="params">location,target</span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> obj=&#123;&#125;;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">var</span> k <span class="keyword">in</span> target)&#123;</div><div class="line">		obj[k]=<span class="built_in">parseFloat</span>(target[k])-location[k];</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> obj;</div><div class="line">&#125;</div><div class="line"><span class="comment">//获取单位时间间隔的位移</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getTween</span>(<span class="params">time,location,target,duration,easingName</span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> obj=&#123;&#125;;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">var</span> k <span class="keyword">in</span> target)&#123;</div><div class="line">		obj[k]=easing[easingName](<span class="literal">null</span>,time,location[k],target[k],duration);</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> obj;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">setStyles</span>(<span class="params">elem,location,tween</span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> k;</div><div class="line">	<span class="keyword">for</span>(k <span class="keyword">in</span> location)&#123;</div><div class="line">            elem.style[k]=location[k]+tween[k]+<span class="string">'px'</span>;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>animate动画</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> animate=<span class="function"><span class="keyword">function</span>(<span class="params">elem,target,duration,easingName</span>)</span>&#123;</div><div class="line">		<span class="keyword">var</span> timer,<span class="comment">//定时器id</span></div><div class="line">		tween,<span class="comment">//单位时间间隔的位移</span></div><div class="line">		location,<span class="comment">//起始位置</span></div><div class="line">		distance,<span class="comment">//动画总距离</span></div><div class="line">		startTime,<span class="comment">//动画开始时间</span></div><div class="line">		currentTime,<span class="comment">//动画当前时间</span></div><div class="line">		time;</div><div class="line"></div><div class="line">		location=getLocation(elem,target);</div><div class="line">		distance=getDistance(location,target);</div><div class="line">		startTime=+<span class="keyword">new</span> <span class="built_in">Date</span>;<span class="comment">//转换毫秒值</span></div><div class="line"></div><div class="line">		<span class="comment">//计算动画当前位移,并确定动画元素的位置</span></div><div class="line">		<span class="keyword">var</span> render=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">			currentTime=+<span class="keyword">new</span> <span class="built_in">Date</span>;</div><div class="line">			time=currentTime-startTime;</div><div class="line">			<span class="comment">//如果当前动画时间间隔大于或等于指定的总时间</span></div><div class="line">			<span class="comment">//停止动画,并设置动画元素到达终点</span></div><div class="line">			<span class="keyword">if</span>(time&gt;=duration)&#123;</div><div class="line">				<span class="comment">//1.设置动画元素到达终点</span></div><div class="line">				tween=distance;</div><div class="line">				<span class="comment">//2. 清除定时器</span></div><div class="line">				<span class="built_in">window</span>.clearInterval(timer);</div><div class="line">			&#125;<span class="keyword">else</span>&#123;</div><div class="line">				<span class="comment">//根据匀减速运动公式求time时间间隔内的位移</span></div><div class="line">				<span class="comment">//指定动画元素的位置</span></div><div class="line">				<span class="comment">//注意:加上起始位置</span></div><div class="line">				tween=getTween(time,location,target,duration,easingName);</div><div class="line">			&#125;</div><div class="line">			<span class="comment">//设置动画属性值</span></div><div class="line">			setStyles(elem,location,tween);</div><div class="line">		&#125;;</div><div class="line">		<span class="comment">//启动定时器 开始动画</span></div><div class="line">		timer=<span class="built_in">window</span>.setInterval(render,<span class="number">1000</span>/<span class="number">60</span>);</div><div class="line">	&#125;;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+
+        </div>
+        
+        <blockquote class="post-copyright">
+    <div class="content">
+        链接：<a href="/2016/11/24/js3.html" target="_blank" rel="external">http://www.mcling.xyz/2016/11/24/js3.html</a>
+    </div>
+    <footer>
+        <a href="http://www.mcling.xyz">
+            <img src="//placekitten.com/200/200" alt="马美玲">
+            马美玲
+        </a>
+    </footer>
+</blockquote>
+        
+<div class="post-reward">
+    <a id="rewardBtn" href="javascript:;" class="post-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/动画/">动画</a></li></ul>
+
+
+            
+<div class="post-share-wrap">
+    <div class="post-share" id="post-share">
+    <div class="tit">分享到：</div>
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" href="javascript:;" data-title="微博" data-service="tsina">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns" href="javascript:;" data-title="微信" data-service="weixin">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" href="javascript:;" data-title=" QQ" data-service="cqq">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" href="javascript:;" data-title=" Facebook" data-service="fb">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" href="javascript:;" data-title=" Twitter" data-service="twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="douban share-sns" href="javascript:;" data-title="豆瓣" data-service="douban">
+          豆
+        </a>
+      </li>
+    </ul>
+ </div>
+
+    <a href="javascript:;" id="share-fab" class="post-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>   
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2016/11/23/js2.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">js原生框架part5</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+            
+    
+<div class="duoshuo" id="comments">
+	<div class="ds-thread" data-thread-key="js3" data-title="js原生框架part6" data-url="http://www.mcling.xyz/2016/11/24/js3.html"></div>
+</div>
+<script src="/js/embed.min.js?v=1.1.12"></script>
+<script src="//cdn.bootcss.com/marked/0.3.6/marked.min.js" async="async"></script>
+<script>
+var duoshuoQuery = {short_name:'mcling', theme: 'none'}
+</script>
+
+
+
+
+
+</article>
+
+<div id="reward" class="reward-lay">
+    <a class="reward-off" id="rewardOff" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        给口水喝,谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.png" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.png" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+</div>
+
+  </main>
+  <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+<script>var BLOG = { ROOT: '/' };
+BLOG.SHARE = {
+title: "js原生框架part6",
+summary: document.getElementsByName('summary')[0].content,
+url: "http://www.mcling.xyz/2016/11/24/js3.html" }
+</script>
+<div class="global-share" id="global-share">
+    <div class="tit">分享到：</div>
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" href="javascript:;" data-title="微博" data-service="tsina">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns" href="javascript:;" data-title="微信" data-service="weixin">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" href="javascript:;" data-title=" QQ" data-service="cqq">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" href="javascript:;" data-title=" Facebook" data-service="fb">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" href="javascript:;" data-title=" Twitter" data-service="twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="douban share-sns" href="javascript:;" data-title="豆瓣" data-service="douban">
+          豆
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+  <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script src="/js/main.min.js?v=1.1.12"></script>
+
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.1.12"></script>
+
+
+
+
+
+
+
+
+
+</body>
+</html>
