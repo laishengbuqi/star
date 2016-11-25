@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.mcling.xyz/"/>
-  <updated>2016-11-25T09:41:24.553Z</updated>
+  <updated>2016-11-25T11:59:20.793Z</updated>
   <id>http://www.mcling.xyz/</id>
   
   <author>
@@ -14,6 +14,163 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JavaScript ajax</title>
+    <link href="http://www.mcling.xyz/2016/11/25/ajax.html"/>
+    <id>http://www.mcling.xyz/2016/11/25/ajax.html</id>
+    <published>2016-11-25T09:54:44.000Z</published>
+    <updated>2016-11-25T11:59:20.793Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="JavaScript-Ajax"><a href="#JavaScript-Ajax" class="headerlink" title="JavaScript Ajax"></a>JavaScript Ajax</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><ol>
+<li>全称: <code>Asynchronous JavaScript and XML</code> (异步的<code>JavaScript</code>与<code>XML</code>)</li>
+<li>定义: 一种请求数据的方式,不需要刷新整个页面</li>
+</ol>
+<h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><ol>
+<li>不刷新页面</li>
+<li>服务器仅返回需要的数据</li>
+</ol>
+<h2 id="引擎"><a href="#引擎" class="headerlink" title="引擎"></a>引擎</h2><ol>
+<li><code>XMLHttpRequest</code><ul>
+<li>此函数对象是浏览器中的内置对象,在目前的所有浏览器中都支持此对象</li>
+<li>IE7+、Firefox、Chrome、Safari以及Opera</li>
+</ul>
+</li>
+<li><code>ActiveXObject</code><ul>
+<li>仅IE支持此对象</li>
+</ul>
+</li>
+</ol>
+<h2 id="请求过程"><a href="#请求过程" class="headerlink" title="请求过程"></a>请求过程</h2><ol>
+<li>创建<code>XMLHttpRequest</code>对象</li>
+<li>连接服务器</li>
+<li>发送请求</li>
+<li>接收响应数据</li>
+</ol>
+<h2 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h2><ol>
+<li>!IE： <code>var xhr = new XMLHttpRequest();</code></li>
+<li>IE: <code>var xhr = new ActiveXObject(&#39;Microsoft.XMLHTTP&#39;);</code></li>
+</ol>
+<h2 id="连接-发送"><a href="#连接-发送" class="headerlink" title="连接/发送"></a>连接/发送</h2><ol>
+<li><code>open()</code><ul>
+<li>功能: 启动服务器连接请求</li>
+<li>参数</li>
+</ul>
+<ol>
+<li>请求方式<ul>
+<li><code>GET</code></li>
+</ul>
+<ol>
+<li>定义:请求方式是通过URL参数将数据提交到服务器的</li>
+<li>特性:<ol>
+<li>在URL中传输数据,安全性弱</li>
+<li>容量小,一般URL的长度最大为4K到10K,长度是有限制的</li>
+<li>有缓存</li>
+</ol>
+</li>
+</ol>
+<ul>
+<li><code>POST</code></li>
+</ul>
+<ol>
+<li>定义:是通过将数据作为send的参数提交到服务器,’在发送之前,要设置表单提交的内容类型’</li>
+<li>特性:<ol>
+<li>不在<code>URL</code>中传输数据,相对安全性强</li>
+<li>容量大,容量可达到2G,再大就可以使用控件,真正的安全就只有<code>https</code>协议.</li>
+<li>无缓存</li>
+</ol>
+</li>
+</ol>
+<ul>
+<li><code>GET</code>和<code>POST</code>请求的区别</li>
+</ul>
+<ol>
+<li><code>GET</code>更简单也更快,并且在大部分情况下都能用</li>
+<li><code>POST</code>请求<ul>
+<li>无法使用缓存文件(更新服务器上的文件或数据库)</li>
+<li>向服务器发送大量数据(<code>POST</code>没有数据量限制)</li>
+<li>发送包含未知字符的用户输入时,<code>POST</code>比<code>GET</code>更稳定也更可靠</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>请求地址<ul>
+<li><code>URL</code></li>
+</ul>
+</li>
+<li>是否异步<ul>
+<li><code>true</code> 是 (默认为<code>true</code>)</li>
+<li><code>false</code> 否</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><code>send()</code><ul>
+<li>功能: 发送服务器连接请求</li>
+<li>参数: (可选)<code>stringObj</code>,当发送<code>POST</code>请求时,传入值</li>
+</ul>
+</li>
+<li><code>setRequestHeader(header,value)</code>: 添加<code>HTTP</code>头信息</li>
+</ol>
+<h2 id="接收"><a href="#接收" class="headerlink" title="接收"></a>接收</h2><ol>
+<li>接收到响应后,响应的数据会自动填充<code>XHR</code>对象</li>
+<li>相关属性<ul>
+<li><code>responseText</code>: 如果来自服务器的响应并非<code>XML</code>,就使用<code>responseText</code>属性,该属性返回字符串形式的响应,因此可以直接使用</li>
+<li><code>responseXML</code>: 如果来自服务器的响应是<code>XML(&#39;text/xml&#39;或&#39;application/xml&#39;)</code>,而且需要作为<code>XML</code>对象进行解析,就使用<code>responseXML</code>属性.</li>
+</ul>
+</li>
+</ol>
+<h2 id="请求状态"><a href="#请求状态" class="headerlink" title="请求状态"></a>请求状态</h2><ol>
+<li><code>XMLHttpRequest</code>对象的<code>readyState</code>属性返回请求的当前状态.当请求被发送到服务器时,我们需要执行一些基于响应的任务,每当<code>readyState</code>改变时,就会触发onreadystatechange事件,readyState属性存有XMLHttpRequest的状态信息</li>
+<li><code>XMLHttpRequest</code>属性:<ul>
+<li><code>onreadystatechange</code>: 存储函数(或函数名),每当<code>readyState</code>属性改变时,就会调用该函数</li>
+<li><code>readyState</code>: 存有<code>XMLHttpRequest</code>的状态.从0到4发生变化<ul>
+<li>0 : 请求未初始化,未调用<code>open()</code>方法</li>
+<li>1 : 服务器连接已建立.已调用<code>open()</code>方法,正在发送请求</li>
+<li>2 : 请求已接收,载入完成.<code>open()</code>方法完成,已收到全部响应内容</li>
+<li>3 : 请求处理中,也叫解析.正在解析响应内容</li>
+<li>4 : 请求已完成,且响应已就绪.响应内容解析完成,可以在客户端调用了</li>
+</ul>
+</li>
+<li><code>status</code>: 请求结果,也就是<code>HTTP</code>状态码.</li>
+</ul>
+<ol>
+<li>200:OK. </li>
+<li>404:未找到页面    </li>
+<li>状态码以2开头的都是成功,304表示从缓存中获取</li>
+</ol>
+</li>
+</ol>
+<h2 id="JSONP"><a href="#JSONP" class="headerlink" title="JSONP"></a><code>JSONP</code></h2><ol>
+<li>定义: <code>JSON with Padding</code> 一种跨域请求方式</li>
+<li>原理: 利用了<code>script</code>标签可以跨域请求的特点,由其src属性发送请求到服务器,服务器返回js代码,网页端接受响应,然后就直接执行了.这和通过script标签引用外部文件的原理是一样的</li>
+<li>组成: <ul>
+<li>回调函数 :回调函数一般是由网页端控制,作为参数发往服务器端</li>
+<li>数据: 服务器端把该函数和数据拼成字符串返回</li>
+</ul>
+</li>
+<li>实例: 网页端创建一个<code>script</code>标签,并给其<code>src</code>赋值为<code>http://www.xxx.com/?callback=process</code>,此时网页端就发起了一个请求.服务器端将要返回的数据拼好作为函数的参数传入,服务端返回的数据格式类似<code>process({&#39;name&#39;:&#39;jerry&#39;})</code>,网页端接收到了响应值,因为请求者是<code>script</code>,所以相当于直接调用process方法,并且传入了一个参数</li>
+<li>特性:<ul>
+<li>由于<code>script</code>标签的<code>src</code>属性只在第一次设置的时候起作用,导致<code>script</code>标签没法重用,所以每次完成操作之后要移除</li>
+<li><code>JSONP</code>这种请求方式中,参数依旧需要编码</li>
+<li>如果不设置超时,就无法得知此次请求是成功还是失败</li>
+</ul>
+</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;JavaScript-Ajax&quot;&gt;&lt;a href=&quot;#JavaScript-Ajax&quot; class=&quot;headerlink&quot; title=&quot;JavaScript Ajax&quot;&gt;&lt;/a&gt;JavaScript Ajax&lt;/h1&gt;&lt;h2 id=&quot;概念&quot;&gt;&lt;a href=&quot;
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="http://www.mcling.xyz/categories/JavaScript/"/>
+    
+    
+      <category term="ajax" scheme="http://www.mcling.xyz/tags/ajax/"/>
+    
+  </entry>
   
   <entry>
     <title>js原生框架part6</title>
