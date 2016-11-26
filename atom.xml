@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.mcling.xyz/"/>
-  <updated>2016-11-25T11:59:20.793Z</updated>
+  <updated>2016-11-26T12:36:34.890Z</updated>
   <id>http://www.mcling.xyz/</id>
   
   <author>
@@ -16,11 +16,91 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>致2016年的自己</title>
+    <link href="http://www.mcling.xyz/2016/11/26/xinqing.html"/>
+    <id>http://www.mcling.xyz/2016/11/26/xinqing.html</id>
+    <published>2016-11-26T12:24:09.000Z</published>
+    <updated>2016-11-26T12:36:34.890Z</updated>
+    
+    <content type="html"><![CDATA[<p>   2016年发生了太多的事,一直以来都觉得自己足够坚强,可是有时候自己又是那么的溃不成军,总喜欢把自己的心情伪装起来,这样的生活真的好累好累,有时候的满不在乎大大咧咧其实是为了掩饰自己内心的悲伤,我不愿意跟任何人谈起,总喜欢自己一个人默默承受,有太多想说的话不知道从何说起,有些事情知道了只会让自己更难受,真想一觉醒来什么都忘记,忘掉今年发生的所有事,遇见的所有人</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;   2016年发生了太多的事,一直以来都觉得自己足够坚强,可是有时候自己又是那么的溃不成军,总喜欢把自己的心情伪装起来,这样的生活真的好累好累,有时候的满不在乎大大咧咧其实是为了掩饰自己内心的悲伤,我不愿意跟任何人谈起,总喜欢自己一个人默默承受,有太多想说的话不知道从何说
+    
+    </summary>
+    
+      <category term="个人日志" scheme="http://www.mcling.xyz/categories/%E4%B8%AA%E4%BA%BA%E6%97%A5%E5%BF%97/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>js原生框架part7</title>
+    <link href="http://www.mcling.xyz/2016/11/26/js-ajax.html"/>
+    <id>http://www.mcling.xyz/2016/11/26/js-ajax.html</id>
+    <published>2016-11-26T01:15:21.000Z</published>
+    <updated>2016-11-26T12:23:14.684Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Ajax请求流程"><a href="#Ajax请求流程" class="headerlink" title="Ajax请求流程"></a>Ajax请求流程</h2><ol>
+<li><p>创建一个请求对象</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">createRequest</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="built_in">window</span>.XMLHTTPRequest? <span class="keyword">new</span> <span class="built_in">window</span>.XMLHTTPRequest(): <span class="keyword">new</span> ActiveXObject(<span class="string">'Microsoft.XMLHTTP'</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>格式化数据</p>
+<ul>
+<li>将格式化后的数据,参数与值都需要重新编码<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">farmatData</span>(<span class="params">data</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> ret=[];</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> k <span class="keyword">in</span> data)&#123;</div><div class="line">        ret.push(<span class="built_in">window</span>.encodeURIComponent(k)+<span class="string">'='</span>+<span class="built_in">window</span>.encodeURIComponent(data[k]));</div><div class="line">    &#125;</div><div class="line">    <span class="comment">//如果不想从服务器缓存中读取数据</span></div><div class="line">    ret.push((<span class="string">'_='</span>+<span class="built_in">Math</span>.random()).replace(<span class="string">'.'</span>,<span class="string">' '</span>));</div><div class="line">    <span class="keyword">return</span> ret.join(<span class="string">'&amp;'</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>与服务器建立连接</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(type===<span class="string">'get'</span>)</div><div class="line">xhr.open(<span class="string">'GET|POST'</span>,url+<span class="string">'?'</span>+fdata, <span class="keyword">async</span>=<span class="literal">true</span>);</div></pre></td></tr></table></figure>
+</li>
+<li><p>监听请求状态</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">xhr.onreadystatechange=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">if</span>(xhr.readyState===<span class="number">4</span>)&#123;</div><div class="line">        <span class="keyword">if</span>(xhr.status&gt;=<span class="number">200</span> &amp;&amp;xhr.status&lt;<span class="number">300</span>||xhr.status===<span class="number">304</span>)&#123;</div><div class="line">            <span class="comment">//success代码块</span></div><div class="line">            <span class="comment">//xhr.responseText</span></div><div class="line">        &#125;<span class="keyword">else</span>&#123;</div><div class="line">            <span class="comment">//fail  代码块</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>发送请求 </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">xhr.send(string);</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="Jsonp请求流程"><a href="#Jsonp请求流程" class="headerlink" title="Jsonp请求流程"></a>Jsonp请求流程</h2><ol>
+<li>跨域请求只能发送<code>GET</code>请求,一种不安全的请求方式</li>
+<li>原理: 由于<code>dom</code>元素的<code>src</code>属性具有跨域功能.在实现跨域请求时,为了方便就使用<code>script</code>标签来做</li>
+<li>流程<ul>
+<li>创建请求对象,就是创建一个<code>script</code>标签</li>
+<li>将上述创建的<code>script</code>标签添加到页面的<code>head</code>标签下</li>
+<li>格式化数据</li>
+<li>创建全局回调函数</li>
+<li>设置超时时间,如果超过此时间,也没有得到数据,表示请求失败,否则,请求成功</li>
+<li>发送请求:指定<code>script</code>标签的<code>src</code>属性</li>
+</ul>
+</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Ajax请求流程&quot;&gt;&lt;a href=&quot;#Ajax请求流程&quot; class=&quot;headerlink&quot; title=&quot;Ajax请求流程&quot;&gt;&lt;/a&gt;Ajax请求流程&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;创建一个请求对象&lt;/p&gt;
+&lt;figure class=&quot;highlight
+    
+    </summary>
+    
+      <category term="js原生框架" scheme="http://www.mcling.xyz/categories/js%E5%8E%9F%E7%94%9F%E6%A1%86%E6%9E%B6/"/>
+    
+    
+      <category term="js" scheme="http://www.mcling.xyz/tags/js/"/>
+    
+      <category term="ajax模块" scheme="http://www.mcling.xyz/tags/ajax%E6%A8%A1%E5%9D%97/"/>
+    
+  </entry>
+  
+  <entry>
     <title>JavaScript ajax</title>
     <link href="http://www.mcling.xyz/2016/11/25/ajax.html"/>
     <id>http://www.mcling.xyz/2016/11/25/ajax.html</id>
     <published>2016-11-25T09:54:44.000Z</published>
-    <updated>2016-11-25T11:59:20.793Z</updated>
+    <updated>2016-11-26T03:07:34.852Z</updated>
     
     <content type="html"><![CDATA[<h1 id="JavaScript-Ajax"><a href="#JavaScript-Ajax" class="headerlink" title="JavaScript Ajax"></a>JavaScript Ajax</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><ol>
 <li>全称: <code>Asynchronous JavaScript and XML</code> (异步的<code>JavaScript</code>与<code>XML</code>)</li>
@@ -49,7 +129,7 @@
 </ol>
 <h2 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h2><ol>
 <li>!IE： <code>var xhr = new XMLHttpRequest();</code></li>
-<li>IE: <code>var xhr = new ActiveXObject(&#39;Microsoft.XMLHTTP&#39;);</code></li>
+<li>IE: <code>var xhr = new ActiveXObject(&#39;Microsoft.XMLHTTP&#39;);</code> </li>
 </ol>
 <h2 id="连接-发送"><a href="#连接-发送" class="headerlink" title="连接/发送"></a>连接/发送</h2><ol>
 <li><code>open()</code><ul>
@@ -1177,7 +1257,7 @@
     <link href="http://www.mcling.xyz/2016/11/14/first1.html"/>
     <id>http://www.mcling.xyz/2016/11/14/first1.html</id>
     <published>2016-11-14T13:38:21.000Z</published>
-    <updated>2016-11-17T11:06:14.210Z</updated>
+    <updated>2016-11-26T10:49:33.879Z</updated>
     
     <content type="html"><![CDATA[<p>遗忘，是我们不可更改的宿命，所有的一切都像是没有对齐的图纸，从前的一切回不到过去，就这样慢慢延伸，一点一点的错开，也许，错开了的东西，我们真的应该遗忘了。</p>
 ]]></content>
@@ -1189,37 +1269,10 @@
     
     </summary>
     
-      <category term="yyy" scheme="http://www.mcling.xyz/categories/yyy/"/>
+      <category term="个人日志" scheme="http://www.mcling.xyz/categories/%E4%B8%AA%E4%BA%BA%E6%97%A5%E5%BF%97/"/>
     
     
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="http://www.mcling.xyz/2016/11/12/hello-world.html"/>
-    <id>http://www.mcling.xyz/2016/11/12/hello-world.html</id>
-    <published>2016-11-12T01:57:36.219Z</published>
-    <updated>2016-11-17T11:06:08.294Z</updated>
-    
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
-    
-    </summary>
-    
-      <category term="xxx" scheme="http://www.mcling.xyz/categories/xxx/"/>
-    
+      <category term="遗忘" scheme="http://www.mcling.xyz/tags/%E9%81%97%E5%BF%98/"/>
     
   </entry>
   
