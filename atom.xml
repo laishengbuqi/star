@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.mcling.xyz/"/>
-  <updated>2016-11-26T12:36:34.890Z</updated>
+  <updated>2016-11-27T02:42:20.073Z</updated>
   <id>http://www.mcling.xyz/</id>
   
   <author>
@@ -14,6 +14,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>流行框架 part1</title>
+    <link href="http://www.mcling.xyz/2016/11/27/kuangjia.html"/>
+    <id>http://www.mcling.xyz/2016/11/27/kuangjia.html</id>
+    <published>2016-11-27T01:38:00.000Z</published>
+    <updated>2016-11-27T02:42:20.073Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="MarkDown"><a href="#MarkDown" class="headerlink" title="MarkDown"></a>MarkDown</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><hr>
+<h2 id="安装和配置编写预览环境"><a href="#安装和配置编写预览环境" class="headerlink" title="安装和配置编写预览环境"></a>安装和配置编写预览环境</h2><hr>
+<h2 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h2>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;MarkDown&quot;&gt;&lt;a href=&quot;#MarkDown&quot; class=&quot;headerlink&quot; title=&quot;MarkDown&quot;&gt;&lt;/a&gt;MarkDown&lt;/h1&gt;&lt;h2 id=&quot;介绍&quot;&gt;&lt;a href=&quot;#介绍&quot; class=&quot;headerlink&quot; titl
+    
+    </summary>
+    
+      <category term="流行框架" scheme="http://www.mcling.xyz/categories/%E6%B5%81%E8%A1%8C%E6%A1%86%E6%9E%B6/"/>
+    
+    
+      <category term="tools" scheme="http://www.mcling.xyz/tags/tools/"/>
+    
+      <category term="markdown" scheme="http://www.mcling.xyz/tags/markdown/"/>
+    
+  </entry>
   
   <entry>
     <title>致2016年的自己</title>
@@ -468,7 +494,7 @@
     <link href="http://www.mcling.xyz/2016/11/22/css1.html"/>
     <id>http://www.mcling.xyz/2016/11/22/css1.html</id>
     <published>2016-11-22T07:29:58.000Z</published>
-    <updated>2016-11-23T01:58:03.997Z</updated>
+    <updated>2016-11-27T03:18:34.554Z</updated>
     
     <content type="html"><![CDATA[<h2 id="认识CSS"><a href="#认识CSS" class="headerlink" title="认识CSS"></a>认识CSS</h2><ul>
 <li>作用:美化网页(设置网页样式)</li>
@@ -564,30 +590,30 @@
 <h3 id="常见属性"><a href="#常见属性" class="headerlink" title="常见属性"></a>常见属性</h3><table>
 <thead>
 <tr>
-<th>属性名称</th>
-<th>作用</th>
+<th style="text-align:center">属性名称</th>
+<th style="text-align:center">作用</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>width:100px</td>
-<td>设置宽度</td>
+<td style="text-align:center">width:100px</td>
+<td style="text-align:center">设置宽度</td>
 </tr>
 <tr>
-<td>height:100px</td>
-<td>设置高度</td>
+<td style="text-align:center">height:100px</td>
+<td style="text-align:center">设置高度</td>
 </tr>
 <tr>
-<td>font-size:20px</td>
-<td>设置文字大小</td>
+<td style="text-align:center">font-size:20px</td>
+<td style="text-align:center">设置文字大小</td>
 </tr>
 <tr>
-<td>color:red</td>
-<td>前景色(文字颜色)</td>
+<td style="text-align:center">color:red</td>
+<td style="text-align:center">前景色(文字颜色)</td>
 </tr>
 <tr>
-<td>background-color</td>
-<td>背景颜色</td>
+<td style="text-align:center">background-color</td>
+<td style="text-align:center">背景颜色</td>
 </tr>
 </tbody>
 </table>
