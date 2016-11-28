@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+  <title>JavaScript 面向对象 | 心雨 | 马美玲的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="theme-color" content="#3F51B5">
+  
+  
+  <meta name="keywords" content="面向对象">
+  <meta name="description" content="JavaScript 面向对象面向对象
+概念: 是一种编程思想,在实际解决问题时,应该讲同类问题交由某个对象来解决
+好处
+代码解耦
+易于维护
+易于扩展
+
+
+缺点
+代码复杂度会增加
+成本会增加
+
+
+
+创建对象方式
+工厂模式
+
+语法
+  12345678function createPerson()&amp;#123;var p = new Object;p.name =&apos;jerry&apos;;p.age = 18;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript 面向对象">
+<meta property="og:url" content="http://www.mcling.xyz/2016/11/28/JavaScript1.html">
+<meta property="og:site_name" content="心雨">
+<meta property="og:description" content="JavaScript 面向对象面向对象
+概念: 是一种编程思想,在实际解决问题时,应该讲同类问题交由某个对象来解决
+好处
+代码解耦
+易于维护
+易于扩展
+
+
+缺点
+代码复杂度会增加
+成本会增加
+
+
+
+创建对象方式
+工厂模式
+
+语法
+  12345678function createPerson()&amp;#123;var p = new Object;p.name =&apos;jerry&apos;;p.age = 18;">
+<meta property="og:updated_time" content="2016-11-28T11:19:05.469Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript 面向对象">
+<meta name="twitter:description" content="JavaScript 面向对象面向对象
+概念: 是一种编程思想,在实际解决问题时,应该讲同类问题交由某个对象来解决
+好处
+代码解耦
+易于维护
+易于扩展
+
+
+缺点
+代码复杂度会增加
+成本会增加
+
+
+
+创建对象方式
+工厂模式
+
+语法
+  12345678function createPerson()&amp;#123;var p = new Object;p.name =&apos;jerry&apos;;p.age = 18;">
+  
+    <link rel="alternative" href="/atom.xml" title="心雨" type="application/atom+xml">
+  
+  <meta name="summary" content="人生就像一杯茶，不会苦一辈子，但总会苦一阵子。">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/style.css?v=1.1.12">
+</head>
+
+<body>
+  <div id="loading" class="active"></div>
+
+  <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="//placekitten.com/200/200">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">马美玲</h5>
+          <a href="mailto:15800726280@163.com" title="15800726280@163.com" class="mail">15800726280@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/laishengbuqi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.weibo.com/mameiling1570" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/guestbook"  >
+                <i class="icon icon-lg icon-comment"></i>
+                留言
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user"></i>
+                关于
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/links"  >
+                <i class="icon icon-lg icon-link"></i>
+                链接
+              </a>
+            </li>
+        
+      </ul>
+
+      <footer class="footer">
+  <p><a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0;vertical-align:middle;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAAPCAMAAABEF7i9AAAAllBMVEUAAAD///+rsapERER3d3eIiIjMzMzu7u4iIiKUmZO6v7rKzsoODg4RERFVVVUNDQ0NDg0PEA8zMzNLTEtbXltmZmZydnF9gn2AgICPkI+ZmZmqqqq7u7vFxsXIzMgNDQwZGRkgICAhISEkJSMnKCcuMC4xMzE5Ozk7PTtBQkFCQkJDQ0Nna2eGhoaHh4ezuLLGysbd3d1wVGpAAAAA4UlEQVR42q2T1xqCMAyFk7QsBQeKA9x7j/d/OSm22CpX0nzcpA1/T05aAOuBVkMAScQFHLnEwoCo2f1TnQIGoVMewjZEjVFN4GH1Ue1Cn2jWqwfsOOj6wDwGvotsl/c8lv7KIq1eLOsT0HMFHMIE/RZyHnlphryT9zyV+8WH5e8yQw3wnQvgAFxPTKUVi555SHR/lOfLMgVTeDlSfN+TaoUsiTyeIm+bCkHvCA2FUKG48LDtYBZBknsYP/G8NTw0gaaHyuQf4H5pecrB/FYCT2sL9zAfy1Xyjou6L8X2W7YcLyBZCRtnq/zfAAAAAElFTkSuQmCC" /></a></p>
+  <p>心雨 &copy; 2016</p>
+  <p>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme
+  <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></p>
+  <a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-2x icon-rss-square"></i></a>
+</footer>
+
+    </div>
+  </div>
+</aside>
+
+  <main id="main">
+    <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">JavaScript 面向对象</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-share">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container">
+        <h1 class="title">JavaScript 面向对象</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2016-11-28T08:21:51.000Z" itemprop="datePublished" class="page-time">
+  2016-11-28
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JavaScript/">JavaScript</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#JavaScript-面向对象"><span class="post-toc-number">1.</span> <span class="post-toc-text">JavaScript 面向对象</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#面向对象"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">面向对象</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#创建对象方式"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">创建对象方式</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#原型"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">原型</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#继承"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">继承</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#原型链"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">原型链</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#词法作用域"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">词法作用域</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#作用域链"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">作用域链</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#闭包"><span class="post-toc-number">1.8.</span> <span class="post-toc-text">闭包</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-JavaScript1" 
+  class="post-article article-type-post" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">JavaScript 面向对象</h1>
+        <div class="post-meta">
+            <time datetime="2016-11-28T08:21:51.000Z" itemprop="datePublished" class="post-time">
+  2016-11-28
+</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JavaScript/">JavaScript</a></li></ul>
+
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="JavaScript-面向对象"><a href="#JavaScript-面向对象" class="headerlink" title="JavaScript 面向对象"></a>JavaScript 面向对象</h1><h2 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h2><ol>
+<li>概念: 是一种编程思想,在实际解决问题时,应该讲同类问题交由某个对象来解决</li>
+<li>好处<ul>
+<li>代码解耦</li>
+<li>易于维护</li>
+<li>易于扩展</li>
+</ul>
+</li>
+<li>缺点<ul>
+<li>代码复杂度会增加</li>
+<li>成本会增加</li>
+</ul>
+</li>
+</ol>
+<h2 id="创建对象方式"><a href="#创建对象方式" class="headerlink" title="创建对象方式"></a>创建对象方式</h2><ol>
+<li><p>工厂模式</p>
+<ul>
+<li><p>语法</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">createPerson</span>(<span class="params"></span>)</span>&#123;</div><div class="line"><span class="keyword">var</span> p = <span class="keyword">new</span> <span class="built_in">Object</span>;</div><div class="line">p.name =<span class="string">'jerry'</span>;</div><div class="line">p.age = <span class="number">18</span>;</div><div class="line"><span class="comment">// some other prop</span></div><div class="line"><span class="keyword">return</span> p;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> p1 =createPerson();</div></pre></td></tr></table></figure>
+</li>
+<li><p>说明</p>
+</li>
+</ul>
+<ol>
+<li>在函数中定义对象,并定义对象的各种属性</li>
+<li>创建对象时,不需要 <code>new</code> 操作符</li>
+<li>在函数的最后返回该对象</li>
+</ol>
+</li>
+<li><p>构造函数</p>
+<ul>
+<li><p>语法:</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.name =<span class="string">'Jerry'</span>;</div><div class="line">    <span class="keyword">this</span>.age = <span class="number">18</span>;</div><div class="line">   <span class="comment">// some other prop</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> p2 = <span class="keyword">new</span> Person();</div></pre></td></tr></table></figure>
+</li>
+<li><p>说明</p>
+</li>
+</ul>
+<ol>
+<li>无需再函数内部创建对象</li>
+<li>使用 <code>this</code> 给当前实例添加成员</li>
+<li>函数无需明确 <code>return</code> </li>
+</ol>
+</li>
+<li><p>原型模式</p>
+<ul>
+<li><p>语法:</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    Person.prototype.name = <span class="string">'jerry'</span>;</div><div class="line">    Person.prototype.age = <span class="number">18</span>;</div><div class="line">    <span class="keyword">var</span> p3 = <span class="keyword">new</span> Person;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>说明</p>
+</li>
+</ul>
+<ol>
+<li>函数中不对成员进行定义</li>
+<li>利用 <code>prototype</code> 属性对成员进行定义</li>
+</ol>
+</li>
+<li><p>混合模式</p>
+<ul>
+<li><p>语法</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.name = name;</div><div class="line">&#125;</div><div class="line">Person.prototype.getName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.name;</div><div class="line">&#125;;</div><div class="line"><span class="keyword">var</span> p4 = <span class="keyword">new</span> Person(<span class="string">'Jerry'</span>);</div></pre></td></tr></table></figure>
+</li>
+<li><p>说明</p>
+</li>
+</ul>
+<ol>
+<li>该模式是指混合搭配使用构造函数方式和原型方式</li>
+<li>将所有属性定义在函数中(构造函数方式)</li>
+<li>将所有方式定义在原型上</li>
+<li>推荐使用这样方式创建对象</li>
+</ol>
+</li>
+</ol>
+<h2 id="原型"><a href="#原型" class="headerlink" title="原型"></a>原型</h2><ol>
+<li>概念: <ul>
+<li>构造函数的<code>prototype</code>属性所引用的对象</li>
+<li>当声明一个函数时,就已定义其原型</li>
+</ul>
+</li>
+<li>相关概念<ul>
+<li>原型对象 : 通常将原型也成为对象的原型对象</li>
+<li>原型属性 : 通常将圆形也成为构造函数的原型属性</li>
+</ul>
+</li>
+<li>特性<ul>
+<li>默认所有原型都有<code>construction</code>属性,指向相关的构造函数</li>
+<li>也是对象,也有<code>__proto__</code>属性,指向自己的原型对象</li>
+</ul>
+</li>
+<li>获取原型<ul>
+<li>对象: <code>obj.__proto__</code><ul>
+<li><code>__proto__</code>非标准属性所引用的对象就是当前对象的原型对象</li>
+</ul>
+</li>
+<li>构造函数: <code>[构造函数].prototype</code></li>
+</ul>
+</li>
+<li><code>__proto__</code>兼容: 若浏览器不兼容此属性<ul>
+<li>获取当前对象的构造函数  <code>obj.construction</code></li>
+<li>通过其构造函数的<code>prototype</code>属性来获取原型对象</li>
+</ul>
+</li>
+</ol>
+<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><ol>
+<li>概念: 在 JS 中,继承就是让一个对象有权去访问另一个对象上的所有成员的技术</li>
+<li><p>继承方式</p>
+<ul>
+<li><p>原型式</p>
+<ul>
+<li>概念 : 借助已有的对象创建新的对象,将子类的原型指向父类</li>
+<li><p>例子</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Parent</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.name=<span class="string">'mike'</span>;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Child</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.age=<span class="number">12</span>;</div><div class="line">&#125;</div><div class="line">Child.prototype = <span class="keyword">new</span> Parent();</div></pre></td></tr></table></figure>
+</li>
+<li><p>问题</p>
+<ul>
+<li>字面量重写原型会中断关系</li>
+<li>子类还无法给父类传递参数</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>类式</p>
+<ul>
+<li>概念: 在子类构造函数的内部调用父类的构造函数</li>
+<li><p>例子</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Super</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.colors = [<span class="string">'red'</span>,<span class="string">'blue'</span>];</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Sub</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    Super.call(<span class="keyword">this</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>问题</p>
+<ul>
+<li>借用构造函数解决原型式继承的问题,但是没有原型,复用无从谈起</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>混合继承</p>
+<ul>
+<li>概念: 将原型和类式组合在一起实现继承</li>
+<li>例子  <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Parent</span>(<span class="params">age</span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.name = [<span class="string">'mike'</span>,<span class="string">'jack'</span>,<span class="string">'smith'</span>];</div><div class="line">    <span class="keyword">this</span>.age = age;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Child</span>(<span class="params">age</span>)</span>&#123;</div><div class="line">    Parent.call(<span class="keyword">this</span>,age)<span class="comment">//</span></div><div class="line">&#125;</div><div class="line">Child.prototype=&#123;</div><div class="line">    <span class="attr">run</span>:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.name + <span class="string">'are both'</span> + <span class="keyword">this</span>.age;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>组合继承</p>
+<ul>
+<li>概念:<ul>
+<li>jQuery 中 extend 方法的功能</li>
+<li>将父类中所有的成员,依次添加到子类中</li>
+</ul>
+</li>
+<li>例子: 参照 JQuery 中 extend 源码</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h2><h2 id="词法作用域"><a href="#词法作用域" class="headerlink" title="词法作用域"></a>词法作用域</h2><h2 id="作用域链"><a href="#作用域链" class="headerlink" title="作用域链"></a>作用域链</h2><h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2>
+        </div>
+        
+        <blockquote class="post-copyright">
+    <div class="content">
+        链接：<a href="/2016/11/28/JavaScript1.html" target="_blank" rel="external">http://www.mcling.xyz/2016/11/28/JavaScript1.html</a>
+    </div>
+    <footer>
+        <a href="http://www.mcling.xyz">
+            <img src="//placekitten.com/200/200" alt="马美玲">
+            马美玲
+        </a>
+    </footer>
+</blockquote>
+        
+<div class="post-reward">
+    <a id="rewardBtn" href="javascript:;" class="post-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面向对象/">面向对象</a></li></ul>
+
+
+            
+<div class="post-share-wrap">
+    <div class="post-share" id="post-share">
+    <div class="tit">分享到：</div>
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" href="javascript:;" data-title="微博" data-service="tsina">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns" href="javascript:;" data-title="微信" data-service="weixin">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" href="javascript:;" data-title=" QQ" data-service="cqq">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" href="javascript:;" data-title=" Facebook" data-service="fb">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" href="javascript:;" data-title=" Twitter" data-service="twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="douban share-sns" href="javascript:;" data-title="豆瓣" data-service="douban">
+          豆
+        </a>
+      </li>
+    </ul>
+ </div>
+
+    <a href="javascript:;" id="share-fab" class="post-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>   
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2016/11/27/kuangjia.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">流行框架 part1</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+            
+    
+<div class="duoshuo" id="comments">
+	<div class="ds-thread" data-thread-key="JavaScript1" data-title="JavaScript 面向对象" data-url="http://www.mcling.xyz/2016/11/28/JavaScript1.html"></div>
+</div>
+<script src="/js/embed.min.js?v=1.1.12"></script>
+<script src="//cdn.bootcss.com/marked/0.3.6/marked.min.js" async="async"></script>
+<script>
+var duoshuoQuery = {short_name:'mcling', theme: 'none'}
+</script>
+
+
+
+
+
+</article>
+
+<div id="reward" class="reward-lay">
+    <a class="reward-off" id="rewardOff" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        给口水喝,谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.png" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.png" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+</div>
+
+  </main>
+  <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+<script>var BLOG = { ROOT: '/' };
+BLOG.SHARE = {
+title: "JavaScript 面向对象",
+summary: document.getElementsByName('summary')[0].content,
+url: "http://www.mcling.xyz/2016/11/28/JavaScript1.html" }
+</script>
+<div class="global-share" id="global-share">
+    <div class="tit">分享到：</div>
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" href="javascript:;" data-title="微博" data-service="tsina">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns" href="javascript:;" data-title="微信" data-service="weixin">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" href="javascript:;" data-title=" QQ" data-service="cqq">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" href="javascript:;" data-title=" Facebook" data-service="fb">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" href="javascript:;" data-title=" Twitter" data-service="twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="douban share-sns" href="javascript:;" data-title="豆瓣" data-service="douban">
+          豆
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+  <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script src="/js/main.min.js?v=1.1.12"></script>
+
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.1.12"></script>
+
+
+
+
+
+
+
+
+
+</body>
+</html>
