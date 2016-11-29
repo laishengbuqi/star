@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.mcling.xyz/"/>
-  <updated>2016-11-28T11:19:05.469Z</updated>
+  <updated>2016-11-29T01:43:12.009Z</updated>
   <id>http://www.mcling.xyz/</id>
   
   <author>
@@ -16,11 +16,25 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>流行框架 part2</title>
+    <link href="http://www.mcling.xyz/2016/11/29/kuangjia1.html"/>
+    <id>http://www.mcling.xyz/2016/11/29/kuangjia1.html</id>
+    <published>2016-11-29T01:40:03.000Z</published>
+    <updated>2016-11-29T01:43:12.009Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>JavaScript 面向对象</title>
     <link href="http://www.mcling.xyz/2016/11/28/JavaScript1.html"/>
     <id>http://www.mcling.xyz/2016/11/28/JavaScript1.html</id>
     <published>2016-11-28T08:21:51.000Z</published>
-    <updated>2016-11-28T11:19:05.469Z</updated>
+    <updated>2016-11-29T11:56:17.368Z</updated>
     
     <content type="html"><![CDATA[<h1 id="JavaScript-面向对象"><a href="#JavaScript-面向对象" class="headerlink" title="JavaScript 面向对象"></a>JavaScript 面向对象</h1><h2 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h2><ol>
 <li>概念: 是一种编程思想,在实际解决问题时,应该讲同类问题交由某个对象来解决</li>
@@ -36,6 +50,7 @@
 </ul>
 </li>
 </ol>
+<hr>
 <h2 id="创建对象方式"><a href="#创建对象方式" class="headerlink" title="创建对象方式"></a>创建对象方式</h2><ol>
 <li><p>工厂模式</p>
 <ul>
@@ -94,6 +109,7 @@
 </ol>
 </li>
 </ol>
+<hr>
 <h2 id="原型"><a href="#原型" class="headerlink" title="原型"></a>原型</h2><ol>
 <li>概念: <ul>
 <li>构造函数的<code>prototype</code>属性所引用的对象</li>
@@ -124,6 +140,7 @@
 </ul>
 </li>
 </ol>
+<hr>
 <h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><ol>
 <li>概念: 在 JS 中,继承就是让一个对象有权去访问另一个对象上的所有成员的技术</li>
 <li><p>继承方式</p>
@@ -175,7 +192,81 @@
 </ul>
 </li>
 </ol>
-<h2 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h2><h2 id="词法作用域"><a href="#词法作用域" class="headerlink" title="词法作用域"></a>词法作用域</h2><h2 id="作用域链"><a href="#作用域链" class="headerlink" title="作用域链"></a>作用域链</h2><h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2>]]></content>
+<hr>
+<h2 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h2><ol>
+<li>定义<ul>
+<li>所有对象都有原型对象,即<code>__proto__</code>所引用的对象</li>
+<li>所有对象最终都继承自<code>Object.prototype</code></li>
+<li><code>Object.prototype</code>的原型对象是<code>null</code></li>
+</ul>
+</li>
+<li>属性查找<ul>
+<li>首先在当前对象本身上查找,如果找到就直接返回(调用),并停止查找</li>
+<li>如果没找到,就向其原型对象上查找,知道<code>Object.prototype</code></li>
+<li>如果找到,就直接返回(调用)</li>
+<li>否则就返回<code>undefined</code>(报错)</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="词法作用域"><a href="#词法作用域" class="headerlink" title="词法作用域"></a>词法作用域</h2><ol>
+<li>概念<ul>
+<li>词法作用域规定变量的作用是在定义时,而不是在执行时决定</li>
+<li>没有块级作用域</li>
+<li>只有函数可以限定作用域</li>
+</ul>
+</li>
+<li>全局变量<ul>
+<li>不在任何函数内定义的变量</li>
+<li>在任何位置都可以被访问到</li>
+</ul>
+</li>
+<li>局部变量<ul>
+<li>在函数内部定义的变量(包括参数声明)</li>
+<li>只有在函数内部可以被访问到</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="作用域链"><a href="#作用域链" class="headerlink" title="作用域链"></a>作用域链</h2><ol>
+<li>定义<ul>
+<li>规定全局作用域为0级链,包含在全局上定义的变量、函数、对象等</li>
+<li>如果遇到函数,就在当期链上引申出一条新链,级别当前链级别+1,以此类推</li>
+</ul>
+</li>
+<li>变量查找<ul>
+<li>首先在当前链上查找,如果找到就返回,并停止查找</li>
+<li>否则就向上一级别链上查找,直到0级链.如果找到就会返回</li>
+<li>否则返回<code>undefined</code></li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><ol>
+<li>定义: 指有权访问函数内部变量的函数</li>
+<li>作用: 缓存数据</li>
+<li>应用<ul>
+<li>私有变量</li>
+<li>沙箱模式</li>
+<li>提升递归效率</li>
+<li>柯里化</li>
+<li>高阶函数</li>
+<li>无法传参<ul>
+<li>某些情况下,是无法为要执行的函数提供参数,只能在函数执行之前,提前提供参数</li>
+<li>例如</li>
+</ul>
+<ol>
+<li><code>setTimeout</code></li>
+<li><code>setInterval</code></li>
+<li><code>Ajax callbacks</code></li>
+<li><code>event handle</code>  <code>[el.onclick=func、el.attachEvent(&quot;onclick&quot;,func)]</code></li>
+</ol>
+</li>
+<li>案例  <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//无法传参的情况</span></div><div class="line"><span class="keyword">var</span> parm=<span class="number">222</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params"></span>)</span>&#123;alert(<span class="number">111</span>)&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f2</span>(<span class="params">obj</span>)</span>&#123;alert(obj)&#125;</div><div class="line">setTimeout(f1,<span class="number">500</span>);<span class="comment">//正确,无参数</span></div><div class="line"><span class="keyword">var</span> test1=f2(parm);<span class="comment">//执行一次f2函数</span></div><div class="line">setTimeout(f2,<span class="number">500</span>);<span class="comment">//undefined，传参失败</span></div><div class="line">setTimeout(f2(parm),<span class="number">500</span>);<span class="comment">//参数无效，传参失败</span></div><div class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params">parm</span>)</span>&#123;alert(parm)&#125;,<span class="number">500</span>);<span class="comment">//undefined，传参失败</span></div><div class="line"><span class="built_in">document</span>.getElementById(<span class="string">"hello"</span>).onclick=f1;<span class="comment">//正确</span></div><div class="line"><span class="built_in">document</span>.getElementById(<span class="string">"hello"</span>).attachEvent(<span class="string">"onclick"</span>,f1);<span class="comment">//正确 </span></div><div class="line"></div><div class="line"><span class="comment">//正确做法，使用闭包</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f3</span>(<span class="params">obj</span>)</span>&#123;<span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;alert(obj)&#125;&#125;</div><div class="line"><span class="keyword">var</span> test2=f3(parm);<span class="comment">//返回f3的内部函数的引用</span></div><div class="line">setTimeout(test2,<span class="number">500</span>);<span class="comment">//正确,222</span></div><div class="line"><span class="built_in">document</span>.getElementById(<span class="string">"hello"</span>).onclick=test2;<span class="comment">//正确,222</span></div><div class="line"><span class="built_in">document</span>.getElementById(<span class="string">"hello"</span>).attachEvent(<span class="string">"onclick"</span>,test2);<span class="comment">//正确,222</span></div></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ol>
+]]></content>
     
     <summary type="html">
     
