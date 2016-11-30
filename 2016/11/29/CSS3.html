@@ -5,41 +5,35 @@
   
   
   
-  <title>canvas基础 | 心雨 | 马美玲的博客</title>
+  <title>CSS3 | 心雨 | 马美玲的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   <meta name="theme-color" content="#3F51B5">
   
   
-  <meta name="keywords" content="canvas">
-  <meta name="description" content="Canvas基础Canvas是什么？Canvas是HTML5中提供的标签，是一个画布。
-默认的宽高为：300 * 150
-Canvas的用法
-创建一个Canvas标签
-获取到该DOM对象
-Canvas只是一个画布，不能自己画画，需要画图工具
-每个Canvas对应一个画图工具，通过 canvas对象.getContext(&amp;quot;2d&amp;quot;)获取到一个  CanvasRenderingCo">
+  <meta name="keywords" content="CSS3">
+  <meta name="description" content="CSS3文字与字体
+文字阴影 text-shadow
+
+语法: text-shadow：pageX+px  pageY+px  Blur+px  color
+参数介绍:  可以给一个对象应用一组或多组阴影效果，方式如前面的语法显示一样，用逗号隔开。   12345text-shadow: X-Offset Y-Offset Blur ColorX-Offset: 表示阴影的水平偏移距离,其值为正值">
 <meta property="og:type" content="article">
-<meta property="og:title" content="canvas基础">
-<meta property="og:url" content="http://www.mcling.xyz/2016/11/15/canvas.html">
+<meta property="og:title" content="CSS3">
+<meta property="og:url" content="http://www.mcling.xyz/2016/11/29/CSS3.html">
 <meta property="og:site_name" content="心雨">
-<meta property="og:description" content="Canvas基础Canvas是什么？Canvas是HTML5中提供的标签，是一个画布。
-默认的宽高为：300 * 150
-Canvas的用法
-创建一个Canvas标签
-获取到该DOM对象
-Canvas只是一个画布，不能自己画画，需要画图工具
-每个Canvas对应一个画图工具，通过 canvas对象.getContext(&amp;quot;2d&amp;quot;)获取到一个  CanvasRenderingCo">
-<meta property="og:updated_time" content="2016-11-30T11:35:45.307Z">
+<meta property="og:description" content="CSS3文字与字体
+文字阴影 text-shadow
+
+语法: text-shadow：pageX+px  pageY+px  Blur+px  color
+参数介绍:  可以给一个对象应用一组或多组阴影效果，方式如前面的语法显示一样，用逗号隔开。   12345text-shadow: X-Offset Y-Offset Blur ColorX-Offset: 表示阴影的水平偏移距离,其值为正值">
+<meta property="og:updated_time" content="2016-11-30T13:47:26.992Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="canvas基础">
-<meta name="twitter:description" content="Canvas基础Canvas是什么？Canvas是HTML5中提供的标签，是一个画布。
-默认的宽高为：300 * 150
-Canvas的用法
-创建一个Canvas标签
-获取到该DOM对象
-Canvas只是一个画布，不能自己画画，需要画图工具
-每个Canvas对应一个画图工具，通过 canvas对象.getContext(&amp;quot;2d&amp;quot;)获取到一个  CanvasRenderingCo">
+<meta name="twitter:title" content="CSS3">
+<meta name="twitter:description" content="CSS3文字与字体
+文字阴影 text-shadow
+
+语法: text-shadow：pageX+px  pageY+px  Blur+px  color
+参数介绍:  可以给一个对象应用一组或多组阴影效果，方式如前面的语法显示一样，用逗号隔开。   12345text-shadow: X-Offset Y-Offset Blur ColorX-Offset: 表示阴影的水平偏移距离,其值为正值">
   
     <link rel="alternative" href="/atom.xml" title="心雨" type="application/atom+xml">
   
@@ -139,7 +133,7 @@ Canvas只是一个画布，不能自己画画，需要画图工具
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">canvas基础</div>
+        <div class="flex-col header-title ellipsis">CSS3</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -161,15 +155,15 @@ Canvas只是一个画布，不能自己画画，需要画图工具
 <header class="content-header post-header">
 
     <div class="container">
-        <h1 class="title">canvas基础</h1>
+        <h1 class="title">CSS3</h1>
         <h5 class="subtitle">
             
-                <time datetime="2016-11-15T10:57:25.000Z" itemprop="datePublished" class="page-time">
-  2016-11-15
+                <time datetime="2016-11-29T01:40:03.000Z" itemprop="datePublished" class="page-time">
+  2016-11-29
 </time>
 
 
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/HTML/">HTML</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/CSS/">CSS</a></li></ul>
 
             
         </h5>
@@ -185,91 +179,79 @@ Canvas只是一个画布，不能自己画画，需要画图工具
     <aside class="post-widget">
         <nav class="post-toc-wrap" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Canvas基础"><span class="post-toc-number">1.</span> <span class="post-toc-text">Canvas基础</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Canvas是什么？"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">Canvas是什么？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Canvas的用法"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">Canvas的用法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#如何画直线"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">如何画直线</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#lineTo的特性"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">lineTo的特性</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#closePath"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">closePath</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#fill"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">fill</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#非零填充原则"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">非零填充原则</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#如何绘制曲线？"><span class="post-toc-number">1.8.</span> <span class="post-toc-text">如何绘制曲线？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#路径概念"><span class="post-toc-number">1.9.</span> <span class="post-toc-text">路径概念</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#beginPath"><span class="post-toc-number">1.10.</span> <span class="post-toc-text">beginPath</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#线型相关属性"><span class="post-toc-number">1.11.</span> <span class="post-toc-text">线型相关属性</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#渐变色"><span class="post-toc-number">1.12.</span> <span class="post-toc-text">渐变色</span></a></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#CSS3"><span class="post-toc-number">1.</span> <span class="post-toc-text">CSS3</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#文字与字体"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">文字与字体</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#边框"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">边框</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#颜色相关"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">颜色相关</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#背景相关"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">背景相关</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#选择器"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">选择器</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#动画"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">动画</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#变形"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">变形</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#布局方式"><span class="post-toc-number">1.8.</span> <span class="post-toc-text">布局方式</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Media-Query"><span class="post-toc-number">1.9.</span> <span class="post-toc-text">Media Query</span></a></li></ol></li></ol>
         </nav>
     </aside>
     
-<article id="post-canvas" 
+<article id="post-CSS3" 
   class="post-article article-type-post" itemprop="blogPost">
 
     <div class="post-card">
-        <h1 class="post-card-title">canvas基础</h1>
+        <h1 class="post-card-title">CSS3</h1>
         <div class="post-meta">
-            <time datetime="2016-11-15T10:57:25.000Z" itemprop="datePublished" class="post-time">
-  2016-11-15
+            <time datetime="2016-11-29T01:40:03.000Z" itemprop="datePublished" class="post-time">
+  2016-11-29
 </time>
 
             
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/HTML/">HTML</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/CSS/">CSS</a></li></ul>
 
 
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <h1 id="Canvas基础"><a href="#Canvas基础" class="headerlink" title="Canvas基础"></a><code>Canvas</code>基础</h1><h2 id="Canvas是什么？"><a href="#Canvas是什么？" class="headerlink" title="Canvas是什么？"></a><code>Canvas</code>是什么？</h2><p><code>Canvas</code>是<code>HTML5</code>中提供的标签，是一个画布。</p>
-<p>默认的宽高为：300 * 150</p>
-<h2 id="Canvas的用法"><a href="#Canvas的用法" class="headerlink" title="Canvas的用法"></a>Canvas的用法</h2><ol>
-<li>创建一个<code>Canvas</code>标签</li>
-<li>获取到该<code>DOM</code>对象</li>
-<li><code>Canvas</code>只是一个画布，不能自己画画，需要画图工具</li>
-<li>每个<code>Canvas</code>对应一个画图工具，通过 <code>canvas对象.getContext(&quot;2d&quot;)</code>获取到一个  <code>CanvasRenderingContext2D</code>类型的对象</li>
+            <h1 id="CSS3"><a href="#CSS3" class="headerlink" title="CSS3"></a>CSS3</h1><h2 id="文字与字体"><a href="#文字与字体" class="headerlink" title="文字与字体"></a>文字与字体</h2><ol>
+<li><p>文字阴影 <code>text-shadow</code></p>
+<ul>
+<li>语法: <code>text-shadow：pageX+px  pageY+px  Blur+px  color</code></li>
+<li>参数介绍:<br>  可以给一个对象应用一组或多组阴影效果，方式如前面的语法显示一样，用逗号隔开。   <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">text-shadow: X-Offset Y-Offset Blur Color</div><div class="line">X-Offset: 表示阴影的水平偏移距离,其值为正值时阴影向右偏移,如果其值为负值时,阴影向左偏;</div><div class="line">Y-Offset: 是指阴影的垂直偏移距,如果其值是正值时,阴影向下偏移反之其值是负值时阴影向顶部偏移;</div><div class="line">Blur: 是指阴影的模糊程度,其值不能是负值,如果值越大,阴影越模糊,反之阴影越清晰,如果不需要阴影模糊可以将Blur值设置为0;</div><div class="line">Color:是指阴影的颜色,其可以使用rgba色。</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>隐藏文字: 要实现溢出时产生省略号的效果,还须定义另外两条属性</p>
+<ul>
+<li><p><code>text-overflow</code>: 只是用来说明文字溢出时用什么方式显示</p>
+<ul>
+<li>参数:<ul>
+<li><code>clip</code>: 超出部分裁切</li>
+<li><code>ellipsis</code>: 超出部分用省略号代替</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code>overflow:hidden</code>: 溢出内容为隐藏</p>
+</li>
+<li><code>white-space: nowrap</code>: 强制文字在一行显示 </li>
+</ul>
+</li>
+<li>控制连续文本换行<code>word-wrap</code><ul>
+<li>参数<ul>
+<li><code>normal</code>: 浏览器默认值</li>
+<li><code>break-word</code>: 设置在长单词或 <code>URL</code>地址内部进行换行</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>嵌入式字体 <code>@font-face</code>: 能够加载服务器端的字体文件,让浏览器端可以显示用户电脑里没有安装的字体。<ul>
+<li>语法:  <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">@font-face &#123;</div><div class="line">   font-family : 字体名称;</div><div class="line">   src : 字体文件在服务器上的相对或绝对路径;</div><div class="line">&#125;</div><div class="line"><span class="comment">//这里是定义用的哪种字体和路径，在其他css属性中使用这种字体的就会从这个路径去加载渲染字体</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
 </ol>
-<h2 id="如何画直线"><a href="#如何画直线" class="headerlink" title="如何画直线"></a>如何画直线</h2><ol>
-<li>先确定在何处下笔，画图工具<code>.moveTo(x, y)</code></li>
-<li>确定从开始的点画到哪里去，  画图工具<code>.lineTo(x, y)</code></li>
-<li>上面两步之后，线并没有画出来，而是描点，需要最后一步进行画线  画图工具<code>.stroke()</code>;</li>
-</ol>
-<h2 id="lineTo的特性"><a href="#lineTo的特性" class="headerlink" title="lineTo的特性"></a><code>lineTo</code>的特性</h2><p>每次<code>lineTo</code>之后都会记录最后的<code>lineTo</code>的点，下次<code>lineTo</code>的时候就接着这个点继续画</p>
-<h2 id="closePath"><a href="#closePath" class="headerlink" title="closePath"></a><code>closePath</code></h2><p>将最后一次<code>lineTo</code>的点 和最后一次<code>moveTo</code>的点连起来的</p>
-<p>两条线的交界处，如果使用的是<code>closePath</code> 会补全缺口</p>
-<h2 id="fill"><a href="#fill" class="headerlink" title="fill"></a><code>fill</code></h2><p>可以将闭合的图形进行填充</p>
-<h2 id="非零填充原则"><a href="#非零填充原则" class="headerlink" title="非零填充原则"></a><code>非零填充原则</code></h2><p>从一个闭合空间引出一条直线，如果该直线两边的箭头数量不相等，则要填充，如果相等则不填充</p>
-<p>一边有一个箭头就+1<br>另一边有一个箭头就-1</p>
-<h2 id="如何绘制曲线？"><a href="#如何绘制曲线？" class="headerlink" title="如何绘制曲线？"></a><code>如何绘制曲线？</code></h2><p>使用for循环给每一个x对应一个y值，x和y的关系需要是个多次幂的方程</p>
-<h2 id="路径概念"><a href="#路径概念" class="headerlink" title="路径概念"></a><code>路径概念</code></h2><p>路径就是一次绘图，包含该次绘图中的所有的状态，线宽  颜色  是否虚线</p>
-<p>如果想要改变状态，就需要开启新的路径</p>
-<h2 id="beginPath"><a href="#beginPath" class="headerlink" title="beginPath"></a><code>beginPath</code></h2><p>可以用来开启新的路径</p>
-<h2 id="线型相关属性"><a href="#线型相关属性" class="headerlink" title="线型相关属性"></a><code>线型相关属性</code></h2><table>
-<thead>
-<tr>
-<th>名称</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>lineWidth</td>
-<td>画线的时候的线的宽度</td>
-</tr>
-<tr>
-<td>setLineDash()</td>
-<td>设置虚线各个线段的长度,参数是一个数组，会将数组中的数字循环使用</td>
-</tr>
-<tr>
-<td>getLineDash()</td>
-<td>获取虚线各个线段的长度，如果是实线，获取到的是空数组</td>
-</tr>
-<tr>
-<td>lineDashOffset</td>
-<td>设置虚线的偏移量，正值往左，负值往右</td>
-</tr>
-<tr>
-<td>strokeStyle</td>
-<td>设置描边的，画线的颜色，颜色值可以为css中任意一种</td>
-</tr>
-<tr>
-<td>fillStyle</td>
-<td>设置填充颜色，颜色值可以为css中任意一种</td>
-</tr>
-</tbody>
-</table>
-<h2 id="渐变色"><a href="#渐变色" class="headerlink" title="渐变色"></a><code>渐变色</code></h2><p>将线划分为256份，每一份为一个颜色，新画一条线，依次递增，就形成了一个颜色渐变的线段</p>
-
+<hr>
+<h2 id="边框"><a href="#边框" class="headerlink" title="边框"></a>边框</h2><hr>
+<h2 id="颜色相关"><a href="#颜色相关" class="headerlink" title="颜色相关"></a>颜色相关</h2><hr>
+<h2 id="背景相关"><a href="#背景相关" class="headerlink" title="背景相关"></a>背景相关</h2><hr>
+<h2 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h2><hr>
+<h2 id="动画"><a href="#动画" class="headerlink" title="动画"></a>动画</h2><hr>
+<h2 id="变形"><a href="#变形" class="headerlink" title="变形"></a>变形</h2><hr>
+<h2 id="布局方式"><a href="#布局方式" class="headerlink" title="布局方式"></a>布局方式</h2><hr>
+<h2 id="Media-Query"><a href="#Media-Query" class="headerlink" title="Media Query"></a>Media Query</h2>
         </div>
         
         <blockquote class="post-copyright">
     <div class="content">
-        链接：<a href="/2016/11/15/canvas.html" target="_blank" rel="external">http://www.mcling.xyz/2016/11/15/canvas.html</a>
+        链接：<a href="/2016/11/29/CSS3.html" target="_blank" rel="external">http://www.mcling.xyz/2016/11/29/CSS3.html</a>
     </div>
     <footer>
         <a href="http://www.mcling.xyz">
@@ -286,7 +268,7 @@ Canvas只是一个画布，不能自己画画，需要画图工具
 
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/canvas/">canvas</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS3/">CSS3</a></li></ul>
 
 
             
@@ -338,21 +320,14 @@ Canvas只是一个画布，不能自己画画，需要画图工具
     </div>   
 
     
-<nav class="post-nav flex-row flex-justify-between">
-  
-    <div class="waves-block waves-effect prev">
-      <a href="/2016/11/16/own.html" id="post-prev" class="post-nav-link">
-        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">写给故作坚强的我们</h4>
-      </a>
-    </div>
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
   
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2016/11/14/first1.html" id="post-next" class="post-nav-link">
+      <a href="/2016/11/28/JavaScript1.html" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">遗忘</h4>
+        <h4 class="title">JavaScript 面向对象</h4>
       </a>
     </div>
   
@@ -362,7 +337,7 @@ Canvas只是一个画布，不能自己画画，需要画图工具
             
     
 <div class="duoshuo" id="comments">
-	<div class="ds-thread" data-thread-key="canvas" data-title="canvas基础" data-url="http://www.mcling.xyz/2016/11/15/canvas.html"></div>
+	<div class="ds-thread" data-thread-key="CSS3" data-title="CSS3" data-url="http://www.mcling.xyz/2016/11/29/CSS3.html"></div>
 </div>
 <script src="/js/embed.min.js?v=1.1.12"></script>
 <script src="//cdn.bootcss.com/marked/0.3.6/marked.min.js" async="async"></script>
@@ -409,9 +384,9 @@ var duoshuoQuery = {short_name:'mcling', theme: 'none'}
 
 <script>var BLOG = { ROOT: '/' };
 BLOG.SHARE = {
-title: "canvas基础",
+title: "CSS3",
 summary: document.getElementsByName('summary')[0].content,
-url: "http://www.mcling.xyz/2016/11/15/canvas.html" }
+url: "http://www.mcling.xyz/2016/11/29/CSS3.html" }
 </script>
 <div class="global-share" id="global-share">
     <div class="tit">分享到：</div>

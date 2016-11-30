@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.mcling.xyz/"/>
-  <updated>2016-11-29T01:43:12.009Z</updated>
+  <updated>2016-11-30T13:47:26.992Z</updated>
   <id>http://www.mcling.xyz/</id>
   
   <author>
@@ -16,16 +16,70 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>流行框架 part2</title>
-    <link href="http://www.mcling.xyz/2016/11/29/kuangjia1.html"/>
-    <id>http://www.mcling.xyz/2016/11/29/kuangjia1.html</id>
+    <title>CSS3</title>
+    <link href="http://www.mcling.xyz/2016/11/29/CSS3.html"/>
+    <id>http://www.mcling.xyz/2016/11/29/CSS3.html</id>
     <published>2016-11-29T01:40:03.000Z</published>
-    <updated>2016-11-29T01:43:12.009Z</updated>
+    <updated>2016-11-30T13:47:26.992Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="CSS3"><a href="#CSS3" class="headerlink" title="CSS3"></a>CSS3</h1><h2 id="文字与字体"><a href="#文字与字体" class="headerlink" title="文字与字体"></a>文字与字体</h2><ol>
+<li><p>文字阴影 <code>text-shadow</code></p>
+<ul>
+<li>语法: <code>text-shadow：pageX+px  pageY+px  Blur+px  color</code></li>
+<li>参数介绍:<br>  可以给一个对象应用一组或多组阴影效果，方式如前面的语法显示一样，用逗号隔开。   <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">text-shadow: X-Offset Y-Offset Blur Color</div><div class="line">X-Offset: 表示阴影的水平偏移距离,其值为正值时阴影向右偏移,如果其值为负值时,阴影向左偏;</div><div class="line">Y-Offset: 是指阴影的垂直偏移距,如果其值是正值时,阴影向下偏移反之其值是负值时阴影向顶部偏移;</div><div class="line">Blur: 是指阴影的模糊程度,其值不能是负值,如果值越大,阴影越模糊,反之阴影越清晰,如果不需要阴影模糊可以将Blur值设置为0;</div><div class="line">Color:是指阴影的颜色,其可以使用rgba色。</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>隐藏文字: 要实现溢出时产生省略号的效果,还须定义另外两条属性</p>
+<ul>
+<li><p><code>text-overflow</code>: 只是用来说明文字溢出时用什么方式显示</p>
+<ul>
+<li>参数:<ul>
+<li><code>clip</code>: 超出部分裁切</li>
+<li><code>ellipsis</code>: 超出部分用省略号代替</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code>overflow:hidden</code>: 溢出内容为隐藏</p>
+</li>
+<li><code>white-space: nowrap</code>: 强制文字在一行显示 </li>
+</ul>
+</li>
+<li>控制连续文本换行<code>word-wrap</code><ul>
+<li>参数<ul>
+<li><code>normal</code>: 浏览器默认值</li>
+<li><code>break-word</code>: 设置在长单词或 <code>URL</code>地址内部进行换行</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>嵌入式字体 <code>@font-face</code>: 能够加载服务器端的字体文件,让浏览器端可以显示用户电脑里没有安装的字体。<ul>
+<li>语法:  <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">@font-face &#123;</div><div class="line">   font-family : 字体名称;</div><div class="line">   src : 字体文件在服务器上的相对或绝对路径;</div><div class="line">&#125;</div><div class="line"><span class="comment">//这里是定义用的哪种字体和路径，在其他css属性中使用这种字体的就会从这个路径去加载渲染字体</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="边框"><a href="#边框" class="headerlink" title="边框"></a>边框</h2><hr>
+<h2 id="颜色相关"><a href="#颜色相关" class="headerlink" title="颜色相关"></a>颜色相关</h2><hr>
+<h2 id="背景相关"><a href="#背景相关" class="headerlink" title="背景相关"></a>背景相关</h2><hr>
+<h2 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h2><hr>
+<h2 id="动画"><a href="#动画" class="headerlink" title="动画"></a>动画</h2><hr>
+<h2 id="变形"><a href="#变形" class="headerlink" title="变形"></a>变形</h2><hr>
+<h2 id="布局方式"><a href="#布局方式" class="headerlink" title="布局方式"></a>布局方式</h2><hr>
+<h2 id="Media-Query"><a href="#Media-Query" class="headerlink" title="Media Query"></a>Media Query</h2>]]></content>
     
     <summary type="html">
     
+      &lt;h1 id=&quot;CSS3&quot;&gt;&lt;a href=&quot;#CSS3&quot; class=&quot;headerlink&quot; title=&quot;CSS3&quot;&gt;&lt;/a&gt;CSS3&lt;/h1&gt;&lt;h2 id=&quot;文字与字体&quot;&gt;&lt;a href=&quot;#文字与字体&quot; class=&quot;headerlink&quot; title=&quot;文字与字体&quot;&gt;
+    
     </summary>
     
+      <category term="CSS" scheme="http://www.mcling.xyz/categories/CSS/"/>
+    
+    
+      <category term="CSS3" scheme="http://www.mcling.xyz/tags/CSS3/"/>
     
   </entry>
   
@@ -889,7 +943,7 @@
     <link href="http://www.mcling.xyz/2016/11/22/css1.html"/>
     <id>http://www.mcling.xyz/2016/11/22/css1.html</id>
     <published>2016-11-22T07:29:58.000Z</published>
-    <updated>2016-11-27T03:18:34.554Z</updated>
+    <updated>2016-11-30T11:33:37.013Z</updated>
     
     <content type="html"><![CDATA[<h2 id="认识CSS"><a href="#认识CSS" class="headerlink" title="认识CSS"></a>认识CSS</h2><ul>
 <li>作用:美化网页(设置网页样式)</li>
@@ -1064,10 +1118,10 @@
     
     </summary>
     
-      <category term="CSS基础" scheme="http://www.mcling.xyz/categories/CSS%E5%9F%BA%E7%A1%80/"/>
+      <category term="CSS" scheme="http://www.mcling.xyz/categories/CSS/"/>
     
     
-      <category term="CSS" scheme="http://www.mcling.xyz/tags/CSS/"/>
+      <category term="CSS基础" scheme="http://www.mcling.xyz/tags/CSS%E5%9F%BA%E7%A1%80/"/>
     
   </entry>
   
@@ -1598,7 +1652,7 @@
     <link href="http://www.mcling.xyz/2016/11/15/canvas.html"/>
     <id>http://www.mcling.xyz/2016/11/15/canvas.html</id>
     <published>2016-11-15T10:57:25.000Z</published>
-    <updated>2016-11-23T11:32:03.442Z</updated>
+    <updated>2016-11-30T11:35:45.307Z</updated>
     
     <content type="html"><![CDATA[<h1 id="Canvas基础"><a href="#Canvas基础" class="headerlink" title="Canvas基础"></a><code>Canvas</code>基础</h1><h2 id="Canvas是什么？"><a href="#Canvas是什么？" class="headerlink" title="Canvas是什么？"></a><code>Canvas</code>是什么？</h2><p><code>Canvas</code>是<code>HTML5</code>中提供的标签，是一个画布。</p>
 <p>默认的宽高为：300 * 150</p>
@@ -1666,7 +1720,7 @@
     
     </summary>
     
-      <category term="canvas" scheme="http://www.mcling.xyz/categories/canvas/"/>
+      <category term="HTML" scheme="http://www.mcling.xyz/categories/HTML/"/>
     
     
       <category term="canvas" scheme="http://www.mcling.xyz/tags/canvas/"/>
