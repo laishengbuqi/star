@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.mcling.xyz/"/>
-  <updated>2016-11-30T13:47:26.992Z</updated>
+  <updated>2016-12-01T09:25:17.183Z</updated>
   <id>http://www.mcling.xyz/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://www.mcling.xyz/2016/11/29/CSS3.html"/>
     <id>http://www.mcling.xyz/2016/11/29/CSS3.html</id>
     <published>2016-11-29T01:40:03.000Z</published>
-    <updated>2016-11-30T13:47:26.992Z</updated>
+    <updated>2016-12-01T09:25:17.183Z</updated>
     
     <content type="html"><![CDATA[<h1 id="CSS3"><a href="#CSS3" class="headerlink" title="CSS3"></a>CSS3</h1><h2 id="文字与字体"><a href="#文字与字体" class="headerlink" title="文字与字体"></a>文字与字体</h2><ol>
 <li><p>文字阴影 <code>text-shadow</code></p>
@@ -61,9 +61,79 @@
 </li>
 </ol>
 <hr>
-<h2 id="边框"><a href="#边框" class="headerlink" title="边框"></a>边框</h2><hr>
-<h2 id="颜色相关"><a href="#颜色相关" class="headerlink" title="颜色相关"></a>颜色相关</h2><hr>
-<h2 id="背景相关"><a href="#背景相关" class="headerlink" title="背景相关"></a>背景相关</h2><hr>
+<h2 id="边框"><a href="#边框" class="headerlink" title="边框"></a>边框</h2><ol>
+<li><p>圆角<code>border-radius</code></p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">border-radius:1参数或4参数,参数为px或百分比。</div><div class="line"></div><div class="line">一参数为四个圆角的弧度;</div><div class="line"></div><div class="line">四参数顺序为:左上,右上,左下,右下</div></pre></td></tr></table></figure>
+</li>
+<li><p>阴影<code>box-shadow</code></p>
+<ul>
+<li>参数: X轴偏移量 Y轴偏移量 [阴影模糊半径] [阴影扩展半径] [阴影颜色] [投影方式]  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">前两个参数为必填参数其他为可选参数，投影方式默认为外阴影方式，可以设置为inset内阴影方式。</div><div class="line">      </div><div class="line">阴影颜色默认为黑色</div><div class="line"></div><div class="line">可以添加多个阴影，用逗号隔开。</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>边框图片 <code>border-image</code></p>
+<ul>
+<li>语法: <code>border-image：url（） n n n n 平铺方式</code><ul>
+<li>平铺方式<ul>
+<li><code>repeat</code> 重复</li>
+<li><code>round</code>  平铺</li>
+<li><code>stretch</code> 拉伸</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="颜色相关"><a href="#颜色相关" class="headerlink" title="颜色相关"></a>颜色相关</h2><ol>
+<li><p>渐变</p>
+<ul>
+<li><p>线性渐变:</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">background-image:linear-gradient(to bottom,red,orange);</div><div class="line"></div><div class="line">background-image:渐变方式（方向可以是to left等也可以是deg，颜色后面可以跟百分比值）</div></pre></td></tr></table></figure>
+</li>
+<li><p>径向渐变</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">radial-gradient（渐变的椭圆左右半径 渐变的椭圆的上下半径 at 渐变的椭圆的定位x位置 渐变的椭圆定位y位置，颜色，颜色）</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="背景相关"><a href="#背景相关" class="headerlink" title="背景相关"></a>背景相关</h2><ol>
+<li><code>background-origin</code>:定义背景显示区域<ul>
+<li>参数:</li>
+</ul>
+<ol>
+<li><code>border-box</code>: 背景从边框开始,也就是压在边框上</li>
+<li><code>padding-box</code>:背景从内边距开始(相当于默认值)</li>
+<li><code>content-box</code>:背景从内容区开始（比如内边距是20px那就会在盒子内20px的位置开始渲染背景）</li>
+</ol>
+</li>
+<li><code>background-clip</code>: 定义背景裁剪区<ul>
+<li>参数:</li>
+</ul>
+<ol>
+<li><code>border-box</code>: 默认值,从边框向外裁剪</li>
+<li><code>padding-box</code>: 由内填充,向外裁剪</li>
+<li><code>content-box</code>:　从内容区域外裁剪背景</li>
+<li><code>no-clip</code>：　不裁剪</li>
+</ol>
+</li>
+<li><code>background-size</code><ul>
+<li><code>auto</code></li>
+<li>长度值<code>px</code>: 可以设置宽高值,当只有一个值时默认为宽度高度等比缩放</li>
+<li>百分比: 将背景图标的宽高变成r容器宽高的百分比</li>
+<li><code>cover</code> : 背景缩放到覆盖整个容器</li>
+<li><code>contain</code> : 背景缩放到覆盖容器的一边为止</li>
+</ul>
+</li>
+<li><code>multiple backgrounds</code>: 多背景<ul>
+<li>概念和用法: 在一个元素内，可以同时写N个url路径来呈现多张背景图, 但是需要用到background-position来将他们定位到不同的位置。还需要background-repeat：no-repeat;其他上述的属性也可以定义  <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">示例代码 .demo&#123;</div><div class="line">  连写background：url("1.jpg") no-repeat top left,</div><div class="line">  url("2.jpg“) no-repeat top bottom;</div><div class="line"> &#125;</div><div class="line">  分开写background-images&#123;</div><div class="line">     url("1.jpg") ,</div><div class="line">     url("2.jpg";)</div><div class="line">   &#125;</div><div class="line"> //下面的省略了，注意看我代码中的标点符号</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+<hr>
 <h2 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h2><hr>
 <h2 id="动画"><a href="#动画" class="headerlink" title="动画"></a>动画</h2><hr>
 <h2 id="变形"><a href="#变形" class="headerlink" title="变形"></a>变形</h2><hr>
