@@ -26,7 +26,7 @@
 
 语法: text-shadow：pageX+px  pageY+px  Blur+px  color
 参数介绍:  可以给一个对象应用一组或多组阴影效果，方式如前面的语法显示一样，用逗号隔开。   12345text-shadow: X-Offset Y-Offset Blur ColorX-Offset: 表示阴影的水平偏移距离,其值为正值">
-<meta property="og:updated_time" content="2016-12-01T09:25:17.183Z">
+<meta property="og:updated_time" content="2016-12-01T11:36:29.041Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CSS3">
 <meta name="twitter:description" content="CSS3文字与字体
@@ -179,7 +179,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#CSS3"><span class="post-toc-number">1.</span> <span class="post-toc-text">CSS3</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#文字与字体"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">文字与字体</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#边框"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">边框</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#颜色相关"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">颜色相关</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#背景相关"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">背景相关</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#选择器"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">选择器</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#动画"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">动画</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#变形"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">变形</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#布局方式"><span class="post-toc-number">1.8.</span> <span class="post-toc-text">布局方式</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Media-Query"><span class="post-toc-number">1.9.</span> <span class="post-toc-text">Media Query</span></a></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#CSS3"><span class="post-toc-number">1.</span> <span class="post-toc-text">CSS3</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#文字与字体"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">文字与字体</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#边框"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">边框</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#颜色相关"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">颜色相关</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#背景相关"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">背景相关</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#选择器"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">选择器</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#动画"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">动画</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#变形"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">变形</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Media-Query"><span class="post-toc-number">1.8.</span> <span class="post-toc-text">Media Query</span></a></li></ol></li></ol>
         </nav>
     </aside>
     
@@ -312,11 +312,171 @@
 </li>
 </ol>
 <hr>
-<h2 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h2><hr>
-<h2 id="动画"><a href="#动画" class="headerlink" title="动画"></a>动画</h2><hr>
-<h2 id="变形"><a href="#变形" class="headerlink" title="变形"></a>变形</h2><hr>
-<h2 id="布局方式"><a href="#布局方式" class="headerlink" title="布局方式"></a>布局方式</h2><hr>
-<h2 id="Media-Query"><a href="#Media-Query" class="headerlink" title="Media Query"></a>Media Query</h2>
+<h2 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h2><ol>
+<li>属性选择器<ul>
+<li><code>E[attr$=val]</code> : 选中的是<code>attr</code>属性的值的结尾是<code>val</code>的<code>E</code>元素</li>
+<li><code>E[attr*=val]</code> : 选中的是<code>attr</code>属性的值具有<code>val</code>的E元素</li>
+</ul>
+</li>
+<li><p>结构性伪类选择器</p>
+<ul>
+<li><code>:root</code> : 选择到的是最高的根节点也就是等同于html。ie9以下不支持。可以当作一种hack方法来使用。 (根选择器)</li>
+<li><p><code>:not</code> : 可以选取除某个元素之外的所有元素(否定选择器)</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">      <span class="comment">//比如</span></div><div class="line">      input：not（[type=<span class="string">"submit"</span>]）&#123;</div><div class="line"><span class="attr">border</span>:<span class="number">1</span>px solid red;</div><div class="line">       &#125;</div><div class="line">       <span class="comment">//除了密码表单其他表单的边框色都变成红色</span></div></pre></td></tr></table></figure>
+</li>
+<li><p><code>:empty</code> : 用来选择没有任何内容的元素(空选择器)</p>
+</li>
+<li><p><code>:target</code> : 目标选择器</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">写法#id：target 与锚点有关系</div><div class="line">例如一个a标签的 href=“id” 一个div的id=id</div><div class="line">那么#id：target就是当a标签被点击后 那个id是id的div的样式</div></pre></td></tr></table></figure>
+</li>
+<li><p><code>:first-child</code> : 选择父元素的第一个子元素的元素</p>
+</li>
+<li><code>:last-child</code> : 元素的最后一个子元素</li>
+<li><code>:nth-child(n)</code> : 用来定位父元素的多个特定的子元素,<br><code>n</code>是参数,也可以是<code>n+x</code>等表达式,但参数<code>n</code>的起始值是1,而不是0.也就是说当n为0时匹配不到任何元素。</li>
+<li><code>:nth-last-child(n)</code> : 与<code>nth-child()</code>相反是从最后的子元素开始计算，来选择特定的元素</li>
+</ul>
+</li>
+<li>元素类型伪类选择器<ul>
+<li><code>:first-of-type</code> : 类似于<code>：first-child</code>只不过<code>:first-of-type</code>是用来定位父元素下的某个【类型】的第一个子元素</li>
+<li><code>:last-of-type</code> : 用来定位父元素下的某个[类型]的最后一个子元素</li>
+<li><code>:nth-of-type(n)</code> : 计算父元素中指定的某种[类型]的子元素</li>
+</ul>
+</li>
+<li><p>唯一后代伪类选择器</p>
+<ul>
+<li><code>:only-child</code> : 选择器选中的是父元素只有一个子元素的元素</li>
+<li><code>:only-of-type</code> : 表示如果被选中父元素内有多个子元素,选择器就可以选中唯一类型的子元素。  <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">        //比如</div><div class="line">         <span class="tag">&lt;<span class="name">div</span>&gt;</span></div><div class="line"> <span class="tag">&lt;<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line"> <span class="tag">&lt;<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line"> <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">       //用div：only-of-type选择到的就是p元素</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>表单状态选择器</p>
+<ul>
+<li><code>:enable</code> : 选择到的是可用的表单</li>
+<li><code>:disable</code> : 选择到被禁用的表单</li>
+<li><code>:checked</code> : 选中的是选中状态的表单</li>
+<li><code>:read-only</code> : 该属性是选中只读状态的表单。表单里面有这样一条属性<code>readonly=&quot;readonly&quot;</code>表示该表单只可读</li>
+<li><code>:read-write</code> : 与<code>read-only</code>相反，表示选中的是可编辑表单</li>
+</ul>
+</li>
+<li>伪元素选择器<ul>
+<li><code>::selection</code> : 选择的是被鼠标选中的文本</li>
+<li><code>::after和::before</code> : <code>::before</code>和<code>::after</code>这两个主要用来给元素的前面或后面插入内容，这两个常和<code>&quot;content&quot;</code>配合使用,<br>在使用时通常要灵活的考虑到<code>display</code>属性 、定位 、 <code>z-index</code>;</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="动画"><a href="#动画" class="headerlink" title="动画"></a>动画</h2><ul>
+<li><code>transition</code>复合过渡属性</li>
+</ul>
+<ol>
+<li><code>transition-property</code> : 指定过渡或动态模拟的CSS属性</li>
+<li><code>transition-duration</code> : 指完成过渡所需时间</li>
+<li><code>transition-timing-function</code> : 指定过渡函数或贝塞尔曲线<ul>
+<li><code>linear</code> : 相同速度开始至结束的过渡效果</li>
+<li><code>ease</code> : 慢速开始，然后变快，然后慢速结束</li>
+<li><code>ease-in</code> : 慢速开始的过渡效果</li>
+<li><code>ease-out</code> : 慢速结束的过渡效果</li>
+<li><code>ease-in-out</code> : 以慢速开始和结束的过渡效果</li>
+<li><code>cubic-bezier(n,n,n,n)</code> : 贝塞尔曲线参数</li>
+</ul>
+</li>
+<li><code>transition-delay</code> : 过渡延迟时间</li>
+</ol>
+<hr>
+<h2 id="变形"><a href="#变形" class="headerlink" title="变形"></a>变形</h2><ol>
+<li><code>rotate(deg)</code> 旋转 : 通过指定的参数来控制元素旋转正值为顺时针,负值为逆时针</li>
+<li><code>skew(x,y)</code> 扭曲 : 可以让元素倾斜显示,可以让元素以中心位置围绕x,y轴按照一定角度倾斜。会改变元素形状。</li>
+<li><code>scale(x,y)</code> 缩放 : 让元素根据中心原点对对象进行缩放</li>
+<li><code>translate(x,y)</code> 位移 : 就是字面意思，可以让元素横向纵向移动</li>
+<li><p><code>matrix()</code> 数学矩阵 :</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">     参数有:scaleX(),skewX(),skewY(),scaleY(),translateX(),translateY()</div><div class="line">     分别为横向伸缩,横向扭曲,纵向扭曲,纵向伸缩,横向位移,纵向位移。默认参数值为1,0,0,1,0,0</div><div class="line">    ``` </div><div class="line">6. `transform-origin` 原点 : 元素的坐标原点默认值为`center`,center或者50%,50% 更改原点</div><div class="line">---</div><div class="line"></div><div class="line">## 布局方式</div><div class="line">1. 盒模型</div><div class="line">    * `box-sizing` : `border-box`</div></pre></td></tr></table></figure>
+<pre><code>元素的宽度=内容的宽度(包含border和padding)
+也就是说写了宽100px，不管加边框还是内间距盒子的大小都不会变。
+这其实是ie的传统盒模型 IE6以下的版本或者IE6-7的怪异模式中就是这样的
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">    * `content-box` : W3C标准盒模型</div><div class="line">2. 多列布局  `columns`</div><div class="line">    * 用途 :复合属性可以让元素内容以多少宽度的n列显示`columns: 200px 2;`</div><div class="line">    * `column-count` : 列数 number</div><div class="line">    * `column-width` : 列宽 px</div><div class="line">    * `column-gap` :  列间距 px</div><div class="line">    * `column-rule` : 列边框与盒子边框一样</div><div class="line">    * `column-span` : 跨列 </div><div class="line">        * all 跨所有列</div><div class="line">        * none 默认参数</div><div class="line">        * 例子</div><div class="line">            ```css</div><div class="line">            p:nth-child(2n)&#123;</div><div class="line">              column-span:all;</div><div class="line">              &#125;</div><div class="line">             //偶数列的p都跨列显示。就是和单列显示差不多的意思</div></pre></td></tr></table></figure>
+</code></pre></li>
+<li><p>伸缩布局</p>
+<ul>
+<li>应用场景:<br>Flexbox布局常用于设计比较复杂的页面，可以轻松的实现屏幕和浏览器窗口大小发生变化时保持元素的相对位置和大小不变，同时减少了依赖于浮动布局实现元素位置的定义以及重置元素的大小。</li>
+<li><p>创建 flex 容器  <code>display:flex</code></p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">flexbox布局的第一步是需要创建一个flex容器。为此给元素设置display属性的值为flex。在Safari浏览器中，你依然需要添加前缀-webkit</div></pre></td></tr></table></figure>
+</li>
+<li><p>flex 项目显示  <code>flex-direction</code></p>
+<ul>
+<li>row 默认值</li>
+<li>呈列显示 column</li>
+</ul>
+</li>
+<li>flex 布局<ul>
+<li>flex 移动到顶部: 根据主轴方向使用不同的属性如果是呈列显示那么主轴就是水平方向，如果呈行显示那么主轴方向就是垂直<ul>
+<li>垂直方向的设置方式: <code>align-items</code> 参数<code>flex-start</code></li>
+<li>水平方向的设置方式: <code>justify-content</code>  参数<code>flex-start</code></li>
+</ul>
+</li>
+<li>flex 项目移到左边<ul>
+<li><code>flex-direction:column</code>时  <code>align-items:flex-start</code></li>
+<li><code>flex-direction:row</code>时   <code>justify-content:flex-start</code> </li>
+</ul>
+</li>
+<li>flex 项目移到右边<ul>
+<li><code>flex-direction:column</code>时  <code>align-items:flex-start</code></li>
+<li><code>flex-direction:row</code>时   <code>justify-content:flex-end</code> </li>
+</ul>
+</li>
+<li>水平垂直居中 <code>justify-content</code>或者<code>align-items</code>为 <code>center</code></li>
+<li>等比伸缩:两个兄弟盒子一个为<code>flex:100</code>一个为<code>flex:200</code>他俩就是以1：2的关系占满父盒子的宽或者高</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="Media-Query"><a href="#Media-Query" class="headerlink" title="Media Query"></a>Media Query</h2><p>兼容性ie6-8不支持</p>
+<ol>
+<li>Media type<ul>
+<li>All  所有设备</li>
+<li>Screen 电脑显示器</li>
+<li>Print  打印预览图</li>
+</ul>
+</li>
+<li><p>Media Query</p>
+<ul>
+<li><p>link 标签</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;style.css&quot; media=&quot;screen&quot; /&gt;</div><div class="line"> 根据不同的设备使用不同的样式链接</div></pre></td></tr></table></figure>
+</li>
+<li><p>@import</p>
+<ul>
+<li>在样式中通过<code>@import</code>调用另一个样式文件   <code>@importurl(print.css) print;</code></li>
+<li>在<code>&lt;head&gt;</code>中的<code>&lt;style&gt;</code>标签中引入媒体类型方法    <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="undefined"></span></div><div class="line"> @importurl(style.css) all;</div><div class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>CSS3 新增的 @media</p>
+<ul>
+<li><p>在样式文件中引用媒体类型</p>
+  <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">media</span> screen &#123;</div><div class="line">    选择器&#123;<span class="comment">/*你的样式代码写在这里…*/</span>&#125;</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>使用<code>@media</code>引入媒体类型的方式是在<code>&lt;head&gt;</code>标签中<code>&lt;style&gt;</code>中引用</p>
+  <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="css"></span></div><div class="line">        @<span class="keyword">media</span> screen&#123;</div><div class="line">        选择器&#123;<span class="comment">/*你的样式代码写在这里…*/</span>&#125;</div><div class="line">    &#125;</div><div class="line">    <span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p><code>@media</code>媒体类型<code>and</code>(媒体特性){你的样式}</p>
+  <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">@media screen and (max-width:480px)&#123;</div><div class="line">    .ads &#123;</div><div class="line">    display:none;</div><div class="line">    &#125;</div><div class="line">    &#125;</div><div class="line">//在电脑显示器中并且最大宽度不超过480像素的时候使用此样式</div></pre></td></tr></table></figure>
+</li>
+<li><p>多个媒体特性使用</p>
+  <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">@media screen and (min-width:600px) and (max-width:900px)&#123;</div><div class="line">    body &#123;background-color:#f5f5f5;&#125;</div><div class="line">    &#125;</div><div class="line">// 在电脑显示屏中并且最小不超过600px最大不超过900px的时候使用此样式</div></pre></td></tr></table></figure>
+</li>
+<li><p>设备屏幕的输出宽度<code>Device Width</code></p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;link rel=&quot;stylesheet&quot; media=&quot;screen and (max-device-width:480px)&quot; href=&quot;iphone.css&quot; /&gt;</div><div class="line"></div><div class="line">  //根据设备实际的屏幕像素宽度（并非页面噢）来引用样式</div></pre></td></tr></table></figure>
+</li>
+<li><p>not 关键词</p>
+  <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">media</span> not print and (max-width: <span class="number">1200px</span>)&#123;样式代码&#125;</div><div class="line">  样式代码将被使用在除打印设备和设备宽度小于1200<span class="selector-tag">px</span>下所有设备中。</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+
         </div>
         
         <blockquote class="post-copyright">
