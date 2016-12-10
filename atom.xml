@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.mcling.xyz/"/>
-  <updated>2016-12-01T11:36:29.041Z</updated>
+  <updated>2016-12-10T03:42:43.070Z</updated>
   <id>http://www.mcling.xyz/</id>
   
   <author>
@@ -14,6 +14,69 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>node</title>
+    <link href="http://www.mcling.xyz/2016/12/10/node.html"/>
+    <id>http://www.mcling.xyz/2016/12/10/node.html</id>
+    <published>2016-12-10T02:28:15.000Z</published>
+    <updated>2016-12-10T03:42:43.070Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="node"><a href="#node" class="headerlink" title="node"></a>node</h2><ul>
+<li>[官网]<code>(http://nodejs.org/en/)</code></li>
+</ul>
+<hr>
+<p>###　node 是什么?</p>
+<ul>
+<li><code>node</code> 中也包含 <code>js</code> 解析引擎( <code>node</code> 现在用的就是 V8 引擎!速度非常快)</li>
+<li><code>php</code> /后端使用的语言(后端写的代码运行在服务器!)<ul>
+<li>区分前端和后端(就看最终代码在哪里执行,在浏览器中执行就是前端,在服务器执行就是后端)</li>
+</ul>
+</li>
+<li><code>node</code> [<em>其实是一个包含的<code>js</code>解析引擎(V8)的软件!</em>] (可以在后端使用)<ul>
+<li>有了<code>js</code>解析引擎就会解析<code>js</code>代码</li>
+</ul>
+</li>
+<li>浏览器的js<ul>
+<li>可以通过<code>js</code>操作<code>html</code></li>
+<li><code>DOM</code>(和操作<code>html</code>有关),<code>BOM</code>(和浏览器有关),<code>ECMA</code>(就是<code>js</code>语法规范)</li>
+</ul>
+</li>
+<li><code>node</code> 中的<code>js</code><ul>
+<li>没有<code>DOM</code>,没有<code>BOM</code>,有<code>ECMA</code></li>
+<li><code>window</code>(也就是没有<code>window</code>对象)</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="命令行"><a href="#命令行" class="headerlink" title="命令行"></a>命令行</h2><ul>
+<li>系统底层还是命令!</li>
+<li>window 系统刚出来是没有界面的</li>
+<li>在cmd中敲命令,会默认到当前命令行对应的目录找文件执行</li>
+</ul>
+<hr>
+<h2 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h2><ul>
+<li>我们在<code>cmd</code>窗口中敲一个命令,本质上执行了一个程序(软件)</li>
+<li>默认按下回车时,回到当前命令行所在的目录寻找文件,如果找到立即执行</li>
+<li>如果找不到,就会到环境变量中的<code>PATH</code>中指定的目录寻找</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;node&quot;&gt;&lt;a href=&quot;#node&quot; class=&quot;headerlink&quot; title=&quot;node&quot;&gt;&lt;/a&gt;node&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;[官网]&lt;code&gt;(http://nodejs.org/en/)&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+    
+    </summary>
+    
+      <category term="nodeJs" scheme="http://www.mcling.xyz/categories/nodeJs/"/>
+    
+    
+      <category term="node" scheme="http://www.mcling.xyz/tags/node/"/>
+    
+  </entry>
   
   <entry>
     <title>CSS3</title>
@@ -269,7 +332,7 @@
 <li><p>@import</p>
 <ul>
 <li>在样式中通过<code>@import</code>调用另一个样式文件   <code>@importurl(print.css) print;</code></li>
-<li>在<code>&lt;head&gt;</code>中的<code>&lt;style&gt;</code>标签中引入媒体类型方法    <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="css"></span></div><div class="line"> @<span class="keyword">importurl</span>(<span class="keyword">style</span>.<span class="keyword">css</span>) all;</div><div class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div></pre></td></tr></table></figure>
+<li>在<code>&lt;head&gt;</code>中的<code>&lt;style&gt;</code>标签中引入媒体类型方法    <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="undefined"></span></div><div class="line"> @importurl(style.css) all;</div><div class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div></pre></td></tr></table></figure>
 </li>
 </ul>
 </li>
