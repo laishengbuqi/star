@@ -40,7 +40,7 @@ php /后端使用的语言(后端写的代码运行在服务器!)
 
 
 node [其实是一个包含的js解析引擎(V8)的软件!] (可">
-<meta property="og:updated_time" content="2016-12-10T03:42:43.070Z">
+<meta property="og:updated_time" content="2016-12-10T10:31:34.951Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="node">
 <meta name="twitter:description" content="node
@@ -200,7 +200,7 @@ node [其实是一个包含的js解析引擎(V8)的软件!] (可">
     <aside class="post-widget">
         <nav class="post-toc-wrap" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#node"><span class="post-toc-number">1.</span> <span class="post-toc-text">node</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#命令行"><span class="post-toc-number">2.</span> <span class="post-toc-text">命令行</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#环境变量"><span class="post-toc-number">3.</span> <span class="post-toc-text">环境变量</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#node"><span class="post-toc-number">1.</span> <span class="post-toc-text">node</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#node-安装"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">node 安装</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#node-快速开始"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">node 快速开始</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#node-中引入模块-和暴露数据"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">node 中引入模块,和暴露数据</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#node-中不仅包含js解析引擎-还包含服务器软件的功能"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">node 中不仅包含js解析引擎,还包含服务器软件的功能</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#注意"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">注意</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#命令行"><span class="post-toc-number">2.</span> <span class="post-toc-text">命令行</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#环境变量"><span class="post-toc-number">3.</span> <span class="post-toc-text">环境变量</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#服务器就是一台电脑"><span class="post-toc-number">4.</span> <span class="post-toc-text">服务器就是一台电脑</span></a></li></ol>
         </nav>
     </aside>
     
@@ -247,6 +247,22 @@ node [其实是一个包含的js解析引擎(V8)的软件!] (可">
 </ul>
 </li>
 </ul>
+<h3 id="node-安装"><a href="#node-安装" class="headerlink" title="node 安装"></a>node 安装</h3><h3 id="node-快速开始"><a href="#node-快速开始" class="headerlink" title="node 快速开始"></a>node 快速开始</h3><h3 id="node-中引入模块-和暴露数据"><a href="#node-中引入模块-和暴露数据" class="headerlink" title="node 中引入模块,和暴露数据"></a>node 中引入模块,和暴露数据</h3><ul>
+<li>引入模块,使用<code>node</code>中提供<code>require(&#39;./jack.js&#39;)</code>方法</li>
+<li>暴露数据使用的是<code>module.exports={xxx}</code>或者<code>exports.xxx=yyy</code></li>
+</ul>
+<h3 id="node-中不仅包含js解析引擎-还包含服务器软件的功能"><a href="#node-中不仅包含js解析引擎-还包含服务器软件的功能" class="headerlink" title="node 中不仅包含js解析引擎,还包含服务器软件的功能"></a>node 中不仅包含js解析引擎,还包含服务器软件的功能</h3><ul>
+<li>电脑上只要安装了<code>node</code>,不需要其他的软件配置,就能够开启 <code>http</code>服务</li>
+</ul>
+<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><ul>
+<li><code>file</code>协议,默认,不能使用ajax请求</li>
+</ul>
+<ul>
+<li>服务器就是一台电脑(这个电脑是有独立ip)</li>
+<li>我们的笔记本也是电脑(也可以把最终的项目代码放到笔记本上,很少这么用)</li>
+<li>操作系统都可能是一样的</li>
+<li>服务器能运行的软件,我们电脑也能运行</li>
+</ul>
 <hr>
 <h2 id="命令行"><a href="#命令行" class="headerlink" title="命令行"></a>命令行</h2><ul>
 <li>系统底层还是命令!</li>
@@ -258,6 +274,10 @@ node [其实是一个包含的js解析引擎(V8)的软件!] (可">
 <li>我们在<code>cmd</code>窗口中敲一个命令,本质上执行了一个程序(软件)</li>
 <li>默认按下回车时,回到当前命令行所在的目录寻找文件,如果找到立即执行</li>
 <li>如果找不到,就会到环境变量中的<code>PATH</code>中指定的目录寻找</li>
+</ul>
+<p>例: 我们把<code>node</code>的默认安装目录: C:\Program Files\nodejs配置<code>PATH</code>上,那么我们在<code>cmd</code>中敲命令时,如果当前目录找不到,就会到<code>C:\Program Files\nodejs</code>目录寻找相应的文件执行!</p>
+<h2 id="服务器就是一台电脑"><a href="#服务器就是一台电脑" class="headerlink" title="服务器就是一台电脑"></a>服务器就是一台电脑</h2><ul>
+<li>只是性能一般比普通电脑高</li>
 </ul>
 
         </div>
