@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.mcling.xyz/"/>
-  <updated>2016-12-10T10:31:34.951Z</updated>
+  <updated>2016-12-12T12:06:52.609Z</updated>
   <id>http://www.mcling.xyz/</id>
   
   <author>
@@ -16,11 +16,100 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>node</title>
+    <title>nodejs part2</title>
+    <link href="http://www.mcling.xyz/2016/12/12/node1.html"/>
+    <id>http://www.mcling.xyz/2016/12/12/node1.html</id>
+    <published>2016-12-12T01:12:15.000Z</published>
+    <updated>2016-12-12T12:06:52.609Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="node"><a href="#node" class="headerlink" title="node"></a>node</h2><ul>
+<li>一个文件就是一个模块<ul>
+<li>文件是定义的变量,只能在这个文件夹中使用</li>
+</ul>
+</li>
+<li>作用域</li>
+<li>node 只需要自己一个人就可以当服务器软件<ul>
+<li>node 中代码,可以接收前端浏览器发来的请求,并返回相应的数据</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="http"><a href="#http" class="headerlink" title="http"></a>http</h2><ul>
+<li>node 的核心模块</li>
+<li>node 模块:<ul>
+<li>核心模块(只要安装了 node 就会有的模块,已经被打包到了<code>node.exe</code>文件)</li>
+<li>自定义模块</li>
+<li>第三方的模块(包)</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="url-模块"><a href="#url-模块" class="headerlink" title="url 模块"></a>url 模块</h2><ul>
+<li>用来操作 url <ul>
+<li><code>url.parse(request.url,true)</code></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="fs-文件操作模块"><a href="#fs-文件操作模块" class="headerlink" title="fs 文件操作模块"></a>fs 文件操作模块</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>)</div><div class="line"><span class="comment">// 读取文件:</span></div><div class="line"><span class="comment">// 参数1: 文件路径</span></div><div class="line"><span class="comment">// 参数2: 文件编码</span></div><div class="line"><span class="comment">// 返回值: 文件内容</span></div><div class="line"><span class="keyword">var</span> data = fs.readFileSync(<span class="string">'./index.html'</span>,<span class="string">'utf8'</span>)</div><div class="line"></div><div class="line"><span class="comment">// 写入文件</span></div><div class="line"><span class="comment">// 第一个参数: 要写入的文件目录</span></div><div class="line"><span class="comment">// 第二个参数: 要写入的内容</span></div><div class="line"><span class="comment">// 这个方法执行时会覆盖之前的文件内容</span></div><div class="line">fs.writeFileSync(<span class="string">'./tmp.txt'</span>,<span class="string">'文本内容'</span>)</div><div class="line"><span class="comment">//追加文件</span></div><div class="line">fs.appendFileSync(<span class="string">'./xx.js'</span>,<span class="string">'文本内容\r\n'</span>)</div><div class="line"><span class="comment">//创建目录</span></div><div class="line"> <span class="comment">//判断目录是否存在,如果不存在,则创建</span></div><div class="line"> <span class="keyword">var</span> result=fs.existSync(<span class="string">'data'</span>)<span class="comment">//判断当前目录是否存在data目录</span></div><div class="line"> <span class="keyword">if</span>(!result)&#123;</div><div class="line">     <span class="built_in">console</span>.log(result)</div><div class="line">     <span class="comment">//创建目录</span></div><div class="line">     fs.mkdirSync(<span class="string">'data'</span>)<span class="comment">//在当前目录创建data目录</span></div><div class="line">    </div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+<hr>
+<h2 id="dirname和-firename"><a href="#dirname和-firename" class="headerlink" title="__dirname和__firename"></a><code>__dirname</code>和<code>__firename</code></h2><ol>
+<li>__dirname 可在任意文件中直接使用,值表示当前文件所在路径字符串</li>
+<li>__firename 也可以在任意文件中使用,值表示当前文件的包含文件名的完整路径</li>
+</ol>
+<hr>
+<h2 id="form-表单"><a href="#form-表单" class="headerlink" title="form 表单"></a>form 表单</h2><h2 id="form-表单提交-使用get请求-会把请求参数添加到url中"><a href="#form-表单提交-使用get请求-会把请求参数添加到url中" class="headerlink" title="* form 表单提交,使用get请求,会把请求参数添加到url中"></a>* form 表单提交,使用<code>get</code>请求,会把请求参数添加到<code>url</code>中</h2><h2 id="重定向"><a href="#重定向" class="headerlink" title="重定向"></a>重定向</h2><ul>
+<li>在响应头里加上<code>Location:新地址</code>,并设置状态为302</li>
+<li><code>res.setHeader(&#39;key&#39;,&#39;value&#39;)</code>//设置响应头</li>
+<li><code>res.writeHead(状态码)</code>//设置状态码</li>
+<li>浏览器接收到数据后会重新想新地址跳转</li>
+</ul>
+<hr>
+<h2 id="npm"><a href="#npm" class="headerlink" title="npm"></a>npm</h2><ul>
+<li>node package manager</li>
+<li>node 的包管理工具,管理的是第三方包</li>
+<li><a href="https://www.npmjs.com/" target="_blank" rel="external">官网</a></li>
+<li>也能管理前端的包</li>
+</ul>
+<hr>
+<h2 id="离线文档阅读器"><a href="#离线文档阅读器" class="headerlink" title="离线文档阅读器"></a>离线文档阅读器</h2><ul>
+<li><a href="https://zealdocs.org/" target="_blank" rel="external">windows 版本</a></li>
+<li><a href="dash">mac 版本</a></li>
+</ul>
+<h2 id="es6-es2015"><a href="#es6-es2015" class="headerlink" title="es6/es2015"></a>es6/es2015</h2><ul>
+<li>const<br>  //const 申明的数据,在栈中不可变,但是如果是对象,则对应的属性值可以变,也就是堆中的值可变,栈中的地址不可变</li>
+<li>let<br>  // let 申明的变量,作用由大括号决定</li>
+</ul>
+<h2 id="提交效率"><a href="#提交效率" class="headerlink" title="提交效率"></a>提交效率</h2><ul>
+<li>组合键:<code>win+E</code>,打开资源管理器</li>
+<li>组合键:<code>win+D</code>,快速切换到桌面</li>
+<li>组合键:<code>ctrl+shift+esc</code> 快速打开任务管理器</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;node&quot;&gt;&lt;a href=&quot;#node&quot; class=&quot;headerlink&quot; title=&quot;node&quot;&gt;&lt;/a&gt;node&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;一个文件就是一个模块&lt;ul&gt;
+&lt;li&gt;文件是定义的变量,只能在这个文件夹中使用&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+    
+    </summary>
+    
+      <category term="nodeJs" scheme="http://www.mcling.xyz/categories/nodeJs/"/>
+    
+    
+      <category term="node" scheme="http://www.mcling.xyz/tags/node/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>nodejs part1</title>
     <link href="http://www.mcling.xyz/2016/12/10/node.html"/>
     <id>http://www.mcling.xyz/2016/12/10/node.html</id>
     <published>2016-12-10T02:28:15.000Z</published>
-    <updated>2016-12-10T10:31:34.951Z</updated>
+    <updated>2016-12-12T01:11:27.389Z</updated>
     
     <content type="html"><![CDATA[<h2 id="node"><a href="#node" class="headerlink" title="node"></a>node</h2><ul>
 <li>[官网]<code>(http://nodejs.org/en/)</code></li>
@@ -352,7 +441,7 @@
 <li><p>@import</p>
 <ul>
 <li>在样式中通过<code>@import</code>调用另一个样式文件   <code>@importurl(print.css) print;</code></li>
-<li>在<code>&lt;head&gt;</code>中的<code>&lt;style&gt;</code>标签中引入媒体类型方法    <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="undefined"></span></div><div class="line"> @importurl(style.css) all;</div><div class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div></pre></td></tr></table></figure>
+<li>在<code>&lt;head&gt;</code>中的<code>&lt;style&gt;</code>标签中引入媒体类型方法    <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="css"></span></div><div class="line"> @<span class="keyword">importurl</span>(<span class="keyword">style</span>.<span class="keyword">css</span>) all;</div><div class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div></pre></td></tr></table></figure>
 </li>
 </ul>
 </li>

@@ -5,7 +5,7 @@
   
   
   
-  <title>nodejs part1 | 心雨 | 马美玲的博客</title>
+  <title>nodejs part2 | 心雨 | 马美玲的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   <meta name="theme-color" content="#3F51B5">
@@ -13,48 +13,84 @@
   
   <meta name="keywords" content="node">
   <meta name="description" content="node
-[官网](http://nodejs.org/en/)
+一个文件就是一个模块
+文件是定义的变量,只能在这个文件夹中使用
 
 
-###　node 是什么?
-
-node 中也包含 js 解析引擎( node 现在用的就是 V8 引擎!速度非常快)
-php /后端使用的语言(后端写的代码运行在服务器!)
-区分前端和后端(就看最终代码在哪里执行,在浏览器中执行就是前端,在服务器执行就是后端)
+作用域
+node 只需要自己一个人就可以当服务器软件
+node 中代码,可以接收前端浏览器发来的请求,并返回相应的数据
 
 
-node [其实是一个包含的js解析引擎(V8)的软件!] (可">
+
+
+http
+node 的核心模块
+node 模块:
+核心模块(只要安装了 node 就会有的模块,已经被打包到了node.exe文件)
+自定义模块
+第三方的模块(包)
+
+
+
+
+url 模块
+用来操">
 <meta property="og:type" content="article">
-<meta property="og:title" content="nodejs part1">
-<meta property="og:url" content="http://www.mcling.xyz/2016/12/10/node.html">
+<meta property="og:title" content="nodejs part2">
+<meta property="og:url" content="http://www.mcling.xyz/2016/12/12/node1.html">
 <meta property="og:site_name" content="心雨">
 <meta property="og:description" content="node
-[官网](http://nodejs.org/en/)
+一个文件就是一个模块
+文件是定义的变量,只能在这个文件夹中使用
 
 
-###　node 是什么?
-
-node 中也包含 js 解析引擎( node 现在用的就是 V8 引擎!速度非常快)
-php /后端使用的语言(后端写的代码运行在服务器!)
-区分前端和后端(就看最终代码在哪里执行,在浏览器中执行就是前端,在服务器执行就是后端)
+作用域
+node 只需要自己一个人就可以当服务器软件
+node 中代码,可以接收前端浏览器发来的请求,并返回相应的数据
 
 
-node [其实是一个包含的js解析引擎(V8)的软件!] (可">
-<meta property="og:updated_time" content="2016-12-12T01:11:27.389Z">
+
+
+http
+node 的核心模块
+node 模块:
+核心模块(只要安装了 node 就会有的模块,已经被打包到了node.exe文件)
+自定义模块
+第三方的模块(包)
+
+
+
+
+url 模块
+用来操">
+<meta property="og:updated_time" content="2016-12-12T12:06:52.609Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="nodejs part1">
+<meta name="twitter:title" content="nodejs part2">
 <meta name="twitter:description" content="node
-[官网](http://nodejs.org/en/)
+一个文件就是一个模块
+文件是定义的变量,只能在这个文件夹中使用
 
 
-###　node 是什么?
-
-node 中也包含 js 解析引擎( node 现在用的就是 V8 引擎!速度非常快)
-php /后端使用的语言(后端写的代码运行在服务器!)
-区分前端和后端(就看最终代码在哪里执行,在浏览器中执行就是前端,在服务器执行就是后端)
+作用域
+node 只需要自己一个人就可以当服务器软件
+node 中代码,可以接收前端浏览器发来的请求,并返回相应的数据
 
 
-node [其实是一个包含的js解析引擎(V8)的软件!] (可">
+
+
+http
+node 的核心模块
+node 模块:
+核心模块(只要安装了 node 就会有的模块,已经被打包到了node.exe文件)
+自定义模块
+第三方的模块(包)
+
+
+
+
+url 模块
+用来操">
   
     <link rel="alternative" href="/atom.xml" title="心雨" type="application/atom+xml">
   
@@ -154,7 +190,7 @@ node [其实是一个包含的js解析引擎(V8)的软件!] (可">
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">nodejs part1</div>
+        <div class="flex-col header-title ellipsis">nodejs part2</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -176,11 +212,11 @@ node [其实是一个包含的js解析引擎(V8)的软件!] (可">
 <header class="content-header post-header">
 
     <div class="container">
-        <h1 class="title">nodejs part1</h1>
+        <h1 class="title">nodejs part2</h1>
         <h5 class="subtitle">
             
-                <time datetime="2016-12-10T02:28:15.000Z" itemprop="datePublished" class="page-time">
-  2016-12-10
+                <time datetime="2016-12-12T01:12:15.000Z" itemprop="datePublished" class="page-time">
+  2016-12-12
 </time>
 
 
@@ -200,18 +236,18 @@ node [其实是一个包含的js解析引擎(V8)的软件!] (可">
     <aside class="post-widget">
         <nav class="post-toc-wrap" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#node"><span class="post-toc-number">1.</span> <span class="post-toc-text">node</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#node-安装"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">node 安装</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#node-快速开始"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">node 快速开始</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#node-中引入模块-和暴露数据"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">node 中引入模块,和暴露数据</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#node-中不仅包含js解析引擎-还包含服务器软件的功能"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">node 中不仅包含js解析引擎,还包含服务器软件的功能</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#注意"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">注意</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#命令行"><span class="post-toc-number">2.</span> <span class="post-toc-text">命令行</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#环境变量"><span class="post-toc-number">3.</span> <span class="post-toc-text">环境变量</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#服务器就是一台电脑"><span class="post-toc-number">4.</span> <span class="post-toc-text">服务器就是一台电脑</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#node"><span class="post-toc-number">1.</span> <span class="post-toc-text">node</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#http"><span class="post-toc-number">2.</span> <span class="post-toc-text">http</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#url-模块"><span class="post-toc-number">3.</span> <span class="post-toc-text">url 模块</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#fs-文件操作模块"><span class="post-toc-number">4.</span> <span class="post-toc-text">fs 文件操作模块</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#dirname和-firename"><span class="post-toc-number">5.</span> <span class="post-toc-text">__dirname和__firename</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#form-表单"><span class="post-toc-number">6.</span> <span class="post-toc-text">form 表单</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#form-表单提交-使用get请求-会把请求参数添加到url中"><span class="post-toc-number">7.</span> <span class="post-toc-text">* form 表单提交,使用get请求,会把请求参数添加到url中</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#重定向"><span class="post-toc-number">8.</span> <span class="post-toc-text">重定向</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#npm"><span class="post-toc-number">9.</span> <span class="post-toc-text">npm</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#离线文档阅读器"><span class="post-toc-number">10.</span> <span class="post-toc-text">离线文档阅读器</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#es6-es2015"><span class="post-toc-number">11.</span> <span class="post-toc-text">es6/es2015</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#提交效率"><span class="post-toc-number">12.</span> <span class="post-toc-text">提交效率</span></a></li></ol>
         </nav>
     </aside>
     
-<article id="post-node" 
+<article id="post-node1" 
   class="post-article article-type-post" itemprop="blogPost">
 
     <div class="post-card">
-        <h1 class="post-card-title">nodejs part1</h1>
+        <h1 class="post-card-title">nodejs part2</h1>
         <div class="post-meta">
-            <time datetime="2016-12-10T02:28:15.000Z" itemprop="datePublished" class="post-time">
-  2016-12-10
+            <time datetime="2016-12-12T01:12:15.000Z" itemprop="datePublished" class="post-time">
+  2016-12-12
 </time>
 
             
@@ -222,69 +258,74 @@ node [其实是一个包含的js解析引擎(V8)的软件!] (可">
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             <h2 id="node"><a href="#node" class="headerlink" title="node"></a>node</h2><ul>
-<li>[官网]<code>(http://nodejs.org/en/)</code></li>
+<li>一个文件就是一个模块<ul>
+<li>文件是定义的变量,只能在这个文件夹中使用</li>
+</ul>
+</li>
+<li>作用域</li>
+<li>node 只需要自己一个人就可以当服务器软件<ul>
+<li>node 中代码,可以接收前端浏览器发来的请求,并返回相应的数据</li>
+</ul>
+</li>
 </ul>
 <hr>
-<p>###　node 是什么?</p>
-<ul>
-<li><code>node</code> 中也包含 <code>js</code> 解析引擎( <code>node</code> 现在用的就是 V8 引擎!速度非常快)</li>
-<li><code>php</code> /后端使用的语言(后端写的代码运行在服务器!)<ul>
-<li>区分前端和后端(就看最终代码在哪里执行,在浏览器中执行就是前端,在服务器执行就是后端)</li>
+<h2 id="http"><a href="#http" class="headerlink" title="http"></a>http</h2><ul>
+<li>node 的核心模块</li>
+<li>node 模块:<ul>
+<li>核心模块(只要安装了 node 就会有的模块,已经被打包到了<code>node.exe</code>文件)</li>
+<li>自定义模块</li>
+<li>第三方的模块(包)</li>
 </ul>
 </li>
-<li><code>node</code> [<em>其实是一个包含的<code>js</code>解析引擎(V8)的软件!</em>] (可以在后端使用)<ul>
-<li>有了<code>js</code>解析引擎就会解析<code>js</code>代码</li>
-</ul>
-</li>
-<li>浏览器的js<ul>
-<li>可以通过<code>js</code>操作<code>html</code></li>
-<li><code>DOM</code>(和操作<code>html</code>有关),<code>BOM</code>(和浏览器有关),<code>ECMA</code>(就是<code>js</code>语法规范)</li>
-</ul>
-</li>
-<li><code>node</code> 中的<code>js</code><ul>
-<li>没有<code>DOM</code>,没有<code>BOM</code>,有<code>ECMA</code></li>
-<li><code>window</code>(也就是没有<code>window</code>对象)</li>
-</ul>
-</li>
-</ul>
-<h3 id="node-安装"><a href="#node-安装" class="headerlink" title="node 安装"></a>node 安装</h3><h3 id="node-快速开始"><a href="#node-快速开始" class="headerlink" title="node 快速开始"></a>node 快速开始</h3><h3 id="node-中引入模块-和暴露数据"><a href="#node-中引入模块-和暴露数据" class="headerlink" title="node 中引入模块,和暴露数据"></a>node 中引入模块,和暴露数据</h3><ul>
-<li>引入模块,使用<code>node</code>中提供<code>require(&#39;./jack.js&#39;)</code>方法</li>
-<li>暴露数据使用的是<code>module.exports={xxx}</code>或者<code>exports.xxx=yyy</code></li>
-</ul>
-<h3 id="node-中不仅包含js解析引擎-还包含服务器软件的功能"><a href="#node-中不仅包含js解析引擎-还包含服务器软件的功能" class="headerlink" title="node 中不仅包含js解析引擎,还包含服务器软件的功能"></a>node 中不仅包含js解析引擎,还包含服务器软件的功能</h3><ul>
-<li>电脑上只要安装了<code>node</code>,不需要其他的软件配置,就能够开启 <code>http</code>服务</li>
-</ul>
-<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><ul>
-<li><code>file</code>协议,默认,不能使用ajax请求</li>
-</ul>
-<ul>
-<li>服务器就是一台电脑(这个电脑是有独立ip)</li>
-<li>我们的笔记本也是电脑(也可以把最终的项目代码放到笔记本上,很少这么用)</li>
-<li>操作系统都可能是一样的</li>
-<li>服务器能运行的软件,我们电脑也能运行</li>
 </ul>
 <hr>
-<h2 id="命令行"><a href="#命令行" class="headerlink" title="命令行"></a>命令行</h2><ul>
-<li>系统底层还是命令!</li>
-<li>window 系统刚出来是没有界面的</li>
-<li>在cmd中敲命令,会默认到当前命令行对应的目录找文件执行</li>
+<h2 id="url-模块"><a href="#url-模块" class="headerlink" title="url 模块"></a>url 模块</h2><ul>
+<li>用来操作 url <ul>
+<li><code>url.parse(request.url,true)</code></li>
+</ul>
+</li>
 </ul>
 <hr>
-<h2 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h2><ul>
-<li>我们在<code>cmd</code>窗口中敲一个命令,本质上执行了一个程序(软件)</li>
-<li>默认按下回车时,回到当前命令行所在的目录寻找文件,如果找到立即执行</li>
-<li>如果找不到,就会到环境变量中的<code>PATH</code>中指定的目录寻找</li>
+<h2 id="fs-文件操作模块"><a href="#fs-文件操作模块" class="headerlink" title="fs 文件操作模块"></a>fs 文件操作模块</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>)</div><div class="line"><span class="comment">// 读取文件:</span></div><div class="line"><span class="comment">// 参数1: 文件路径</span></div><div class="line"><span class="comment">// 参数2: 文件编码</span></div><div class="line"><span class="comment">// 返回值: 文件内容</span></div><div class="line"><span class="keyword">var</span> data = fs.readFileSync(<span class="string">'./index.html'</span>,<span class="string">'utf8'</span>)</div><div class="line"></div><div class="line"><span class="comment">// 写入文件</span></div><div class="line"><span class="comment">// 第一个参数: 要写入的文件目录</span></div><div class="line"><span class="comment">// 第二个参数: 要写入的内容</span></div><div class="line"><span class="comment">// 这个方法执行时会覆盖之前的文件内容</span></div><div class="line">fs.writeFileSync(<span class="string">'./tmp.txt'</span>,<span class="string">'文本内容'</span>)</div><div class="line"><span class="comment">//追加文件</span></div><div class="line">fs.appendFileSync(<span class="string">'./xx.js'</span>,<span class="string">'文本内容\r\n'</span>)</div><div class="line"><span class="comment">//创建目录</span></div><div class="line"> <span class="comment">//判断目录是否存在,如果不存在,则创建</span></div><div class="line"> <span class="keyword">var</span> result=fs.existSync(<span class="string">'data'</span>)<span class="comment">//判断当前目录是否存在data目录</span></div><div class="line"> <span class="keyword">if</span>(!result)&#123;</div><div class="line">     <span class="built_in">console</span>.log(result)</div><div class="line">     <span class="comment">//创建目录</span></div><div class="line">     fs.mkdirSync(<span class="string">'data'</span>)<span class="comment">//在当前目录创建data目录</span></div><div class="line">    </div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+<hr>
+<h2 id="dirname和-firename"><a href="#dirname和-firename" class="headerlink" title="__dirname和__firename"></a><code>__dirname</code>和<code>__firename</code></h2><ol>
+<li>__dirname 可在任意文件中直接使用,值表示当前文件所在路径字符串</li>
+<li>__firename 也可以在任意文件中使用,值表示当前文件的包含文件名的完整路径</li>
+</ol>
+<hr>
+<h2 id="form-表单"><a href="#form-表单" class="headerlink" title="form 表单"></a>form 表单</h2><h2 id="form-表单提交-使用get请求-会把请求参数添加到url中"><a href="#form-表单提交-使用get请求-会把请求参数添加到url中" class="headerlink" title="* form 表单提交,使用get请求,会把请求参数添加到url中"></a>* form 表单提交,使用<code>get</code>请求,会把请求参数添加到<code>url</code>中</h2><h2 id="重定向"><a href="#重定向" class="headerlink" title="重定向"></a>重定向</h2><ul>
+<li>在响应头里加上<code>Location:新地址</code>,并设置状态为302</li>
+<li><code>res.setHeader(&#39;key&#39;,&#39;value&#39;)</code>//设置响应头</li>
+<li><code>res.writeHead(状态码)</code>//设置状态码</li>
+<li>浏览器接收到数据后会重新想新地址跳转</li>
 </ul>
-<p>例: 我们把<code>node</code>的默认安装目录: C:\Program Files\nodejs配置<code>PATH</code>上,那么我们在<code>cmd</code>中敲命令时,如果当前目录找不到,就会到<code>C:\Program Files\nodejs</code>目录寻找相应的文件执行!</p>
-<h2 id="服务器就是一台电脑"><a href="#服务器就是一台电脑" class="headerlink" title="服务器就是一台电脑"></a>服务器就是一台电脑</h2><ul>
-<li>只是性能一般比普通电脑高</li>
+<hr>
+<h2 id="npm"><a href="#npm" class="headerlink" title="npm"></a>npm</h2><ul>
+<li>node package manager</li>
+<li>node 的包管理工具,管理的是第三方包</li>
+<li><a href="https://www.npmjs.com/" target="_blank" rel="external">官网</a></li>
+<li>也能管理前端的包</li>
+</ul>
+<hr>
+<h2 id="离线文档阅读器"><a href="#离线文档阅读器" class="headerlink" title="离线文档阅读器"></a>离线文档阅读器</h2><ul>
+<li><a href="https://zealdocs.org/" target="_blank" rel="external">windows 版本</a></li>
+<li><a href="dash">mac 版本</a></li>
+</ul>
+<h2 id="es6-es2015"><a href="#es6-es2015" class="headerlink" title="es6/es2015"></a>es6/es2015</h2><ul>
+<li>const<br>  //const 申明的数据,在栈中不可变,但是如果是对象,则对应的属性值可以变,也就是堆中的值可变,栈中的地址不可变</li>
+<li>let<br>  // let 申明的变量,作用由大括号决定</li>
+</ul>
+<h2 id="提交效率"><a href="#提交效率" class="headerlink" title="提交效率"></a>提交效率</h2><ul>
+<li>组合键:<code>win+E</code>,打开资源管理器</li>
+<li>组合键:<code>win+D</code>,快速切换到桌面</li>
+<li>组合键:<code>ctrl+shift+esc</code> 快速打开任务管理器</li>
 </ul>
 
         </div>
         
         <blockquote class="post-copyright">
     <div class="content">
-        链接：<a href="/2016/12/10/node.html" target="_blank" rel="external">http://www.mcling.xyz/2016/12/10/node.html</a>
+        链接：<a href="/2016/12/12/node1.html" target="_blank" rel="external">http://www.mcling.xyz/2016/12/12/node1.html</a>
     </div>
     <footer>
         <a href="http://www.mcling.xyz">
@@ -353,21 +394,14 @@ node [其实是一个包含的js解析引擎(V8)的软件!] (可">
     </div>   
 
     
-<nav class="post-nav flex-row flex-justify-between">
-  
-    <div class="waves-block waves-effect prev">
-      <a href="/2016/12/12/node1.html" id="post-prev" class="post-nav-link">
-        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">nodejs part2</h4>
-      </a>
-    </div>
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
   
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2016/11/29/CSS3.html" id="post-next" class="post-nav-link">
+      <a href="/2016/12/10/node.html" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">CSS3</h4>
+        <h4 class="title">nodejs part1</h4>
       </a>
     </div>
   
@@ -377,7 +411,7 @@ node [其实是一个包含的js解析引擎(V8)的软件!] (可">
             
     
 <div class="duoshuo" id="comments">
-	<div class="ds-thread" data-thread-key="node" data-title="nodejs part1" data-url="http://www.mcling.xyz/2016/12/10/node.html"></div>
+	<div class="ds-thread" data-thread-key="node1" data-title="nodejs part2" data-url="http://www.mcling.xyz/2016/12/12/node1.html"></div>
 </div>
 <script src="/js/embed.min.js?v=1.1.12"></script>
 <script src="//cdn.bootcss.com/marked/0.3.6/marked.min.js" async="async"></script>
@@ -424,9 +458,9 @@ var duoshuoQuery = {short_name:'mcling', theme: 'none'}
 
 <script>var BLOG = { ROOT: '/' };
 BLOG.SHARE = {
-title: "nodejs part1",
+title: "nodejs part2",
 summary: document.getElementsByName('summary')[0].content,
-url: "http://www.mcling.xyz/2016/12/10/node.html" }
+url: "http://www.mcling.xyz/2016/12/12/node1.html" }
 </script>
 <div class="global-share" id="global-share">
     <div class="tit">分享到：</div>
