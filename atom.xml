@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.mcling.xyz/"/>
-  <updated>2016-12-12T12:06:52.609Z</updated>
+  <updated>2016-12-12T13:52:58.000Z</updated>
   <id>http://www.mcling.xyz/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://www.mcling.xyz/2016/12/12/node1.html"/>
     <id>http://www.mcling.xyz/2016/12/12/node1.html</id>
     <published>2016-12-12T01:12:15.000Z</published>
-    <updated>2016-12-12T12:06:52.609Z</updated>
+    <updated>2016-12-12T13:52:58.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="node"><a href="#node" class="headerlink" title="node"></a>node</h2><ul>
 <li>一个文件就是一个模块<ul>
@@ -58,7 +58,7 @@
 <li>__firename 也可以在任意文件中使用,值表示当前文件的包含文件名的完整路径</li>
 </ol>
 <hr>
-<h2 id="form-表单"><a href="#form-表单" class="headerlink" title="form 表单"></a>form 表单</h2><h2 id="form-表单提交-使用get请求-会把请求参数添加到url中"><a href="#form-表单提交-使用get请求-会把请求参数添加到url中" class="headerlink" title="* form 表单提交,使用get请求,会把请求参数添加到url中"></a>* form 表单提交,使用<code>get</code>请求,会把请求参数添加到<code>url</code>中</h2><h2 id="重定向"><a href="#重定向" class="headerlink" title="重定向"></a>重定向</h2><ul>
+<h2 id="form-表单"><a href="#form-表单" class="headerlink" title="form 表单"></a>form 表单</h2><h2 id="form-表单提交-使用get请求-会把请求参数添加到url中"><a href="#form-表单提交-使用get请求-会把请求参数添加到url中" class="headerlink" title="- form 表单提交,使用get请求,会把请求参数添加到url中"></a>- form 表单提交,使用<code>get</code>请求,会把请求参数添加到<code>url</code>中</h2><h2 id="重定向"><a href="#重定向" class="headerlink" title="重定向"></a>重定向</h2><ul>
 <li>在响应头里加上<code>Location:新地址</code>,并设置状态为302</li>
 <li><code>res.setHeader(&#39;key&#39;,&#39;value&#39;)</code>//设置响应头</li>
 <li><code>res.writeHead(状态码)</code>//设置状态码</li>
