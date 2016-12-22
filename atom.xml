@@ -2033,6 +2033,384 @@
   </entry>
   
   <entry>
+    <title>JavaScript 运算符</title>
+    <link href="http://www.mcling.xyz/2016/11/21/JavaScript3.html"/>
+    <id>http://www.mcling.xyz/2016/11/21/JavaScript3.html</id>
+    <published>2016-11-21T06:48:20.000Z</published>
+    <updated>2016-12-22T09:03:40.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="JavaScript-运算符"><a href="#JavaScript-运算符" class="headerlink" title="JavaScript 运算符"></a>JavaScript 运算符</h1><h2 id="算数运算符"><a href="#算数运算符" class="headerlink" title="算数运算符"></a>算数运算符</h2><ol>
+<li>运算符<ul>
+<li><code>+</code><ul>
+<li>功能<ul>
+<li>对数字进行代数求和</li>
+<li>对字符串进行拼接操作</li>
+<li>将数值转换成字符串(数值+ 空字符串)</li>
+</ul>
+</li>
+<li>字符串拼接<ul>
+<li>字符串 + 字符串(二者直接拼接)</li>
+<li>字符串 + 数值 或 数值 + 字符串 (将数值转换成字符串,在拼接)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>-</code><ul>
+<li>功能<ul>
+<li>单目运算符(对操作数进行”取反”操作)</li>
+<li>减法 (对两个运算数进行减法运算)</li>
+<li>将字符串转换成数值(数值型字符串-0)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>*</code><ul>
+<li>功能 (对两个运算数进行乘法运算)</li>
+<li>正/负 (同号得正,异号得负)</li>
+</ul>
+</li>
+<li><code>/</code><ul>
+<li>功能 (对两个运算数进行除法运算)</li>
+<li>正/负 (同号得正,异号得负)</li>
+</ul>
+</li>
+<li><code>%</code><ul>
+<li>功能 (对两个运算数进行求余运算)</li>
+<li>正/负(与第一个运算数的符号相同)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>复合赋值运算符  <code>+=、-=、*=、/=、%=</code></li>
+</ol>
+<hr>
+<h2 id="自增-自减"><a href="#自增-自减" class="headerlink" title="自增/自减"></a>自增/自减</h2><ol>
+<li>功能<ul>
+<li><code>++</code> 对运算数进行递增操作(每次+1)</li>
+<li><code>--</code> 对运算数进行递减操作(每次-1)</li>
+</ul>
+</li>
+<li>规则<ul>
+<li>运算数必须是一个变量,数组中的一个元素或者对象的属性</li>
+<li>如果运算数是非数值,则自动转换成数值</li>
+</ul>
+</li>
+<li>符号位置决定运算结果<ul>
+<li>运算数之前<ul>
+<li>先执行递增(递减)运算,再求值  </li>
+</ul>
+</li>
+<li>运算数之后<ul>
+<li>先求值,再执行递增(递减)运算</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="关系运算符"><a href="#关系运算符" class="headerlink" title="关系运算符"></a>关系运算符</h2><ol>
+<li>大小关系<ul>
+<li>运算符<ul>
+<li><code>&lt;</code>  if A 小于 B ,返回值为 true ;否则为 false</li>
+<li><code>&lt;=</code>  if A 小于或等于 B ,返回值为 true ; 否则为 false</li>
+<li><code>&gt;</code>  if A 大于 B ,返回值为 true ; 否则为 false</li>
+<li><code>&gt;=</code> if A 大于或等于 B ,返回值为 true ; 否则为 false</li>
+</ul>
+</li>
+<li>规则<ul>
+<li>数值与数值比较 (比较他们的代数值)</li>
+<li>仅一个运算数为数值 (将另一个运算数转换为数值,并比较他们的代数值)</li>
+<li>字符串间比较 (逐字符比较它们的<code>Unicode</code>数值)</li>
+<li>字符串与非数值比较(将其转换成字符串并进行比较)</li>
+<li>运算数为非数字也非字符串(转换成数值或字符串进行比较)</li>
+<li>运算数无法转换成数值或字符串 (返回值为false)</li>
+<li>与<code>NaN</code>的比较 (返回值为false)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>等值关系</p>
+<ul>
+<li><p>相等比较</p>
+<ul>
+<li>运算符<ul>
+<li><code>==</code> 比较两个运算数的返回值是否相等</li>
+<li><code>!=</code> 比较两个运算数的返回值是否不相等</li>
+</ul>
+</li>
+<li><p>类型转换</p>
+<ul>
+<li><p>bool 值</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="literal">true</span>  <span class="number">1</span></div><div class="line"><span class="literal">false</span> <span class="number">0</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>对象  调用<code>valueOf()</code>  基本数据类型</p>
+</li>
+<li>字符串与数值   字符串转换成数值</li>
+</ul>
+</li>
+<li>比较原则<ul>
+<li>null 与 undefined <ul>
+<li>相等</li>
+<li>比较前不进行任何转换</li>
+</ul>
+</li>
+<li>NaN  与任何数值都不相等包括自身</li>
+<li>对象  是否属于同一对象<ul>
+<li>是 引用值相等</li>
+<li>否 引用值不等</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>相同比较<ul>
+<li>运算符<ul>
+<li><code>===</code> 比较两个运算数的返回值以及数据类型是否相同</li>
+<li><code>!==</code> 比较两个运算数的返回值以及数据类型是否不同</li>
+</ul>
+</li>
+<li>比较原则<ul>
+<li>值类型间比较 <ul>
+<li>只有数据类型相同且数值相等时,返回值为 true</li>
+</ul>
+</li>
+<li>值类型与引用类型比较<ul>
+<li>肯定不同,返回值为 false</li>
+</ul>
+</li>
+<li>引用类型间比较<ul>
+<li>比较他们的引用值(内存地址)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="对象运算符"><a href="#对象运算符" class="headerlink" title="对象运算符"></a>对象运算符</h2><ol>
+<li><code>in</code> : 判断左侧运算数(<code>string</code>)是否为右侧运算数(<code>object</code>)的成员</li>
+<li><code>instanceof</code> : 判断左侧实例是否属于右侧类或构造函数</li>
+<li><code>new</code> : 根据构造函数创建一个新的对象,并初始化该对象</li>
+<li><code>delete</code>: 删除指定对象的属性、数组元素或变量</li>
+<li><code>.及[]</code> : 存取对象和数组元素</li>
+<li><code>()</code> : 函数调用,改变运算符优先级</li>
+</ol>
+<hr>
+<h2 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h2><ol>
+<li><code>!</code> 逻辑非<ul>
+<li>返回值<ul>
+<li>true <ul>
+<li>空字符串</li>
+<li>0</li>
+<li>null</li>
+<li>NaN</li>
+<li>undefined</li>
+</ul>
+</li>
+<li>false<ul>
+<li>对象</li>
+<li>非空字符串</li>
+<li>非0 数值(Infinity)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>特性<ul>
+<li>如果运算数的值为 false ,则返回 true ,否则返回 false</li>
+<li>连续使用两次!,可将任意类型转为布尔型值</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>&amp;&amp;</code> 逻辑与<ul>
+<li>规则<ul>
+<li>第一个运算数是对象  <ul>
+<li>返回第二个运算数</li>
+</ul>
+</li>
+<li>第二个运算数是对象<ul>
+<li>第一个运算数值为 true 时,返回该对象;否则返回第一个运算数</li>
+</ul>
+</li>
+<li>两个运算数都是对象<ul>
+<li>返回第二个运算数</li>
+</ul>
+</li>
+<li>一个运算数为 null<ul>
+<li>返回 null</li>
+</ul>
+</li>
+<li>一个运算数为 NaN<ul>
+<li>返回 NaN</li>
+</ul>
+</li>
+<li>一个运算数为 undefined<ul>
+<li>返回 undefined</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>特性<ul>
+<li>当且仅当两个运算数的值都是 true 时,才返回 true,否则返回 false</li>
+<li>短路操作  当有一个运算数的值为 false 则直接返回,不会再继续运算下去</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>||</code> 逻辑或<ul>
+<li>规则<ul>
+<li>第一个运算数是对象<ul>
+<li>返回第一个运算数</li>
+</ul>
+</li>
+<li>第二个运算数值是 false<ul>
+<li>返回第二个运算数</li>
+</ul>
+</li>
+<li>两个运算数都是对象<ul>
+<li>返回第一个运算数</li>
+</ul>
+</li>
+<li>两个运算数为 null<ul>
+<li>返回 null</li>
+</ul>
+</li>
+<li>两个运算数为 NaN<ul>
+<li>返回 NaN</li>
+</ul>
+</li>
+<li>两个运算数为 undefined<ul>
+<li>返回 undefined</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>特性<ul>
+<li>当且仅当两个运算数的值都是false才会返回false,否则返回true</li>
+<li>短路操作  如果有一个运算数值为 true,则返回此运算数,不会再继续运算下去</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="位运算符"><a href="#位运算符" class="headerlink" title="位运算符"></a>位运算符</h2><ol>
+<li>基础知识<ul>
+<li>类型<ul>
+<li>有符号 <ul>
+<li>数值位  前31位</li>
+<li>符号位  第32位<ul>
+<li>0 正数</li>
+<li>1 负数</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>无符号<ul>
+<li>只能是正数</li>
+<li>第32位表示数值</li>
+<li>数值范围加大</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>数值范围  -2147483648~2147483647</li>
+<li>存储方式<ul>
+<li>正数<ul>
+<li>纯2进制存储</li>
+<li>31位中每一位表示2的幂</li>
+<li>用0补充无用位</li>
+</ul>
+</li>
+<li>负数<ul>
+<li>2进制补码存储</li>
+<li>补码的计算步骤<ol>
+<li>确定该数字的非负版本的二进制表示</li>
+<li>求得2进制反码,即要把0替换为1,把1替换成0</li>
+<li>在2进制反码上加1</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>当0处理的特殊值<ul>
+<li>NaN</li>
+<li>Infinity</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>逻辑位运算<ul>
+<li>返回值为1<ul>
+<li>按位非~   0</li>
+<li>按位与&amp;   对应位全为1</li>
+<li>按位或|   任何一个是1</li>
+<li>按位异或   既不同时为0,也不同时为1</li>
+</ul>
+</li>
+<li>返回值为0<ul>
+<li>按位非~   1</li>
+<li>按位与&amp;   任意一位是0</li>
+<li>按位或|   对应位都是0</li>
+<li>按位异或  对应位全0或全1</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>位移操作<ul>
+<li>左移<ul>
+<li>将数值的所有位左移指定的位数</li>
+<li>所有空位用0补充</li>
+<li>左移1位其乘2,左移2位对其乘4,以此类推</li>
+</ul>
+</li>
+<li>有符号右移<ul>
+<li>将数值的所有位右移指定的位数</li>
+<li>移出的位被舍弃</li>
+<li>保留符号位</li>
+<li>右移1位对其除2,右移2位对其除4,以此类推</li>
+</ul>
+</li>
+<li>无符号右移<ul>
+<li>正数 与有符号右移结果相同</li>
+<li>负数  会出现无限大的数值</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>复合赋值运算符<ul>
+<li>位运算符与=结合,复合赋值不会有性能方面的提升</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="其他运算符"><a href="#其他运算符" class="headerlink" title="其他运算符"></a>其他运算符</h2><ol>
+<li><code>?:</code> 条件运算符,简洁的<code>if else</code></li>
+<li><code>typeof</code> 类型判定运算符</li>
+<li><code>,</code> 逗号,在一行语句中执行多个不同的操作</li>
+<li><code>void</code> 舍弃运算数的值,返回<code>undefined</code>作为表达式的值</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;JavaScript-运算符&quot;&gt;&lt;a href=&quot;#JavaScript-运算符&quot; class=&quot;headerlink&quot; title=&quot;JavaScript 运算符&quot;&gt;&lt;/a&gt;JavaScript 运算符&lt;/h1&gt;&lt;h2 id=&quot;算数运算符&quot;&gt;&lt;a href=&quot;#
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="http://www.mcling.xyz/categories/JavaScript/"/>
+    
+    
+      <category term="运算符" scheme="http://www.mcling.xyz/tags/%E8%BF%90%E7%AE%97%E7%AC%A6/"/>
+    
+  </entry>
+  
+  <entry>
     <title>JavaScript 变量</title>
     <link href="http://www.mcling.xyz/2016/11/20/JavaScript2.html"/>
     <id>http://www.mcling.xyz/2016/11/20/JavaScript2.html</id>
