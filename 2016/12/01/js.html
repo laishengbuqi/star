@@ -5,23 +5,56 @@
   
   
   
-  <title>写给故作坚强的我们 | 心雨 | 马美玲的博客</title>
+  <title>js原生框架part1 | 心雨 | 马美玲的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   <meta name="theme-color" content="#3F51B5">
   
   
-  <meta name="keywords" content="坚强">
-  <meta name="description" content="我们害怕受伤，却常常失望，我们讨厌伪装，却必须这样，笑脸下的心酸不得不自己扛，忍下所有的疲惫，藏起所有的悲伤，只因为，谁也不想露出最脆弱的模样。想哭的时候，找不到可以依靠的肩膀，想逃的时候，没办法狠心彻底的淡忘，伤痕累累，才能抵挡下一次的风霜，安静沉默，才能遮掩心底处的哀伤。 　　有些事，不是不想做，而是没有力量，有些人，不是不想忘，而是习惯埋葬，说的多了，无心惹出事端，做的久了，只会让心空">
+  <meta name="keywords" content="js,框架结构">
+  <meta name="description" content="案例:获取指定DOM下所有子元素
+在框架内部，遍历子节点，应该使用firstChild和nextSibling方式。
+
+框架结构
+在编写框架的时候，为了防止变量污染，尽量使用沙箱模式 封装框架
+
+在沙箱内部，如果经常使用全局变量或全局对象的话，最好的做法就是将他们当做实参传入沙箱中
+
+
+核心函数为itcast，相当于jQuery。最终要暴露给用户使用
+
+实现itcast函数，使用的是工厂模式来创">
 <meta property="og:type" content="article">
-<meta property="og:title" content="写给故作坚强的我们">
-<meta property="og:url" content="http://www.mcling.xyz/2016/11/16/own.html">
+<meta property="og:title" content="js原生框架part1">
+<meta property="og:url" content="http://www.mcling.xyz/2016/12/01/js.html">
 <meta property="og:site_name" content="心雨">
-<meta property="og:description" content="我们害怕受伤，却常常失望，我们讨厌伪装，却必须这样，笑脸下的心酸不得不自己扛，忍下所有的疲惫，藏起所有的悲伤，只因为，谁也不想露出最脆弱的模样。想哭的时候，找不到可以依靠的肩膀，想逃的时候，没办法狠心彻底的淡忘，伤痕累累，才能抵挡下一次的风霜，安静沉默，才能遮掩心底处的哀伤。 　　有些事，不是不想做，而是没有力量，有些人，不是不想忘，而是习惯埋葬，说的多了，无心惹出事端，做的久了，只会让心空">
-<meta property="og:updated_time" content="2016-11-20T12:47:41.029Z">
+<meta property="og:description" content="案例:获取指定DOM下所有子元素
+在框架内部，遍历子节点，应该使用firstChild和nextSibling方式。
+
+框架结构
+在编写框架的时候，为了防止变量污染，尽量使用沙箱模式 封装框架
+
+在沙箱内部，如果经常使用全局变量或全局对象的话，最好的做法就是将他们当做实参传入沙箱中
+
+
+核心函数为itcast，相当于jQuery。最终要暴露给用户使用
+
+实现itcast函数，使用的是工厂模式来创">
+<meta property="og:updated_time" content="2016-12-22T03:41:36.365Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="写给故作坚强的我们">
-<meta name="twitter:description" content="我们害怕受伤，却常常失望，我们讨厌伪装，却必须这样，笑脸下的心酸不得不自己扛，忍下所有的疲惫，藏起所有的悲伤，只因为，谁也不想露出最脆弱的模样。想哭的时候，找不到可以依靠的肩膀，想逃的时候，没办法狠心彻底的淡忘，伤痕累累，才能抵挡下一次的风霜，安静沉默，才能遮掩心底处的哀伤。 　　有些事，不是不想做，而是没有力量，有些人，不是不想忘，而是习惯埋葬，说的多了，无心惹出事端，做的久了，只会让心空">
+<meta name="twitter:title" content="js原生框架part1">
+<meta name="twitter:description" content="案例:获取指定DOM下所有子元素
+在框架内部，遍历子节点，应该使用firstChild和nextSibling方式。
+
+框架结构
+在编写框架的时候，为了防止变量污染，尽量使用沙箱模式 封装框架
+
+在沙箱内部，如果经常使用全局变量或全局对象的话，最好的做法就是将他们当做实参传入沙箱中
+
+
+核心函数为itcast，相当于jQuery。最终要暴露给用户使用
+
+实现itcast函数，使用的是工厂模式来创">
   
     <link rel="alternative" href="/atom.xml" title="心雨" type="application/atom+xml">
   
@@ -121,7 +154,7 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">写给故作坚强的我们</div>
+        <div class="flex-col header-title ellipsis">js原生框架part1</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -143,15 +176,15 @@
 <header class="content-header post-header">
 
     <div class="container">
-        <h1 class="title">写给故作坚强的我们</h1>
+        <h1 class="title">js原生框架part1</h1>
         <h5 class="subtitle">
             
-                <time datetime="2016-11-16T10:48:48.000Z" itemprop="datePublished" class="page-time">
-  2016-11-16
+                <time datetime="2016-12-01T11:28:10.000Z" itemprop="datePublished" class="page-time">
+  2016-12-01
 </time>
 
 
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/个人日志/">个人日志</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/js原生框架/">js原生框架</a></li></ul>
 
             
         </h5>
@@ -164,30 +197,107 @@
 
 <div class="container body-wrap">
     
-<article id="post-own" 
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#案例-获取指定DOM下所有子元素"><span class="post-toc-number">1.</span> <span class="post-toc-text">案例:获取指定DOM下所有子元素</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#框架结构"><span class="post-toc-number">2.</span> <span class="post-toc-text">框架结构</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-js" 
   class="post-article article-type-post" itemprop="blogPost">
 
     <div class="post-card">
-        <h1 class="post-card-title">写给故作坚强的我们</h1>
+        <h1 class="post-card-title">js原生框架part1</h1>
         <div class="post-meta">
-            <time datetime="2016-11-16T10:48:48.000Z" itemprop="datePublished" class="post-time">
-  2016-11-16
+            <time datetime="2016-12-01T11:28:10.000Z" itemprop="datePublished" class="post-time">
+  2016-12-01
 </time>
 
             
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/个人日志/">个人日志</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/js原生框架/">js原生框架</a></li></ul>
 
 
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <p> 　　我们害怕受伤，却常常失望，我们讨厌伪装，却必须这样，笑脸下的心酸不得不自己扛，忍下所有的疲惫，藏起所有的悲伤，只因为，谁也不想露出最脆弱的模样。想哭的时候，找不到可以依靠的肩膀，想逃的时候，没办法狠心彻底的淡忘，伤痕累累，才能抵挡下一次的风霜，安静沉默，才能遮掩心底处的哀伤。<br> 　　有些事，不是不想做，而是没有力量，有些人，不是不想忘，而是习惯埋葬，说的多了，无心惹出事端，做的久了，只会让心空荡，坚强，就像燃烧中的蜡烛，发着温暖的光，留下冰冷的凉。<br> 　　我们其实没那么能扛，只不过撑不住的时候，咬紧了牙齿，我们其实没那么开朗，只不过受过了伤以后，闭紧了心房，我们总会有脆弱的瞬间，在没有人的地方皱眉垂泪，在黑暗的房间中自己疗伤。<br> 　　孤单没人陪，学会了适应，寂寞没人懂，做到了安静，多想有人能看穿假装的坚强，多想有人能抚慰心底的创伤，多想有个人不离不弃在身旁，多想有一次真实面对不伪装。可是，我们终究被经历磨平了热情，被伤害催走了善良。<br> 　　藏起悲伤，才能爱上阳光，收起脆弱，才能迎来坚强，活一天，过一天，熬一天，算一天，一直故作坚强的我们，不容易，一直假装快乐的我们，最要强！</p>
+            <a id="more"></a>
+<h2 id="案例-获取指定DOM下所有子元素"><a href="#案例-获取指定DOM下所有子元素" class="headerlink" title="案例:获取指定DOM下所有子元素"></a>案例:获取指定DOM下所有子元素</h2><ol>
+<li>在框架内部，遍历子节点，应该使用firstChild和nextSibling方式。</li>
+</ol>
+<h2 id="框架结构"><a href="#框架结构" class="headerlink" title="框架结构"></a>框架结构</h2><ol>
+<li><p>在编写框架的时候，为了防止变量污染，尽量使用沙箱模式 封装框架</p>
+<ul>
+<li>在沙箱内部，如果经常使用全局变量或全局对象的话，最好的做法就是将他们当做实参传入沙箱中</li>
+</ul>
+</li>
+<li><p>核心函数为itcast，相当于jQuery。最终要暴露给用户使用</p>
+</li>
+<li><p>实现itcast函数，使用的是工厂模式来创建对象。好处:用户new或不new都可以得到正确的对象</p>
+</li>
+<li><p>init构造函数的位置</p>
+<ul>
+<li><p>如果放在沙箱内部，用户是无法修改或重写的。所以要容纳更多用户，尽量将构造函数暴露给用户</p>
+</li>
+<li><p>可以把构造函数放在itcast函数上，也可以放在itcast函数原型上。</p>
+</li>
+<li><p>处于jQuery之父，在写简单继承模式时，将构造函数放在其原型上，那么在编写框架时，即延续下来了</p>
+</li>
+</ul>
+</li>
+<li><p>init创建出来的对象，最终继承自itcast.prototype 所以可以将init对象称为 itcast对象</p>
+</li>
+<li><p>由于暴露给用户的是 itcast 和 其原型。所以在扩展成员时，只能在这两个对象上扩展。而在函数对象上扩展的成员为静态成员 。可以直接通过函数名字来访问。但是，在原型上的成员必须创建实例来访问。因此为了实现init对象可以访问itcast原型上的成员，就基于原型来实现。</p>
+</li>
+<li><p>完善init构造函数</p>
+<ul>
+<li>selector类型:<ul>
+<li>无效值: null undefined ‘’</li>
+<li>字符串<ul>
+<li>选择器 : “div” 根据选择器筛选dom元素，并以伪数组形式存储在this上</li>
+<li>html字符串 <code>&#39;&lt;p&gt;123&lt;/p&gt;&#39;</code>将html字符串转换成html元素</li>
+</ul>
+</li>
+<li>DOM节点</li>
+<li>DOM数组</li>
+<li>function: 入口函数 DOMContentLoaded<ul>
+<li>使用静态属性isReady 存储dom树是否加载完毕</li>
+<li>判断isReady值，如果为true，就直接执行传入的函数</li>
+<li>否则，就给document的DOMContentLoaded事件绑定处理程序，在处理程序中，先将isReady赋值为true，在执行</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>如何判断字符串为html字符串</p>
+<ul>
+<li>以’&lt;’开头</li>
+<li>以’&gt;’结尾</li>
+<li>最小长度为3</li>
+</ul>
+</li>
+<li><p>如何判断像数组（数组和伪数组）</p>
+<ul>
+<li>用length属性判断啊，若具有length属性 表示为 像数组类型</li>
+<li>除了window对象以及函数对象</li>
+<li><p>{length :1}{4:”123”,length:5}稀疏数组</p>
+</li>
+<li><p>如果为真数组，返回true</p>
+</li>
+<li>如果length属性值为0，除了window对象以及函数对象，返回true</li>
+<li>如果length属性值&gt;0,如果对象具有 length - 1 索引，返回true</li>
+</ul>
+</li>
+<li><p>全局对象 window特性:有一个window属性 引用 自身</p>
+</li>
+</ol>
 
         </div>
         
         <blockquote class="post-copyright">
     <div class="content">
-        链接：<a href="/2016/11/16/own.html" target="_blank" rel="external">http://www.mcling.xyz/2016/11/16/own.html</a>
+        链接：<a href="/2016/12/01/js.html" target="_blank" rel="external">http://www.mcling.xyz/2016/12/01/js.html</a>
     </div>
     <footer>
         <a href="http://www.mcling.xyz">
@@ -204,7 +314,7 @@
 
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/坚强/">坚强</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/框架结构/">框架结构</a></li></ul>
 
 
             
@@ -259,18 +369,18 @@
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/2016/11/20/JavaScript2.html" id="post-prev" class="post-nav-link">
+      <a href="/2016/12/02/js1.html" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">JavaScript 变量</h4>
+        <h4 class="title">js原生框架part2</h4>
       </a>
     </div>
   
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2016/11/15/canvas.html" id="post-next" class="post-nav-link">
+      <a href="/2016/11/29/CSS3.html" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">canvas基础</h4>
+        <h4 class="title">CSS3</h4>
       </a>
     </div>
   
@@ -280,7 +390,7 @@
             
     
 <div class="duoshuo" id="comments">
-	<div class="ds-thread" data-thread-key="own" data-title="写给故作坚强的我们" data-url="http://www.mcling.xyz/2016/11/16/own.html"></div>
+	<div class="ds-thread" data-thread-key="js" data-title="js原生框架part1" data-url="http://www.mcling.xyz/2016/12/01/js.html"></div>
 </div>
 <script src="/js/embed.min.js?v=1.1.12"></script>
 <script src="//cdn.bootcss.com/marked/0.3.6/marked.min.js" async="async"></script>
@@ -327,9 +437,9 @@ var duoshuoQuery = {short_name:'mcling', theme: 'none'}
 
 <script>var BLOG = { ROOT: '/' };
 BLOG.SHARE = {
-title: "写给故作坚强的我们",
+title: "js原生框架part1",
 summary: document.getElementsByName('summary')[0].content,
-url: "http://www.mcling.xyz/2016/11/16/own.html" }
+url: "http://www.mcling.xyz/2016/12/01/js.html" }
 </script>
 <div class="global-share" id="global-share">
     <div class="tit">分享到：</div>

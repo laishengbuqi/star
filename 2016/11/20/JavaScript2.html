@@ -5,47 +5,83 @@
   
   
   
-  <title>js原生框架part2 | 心雨 | 马美玲的博客</title>
+  <title>JavaScript 变量 | 心雨 | 马美玲的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   <meta name="theme-color" content="#3F51B5">
   
   
-  <meta name="keywords" content="js,css样式模块">
-  <meta name="description" content="hasClass方法
-功能: 如果结果集里只要有一个dom元素 具有指定的样式类，就返回true
-实现思路:
+  <meta name="keywords" content="变量">
+  <meta name="description" content="JavaScript 变量命名
+方法
+匈牙利命名法 变量名 = 类型 + 描述
+int 类型  i
+float 类型  fl
+boolean 类型 b
+string 类型 s
+array 类型 a
+object 类型 o
+function 类型 fn
+RegExp 类型 re
 
-定义结果变量ret，默认值为false
-遍历结果集的每一个dom元素如果当前dom元素具有指定的样式类，将ret=true,结束循环
-返回ret。
 
-如何判断dom元素具有指定的样式类？在dom元素所有样式类的收尾 + 空格；在用户指定的样式类 收尾 + 空格调用indexOf方法，如果">
+驼峰命名法
+全部大写 (单词与单词之间用下划线分割)
+大小写混合 (第一个单词首字母小写,其他首字母大写)
+
+
+
+
+规">
 <meta property="og:type" content="article">
-<meta property="og:title" content="js原生框架part2">
-<meta property="og:url" content="http://www.mcling.xyz/2016/11/18/js1.html">
+<meta property="og:title" content="JavaScript 变量">
+<meta property="og:url" content="http://www.mcling.xyz/2016/11/20/JavaScript2.html">
 <meta property="og:site_name" content="心雨">
-<meta property="og:description" content="hasClass方法
-功能: 如果结果集里只要有一个dom元素 具有指定的样式类，就返回true
-实现思路:
+<meta property="og:description" content="JavaScript 变量命名
+方法
+匈牙利命名法 变量名 = 类型 + 描述
+int 类型  i
+float 类型  fl
+boolean 类型 b
+string 类型 s
+array 类型 a
+object 类型 o
+function 类型 fn
+RegExp 类型 re
 
-定义结果变量ret，默认值为false
-遍历结果集的每一个dom元素如果当前dom元素具有指定的样式类，将ret=true,结束循环
-返回ret。
 
-如何判断dom元素具有指定的样式类？在dom元素所有样式类的收尾 + 空格；在用户指定的样式类 收尾 + 空格调用indexOf方法，如果">
-<meta property="og:updated_time" content="2016-11-23T11:07:50.000Z">
+驼峰命名法
+全部大写 (单词与单词之间用下划线分割)
+大小写混合 (第一个单词首字母小写,其他首字母大写)
+
+
+
+
+规">
+<meta property="og:updated_time" content="2016-12-22T03:51:27.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="js原生框架part2">
-<meta name="twitter:description" content="hasClass方法
-功能: 如果结果集里只要有一个dom元素 具有指定的样式类，就返回true
-实现思路:
+<meta name="twitter:title" content="JavaScript 变量">
+<meta name="twitter:description" content="JavaScript 变量命名
+方法
+匈牙利命名法 变量名 = 类型 + 描述
+int 类型  i
+float 类型  fl
+boolean 类型 b
+string 类型 s
+array 类型 a
+object 类型 o
+function 类型 fn
+RegExp 类型 re
 
-定义结果变量ret，默认值为false
-遍历结果集的每一个dom元素如果当前dom元素具有指定的样式类，将ret=true,结束循环
-返回ret。
 
-如何判断dom元素具有指定的样式类？在dom元素所有样式类的收尾 + 空格；在用户指定的样式类 收尾 + 空格调用indexOf方法，如果">
+驼峰命名法
+全部大写 (单词与单词之间用下划线分割)
+大小写混合 (第一个单词首字母小写,其他首字母大写)
+
+
+
+
+规">
   
     <link rel="alternative" href="/atom.xml" title="心雨" type="application/atom+xml">
   
@@ -145,7 +181,7 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">js原生框架part2</div>
+        <div class="flex-col header-title ellipsis">JavaScript 变量</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -167,15 +203,15 @@
 <header class="content-header post-header">
 
     <div class="container">
-        <h1 class="title">js原生框架part2</h1>
+        <h1 class="title">JavaScript 变量</h1>
         <h5 class="subtitle">
             
-                <time datetime="2016-11-18T10:34:53.000Z" itemprop="datePublished" class="page-time">
-  2016-11-18
+                <time datetime="2016-11-20T02:45:10.000Z" itemprop="datePublished" class="page-time">
+  2016-11-20
 </time>
 
 
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/js原生框架/">js原生框架</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JavaScript/">JavaScript</a></li></ul>
 
             
         </h5>
@@ -191,101 +227,141 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#hasClass方法"><span class="post-toc-number">1.</span> <span class="post-toc-text">hasClass方法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#each方法"><span class="post-toc-number">2.</span> <span class="post-toc-text">$.each方法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#itcast中链式编程的实现"><span class="post-toc-number">3.</span> <span class="post-toc-text">itcast中链式编程的实现</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#get方法"><span class="post-toc-number">4.</span> <span class="post-toc-text">get方法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#eq方法"><span class="post-toc-number">5.</span> <span class="post-toc-text">eq方法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#first方法"><span class="post-toc-number">6.</span> <span class="post-toc-text">first方法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#last方法"><span class="post-toc-number">7.</span> <span class="post-toc-text">last方法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#css方法"><span class="post-toc-number">8.</span> <span class="post-toc-text">css方法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#addClass方法"><span class="post-toc-number">9.</span> <span class="post-toc-text">addClass方法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#removeClass方法"><span class="post-toc-number">10.</span> <span class="post-toc-text">removeClass方法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#toggleClass方法"><span class="post-toc-number">11.</span> <span class="post-toc-text">toggleClass方法</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#JavaScript-变量"><span class="post-toc-number">1.</span> <span class="post-toc-text">JavaScript 变量</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#命名"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">命名</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#声明"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">声明</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#变量类型"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">变量类型</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#作用域"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">作用域</span></a></li></ol></li></ol>
         </nav>
     </aside>
     
-<article id="post-js1" 
+<article id="post-JavaScript2" 
   class="post-article article-type-post" itemprop="blogPost">
 
     <div class="post-card">
-        <h1 class="post-card-title">js原生框架part2</h1>
+        <h1 class="post-card-title">JavaScript 变量</h1>
         <div class="post-meta">
-            <time datetime="2016-11-18T10:34:53.000Z" itemprop="datePublished" class="post-time">
-  2016-11-18
+            <time datetime="2016-11-20T02:45:10.000Z" itemprop="datePublished" class="post-time">
+  2016-11-20
 </time>
 
             
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/js原生框架/">js原生框架</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JavaScript/">JavaScript</a></li></ul>
 
 
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <h2 id="hasClass方法"><a href="#hasClass方法" class="headerlink" title="hasClass方法"></a><code>hasClass</code>方法</h2><ol>
-<li>功能: 如果结果集里只要有一个<code>dom</code>元素 具有指定的样式类，就返回<code>true</code></li>
-<li><p>实现思路:</p>
-<ul>
-<li>定义结果变量<code>ret</code>，默认值为<code>false</code></li>
-<li>遍历结果集的每一个<code>dom</code>元素如果当前<code>dom</code>元素具有指定的样式类，将<code>ret=true</code>,结束循环</li>
-<li><p>返回<code>ret</code>。</p>
+            <h1 id="JavaScript-变量"><a href="#JavaScript-变量" class="headerlink" title="JavaScript 变量"></a>JavaScript 变量</h1><h2 id="命名"><a href="#命名" class="headerlink" title="命名"></a>命名</h2><ol>
+<li>方法<ul>
+<li>匈牙利命名法 <code>变量名 = 类型 + 描述</code><ul>
+<li>int 类型  i</li>
+<li>float 类型  fl</li>
+<li>boolean 类型 b</li>
+<li>string 类型 s</li>
+<li>array 类型 a</li>
+<li>object 类型 o</li>
+<li>function 类型 fn</li>
+<li>RegExp 类型 re</li>
+</ul>
 </li>
-<li><p>如何判断<code>dom</code>元素具有指定的样式类？<br>在<code>dom</code>元素所有样式类的收尾 + 空格；在用户指定的样式类 收尾 + 空格<br>调用<code>indexOf</code>方法，如果返回值 = -1，表示没有；否则就具有指定样式类。</p>
+<li>驼峰命名法<ul>
+<li>全部大写 (单词与单词之间用下划线分割)</li>
+<li>大小写混合 (第一个单词首字母小写,其他首字母大写)</li>
+</ul>
 </li>
 </ul>
 </li>
-</ol>
-<h2 id="each方法"><a href="#each方法" class="headerlink" title="$.each方法"></a><code>$.each</code>方法</h2><ol>
-<li>功能: 实现遍历数组或者伪数组,通过第二个参数(回调函数)来处理遍历到的每一个元素<br>在回调函数中,<code>this</code>指向的是当前边开遍历到的元素</li>
-<li>语法:<code>$.each([数组/伪数组],callback);</code></li>
-<li>实现思路<ul>
-<li>声明<code>each</code>函数,定义两个形参: 第一个遍历的(伪数组);第二个:回调函数</li>
-<li>使用<code>for</code>循环,遍历(伪)数组.再循环体背部执行回调函数,在执行时,给回调函数传实参</li>
-<li>实现回调函数内部<code>this</code>指向当前遍历到的元素</li>
-<li>通过回调函数的返回值,判定是否结束循环.规定:当返回值为<code>false</code>,结束循环</li>
+<li>规则<ul>
+<li>首字符(英文字母或下划线)</li>
+<li>组成(英文字母、数字、下划线)</li>
+<li>禁忌( JavaScript 关键字、保留字)</li>
 </ul>
 </li>
 </ol>
-<h2 id="itcast中链式编程的实现"><a href="#itcast中链式编程的实现" class="headerlink" title="itcast中链式编程的实现"></a><code>itcast</code>中链式编程的实现</h2><p> 1.返回当前方法的调用者: <code>return this;</code></p>
-<h2 id="get方法"><a href="#get方法" class="headerlink" title="get方法"></a><code>get</code>方法</h2><ol>
-<li>功能:根据参数<code>index</code>,获取相应<code>dom</code>元素</li>
-<li>实现思路<ul>
-<li>将字符串类型转换成数字</li>
-<li><code>index &lt; 0 ==&gt; index + length</code></li>
-<li><code>return this</code></li>
+<hr>
+<h2 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h2><ol>
+<li>显示声明<ul>
+<li>var 变量名</li>
+</ul>
+</li>
+<li>陋习<ul>
+<li>没有类型</li>
+<li>重复声明</li>
+<li>隐式声明</li>
+<li>不声明直接复制</li>
+</ul>
+</li>
+<li>正解<ul>
+<li>先声明,后续写</li>
+<li>先赋值,后运算</li>
 </ul>
 </li>
 </ol>
-<h2 id="eq方法"><a href="#eq方法" class="headerlink" title="eq方法"></a><code>eq</code>方法</h2><ol>
-<li>功能: 根据参数index,获取相应dom元素,转换成itcast对象,再返回</li>
-</ol>
-<h2 id="first方法"><a href="#first方法" class="headerlink" title="first方法"></a>first方法</h2><h2 id="last方法"><a href="#last方法" class="headerlink" title="last方法"></a>last方法</h2><h2 id="css方法"><a href="#css方法" class="headerlink" title="css方法"></a>css方法</h2><ol>
-<li>功能:<ul>
-<li>获取:如果只传一个参数并且类型不为对象,获取相应的样式属性值</li>
-<li>设置: a:如果只传一个参数并且类型为对象,设置多个样式值; b:传入两个参数,设置单个样式.<br>2.实现思路</li>
-<li>给<code>itcast</code>原型添加<code>css</code>方法,定义两个参数</li>
-<li>如果只传入一个参数<ul>
-<li>类型为对象的话,同时设置多个样式属性</li>
-<li>类型不为对象,获取指定的样式值</li>
+<hr>
+<h2 id="变量类型"><a href="#变量类型" class="headerlink" title="变量类型"></a>变量类型</h2><ol>
+<li>值类型<ul>
+<li>占用空间固定,保存在栈中</li>
+<li>保存与复制的是值本身</li>
+<li>可使用<code>typeof</code>获取数据的类型</li>
+<li>基本数据类型都是值类型</li>
 </ul>
 </li>
-<li>如果只传入两个参数,设置单个样式值</li>
-</ul>
-</li>
-</ol>
-<h2 id="addClass方法"><a href="#addClass方法" class="headerlink" title="addClass方法"></a><code>addClass</code>方法</h2><ol>
-<li>功能: 给结果集中的每一个<code>dom</code>元素添加指定样式类</li>
-<li>实现思路<ul>
-<li>遍历<code>this上</code>的每一个<code>dom</code>元素</li>
-<li>首先判断当前遍历到的<code>dom</code>元素是否含有样式类.如果不具有,就给其添加指定的样式类.</li>
+<li>引用类型<ul>
+<li>占用空间不固定,保存在堆中</li>
+<li>保存与复制的是指向对象的指针</li>
+<li>使用<code>instanceof</code>检测数据的类型</li>
+<li>使用<code>new</code>操作实例化的对象,内置对象以及对象字面量方法创建的对象都是引用类型</li>
 </ul>
 </li>
 </ol>
-<h2 id="removeClass方法"><a href="#removeClass方法" class="headerlink" title="removeClass方法"></a><code>removeClass</code>方法</h2><ol>
-<li>功能: 删除结果集中的每一个dom元素的指定样式类</li>
-<li>实现思路<ul>
-<li>遍历this上的每一个dom元素</li>
-<li><code>(&#39; &#39;+ v.className +&#39; &#39;).replace(&#39; &#39; + className +&#39;&#39;,&#39;&#39;)</code></li>
+<hr>
+<h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><ol>
+<li>全局变量<ul>
+<li>包含<ul>
+<li>在函数外部定义的变量</li>
+<li>在函数内部定义的无<code>var</code>声明的变量</li>
 </ul>
 </li>
+<li>调用<ul>
+<li>任何位置</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>局部变量<ul>
+<li>包含<ul>
+<li>在函数体内部使用<code>var</code>声明的变量</li>
+<li>函数的参数变量</li>
+</ul>
+</li>
+<li>调用<ul>
+<li>当前函数体内部</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>优先级<ul>
+<li>局部变量高于同名全局变量</li>
+<li>参数变量高于同名全局变量</li>
+<li>局部变量高于同名参数变量</li>
+</ul>
+</li>
+<li>特性<ul>
+<li>无块级作用域(ES6中let、const)</li>
+<li>全局变量是全局对象的属性</li>
+<li>局部变量是调用对象的属性</li>
+<li>作用域链<ul>
+<li>内层函数可访问外层函数的局部变量</li>
+<li>外层函数无法访问内层函数的局部变量</li>
+</ul>
+</li>
+<li>声明周期<ul>
+<li>全局变量 (除非被显式删除,否则一直存在)</li>
+<li>局部变量 (紫声明起至函数执行完毕或被显式删除)</li>
+<li>回收机制<ol>
+<li>标记计数法</li>
+<li>引用计数法</li>
 </ol>
-<h2 id="toggleClass方法"><a href="#toggleClass方法" class="headerlink" title="toggleClass方法"></a><code>toggleClass</code>方法</h2><ol>
-<li>功能: 切换指定的样式类: 如果有,就删除,没有就添加</li>
-<li>实现思路:<ul>
-<li>遍历<code>this</code>上的每一个<code>dom</code>元素</li>
-<li>判断当前遍历到的<code>dom</code>元素是否含有指定的样式类</li>
-<li>如果有,就删除</li>
-<li>如果没有就添加</li>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ol>
@@ -294,7 +370,7 @@
         
         <blockquote class="post-copyright">
     <div class="content">
-        链接：<a href="/2016/11/18/js1.html" target="_blank" rel="external">http://www.mcling.xyz/2016/11/18/js1.html</a>
+        链接：<a href="/2016/11/20/JavaScript2.html" target="_blank" rel="external">http://www.mcling.xyz/2016/11/20/JavaScript2.html</a>
     </div>
     <footer>
         <a href="http://www.mcling.xyz">
@@ -311,7 +387,7 @@
 
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css样式模块/">css样式模块</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/变量/">变量</a></li></ul>
 
 
             
@@ -366,18 +442,18 @@
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/2016/11/20/js-1.html" id="post-prev" class="post-nav-link">
+      <a href="/2016/11/22/css1.html" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">js原生框架part3</h4>
+        <h4 class="title">CSS基础part1</h4>
       </a>
     </div>
   
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2016/11/17/js.html" id="post-next" class="post-nav-link">
+      <a href="/2016/11/16/own.html" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">js原生框架part1</h4>
+        <h4 class="title">写给故作坚强的我们</h4>
       </a>
     </div>
   
@@ -387,7 +463,7 @@
             
     
 <div class="duoshuo" id="comments">
-	<div class="ds-thread" data-thread-key="js1" data-title="js原生框架part2" data-url="http://www.mcling.xyz/2016/11/18/js1.html"></div>
+	<div class="ds-thread" data-thread-key="JavaScript2" data-title="JavaScript 变量" data-url="http://www.mcling.xyz/2016/11/20/JavaScript2.html"></div>
 </div>
 <script src="/js/embed.min.js?v=1.1.12"></script>
 <script src="//cdn.bootcss.com/marked/0.3.6/marked.min.js" async="async"></script>
@@ -434,9 +510,9 @@ var duoshuoQuery = {short_name:'mcling', theme: 'none'}
 
 <script>var BLOG = { ROOT: '/' };
 BLOG.SHARE = {
-title: "js原生框架part2",
+title: "JavaScript 变量",
 summary: document.getElementsByName('summary')[0].content,
-url: "http://www.mcling.xyz/2016/11/18/js1.html" }
+url: "http://www.mcling.xyz/2016/11/20/JavaScript2.html" }
 </script>
 <div class="global-share" id="global-share">
     <div class="tit">分享到：</div>

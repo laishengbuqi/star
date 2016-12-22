@@ -5,41 +5,47 @@
   
   
   
-  <title>js原生框架part7 | 心雨 | 马美玲的博客</title>
+  <title>js原生框架part2 | 心雨 | 马美玲的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   <meta name="theme-color" content="#3F51B5">
   
   
-  <meta name="keywords" content="js,ajax模块">
-  <meta name="description" content="Ajax请求流程
-创建一个请求对象
-123function createRequest()&amp;#123;    return window.XMLHTTPRequest? new window.XMLHTTPRequest(): new ActiveXObject(&apos;Microsoft.XMLHTTP&apos;);&amp;#125;
+  <meta name="keywords" content="js,css样式模块">
+  <meta name="description" content="hasClass方法
+功能: 如果结果集里只要有一个dom元素 具有指定的样式类，就返回true
+实现思路:
 
-格式化数据
+定义结果变量ret，默认值为false
+遍历结果集的每一个dom元素如果当前dom元素具有指定的样式类，将ret=true,结束循环
+返回ret。
 
-将格式化后的数据,参数与值都需要重新编码123456789fun">
+如何判断dom元素具有指定的样式类？在dom元素所有样式类的收尾 + 空格；在用户指定的样式类 收尾 + 空格调用indexOf方法，如果">
 <meta property="og:type" content="article">
-<meta property="og:title" content="js原生框架part7">
-<meta property="og:url" content="http://www.mcling.xyz/2016/11/26/js-ajax.html">
+<meta property="og:title" content="js原生框架part2">
+<meta property="og:url" content="http://www.mcling.xyz/2016/12/02/js1.html">
 <meta property="og:site_name" content="心雨">
-<meta property="og:description" content="Ajax请求流程
-创建一个请求对象
-123function createRequest()&amp;#123;    return window.XMLHTTPRequest? new window.XMLHTTPRequest(): new ActiveXObject(&apos;Microsoft.XMLHTTP&apos;);&amp;#125;
+<meta property="og:description" content="hasClass方法
+功能: 如果结果集里只要有一个dom元素 具有指定的样式类，就返回true
+实现思路:
 
-格式化数据
+定义结果变量ret，默认值为false
+遍历结果集的每一个dom元素如果当前dom元素具有指定的样式类，将ret=true,结束循环
+返回ret。
 
-将格式化后的数据,参数与值都需要重新编码123456789fun">
-<meta property="og:updated_time" content="2016-11-26T12:23:14.684Z">
+如何判断dom元素具有指定的样式类？在dom元素所有样式类的收尾 + 空格；在用户指定的样式类 收尾 + 空格调用indexOf方法，如果">
+<meta property="og:updated_time" content="2016-12-22T03:42:03.115Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="js原生框架part7">
-<meta name="twitter:description" content="Ajax请求流程
-创建一个请求对象
-123function createRequest()&amp;#123;    return window.XMLHTTPRequest? new window.XMLHTTPRequest(): new ActiveXObject(&apos;Microsoft.XMLHTTP&apos;);&amp;#125;
+<meta name="twitter:title" content="js原生框架part2">
+<meta name="twitter:description" content="hasClass方法
+功能: 如果结果集里只要有一个dom元素 具有指定的样式类，就返回true
+实现思路:
 
-格式化数据
+定义结果变量ret，默认值为false
+遍历结果集的每一个dom元素如果当前dom元素具有指定的样式类，将ret=true,结束循环
+返回ret。
 
-将格式化后的数据,参数与值都需要重新编码123456789fun">
+如何判断dom元素具有指定的样式类？在dom元素所有样式类的收尾 + 空格；在用户指定的样式类 收尾 + 空格调用indexOf方法，如果">
   
     <link rel="alternative" href="/atom.xml" title="心雨" type="application/atom+xml">
   
@@ -139,7 +145,7 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">js原生框架part7</div>
+        <div class="flex-col header-title ellipsis">js原生框架part2</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -161,11 +167,11 @@
 <header class="content-header post-header">
 
     <div class="container">
-        <h1 class="title">js原生框架part7</h1>
+        <h1 class="title">js原生框架part2</h1>
         <h5 class="subtitle">
             
-                <time datetime="2016-11-26T01:15:21.000Z" itemprop="datePublished" class="page-time">
-  2016-11-26
+                <time datetime="2016-12-02T10:34:53.000Z" itemprop="datePublished" class="page-time">
+  2016-12-02
 </time>
 
 
@@ -185,18 +191,18 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Ajax请求流程"><span class="post-toc-number">1.</span> <span class="post-toc-text">Ajax请求流程</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Jsonp请求流程"><span class="post-toc-number">2.</span> <span class="post-toc-text">Jsonp请求流程</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#hasClass方法"><span class="post-toc-number">1.</span> <span class="post-toc-text">hasClass方法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#each方法"><span class="post-toc-number">2.</span> <span class="post-toc-text">$.each方法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#itcast中链式编程的实现"><span class="post-toc-number">3.</span> <span class="post-toc-text">itcast中链式编程的实现</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#get方法"><span class="post-toc-number">4.</span> <span class="post-toc-text">get方法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#eq方法"><span class="post-toc-number">5.</span> <span class="post-toc-text">eq方法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#first方法"><span class="post-toc-number">6.</span> <span class="post-toc-text">first方法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#last方法"><span class="post-toc-number">7.</span> <span class="post-toc-text">last方法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#css方法"><span class="post-toc-number">8.</span> <span class="post-toc-text">css方法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#addClass方法"><span class="post-toc-number">9.</span> <span class="post-toc-text">addClass方法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#removeClass方法"><span class="post-toc-number">10.</span> <span class="post-toc-text">removeClass方法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#toggleClass方法"><span class="post-toc-number">11.</span> <span class="post-toc-text">toggleClass方法</span></a></li></ol>
         </nav>
     </aside>
     
-<article id="post-js-ajax" 
+<article id="post-js1" 
   class="post-article article-type-post" itemprop="blogPost">
 
     <div class="post-card">
-        <h1 class="post-card-title">js原生框架part7</h1>
+        <h1 class="post-card-title">js原生框架part2</h1>
         <div class="post-meta">
-            <time datetime="2016-11-26T01:15:21.000Z" itemprop="datePublished" class="post-time">
-  2016-11-26
+            <time datetime="2016-12-02T10:34:53.000Z" itemprop="datePublished" class="post-time">
+  2016-12-02
 </time>
 
             
@@ -206,36 +212,80 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <h2 id="Ajax请求流程"><a href="#Ajax请求流程" class="headerlink" title="Ajax请求流程"></a>Ajax请求流程</h2><ol>
-<li><p>创建一个请求对象</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">createRequest</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="built_in">window</span>.XMLHTTPRequest? <span class="keyword">new</span> <span class="built_in">window</span>.XMLHTTPRequest(): <span class="keyword">new</span> ActiveXObject(<span class="string">'Microsoft.XMLHTTP'</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>格式化数据</p>
+            <h2 id="hasClass方法"><a href="#hasClass方法" class="headerlink" title="hasClass方法"></a><code>hasClass</code>方法</h2><ol>
+<li>功能: 如果结果集里只要有一个<code>dom</code>元素 具有指定的样式类，就返回<code>true</code></li>
+<li><p>实现思路:</p>
 <ul>
-<li>将格式化后的数据,参数与值都需要重新编码<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">farmatData</span>(<span class="params">data</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> ret=[];</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> k <span class="keyword">in</span> data)&#123;</div><div class="line">        ret.push(<span class="built_in">window</span>.encodeURIComponent(k)+<span class="string">'='</span>+<span class="built_in">window</span>.encodeURIComponent(data[k]));</div><div class="line">    &#125;</div><div class="line">    <span class="comment">//如果不想从服务器缓存中读取数据</span></div><div class="line">    ret.push((<span class="string">'_='</span>+<span class="built_in">Math</span>.random()).replace(<span class="string">'.'</span>,<span class="string">' '</span>));</div><div class="line">    <span class="keyword">return</span> ret.join(<span class="string">'&amp;'</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<li>定义结果变量<code>ret</code>，默认值为<code>false</code></li>
+<li>遍历结果集的每一个<code>dom</code>元素如果当前<code>dom</code>元素具有指定的样式类，将<code>ret=true</code>,结束循环</li>
+<li><p>返回<code>ret</code>。</p>
+</li>
+<li><p>如何判断<code>dom</code>元素具有指定的样式类？<br>在<code>dom</code>元素所有样式类的收尾 + 空格；在用户指定的样式类 收尾 + 空格<br>调用<code>indexOf</code>方法，如果返回值 = -1，表示没有；否则就具有指定样式类。</p>
 </li>
 </ul>
 </li>
-<li><p>与服务器建立连接</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(type===<span class="string">'get'</span>)</div><div class="line">xhr.open(<span class="string">'GET|POST'</span>,url+<span class="string">'?'</span>+fdata, <span class="keyword">async</span>=<span class="literal">true</span>);</div></pre></td></tr></table></figure>
-</li>
-<li><p>监听请求状态</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">xhr.onreadystatechange=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">if</span>(xhr.readyState===<span class="number">4</span>)&#123;</div><div class="line">        <span class="keyword">if</span>(xhr.status&gt;=<span class="number">200</span> &amp;&amp;xhr.status&lt;<span class="number">300</span>||xhr.status===<span class="number">304</span>)&#123;</div><div class="line">            <span class="comment">//success代码块</span></div><div class="line">            <span class="comment">//xhr.responseText</span></div><div class="line">        &#125;<span class="keyword">else</span>&#123;</div><div class="line">            <span class="comment">//fail  代码块</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>发送请求 </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">xhr.send(string);</div></pre></td></tr></table></figure>
+</ol>
+<h2 id="each方法"><a href="#each方法" class="headerlink" title="$.each方法"></a><code>$.each</code>方法</h2><ol>
+<li>功能: 实现遍历数组或者伪数组,通过第二个参数(回调函数)来处理遍历到的每一个元素<br>在回调函数中,<code>this</code>指向的是当前边开遍历到的元素</li>
+<li>语法:<code>$.each([数组/伪数组],callback);</code></li>
+<li>实现思路<ul>
+<li>声明<code>each</code>函数,定义两个形参: 第一个遍历的(伪数组);第二个:回调函数</li>
+<li>使用<code>for</code>循环,遍历(伪)数组.再循环体背部执行回调函数,在执行时,给回调函数传实参</li>
+<li>实现回调函数内部<code>this</code>指向当前遍历到的元素</li>
+<li>通过回调函数的返回值,判定是否结束循环.规定:当返回值为<code>false</code>,结束循环</li>
+</ul>
 </li>
 </ol>
-<h2 id="Jsonp请求流程"><a href="#Jsonp请求流程" class="headerlink" title="Jsonp请求流程"></a>Jsonp请求流程</h2><ol>
-<li>跨域请求只能发送<code>GET</code>请求,一种不安全的请求方式</li>
-<li>原理: 由于<code>dom</code>元素的<code>src</code>属性具有跨域功能.在实现跨域请求时,为了方便就使用<code>script</code>标签来做</li>
-<li>流程<ul>
-<li>创建请求对象,就是创建一个<code>script</code>标签</li>
-<li>将上述创建的<code>script</code>标签添加到页面的<code>head</code>标签下</li>
-<li>格式化数据</li>
-<li>创建全局回调函数</li>
-<li>设置超时时间,如果超过此时间,也没有得到数据,表示请求失败,否则,请求成功</li>
-<li>发送请求:指定<code>script</code>标签的<code>src</code>属性</li>
+<h2 id="itcast中链式编程的实现"><a href="#itcast中链式编程的实现" class="headerlink" title="itcast中链式编程的实现"></a><code>itcast</code>中链式编程的实现</h2><p> 1.返回当前方法的调用者: <code>return this;</code></p>
+<h2 id="get方法"><a href="#get方法" class="headerlink" title="get方法"></a><code>get</code>方法</h2><ol>
+<li>功能:根据参数<code>index</code>,获取相应<code>dom</code>元素</li>
+<li>实现思路<ul>
+<li>将字符串类型转换成数字</li>
+<li><code>index &lt; 0 ==&gt; index + length</code></li>
+<li><code>return this</code></li>
+</ul>
+</li>
+</ol>
+<h2 id="eq方法"><a href="#eq方法" class="headerlink" title="eq方法"></a><code>eq</code>方法</h2><ol>
+<li>功能: 根据参数index,获取相应dom元素,转换成itcast对象,再返回</li>
+</ol>
+<h2 id="first方法"><a href="#first方法" class="headerlink" title="first方法"></a>first方法</h2><h2 id="last方法"><a href="#last方法" class="headerlink" title="last方法"></a>last方法</h2><h2 id="css方法"><a href="#css方法" class="headerlink" title="css方法"></a>css方法</h2><ol>
+<li>功能:<ul>
+<li>获取:如果只传一个参数并且类型不为对象,获取相应的样式属性值</li>
+<li>设置: a:如果只传一个参数并且类型为对象,设置多个样式值; b:传入两个参数,设置单个样式.<br>2.实现思路</li>
+<li>给<code>itcast</code>原型添加<code>css</code>方法,定义两个参数</li>
+<li>如果只传入一个参数<ul>
+<li>类型为对象的话,同时设置多个样式属性</li>
+<li>类型不为对象,获取指定的样式值</li>
+</ul>
+</li>
+<li>如果只传入两个参数,设置单个样式值</li>
+</ul>
+</li>
+</ol>
+<h2 id="addClass方法"><a href="#addClass方法" class="headerlink" title="addClass方法"></a><code>addClass</code>方法</h2><ol>
+<li>功能: 给结果集中的每一个<code>dom</code>元素添加指定样式类</li>
+<li>实现思路<ul>
+<li>遍历<code>this上</code>的每一个<code>dom</code>元素</li>
+<li>首先判断当前遍历到的<code>dom</code>元素是否含有样式类.如果不具有,就给其添加指定的样式类.</li>
+</ul>
+</li>
+</ol>
+<h2 id="removeClass方法"><a href="#removeClass方法" class="headerlink" title="removeClass方法"></a><code>removeClass</code>方法</h2><ol>
+<li>功能: 删除结果集中的每一个dom元素的指定样式类</li>
+<li>实现思路<ul>
+<li>遍历this上的每一个dom元素</li>
+<li><code>(&#39; &#39;+ v.className +&#39; &#39;).replace(&#39; &#39; + className +&#39;&#39;,&#39;&#39;)</code></li>
+</ul>
+</li>
+</ol>
+<h2 id="toggleClass方法"><a href="#toggleClass方法" class="headerlink" title="toggleClass方法"></a><code>toggleClass</code>方法</h2><ol>
+<li>功能: 切换指定的样式类: 如果有,就删除,没有就添加</li>
+<li>实现思路:<ul>
+<li>遍历<code>this</code>上的每一个<code>dom</code>元素</li>
+<li>判断当前遍历到的<code>dom</code>元素是否含有指定的样式类</li>
+<li>如果有,就删除</li>
+<li>如果没有就添加</li>
 </ul>
 </li>
 </ol>
@@ -244,7 +294,7 @@
         
         <blockquote class="post-copyright">
     <div class="content">
-        链接：<a href="/2016/11/26/js-ajax.html" target="_blank" rel="external">http://www.mcling.xyz/2016/11/26/js-ajax.html</a>
+        链接：<a href="/2016/12/02/js1.html" target="_blank" rel="external">http://www.mcling.xyz/2016/12/02/js1.html</a>
     </div>
     <footer>
         <a href="http://www.mcling.xyz">
@@ -261,7 +311,7 @@
 
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ajax模块/">ajax模块</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css样式模块/">css样式模块</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
 
 
             
@@ -316,18 +366,18 @@
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/2016/11/26/xinqing.html" id="post-prev" class="post-nav-link">
+      <a href="/2016/12/03/js-1.html" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">致2016年的自己</h4>
+        <h4 class="title">js原生框架part3</h4>
       </a>
     </div>
   
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2016/11/25/ajax.html" id="post-next" class="post-nav-link">
+      <a href="/2016/12/01/js.html" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">JavaScript ajax</h4>
+        <h4 class="title">js原生框架part1</h4>
       </a>
     </div>
   
@@ -337,7 +387,7 @@
             
     
 <div class="duoshuo" id="comments">
-	<div class="ds-thread" data-thread-key="js-ajax" data-title="js原生框架part7" data-url="http://www.mcling.xyz/2016/11/26/js-ajax.html"></div>
+	<div class="ds-thread" data-thread-key="js1" data-title="js原生框架part2" data-url="http://www.mcling.xyz/2016/12/02/js1.html"></div>
 </div>
 <script src="/js/embed.min.js?v=1.1.12"></script>
 <script src="//cdn.bootcss.com/marked/0.3.6/marked.min.js" async="async"></script>
@@ -384,9 +434,9 @@ var duoshuoQuery = {short_name:'mcling', theme: 'none'}
 
 <script>var BLOG = { ROOT: '/' };
 BLOG.SHARE = {
-title: "js原生框架part7",
+title: "js原生框架part2",
 summary: document.getElementsByName('summary')[0].content,
-url: "http://www.mcling.xyz/2016/11/26/js-ajax.html" }
+url: "http://www.mcling.xyz/2016/12/02/js1.html" }
 </script>
 <div class="global-share" id="global-share">
     <div class="tit">分享到：</div>

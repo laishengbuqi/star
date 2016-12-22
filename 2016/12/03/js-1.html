@@ -5,56 +5,80 @@
   
   
   
-  <title>js原生框架part1 | 心雨 | 马美玲的博客</title>
+  <title>js原生框架part3 | 心雨 | 马美玲的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   <meta name="theme-color" content="#3F51B5">
   
   
-  <meta name="keywords" content="js,框架结构">
-  <meta name="description" content="案例:获取指定DOM下所有子元素
-在框架内部，遍历子节点，应该使用firstChild和nextSibling方式。
-
-框架结构
-在编写框架的时候，为了防止变量污染，尽量使用沙箱模式 封装框架
-
-在沙箱内部，如果经常使用全局变量或全局对象的话，最好的做法就是将他们当做实参传入沙箱中
+  <meta name="keywords" content="js,css属性模块">
+  <meta name="description" content="css方法
+实现思路
+如果只传入一个参数
+如果参数类型为对象,表示同时设置多个样式
+如果参数类型为字符串,表示获取指定的样式值
 
 
-核心函数为itcast，相当于jQuery。最终要暴露给用户使用
+如果传入的两个参数,表示设置单个样式值
 
-实现itcast函数，使用的是工厂模式来创">
+
+
+itcast.each方法: 遍历数组或伪数组
+功能
+第一个参数,指定遍历的对象
+第二个参数,指定的回调函数,对遍历到的每一个元素,进行相关处理
+
+
+
+attr方法(setAttribute和getAttribute)
+功">
 <meta property="og:type" content="article">
-<meta property="og:title" content="js原生框架part1">
-<meta property="og:url" content="http://www.mcling.xyz/2016/11/17/js.html">
+<meta property="og:title" content="js原生框架part3">
+<meta property="og:url" content="http://www.mcling.xyz/2016/12/03/js-1.html">
 <meta property="og:site_name" content="心雨">
-<meta property="og:description" content="案例:获取指定DOM下所有子元素
-在框架内部，遍历子节点，应该使用firstChild和nextSibling方式。
-
-框架结构
-在编写框架的时候，为了防止变量污染，尽量使用沙箱模式 封装框架
-
-在沙箱内部，如果经常使用全局变量或全局对象的话，最好的做法就是将他们当做实参传入沙箱中
+<meta property="og:description" content="css方法
+实现思路
+如果只传入一个参数
+如果参数类型为对象,表示同时设置多个样式
+如果参数类型为字符串,表示获取指定的样式值
 
 
-核心函数为itcast，相当于jQuery。最终要暴露给用户使用
+如果传入的两个参数,表示设置单个样式值
 
-实现itcast函数，使用的是工厂模式来创">
-<meta property="og:updated_time" content="2016-11-23T10:50:02.505Z">
+
+
+itcast.each方法: 遍历数组或伪数组
+功能
+第一个参数,指定遍历的对象
+第二个参数,指定的回调函数,对遍历到的每一个元素,进行相关处理
+
+
+
+attr方法(setAttribute和getAttribute)
+功">
+<meta property="og:updated_time" content="2016-12-22T03:42:18.419Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="js原生框架part1">
-<meta name="twitter:description" content="案例:获取指定DOM下所有子元素
-在框架内部，遍历子节点，应该使用firstChild和nextSibling方式。
-
-框架结构
-在编写框架的时候，为了防止变量污染，尽量使用沙箱模式 封装框架
-
-在沙箱内部，如果经常使用全局变量或全局对象的话，最好的做法就是将他们当做实参传入沙箱中
+<meta name="twitter:title" content="js原生框架part3">
+<meta name="twitter:description" content="css方法
+实现思路
+如果只传入一个参数
+如果参数类型为对象,表示同时设置多个样式
+如果参数类型为字符串,表示获取指定的样式值
 
 
-核心函数为itcast，相当于jQuery。最终要暴露给用户使用
+如果传入的两个参数,表示设置单个样式值
 
-实现itcast函数，使用的是工厂模式来创">
+
+
+itcast.each方法: 遍历数组或伪数组
+功能
+第一个参数,指定遍历的对象
+第二个参数,指定的回调函数,对遍历到的每一个元素,进行相关处理
+
+
+
+attr方法(setAttribute和getAttribute)
+功">
   
     <link rel="alternative" href="/atom.xml" title="心雨" type="application/atom+xml">
   
@@ -154,7 +178,7 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">js原生框架part1</div>
+        <div class="flex-col header-title ellipsis">js原生框架part3</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -176,11 +200,11 @@
 <header class="content-header post-header">
 
     <div class="container">
-        <h1 class="title">js原生框架part1</h1>
+        <h1 class="title">js原生框架part3</h1>
         <h5 class="subtitle">
             
-                <time datetime="2016-11-17T11:28:10.000Z" itemprop="datePublished" class="page-time">
-  2016-11-17
+                <time datetime="2016-12-03T06:49:16.000Z" itemprop="datePublished" class="page-time">
+  2016-12-03
 </time>
 
 
@@ -200,18 +224,18 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#案例-获取指定DOM下所有子元素"><span class="post-toc-number">1.</span> <span class="post-toc-text">案例:获取指定DOM下所有子元素</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#框架结构"><span class="post-toc-number">2.</span> <span class="post-toc-text">框架结构</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#css方法"><span class="post-toc-number">1.</span> <span class="post-toc-text">css方法</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#itcast-each方法-遍历数组或伪数组"><span class="post-toc-number">2.</span> <span class="post-toc-text">itcast.each方法: 遍历数组或伪数组</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#attr方法-setAttribute和getAttribute"><span class="post-toc-number"></span> <span class="post-toc-text">attr方法(setAttribute和getAttribute)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#html方法"><span class="post-toc-number"></span> <span class="post-toc-text">html方法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#text方法"><span class="post-toc-number"></span> <span class="post-toc-text">text方法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#val方法"><span class="post-toc-number"></span> <span class="post-toc-text">val方法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#prop方法"><span class="post-toc-number"></span> <span class="post-toc-text">prop方法</span></a>
         </nav>
     </aside>
     
-<article id="post-js" 
+<article id="post-js-1" 
   class="post-article article-type-post" itemprop="blogPost">
 
     <div class="post-card">
-        <h1 class="post-card-title">js原生框架part1</h1>
+        <h1 class="post-card-title">js原生框架part3</h1>
         <div class="post-meta">
-            <time datetime="2016-11-17T11:28:10.000Z" itemprop="datePublished" class="post-time">
-  2016-11-17
+            <time datetime="2016-12-03T06:49:16.000Z" itemprop="datePublished" class="post-time">
+  2016-12-03
 </time>
 
             
@@ -221,75 +245,84 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <a id="more"></a>
-<h2 id="案例-获取指定DOM下所有子元素"><a href="#案例-获取指定DOM下所有子元素" class="headerlink" title="案例:获取指定DOM下所有子元素"></a>案例:获取指定DOM下所有子元素</h2><ol>
-<li>在框架内部，遍历子节点，应该使用firstChild和nextSibling方式。</li>
+            <h3 id="css方法"><a href="#css方法" class="headerlink" title="css方法"></a><code>css</code>方法</h3><ol>
+<li>实现思路<ul>
+<li>如果只传入一个参数<ul>
+<li>如果参数类型为对象,表示同时设置多个样式</li>
+<li>如果参数类型为字符串,表示获取指定的样式值</li>
+</ul>
+</li>
+<li>如果传入的两个参数,表示设置单个样式值</li>
+</ul>
+</li>
 </ol>
-<h2 id="框架结构"><a href="#框架结构" class="headerlink" title="框架结构"></a>框架结构</h2><ol>
-<li><p>在编写框架的时候，为了防止变量污染，尽量使用沙箱模式 封装框架</p>
+<h3 id="itcast-each方法-遍历数组或伪数组"><a href="#itcast-each方法-遍历数组或伪数组" class="headerlink" title="itcast.each方法: 遍历数组或伪数组"></a><code>itcast.each</code>方法: 遍历数组或伪数组</h3><ol>
+<li>功能<ul>
+<li>第一个参数,指定遍历的对象</li>
+<li>第二个参数,指定的回调函数,对遍历到的每一个元素,进行相关处理</li>
+</ul>
+</li>
+</ol>
+<h2 id="attr方法-setAttribute和getAttribute"><a href="#attr方法-setAttribute和getAttribute" class="headerlink" title="attr方法(setAttribute和getAttribute)"></a><code>attr方法(</code>setAttribute<code>和</code>getAttribute<code>)</code></h2><ol>
+<li>功能: 获取(设置)属性节点值</li>
+<li>实现思路<ul>
+<li>给原型添加<code>attr</code>方法,定义两个参数:属性节点名字<code>name</code>以及属性节点值</li>
+<li>如果只传入一个参数</li>
+<li>如果参数类型为对象,表示设置多个节点值</li>
+<li>否则获取指定的属性节点值(默认获取第一个<code>dom</code>元素的属性节点值)</li>
+<li>如果传入两个参数,表示设置单个属性节点值.</li>
+</ul>
+</li>
+</ol>
+<h2 id="html方法"><a href="#html方法" class="headerlink" title="html方法"></a><code>html</code>方法</h2><ol>
+<li><p>功能:</p>
 <ul>
-<li>在沙箱内部，如果经常使用全局变量或全局对象的话，最好的做法就是将他们当做实参传入沙箱中</li>
+<li>如果不传入参数,此时表示获取指定<code>dom</code>元素的<code>innerHTML</code>属性值</li>
+<li>否则,表示设置指定<code>dom</code>元素的<code>innerHTML</code>属性</li>
 </ul>
 </li>
-<li><p>核心函数为itcast，相当于jQuery。最终要暴露给用户使用</p>
-</li>
-<li><p>实现itcast函数，使用的是工厂模式来创建对象。好处:用户new或不new都可以得到正确的对象</p>
-</li>
-<li><p>init构造函数的位置</p>
+<li><p>实现思路</p>
 <ul>
-<li><p>如果放在沙箱内部，用户是无法修改或重写的。所以要容纳更多用户，尽量将构造函数暴露给用户</p>
-</li>
-<li><p>可以把构造函数放在itcast函数上，也可以放在itcast函数原型上。</p>
-</li>
-<li><p>处于jQuery之父，在写简单继承模式时，将构造函数放在其原型上，那么在编写框架时，即延续下来了</p>
-</li>
+<li>判断 是否传入参数</li>
+<li>如果没传,获取<code>itcast</code>对象上第一个<code>dom</code>元素的<code>innerHTML</code>属性值</li>
+<li>否则,给<code>itcast</code>对象上每一个<code>dom</code>元素设置<code>innerHTML</code>属性</li>
 </ul>
 </li>
-<li><p>init创建出来的对象，最终继承自itcast.prototype 所以可以将init对象称为 itcast对象</p>
-</li>
-<li><p>由于暴露给用户的是 itcast 和 其原型。所以在扩展成员时，只能在这两个对象上扩展。而在函数对象上扩展的成员为静态成员 。可以直接通过函数名字来访问。但是，在原型上的成员必须创建实例来访问。因此为了实现init对象可以访问itcast原型上的成员，就基于原型来实现。</p>
-</li>
-<li><p>完善init构造函数</p>
-<ul>
-<li>selector类型:<ul>
-<li>无效值: null undefined ‘’</li>
-<li>字符串<ul>
-<li>选择器 : “div” 根据选择器筛选dom元素，并以伪数组形式存储在this上</li>
-<li>html字符串 <code>&#39;&lt;p&gt;123&lt;/p&gt;&#39;</code>将html字符串转换成html元素</li>
+</ol>
+<h2 id="text方法"><a href="#text方法" class="headerlink" title="text方法"></a><code>text</code>方法</h2><ol>
+<li>功能:<ul>
+<li>不传值,表示获取文本节点(返回的是后代中所有文本节点值)</li>
+<li>否则,设置指定dom元素文本节点值</li>
 </ul>
 </li>
-<li>DOM节点</li>
-<li>DOM数组</li>
-<li>function: 入口函数 DOMContentLoaded<ul>
-<li>使用静态属性isReady 存储dom树是否加载完毕</li>
-<li>判断isReady值，如果为true，就直接执行传入的函数</li>
-<li>否则，就给document的DOMContentLoaded事件绑定处理程序，在处理程序中，先将isReady赋值为true，在执行</li>
+<li>实现思路<ul>
+<li>如果不传值,优先考虑浏览器是否支持<code>textContent</code>属性</li>
+<li>如果支持,就使用<code>textContent</code>返回结果集中每一个<code>dom</code>元素的文本节点值</li>
+<li>否则,就使用<code>innerText</code>返回结果集中每一个<code>dom</code>元素的文本节点值.</li>
+<li>如果传值,给<code>itcast</code>对象上的每一个<code>dom</code>元素设置文本节点值</li>
+<li>如果支持<code>textContent</code>实行,就使用该属性设置文本</li>
+<li>否则,就使用<code>innerText</code>来设置文本</li>
 </ul>
 </li>
+</ol>
+<h2 id="val方法"><a href="#val方法" class="headerlink" title="val方法"></a>val方法</h2><ol>
+<li>功能: <code>value</code>属性<ul>
+<li>如果不传值,表示获取输入框的文本值</li>
+<li>如果传值,表示给输入框 设置文本</li>
 </ul>
 </li>
+<li>实现思路<ul>
+<li>如果不传值，表示获取输入框的文本值（获取第一个文本框值）</li>
+<li>如果传值，表示给输入框 设置文本</li>
+<li>遍历每一个输入框，同时给其设置文本</li>
 </ul>
 </li>
-<li><p>如何判断字符串为html字符串</p>
-<ul>
-<li>以’&lt;’开头</li>
-<li>以’&gt;’结尾</li>
-<li>最小长度为3</li>
+</ol>
+<h2 id="prop方法"><a href="#prop方法" class="headerlink" title="prop方法"></a>prop方法</h2><ol>
+<li>功能: 和<code>attr</code>相似<ul>
+<li>注意:有些属性名称,比如<code>for,class</code>是保留字或关键字不能作为对象属性名称.所以要创建一个对象,转换这类的属性</li>
+<li>定义<code>protoFix</code>对象,存储上述属性到新属性名称的映射关系</li>
 </ul>
-</li>
-<li><p>如何判断像数组（数组和伪数组）</p>
-<ul>
-<li>用length属性判断啊，若具有length属性 表示为 像数组类型</li>
-<li>除了window对象以及函数对象</li>
-<li><p>{length :1}{4:”123”,length:5}稀疏数组</p>
-</li>
-<li><p>如果为真数组，返回true</p>
-</li>
-<li>如果length属性值为0，除了window对象以及函数对象，返回true</li>
-<li>如果length属性值&gt;0,如果对象具有 length - 1 索引，返回true</li>
-</ul>
-</li>
-<li><p>全局对象 window特性:有一个window属性 引用 自身</p>
 </li>
 </ol>
 
@@ -297,7 +330,7 @@
         
         <blockquote class="post-copyright">
     <div class="content">
-        链接：<a href="/2016/11/17/js.html" target="_blank" rel="external">http://www.mcling.xyz/2016/11/17/js.html</a>
+        链接：<a href="/2016/12/03/js-1.html" target="_blank" rel="external">http://www.mcling.xyz/2016/12/03/js-1.html</a>
     </div>
     <footer>
         <a href="http://www.mcling.xyz">
@@ -314,7 +347,7 @@
 
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/框架结构/">框架结构</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css属性模块/">css属性模块</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
 
 
             
@@ -369,18 +402,18 @@
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/2016/11/18/js1.html" id="post-prev" class="post-nav-link">
+      <a href="/2016/12/04/js2.html" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">js原生框架part2</h4>
+        <h4 class="title">js原生框架part5</h4>
       </a>
     </div>
   
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2016/11/16/own.html" id="post-next" class="post-nav-link">
+      <a href="/2016/12/02/js1.html" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">写给故作坚强的我们</h4>
+        <h4 class="title">js原生框架part2</h4>
       </a>
     </div>
   
@@ -390,7 +423,7 @@
             
     
 <div class="duoshuo" id="comments">
-	<div class="ds-thread" data-thread-key="js" data-title="js原生框架part1" data-url="http://www.mcling.xyz/2016/11/17/js.html"></div>
+	<div class="ds-thread" data-thread-key="js-1" data-title="js原生框架part3" data-url="http://www.mcling.xyz/2016/12/03/js-1.html"></div>
 </div>
 <script src="/js/embed.min.js?v=1.1.12"></script>
 <script src="//cdn.bootcss.com/marked/0.3.6/marked.min.js" async="async"></script>
@@ -437,9 +470,9 @@ var duoshuoQuery = {short_name:'mcling', theme: 'none'}
 
 <script>var BLOG = { ROOT: '/' };
 BLOG.SHARE = {
-title: "js原生框架part1",
+title: "js原生框架part3",
 summary: document.getElementsByName('summary')[0].content,
-url: "http://www.mcling.xyz/2016/11/17/js.html" }
+url: "http://www.mcling.xyz/2016/12/03/js-1.html" }
 </script>
 <div class="global-share" id="global-share">
     <div class="tit">分享到：</div>
