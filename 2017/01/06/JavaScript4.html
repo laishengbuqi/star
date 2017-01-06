@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+  <title>JavaScript 数组 | 心雨 | 马美玲的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="theme-color" content="#3F51B5">
+  
+  
+  <meta name="keywords" content="数组">
+  <meta name="description" content="JavaScript 数组创建方法
+空数组   var arr = new Array();
+指定长度  var arr = new Array(size);
+指定元素   var arr = new Array(item1,item2,item3,...itemN);
+单维数组  var arr = [item1,item2,item3,...itemN];
+多维数组   var arr = n">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript 数组">
+<meta property="og:url" content="http://www.mcling.xyz/2017/01/06/JavaScript4.html">
+<meta property="og:site_name" content="心雨">
+<meta property="og:description" content="JavaScript 数组创建方法
+空数组   var arr = new Array();
+指定长度  var arr = new Array(size);
+指定元素   var arr = new Array(item1,item2,item3,...itemN);
+单维数组  var arr = [item1,item2,item3,...itemN];
+多维数组   var arr = n">
+<meta property="og:updated_time" content="2017-01-06T08:43:02.413Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript 数组">
+<meta name="twitter:description" content="JavaScript 数组创建方法
+空数组   var arr = new Array();
+指定长度  var arr = new Array(size);
+指定元素   var arr = new Array(item1,item2,item3,...itemN);
+单维数组  var arr = [item1,item2,item3,...itemN];
+多维数组   var arr = n">
+  
+    <link rel="alternative" href="/atom.xml" title="心雨" type="application/atom+xml">
+  
+  <meta name="summary" content="人生就像一杯茶，不会苦一辈子，但总会苦一阵子。">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/style.css?v=1.1.12">
+</head>
+
+<body>
+  <div id="loading" class="active"></div>
+
+  <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/home.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">马美玲</h5>
+          <a href="mailto:15800726280@163.com" title="15800726280@163.com" class="mail">15800726280@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/laishengbuqi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.weibo.com/mameiling1570" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/guestbook"  >
+                <i class="icon icon-lg icon-comment"></i>
+                留言
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user"></i>
+                关于
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/links"  >
+                <i class="icon icon-lg icon-link"></i>
+                链接
+              </a>
+            </li>
+        
+      </ul>
+
+      <footer class="footer">
+  <p><a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0;vertical-align:middle;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAAPCAMAAABEF7i9AAAAllBMVEUAAAD///+rsapERER3d3eIiIjMzMzu7u4iIiKUmZO6v7rKzsoODg4RERFVVVUNDQ0NDg0PEA8zMzNLTEtbXltmZmZydnF9gn2AgICPkI+ZmZmqqqq7u7vFxsXIzMgNDQwZGRkgICAhISEkJSMnKCcuMC4xMzE5Ozk7PTtBQkFCQkJDQ0Nna2eGhoaHh4ezuLLGysbd3d1wVGpAAAAA4UlEQVR42q2T1xqCMAyFk7QsBQeKA9x7j/d/OSm22CpX0nzcpA1/T05aAOuBVkMAScQFHLnEwoCo2f1TnQIGoVMewjZEjVFN4GH1Ue1Cn2jWqwfsOOj6wDwGvotsl/c8lv7KIq1eLOsT0HMFHMIE/RZyHnlphryT9zyV+8WH5e8yQw3wnQvgAFxPTKUVi555SHR/lOfLMgVTeDlSfN+TaoUsiTyeIm+bCkHvCA2FUKG48LDtYBZBknsYP/G8NTw0gaaHyuQf4H5pecrB/FYCT2sL9zAfy1Xyjou6L8X2W7YcLyBZCRtnq/zfAAAAAElFTkSuQmCC" /></a></p>
+  <p>心雨 &copy; 2016 - 2017</p>
+  <p>Power by <a href="http://www.mcling.xyz" target="_blank">心雨</a> Theme
+  <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></p>
+  <a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-2x icon-rss-square"></i></a>
+</footer>
+
+    </div>
+  </div>
+</aside>
+
+  <main id="main">
+    <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">JavaScript 数组</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-share">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container">
+        <h1 class="title">JavaScript 数组</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-01-06T05:56:50.000Z" itemprop="datePublished" class="page-time">
+  2017-01-06
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JavaScript/">JavaScript</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#JavaScript-数组"><span class="post-toc-number">1.</span> <span class="post-toc-text">JavaScript 数组</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#创建方法"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">创建方法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#基本操作"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">基本操作</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#数组属性"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">数组属性</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ECMAScript3-方法"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">ECMAScript3 方法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ECMAScript5-方法"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">ECMAScript5 方法</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-JavaScript4" 
+  class="post-article article-type-post" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">JavaScript 数组</h1>
+        <div class="post-meta">
+            <time datetime="2017-01-06T05:56:50.000Z" itemprop="datePublished" class="post-time">
+  2017-01-06
+</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JavaScript/">JavaScript</a></li></ul>
+
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="JavaScript-数组"><a href="#JavaScript-数组" class="headerlink" title="JavaScript 数组"></a>JavaScript 数组</h1><h2 id="创建方法"><a href="#创建方法" class="headerlink" title="创建方法"></a>创建方法</h2><ol>
+<li>空数组   <code>var arr = new Array();</code></li>
+<li>指定长度  <code>var arr = new Array(size);</code></li>
+<li>指定元素   <code>var arr = new Array(item1,item2,item3,...itemN);</code></li>
+<li>单维数组  <code>var arr = [item1,item2,item3,...itemN];</code></li>
+<li>多维数组   <code>var arr = new Array ([数组序列1],[数组序列2],[数组序列N]);</code></li>
+</ol>
+<hr>
+<h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><ol>
+<li><p>存储数组元素 </p>
+<ul>
+<li>单维数组  <code>数组名[下标索引]</code></li>
+<li>多维数组  <code>数组名[外层数组下标][内层数组下标]</code></li>
+<li>特性<ul>
+<li>数组长度是弹性的,可自由伸缩</li>
+<li>数组下标从0开始</li>
+<li>下标类型<ul>
+<li>数值</li>
+<li>非数值<ul>
+<li>转为字符串</li>
+<li>生成关联数组</li>
+<li>下标作为对象属性的名字</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>数组元素可添加到对象中</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>添加数组元素</p>
+<ul>
+<li>使用 “[]” 运算符指定一个新下标</li>
+</ul>
+</li>
+<li>删除数组元素<ul>
+<li>delete 数组名[下标]   数组长度不变</li>
+</ul>
+</li>
+<li>遍历数组<ul>
+<li><code>for(var 数组元素下标 in 数组)</code></li>
+<li><code>for(var  i=0,l=数组.length;i&lt;l;i++)</code></li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="数组属性"><a href="#数组属性" class="headerlink" title="数组属性"></a>数组属性</h2><ol>
+<li>constructor 引用数组对象的构造函数 , 数组元素可添加到对象中</li>
+<li>length  返回数组的长度</li>
+<li>prototype 数组对象的原型 , 通过添加属性和方法来扩展数组的定义</li>
+</ol>
+<hr>
+<h2 id="ECMAScript3-方法"><a href="#ECMAScript3-方法" class="headerlink" title="ECMAScript3 方法"></a>ECMAScript3 方法</h2><ol>
+<li>添加 <ul>
+<li>push() 在数组末尾添加元素</li>
+<li>unshift() 在数组头部添加元素</li>
+<li>concat() 合并数组  返回一个新数组</li>
+</ul>
+</li>
+<li>删除 <ul>
+<li>pop() 删除并返回数组的最后一个元素</li>
+<li>shift() 删除并返回数组的第一个元素</li>
+</ul>
+</li>
+<li><p>子数组</p>
+<ul>
+<li>splice()<ul>
+<li>功能<ul>
+<li>删除任意数量的项<ol>
+<li>要删除的起始下标</li>
+<li>要删除的项数</li>
+</ol>
+</li>
+<li>在指定位置插入指定项<ol>
+<li>起始下标</li>
+<li>0 (不删除任何项)</li>
+</ol>
+</li>
+<li>替换任意数量的项<ol>
+<li>起始下标</li>
+<li>要删除的项数</li>
+<li>要插入的项</li>
+<li>插入项数和删除项数一样即可实现数组元素替换</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>返回值 数组(包含被删除的元素)</li>
+</ul>
+</li>
+<li>slice()<ul>
+<li>功能<ul>
+<li>从已有数组中选取部分元素构成新数组</li>
+</ul>
+</li>
+<li>参数<ul>
+<li>返回项的起始位置</li>
+<li>返回项的结束位置</li>
+</ul>
+</li>
+<li>特性<ul>
+<li>如果是负数,则用数组长度加上该值确定位置</li>
+<li>起始位置实为数组的实际下标</li>
+<li>结束位置的实际下标为结束数值减1</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>数组排序</p>
+<ul>
+<li>reverse() 颠倒数值中元素的顺序</li>
+<li><p>sort()  </p>
+<ul>
+<li>功能 : 对字符数组或数值数组进行排序</li>
+<li><p>特性:</p>
+<ol>
+<li>默认为按照字符串比较</li>
+<li><p>按数值大小比较需函数支持</p>
+<ul>
+<li><p>升序</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">compare</span>(<span class="params">a,b</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> a-b;</div><div class="line">&#125;</div><div class="line"><span class="comment">//在排序后的数组中a应该出现在b之前,则返回一个小于0的值</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>降序</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">compare</span>(<span class="params">a,b</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> b-a;</div><div class="line">    </div><div class="line">&#125;</div><div class="line"><span class="comment">//在排序后的数组中b应该出现在a之前,则返回一个大于0的值</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>数组转换</p>
+<ul>
+<li>toString() 转换为字符串并返回</li>
+<li>toLocaleString() 转换为本地格式字符串并返回</li>
+<li>join() 用指定分割符合并数组每个元素并转换为字符串返回</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="ECMAScript5-方法"><a href="#ECMAScript5-方法" class="headerlink" title="ECMAScript5 方法"></a>ECMAScript5 方法</h2><ol>
+<li>位置方法<ul>
+<li>indexOf 从数组的起始位置开始查找指定元素,若找到,返回指定元素在数组中的下标,否则返回-1</li>
+<li>lastIndexOf() 从数组的结束位置开始查找指定元素,若找到,返回指定元素在数组中的下标,否则返回-1</li>
+<li>参数  1. 要查找项 2. 表示查找起点的位置索引</li>
+</ul>
+</li>
+<li>迭代方法<ul>
+<li>every() 如果该函数对每一项都返回true,则返回true</li>
+<li>filter() 返回值为true的所有数组成员</li>
+<li>forEach() 无返回值</li>
+<li>map() 返回每次函数调用的结果数组</li>
+<li>some() 有任意一项返回true,则返回true</li>
+<li>概要<ul>
+<li>接收参数<ol>
+<li>要在每一项上运行的函数</li>
+<li>运行该函数的作用域对象</li>
+</ol>
+</li>
+<li>传入参数<ol>
+<li>数组项的值item</li>
+<li>该项在数组中的位置索引index</li>
+<li>数组对象本身array</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>缩小方法<ul>
+<li>reduce() 从数组起始位置开始遍历</li>
+<li>reduceRight() 从数组末尾开始遍历</li>
+<li>参数<ul>
+<li>接收参数<ol>
+<li>每一项上调用的函数</li>
+<li>作为缩小基础的初始值</li>
+</ol>
+</li>
+<li>传入参数<ol>
+<li>前一个值prev</li>
+<li>当前值 cur</li>
+<li>项的索引 index </li>
+<li>数组对象 Array</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+
+        </div>
+        
+        <blockquote class="post-copyright">
+    <div class="content">
+        链接：<a href="/2017/01/06/JavaScript4.html" target="_blank" rel="external">http://www.mcling.xyz/2017/01/06/JavaScript4.html</a>
+    </div>
+    <footer>
+        <a href="http://www.mcling.xyz">
+            <img src="/img/home.png" alt="马美玲">
+            马美玲
+        </a>
+    </footer>
+</blockquote>
+        
+<div class="post-reward">
+    <a id="rewardBtn" href="javascript:;" class="post-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数组/">数组</a></li></ul>
+
+
+            
+<div class="post-share-wrap">
+    <div class="post-share" id="post-share">
+    <div class="tit">分享到：</div>
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" href="javascript:;" data-title="微博" data-service="tsina">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns" href="javascript:;" data-title="微信" data-service="weixin">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" href="javascript:;" data-title=" QQ" data-service="cqq">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" href="javascript:;" data-title=" Facebook" data-service="fb">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" href="javascript:;" data-title=" Twitter" data-service="twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="douban share-sns" href="javascript:;" data-title="豆瓣" data-service="douban">
+          豆
+        </a>
+      </li>
+    </ul>
+ </div>
+
+    <a href="javascript:;" id="share-fab" class="post-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>   
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2016/12/12/node1.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">nodejs part2</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+            
+    
+<div class="duoshuo" id="comments">
+	<div class="ds-thread" data-thread-key="JavaScript4" data-title="JavaScript 数组" data-url="http://www.mcling.xyz/2017/01/06/JavaScript4.html"></div>
+</div>
+<script src="/js/embed.min.js?v=1.1.12"></script>
+<script src="//cdn.bootcss.com/marked/0.3.6/marked.min.js" async="async"></script>
+<script>
+var duoshuoQuery = {short_name:'mcling', theme: 'none'}
+</script>
+
+
+
+
+
+</article>
+
+<div id="reward" class="reward-lay">
+    <a class="reward-off" id="rewardOff" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        给口水喝,谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.png" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.png" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+</div>
+
+  </main>
+  <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+<script>var BLOG = { ROOT: '/' };
+BLOG.SHARE = {
+title: "JavaScript 数组",
+summary: document.getElementsByName('summary')[0].content,
+url: "http://www.mcling.xyz/2017/01/06/JavaScript4.html" }
+</script>
+<div class="global-share" id="global-share">
+    <div class="tit">分享到：</div>
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" href="javascript:;" data-title="微博" data-service="tsina">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns" href="javascript:;" data-title="微信" data-service="weixin">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" href="javascript:;" data-title=" QQ" data-service="cqq">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" href="javascript:;" data-title=" Facebook" data-service="fb">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" href="javascript:;" data-title=" Twitter" data-service="twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="douban share-sns" href="javascript:;" data-title="豆瓣" data-service="douban">
+          豆
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+  <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script src="/js/main.min.js?v=1.1.12"></script>
+
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.1.12"></script>
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/js/particle.js"></script>
+</body>
+</html>
