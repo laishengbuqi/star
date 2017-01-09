@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.mcling.xyz/"/>
-  <updated>2017-01-06T08:43:02.413Z</updated>
+  <updated>2017-01-09T03:45:02.293Z</updated>
   <id>http://www.mcling.xyz/</id>
   
   <author>
@@ -14,6 +14,158 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JavaScript 流程语句</title>
+    <link href="http://www.mcling.xyz/2017/01/09/JavaScript5.html"/>
+    <id>http://www.mcling.xyz/2017/01/09/JavaScript5.html</id>
+    <published>2017-01-09T02:39:49.000Z</published>
+    <updated>2017-01-09T03:45:02.293Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="JavaScript-流程语句"><a href="#JavaScript-流程语句" class="headerlink" title="JavaScript 流程语句"></a>JavaScript 流程语句</h1><h2 id="循环语句"><a href="#循环语句" class="headerlink" title="循环语句"></a>循环语句</h2><h3 id="while"><a href="#while" class="headerlink" title="while"></a>while</h3><ol>
+<li><p>语法</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">while</span>(条件表达式)&#123;</div><div class="line">    循环执行代码段</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>流程 </p>
+<ul>
+<li>判断条件表达式的值</li>
+<li>当值为 true 时循环执行代码段</li>
+<li>当值为 false 时退出循环体</li>
+</ul>
+</li>
+<li>特性<ul>
+<li>先检查条件,再执行循环</li>
+<li>条件不满足则循环一次也不执行</li>
+</ul>
+</li>
+<li>时机<ul>
+<li>一个动作被重复执行到满足某个条件时</li>
+</ul>
+</li>
+</ol>
+<h3 id="do-while"><a href="#do-while" class="headerlink" title="do-while"></a>do-while</h3><ol>
+<li><p>语法</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">do</span>&#123;</div><div class="line">    循环执行代码段</div><div class="line">&#125;<span class="keyword">while</span>(条件表达式)</div></pre></td></tr></table></figure>
+</li>
+<li><p>流程</p>
+<ul>
+<li>先执行循环体内代码再进行判断</li>
+<li>如果表达式的值为 true ,则循环执行代码段</li>
+<li>如果表达式为 false ,则退出循环体</li>
+</ul>
+</li>
+<li>特性<ul>
+<li>先执行循环体,在进行条件判断</li>
+<li>循环体内代码至少执行一次</li>
+</ul>
+</li>
+<li>时机<ul>
+<li>希望一个动作至少被执行一次时<h3 id="for"><a href="#for" class="headerlink" title="for"></a>for</h3></li>
+</ul>
+</li>
+<li><p>语法</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(循环变量=初值;循环条件;递增/递减计数器)&#123;</div><div class="line">    循环代码段</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>流程</p>
+<ul>
+<li>用循环变量初始值与循环条件相比较,确定返回值</li>
+<li>如果返回值为 true 则执行循环体</li>
+<li>执行完一次后进行递增/递减运算</li>
+<li>将运算结果与循环条件相比较</li>
+<li>如果返回值为 true 则继续执行循环体;如果返回值为 false 则退出循环 </li>
+</ul>
+</li>
+<li><p>时机</p>
+<ul>
+<li>重复一个动作到一定次数<h3 id="for-in"><a href="#for-in" class="headerlink" title="for-in"></a>for-in</h3></li>
+</ul>
+</li>
+<li><p>语法</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>( <span class="keyword">var</span> 变量 <span class="keyword">in</span> 对象)&#123;</div><div class="line">    代码段</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>作用: 枚举对象属性</p>
+</li>
+<li><p>注意事项</p>
+<ul>
+<li>循环输出的属性顺序不可预知</li>
+<li>对象的值不能是null 或undefined </li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="跳转语句"><a href="#跳转语句" class="headerlink" title="跳转语句"></a>跳转语句</h2><ol>
+<li>return : 终止函数体的运行,并返回一个值</li>
+<li>break: 终止整个循环,不再进行判断</li>
+<li>continue :结束本次循环,接着去判断是否可执行下次循环</li>
+</ol>
+<hr>
+<h2 id="选择语句"><a href="#选择语句" class="headerlink" title="选择语句"></a>选择语句</h2><h3 id="if"><a href="#if" class="headerlink" title="if"></a>if</h3><ol>
+<li><p>语法</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(条件表达式)&#123;</div><div class="line">    代码段<span class="number">1</span></div><div class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>(条件表达式<span class="number">2</span>)&#123;</div><div class="line">    代码段<span class="number">2</span></div><div class="line">&#125;<span class="keyword">else</span>&#123;</div><div class="line">    代码段<span class="number">3</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>流程</p>
+<ul>
+<li>判断条件1,如果返回值为true 则执行代码段1</li>
+<li>如果条件1的值为 false 则跳过代码段1并检测条件2</li>
+<li>如果所有条件表达式的值为false 则执行else后面的代码段3</li>
+</ul>
+</li>
+<li>特性<ul>
+<li>结构复杂,可嵌套</li>
+<li>可测试多个条件表达式</li>
+<li>表达式的值具有线性特征</li>
+<li>表达式的值是动态的</li>
+<li>适用于任意类型的数据</li>
+<li>可处理复杂的逻辑关系<h3 id="switch"><a href="#switch" class="headerlink" title="switch"></a>switch</h3></li>
+</ul>
+</li>
+<li><p>语法</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">switch</span>(条件表达式)&#123;</div><div class="line">    <span class="keyword">case</span> 标签<span class="number">1</span>:</div><div class="line">        代码段<span class="number">1</span>;<span class="keyword">break</span>;</div><div class="line">    <span class="keyword">case</span> 标签<span class="number">2</span>:</div><div class="line">        代码段<span class="number">2</span>;<span class="keyword">break</span>;</div><div class="line">    <span class="comment">//.....</span></div><div class="line">    <span class="keyword">default</span>:代码段n;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>流程</p>
+<ul>
+<li>计算表达式的值,并与各标签相比较</li>
+<li>若找到与之匹配的标签,则执行其后的代码段</li>
+<li>若没有找到,则直接执行 default 后的代码段</li>
+</ul>
+</li>
+<li>格式<ul>
+<li>case 标签为常量,可以是字符串或数字</li>
+<li>虽然 break 和 default 为可选项,但为了逻辑清晰最好不要省略</li>
+<li>case 标签的值必须和条件表达式的值完全匹配(===)</li>
+</ul>
+</li>
+<li>特性<ul>
+<li>结构简洁,专为多重选择设计</li>
+<li>仅可测试一条条件表达式</li>
+<li>表达式的值具有离散型</li>
+<li>表达式的值是固定的,不会动态变化</li>
+<li>仅能应用整数,枚举,字符串等类型数据</li>
+<li>仅能处理多个枚举型逻辑关系</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h2><ol>
+<li>throw : 主动抛出异常</li>
+<li>try : 指明需要处理的代码段</li>
+<li>catch : 捕获异常</li>
+<li>finally: 后续处理</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;JavaScript-流程语句&quot;&gt;&lt;a href=&quot;#JavaScript-流程语句&quot; class=&quot;headerlink&quot; title=&quot;JavaScript 流程语句&quot;&gt;&lt;/a&gt;JavaScript 流程语句&lt;/h1&gt;&lt;h2 id=&quot;循环语句&quot;&gt;&lt;a href
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="http://www.mcling.xyz/categories/JavaScript/"/>
+    
+    
+      <category term="流程语句" scheme="http://www.mcling.xyz/tags/%E6%B5%81%E7%A8%8B%E8%AF%AD%E5%8F%A5/"/>
+    
+  </entry>
   
   <entry>
     <title>JavaScript 数组</title>
@@ -2786,86 +2938,6 @@
     
     
       <category term="坚强" scheme="http://www.mcling.xyz/tags/%E5%9D%9A%E5%BC%BA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>canvas基础</title>
-    <link href="http://www.mcling.xyz/2016/11/15/canvas.html"/>
-    <id>http://www.mcling.xyz/2016/11/15/canvas.html</id>
-    <published>2016-11-15T10:57:25.000Z</published>
-    <updated>2016-11-30T11:35:45.307Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Canvas基础"><a href="#Canvas基础" class="headerlink" title="Canvas基础"></a><code>Canvas</code>基础</h1><h2 id="Canvas是什么？"><a href="#Canvas是什么？" class="headerlink" title="Canvas是什么？"></a><code>Canvas</code>是什么？</h2><p><code>Canvas</code>是<code>HTML5</code>中提供的标签，是一个画布。</p>
-<p>默认的宽高为：300 * 150</p>
-<h2 id="Canvas的用法"><a href="#Canvas的用法" class="headerlink" title="Canvas的用法"></a>Canvas的用法</h2><ol>
-<li>创建一个<code>Canvas</code>标签</li>
-<li>获取到该<code>DOM</code>对象</li>
-<li><code>Canvas</code>只是一个画布，不能自己画画，需要画图工具</li>
-<li>每个<code>Canvas</code>对应一个画图工具，通过 <code>canvas对象.getContext(&quot;2d&quot;)</code>获取到一个  <code>CanvasRenderingContext2D</code>类型的对象</li>
-</ol>
-<h2 id="如何画直线"><a href="#如何画直线" class="headerlink" title="如何画直线"></a>如何画直线</h2><ol>
-<li>先确定在何处下笔，画图工具<code>.moveTo(x, y)</code></li>
-<li>确定从开始的点画到哪里去，  画图工具<code>.lineTo(x, y)</code></li>
-<li>上面两步之后，线并没有画出来，而是描点，需要最后一步进行画线  画图工具<code>.stroke()</code>;</li>
-</ol>
-<h2 id="lineTo的特性"><a href="#lineTo的特性" class="headerlink" title="lineTo的特性"></a><code>lineTo</code>的特性</h2><p>每次<code>lineTo</code>之后都会记录最后的<code>lineTo</code>的点，下次<code>lineTo</code>的时候就接着这个点继续画</p>
-<h2 id="closePath"><a href="#closePath" class="headerlink" title="closePath"></a><code>closePath</code></h2><p>将最后一次<code>lineTo</code>的点 和最后一次<code>moveTo</code>的点连起来的</p>
-<p>两条线的交界处，如果使用的是<code>closePath</code> 会补全缺口</p>
-<h2 id="fill"><a href="#fill" class="headerlink" title="fill"></a><code>fill</code></h2><p>可以将闭合的图形进行填充</p>
-<h2 id="非零填充原则"><a href="#非零填充原则" class="headerlink" title="非零填充原则"></a><code>非零填充原则</code></h2><p>从一个闭合空间引出一条直线，如果该直线两边的箭头数量不相等，则要填充，如果相等则不填充</p>
-<p>一边有一个箭头就+1<br>另一边有一个箭头就-1</p>
-<h2 id="如何绘制曲线？"><a href="#如何绘制曲线？" class="headerlink" title="如何绘制曲线？"></a><code>如何绘制曲线？</code></h2><p>使用for循环给每一个x对应一个y值，x和y的关系需要是个多次幂的方程</p>
-<h2 id="路径概念"><a href="#路径概念" class="headerlink" title="路径概念"></a><code>路径概念</code></h2><p>路径就是一次绘图，包含该次绘图中的所有的状态，线宽  颜色  是否虚线</p>
-<p>如果想要改变状态，就需要开启新的路径</p>
-<h2 id="beginPath"><a href="#beginPath" class="headerlink" title="beginPath"></a><code>beginPath</code></h2><p>可以用来开启新的路径</p>
-<h2 id="线型相关属性"><a href="#线型相关属性" class="headerlink" title="线型相关属性"></a><code>线型相关属性</code></h2><table>
-<thead>
-<tr>
-<th>名称</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>lineWidth</td>
-<td>画线的时候的线的宽度</td>
-</tr>
-<tr>
-<td>setLineDash()</td>
-<td>设置虚线各个线段的长度,参数是一个数组，会将数组中的数字循环使用</td>
-</tr>
-<tr>
-<td>getLineDash()</td>
-<td>获取虚线各个线段的长度，如果是实线，获取到的是空数组</td>
-</tr>
-<tr>
-<td>lineDashOffset</td>
-<td>设置虚线的偏移量，正值往左，负值往右</td>
-</tr>
-<tr>
-<td>strokeStyle</td>
-<td>设置描边的，画线的颜色，颜色值可以为css中任意一种</td>
-</tr>
-<tr>
-<td>fillStyle</td>
-<td>设置填充颜色，颜色值可以为css中任意一种</td>
-</tr>
-</tbody>
-</table>
-<h2 id="渐变色"><a href="#渐变色" class="headerlink" title="渐变色"></a><code>渐变色</code></h2><p>将线划分为256份，每一份为一个颜色，新画一条线，依次递增，就形成了一个颜色渐变的线段</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;Canvas基础&quot;&gt;&lt;a href=&quot;#Canvas基础&quot; class=&quot;headerlink&quot; title=&quot;Canvas基础&quot;&gt;&lt;/a&gt;&lt;code&gt;Canvas&lt;/code&gt;基础&lt;/h1&gt;&lt;h2 id=&quot;Canvas是什么？&quot;&gt;&lt;a href=&quot;#Canvas
-    
-    </summary>
-    
-      <category term="HTML" scheme="http://www.mcling.xyz/categories/HTML/"/>
-    
-    
-      <category term="canvas" scheme="http://www.mcling.xyz/tags/canvas/"/>
     
   </entry>
   

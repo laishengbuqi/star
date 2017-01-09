@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+  <title>JavaScript 流程语句 | 心雨 | 马美玲的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="theme-color" content="#3F51B5">
+  
+  
+  <meta name="keywords" content="流程语句">
+  <meta name="description" content="JavaScript 流程语句循环语句while
+语法
+ 123while(条件表达式)&amp;#123;    循环执行代码段&amp;#125;
+
+流程 
+
+判断条件表达式的值
+当值为 true 时循环执行代码段
+当值为 false 时退出循环体
+
+
+特性
+先检查条件,再执行循环
+条件不满足则循环一次也不执行
+
+
+时机
+一个动作被重复执行到满足某个条件时
+
+
+
+do-while
+语法
+ 123do&amp;#123">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript 流程语句">
+<meta property="og:url" content="http://www.mcling.xyz/2017/01/09/JavaScript5.html">
+<meta property="og:site_name" content="心雨">
+<meta property="og:description" content="JavaScript 流程语句循环语句while
+语法
+ 123while(条件表达式)&amp;#123;    循环执行代码段&amp;#125;
+
+流程 
+
+判断条件表达式的值
+当值为 true 时循环执行代码段
+当值为 false 时退出循环体
+
+
+特性
+先检查条件,再执行循环
+条件不满足则循环一次也不执行
+
+
+时机
+一个动作被重复执行到满足某个条件时
+
+
+
+do-while
+语法
+ 123do&amp;#123">
+<meta property="og:updated_time" content="2017-01-09T03:45:02.293Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript 流程语句">
+<meta name="twitter:description" content="JavaScript 流程语句循环语句while
+语法
+ 123while(条件表达式)&amp;#123;    循环执行代码段&amp;#125;
+
+流程 
+
+判断条件表达式的值
+当值为 true 时循环执行代码段
+当值为 false 时退出循环体
+
+
+特性
+先检查条件,再执行循环
+条件不满足则循环一次也不执行
+
+
+时机
+一个动作被重复执行到满足某个条件时
+
+
+
+do-while
+语法
+ 123do&amp;#123">
+  
+    <link rel="alternative" href="/atom.xml" title="心雨" type="application/atom+xml">
+  
+  <meta name="summary" content="人生就像一杯茶，不会苦一辈子，但总会苦一阵子。">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/style.css?v=1.1.12">
+</head>
+
+<body>
+  <div id="loading" class="active"></div>
+
+  <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/home.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">马美玲</h5>
+          <a href="mailto:15800726280@163.com" title="15800726280@163.com" class="mail">15800726280@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/laishengbuqi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.weibo.com/mameiling1570" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/guestbook"  >
+                <i class="icon icon-lg icon-comment"></i>
+                留言
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user"></i>
+                关于
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/links"  >
+                <i class="icon icon-lg icon-link"></i>
+                链接
+              </a>
+            </li>
+        
+      </ul>
+
+      <footer class="footer">
+  <p><a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0;vertical-align:middle;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAAPCAMAAABEF7i9AAAAllBMVEUAAAD///+rsapERER3d3eIiIjMzMzu7u4iIiKUmZO6v7rKzsoODg4RERFVVVUNDQ0NDg0PEA8zMzNLTEtbXltmZmZydnF9gn2AgICPkI+ZmZmqqqq7u7vFxsXIzMgNDQwZGRkgICAhISEkJSMnKCcuMC4xMzE5Ozk7PTtBQkFCQkJDQ0Nna2eGhoaHh4ezuLLGysbd3d1wVGpAAAAA4UlEQVR42q2T1xqCMAyFk7QsBQeKA9x7j/d/OSm22CpX0nzcpA1/T05aAOuBVkMAScQFHLnEwoCo2f1TnQIGoVMewjZEjVFN4GH1Ue1Cn2jWqwfsOOj6wDwGvotsl/c8lv7KIq1eLOsT0HMFHMIE/RZyHnlphryT9zyV+8WH5e8yQw3wnQvgAFxPTKUVi555SHR/lOfLMgVTeDlSfN+TaoUsiTyeIm+bCkHvCA2FUKG48LDtYBZBknsYP/G8NTw0gaaHyuQf4H5pecrB/FYCT2sL9zAfy1Xyjou6L8X2W7YcLyBZCRtnq/zfAAAAAElFTkSuQmCC" /></a></p>
+  <p>心雨 &copy; 2016 - 2017</p>
+  <p>Power by <a href="http://www.mcling.xyz" target="_blank">心雨</a> Theme
+  <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></p>
+  <a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-2x icon-rss-square"></i></a>
+</footer>
+
+    </div>
+  </div>
+</aside>
+
+  <main id="main">
+    <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">JavaScript 流程语句</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-share">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container">
+        <h1 class="title">JavaScript 流程语句</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-01-09T02:39:49.000Z" itemprop="datePublished" class="page-time">
+  2017-01-09
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JavaScript/">JavaScript</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#JavaScript-流程语句"><span class="post-toc-number">1.</span> <span class="post-toc-text">JavaScript 流程语句</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#循环语句"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">循环语句</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#while"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">while</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#do-while"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">do-while</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#for"><span class="post-toc-number">1.1.3.</span> <span class="post-toc-text">for</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#for-in"><span class="post-toc-number">1.1.4.</span> <span class="post-toc-text">for-in</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#跳转语句"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">跳转语句</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#选择语句"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">选择语句</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#if"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">if</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#switch"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">switch</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#异常处理"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">异常处理</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-JavaScript5" 
+  class="post-article article-type-post" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">JavaScript 流程语句</h1>
+        <div class="post-meta">
+            <time datetime="2017-01-09T02:39:49.000Z" itemprop="datePublished" class="post-time">
+  2017-01-09
+</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JavaScript/">JavaScript</a></li></ul>
+
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="JavaScript-流程语句"><a href="#JavaScript-流程语句" class="headerlink" title="JavaScript 流程语句"></a>JavaScript 流程语句</h1><h2 id="循环语句"><a href="#循环语句" class="headerlink" title="循环语句"></a>循环语句</h2><h3 id="while"><a href="#while" class="headerlink" title="while"></a>while</h3><ol>
+<li><p>语法</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">while</span>(条件表达式)&#123;</div><div class="line">    循环执行代码段</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>流程 </p>
+<ul>
+<li>判断条件表达式的值</li>
+<li>当值为 true 时循环执行代码段</li>
+<li>当值为 false 时退出循环体</li>
+</ul>
+</li>
+<li>特性<ul>
+<li>先检查条件,再执行循环</li>
+<li>条件不满足则循环一次也不执行</li>
+</ul>
+</li>
+<li>时机<ul>
+<li>一个动作被重复执行到满足某个条件时</li>
+</ul>
+</li>
+</ol>
+<h3 id="do-while"><a href="#do-while" class="headerlink" title="do-while"></a>do-while</h3><ol>
+<li><p>语法</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">do</span>&#123;</div><div class="line">    循环执行代码段</div><div class="line">&#125;<span class="keyword">while</span>(条件表达式)</div></pre></td></tr></table></figure>
+</li>
+<li><p>流程</p>
+<ul>
+<li>先执行循环体内代码再进行判断</li>
+<li>如果表达式的值为 true ,则循环执行代码段</li>
+<li>如果表达式为 false ,则退出循环体</li>
+</ul>
+</li>
+<li>特性<ul>
+<li>先执行循环体,在进行条件判断</li>
+<li>循环体内代码至少执行一次</li>
+</ul>
+</li>
+<li>时机<ul>
+<li>希望一个动作至少被执行一次时<h3 id="for"><a href="#for" class="headerlink" title="for"></a>for</h3></li>
+</ul>
+</li>
+<li><p>语法</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(循环变量=初值;循环条件;递增/递减计数器)&#123;</div><div class="line">    循环代码段</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>流程</p>
+<ul>
+<li>用循环变量初始值与循环条件相比较,确定返回值</li>
+<li>如果返回值为 true 则执行循环体</li>
+<li>执行完一次后进行递增/递减运算</li>
+<li>将运算结果与循环条件相比较</li>
+<li>如果返回值为 true 则继续执行循环体;如果返回值为 false 则退出循环 </li>
+</ul>
+</li>
+<li><p>时机</p>
+<ul>
+<li>重复一个动作到一定次数<h3 id="for-in"><a href="#for-in" class="headerlink" title="for-in"></a>for-in</h3></li>
+</ul>
+</li>
+<li><p>语法</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>( <span class="keyword">var</span> 变量 <span class="keyword">in</span> 对象)&#123;</div><div class="line">    代码段</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>作用: 枚举对象属性</p>
+</li>
+<li><p>注意事项</p>
+<ul>
+<li>循环输出的属性顺序不可预知</li>
+<li>对象的值不能是null 或undefined </li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="跳转语句"><a href="#跳转语句" class="headerlink" title="跳转语句"></a>跳转语句</h2><ol>
+<li>return : 终止函数体的运行,并返回一个值</li>
+<li>break: 终止整个循环,不再进行判断</li>
+<li>continue :结束本次循环,接着去判断是否可执行下次循环</li>
+</ol>
+<hr>
+<h2 id="选择语句"><a href="#选择语句" class="headerlink" title="选择语句"></a>选择语句</h2><h3 id="if"><a href="#if" class="headerlink" title="if"></a>if</h3><ol>
+<li><p>语法</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(条件表达式)&#123;</div><div class="line">    代码段<span class="number">1</span></div><div class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>(条件表达式<span class="number">2</span>)&#123;</div><div class="line">    代码段<span class="number">2</span></div><div class="line">&#125;<span class="keyword">else</span>&#123;</div><div class="line">    代码段<span class="number">3</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>流程</p>
+<ul>
+<li>判断条件1,如果返回值为true 则执行代码段1</li>
+<li>如果条件1的值为 false 则跳过代码段1并检测条件2</li>
+<li>如果所有条件表达式的值为false 则执行else后面的代码段3</li>
+</ul>
+</li>
+<li>特性<ul>
+<li>结构复杂,可嵌套</li>
+<li>可测试多个条件表达式</li>
+<li>表达式的值具有线性特征</li>
+<li>表达式的值是动态的</li>
+<li>适用于任意类型的数据</li>
+<li>可处理复杂的逻辑关系<h3 id="switch"><a href="#switch" class="headerlink" title="switch"></a>switch</h3></li>
+</ul>
+</li>
+<li><p>语法</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">switch</span>(条件表达式)&#123;</div><div class="line">    <span class="keyword">case</span> 标签<span class="number">1</span>:</div><div class="line">        代码段<span class="number">1</span>;<span class="keyword">break</span>;</div><div class="line">    <span class="keyword">case</span> 标签<span class="number">2</span>:</div><div class="line">        代码段<span class="number">2</span>;<span class="keyword">break</span>;</div><div class="line">    <span class="comment">//.....</span></div><div class="line">    <span class="keyword">default</span>:代码段n;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>流程</p>
+<ul>
+<li>计算表达式的值,并与各标签相比较</li>
+<li>若找到与之匹配的标签,则执行其后的代码段</li>
+<li>若没有找到,则直接执行 default 后的代码段</li>
+</ul>
+</li>
+<li>格式<ul>
+<li>case 标签为常量,可以是字符串或数字</li>
+<li>虽然 break 和 default 为可选项,但为了逻辑清晰最好不要省略</li>
+<li>case 标签的值必须和条件表达式的值完全匹配(===)</li>
+</ul>
+</li>
+<li>特性<ul>
+<li>结构简洁,专为多重选择设计</li>
+<li>仅可测试一条条件表达式</li>
+<li>表达式的值具有离散型</li>
+<li>表达式的值是固定的,不会动态变化</li>
+<li>仅能应用整数,枚举,字符串等类型数据</li>
+<li>仅能处理多个枚举型逻辑关系</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h2><ol>
+<li>throw : 主动抛出异常</li>
+<li>try : 指明需要处理的代码段</li>
+<li>catch : 捕获异常</li>
+<li>finally: 后续处理</li>
+</ol>
+
+        </div>
+        
+        <blockquote class="post-copyright">
+    <div class="content">
+        链接：<a href="/2017/01/09/JavaScript5.html" target="_blank" rel="external">http://www.mcling.xyz/2017/01/09/JavaScript5.html</a>
+    </div>
+    <footer>
+        <a href="http://www.mcling.xyz">
+            <img src="/img/home.png" alt="马美玲">
+            马美玲
+        </a>
+    </footer>
+</blockquote>
+        
+<div class="post-reward">
+    <a id="rewardBtn" href="javascript:;" class="post-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/流程语句/">流程语句</a></li></ul>
+
+
+            
+<div class="post-share-wrap">
+    <div class="post-share" id="post-share">
+    <div class="tit">分享到：</div>
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" href="javascript:;" data-title="微博" data-service="tsina">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns" href="javascript:;" data-title="微信" data-service="weixin">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" href="javascript:;" data-title=" QQ" data-service="cqq">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" href="javascript:;" data-title=" Facebook" data-service="fb">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" href="javascript:;" data-title=" Twitter" data-service="twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="douban share-sns" href="javascript:;" data-title="豆瓣" data-service="douban">
+          豆
+        </a>
+      </li>
+    </ul>
+ </div>
+
+    <a href="javascript:;" id="share-fab" class="post-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>   
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/01/06/JavaScript4.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">JavaScript 数组</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+            
+    
+<div class="duoshuo" id="comments">
+	<div class="ds-thread" data-thread-key="JavaScript5" data-title="JavaScript 流程语句" data-url="http://www.mcling.xyz/2017/01/09/JavaScript5.html"></div>
+</div>
+<script src="/js/embed.min.js?v=1.1.12"></script>
+<script src="//cdn.bootcss.com/marked/0.3.6/marked.min.js" async="async"></script>
+<script>
+var duoshuoQuery = {short_name:'mcling', theme: 'none'}
+</script>
+
+
+
+
+
+</article>
+
+<div id="reward" class="reward-lay">
+    <a class="reward-off" id="rewardOff" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        给口水喝,谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.png" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.png" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+</div>
+
+  </main>
+  <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+<script>var BLOG = { ROOT: '/' };
+BLOG.SHARE = {
+title: "JavaScript 流程语句",
+summary: document.getElementsByName('summary')[0].content,
+url: "http://www.mcling.xyz/2017/01/09/JavaScript5.html" }
+</script>
+<div class="global-share" id="global-share">
+    <div class="tit">分享到：</div>
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" href="javascript:;" data-title="微博" data-service="tsina">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns" href="javascript:;" data-title="微信" data-service="weixin">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" href="javascript:;" data-title=" QQ" data-service="cqq">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" href="javascript:;" data-title=" Facebook" data-service="fb">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" href="javascript:;" data-title=" Twitter" data-service="twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="douban share-sns" href="javascript:;" data-title="豆瓣" data-service="douban">
+          豆
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+  <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script src="/js/main.min.js?v=1.1.12"></script>
+
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.1.12"></script>
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/js/particle.js"></script>
+</body>
+</html>
